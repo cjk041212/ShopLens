@@ -2,23 +2,40 @@
   "scope": "Public copies only. Original final coursework files remain unchanged. Draft forms are not completed official forms. GitHub publication is not school submission.",
   "files": [
     {
-      "path": "ShopLens_Qwen_presentation.pptx",
-      "original_sha256": "deaa6bb519b505f2c2bc541b725f7ada46a3608d2f7db1f9430c4cf191120c11",
-      "public_sha256": "7a17eb2942eb44e28f0fac74e0f7169b22587d4fccb45bf34430cfcd1e6c6bcd",
-      "bytes": 147383,
+      "path": "ShopLens_Direct_Request_example_shortlist.json",
+      "original_sha256": "ba9a01b32451556ed0defb38c1bb69f2fb86916c42fe55a5f62ed6750c68af31",
+      "public_sha256": "3a8952fafca0d4b7c87c6286a8d56c7be804b8a4a179b025e7a93d9ea82f7a37",
+      "bytes": 17365,
       "transforms": [
-        "pptx-container-repacked",
-        "pptx-private-paths-redacted"
+        "json-format-normalized"
       ]
+    },
+    {
+      "path": "ShopLens_Qwen_AI_disclosure_draft.md",
+      "original_sha256": "10fb7daf941b92a324a8547a9e0a7a23f61adeb098b039ca4f981ab6dd4b945a",
+      "public_sha256": "10fb7daf941b92a324a8547a9e0a7a23f61adeb098b039ca4f981ab6dd4b945a",
+      "bytes": 1678,
+      "transforms": []
     },
     {
       "path": "ShopLens_Qwen_human_narration.md",
       "original_sha256": "13d7252cbff68c779178b3e293a21693d95e6c67c83bfe62c815308c7fb048ac",
-      "public_sha256": "b2adfc7d47a8b853142af9cdd01436e5c13bdb8db3dfb60fa6ee5d0d4a47e51f",
-      "bytes": 19622,
+      "public_sha256": "526adbb3c065c647286f32f6923b68fedd1347d0edd9058107c004439fb7456a",
+      "bytes": 19529,
       "transforms": [
-        "private-paths-made-relative-or-redacted",
-        "public-copy-operational-identifiers-or-local-evidence-links-normalized"
+        "matching-26-slide-English-human-narration-848-spoken-words",
+        "repository-relative-source-notes"
+      ]
+    },
+    {
+      "path": "ShopLens_Qwen_presentation.pptx",
+      "original_sha256": "deaa6bb519b505f2c2bc541b725f7ada46a3608d2f7db1f9430c4cf191120c11",
+      "public_sha256": "f1cfa7be43d3aea72feac81dcc0c887ce7c0dd16421d50cf98f7a768a0332686",
+      "bytes": 931851,
+      "transforms": [
+        "expanded-English-presentation-26-slides-18-main-8-appendix",
+        "15-real-application-screenshots",
+        "repository-relative-source-notes"
       ]
     },
     {
@@ -31,52 +48,6 @@
       ]
     },
     {
-      "path": "ShopLens_Studio_guide.md",
-      "original_sha256": "8319c7468dea424bf9066ace4a9fc81d1acabc0b06705c001dd0ba6baae83f3b",
-      "public_sha256": "8319c7468dea424bf9066ace4a9fc81d1acabc0b06705c001dd0ba6baae83f3b",
-      "bytes": 8789,
-      "transforms": []
-    },
-    {
-      "path": "ShopLens_Qwen_AI_disclosure_draft.md",
-      "original_sha256": "10fb7daf941b92a324a8547a9e0a7a23f61adeb098b039ca4f981ab6dd4b945a",
-      "public_sha256": "10fb7daf941b92a324a8547a9e0a7a23f61adeb098b039ca4f981ab6dd4b945a",
-      "bytes": 1678,
-      "transforms": []
-    },
-    {
-      "path": "贡献反思模板.md",
-      "original_sha256": "bb1da9f63298ef58fc8b8a4d8cd3135a7f3424f90025cc50d12f2e43137b7457",
-      "public_sha256": "bb1da9f63298ef58fc8b8a4d8cd3135a7f3424f90025cc50d12f2e43137b7457",
-      "bytes": 1309,
-      "transforms": []
-    },
-    {
-      "path": "results_qwen_summary.csv",
-      "original_sha256": "a5ee7164d4c927a423e9246c9dcc06db0c8ba81bab449910bd9ee28d9faf359a",
-      "public_sha256": "a5ee7164d4c927a423e9246c9dcc06db0c8ba81bab449910bd9ee28d9faf359a",
-      "bytes": 1863,
-      "transforms": []
-    },
-    {
-      "path": "results_qwen_summary.json",
-      "original_sha256": "c898f8fb3db52d413882c3f731a37ae4217a73a48caf4a03cb5144a5e719b54b",
-      "public_sha256": "7cb8dc062d459a666a35d50cb6519b094c8fbbbf8a27e87bfddf9515d8c209f4",
-      "bytes": 180304,
-      "transforms": [
-        "public-copy-operational-identifiers-or-local-evidence-links-normalized"
-      ]
-    },
-    {
-      "path": "ShopLens_Direct_Request_example_shortlist.json",
-      "original_sha256": "ba9a01b32451556ed0defb38c1bb69f2fb86916c42fe55a5f62ed6750c68af31",
-      "public_sha256": "3a8952fafca0d4b7c87c6286a8d56c7be804b8a4a179b025e7a93d9ea82f7a37",
-      "bytes": 17365,
-      "transforms": [
-        "json-format-normalized"
-      ]
-    },
-    {
       "path": "ShopLens_Qwen_report_zh.md",
       "original_sha256": "3768d5eb677d139c2d84929eb183d86ec308156908a8ffa5bbc8bcba4595c775",
       "public_sha256": "071ab2c224cc22d862d758d68ac7767a9624988fa1246f58797f0d91c3e12c27",
@@ -84,6 +55,92 @@
       "transforms": [
         "public-copy-operational-identifiers-or-local-evidence-links-normalized"
       ]
+    },
+    {
+      "path": "ShopLens_Studio_guide.md",
+      "original_sha256": "8319c7468dea424bf9066ace4a9fc81d1acabc0b06705c001dd0ba6baae83f3b",
+      "public_sha256": "8319c7468dea424bf9066ace4a9fc81d1acabc0b06705c001dd0ba6baae83f3b",
+      "bytes": 8789,
+      "transforms": []
+    },
+    {
+      "path": "assets/qwen_compare_baby.jpg",
+      "original_sha256": "c71b07d9634be1059ffdaa5ac5e5e8c86a31eac725f86913a0a18d0da204fc59",
+      "public_sha256": "c71b07d9634be1059ffdaa5ac5e5e8c86a31eac725f86913a0a18d0da204fc59",
+      "bytes": 103633,
+      "transforms": []
+    },
+    {
+      "path": "assets/research_atlas_complete.jpg",
+      "original_sha256": "2cf83be0fe80238f991722c2df1dd224d70a3a6e99a6cd248c9f8d062b5bd496",
+      "transforms": [
+        "real-application-screenshot-for-expanded-presentation"
+      ],
+      "public_sha256": "2cf83be0fe80238f991722c2df1dd224d70a3a6e99a6cd248c9f8d062b5bd496",
+      "bytes": 111103
+    },
+    {
+      "path": "assets/research_evidence_product.png",
+      "original_sha256": "88bb4681f297bfea1a9588c2f6c25998785c762e0397e7b165c5c572fe5f71a8",
+      "transforms": [
+        "real-application-screenshot-for-expanded-presentation"
+      ],
+      "public_sha256": "88bb4681f297bfea1a9588c2f6c25998785c762e0397e7b165c5c572fe5f71a8",
+      "bytes": 76579
+    },
+    {
+      "path": "assets/research_heatmap.png",
+      "original_sha256": "8390a73bfe97c4ff88f4269686f5515da8932b4903e32d8cfb8a5d6aae74bc33",
+      "transforms": [
+        "real-application-screenshot-for-expanded-presentation"
+      ],
+      "public_sha256": "8390a73bfe97c4ff88f4269686f5515da8932b4903e32d8cfb8a5d6aae74bc33",
+      "bytes": 52471
+    },
+    {
+      "path": "assets/research_network.png",
+      "original_sha256": "cb40f516bf3332b718964cc9580ff158c94e8e89f458e49d30eeacdda1644633",
+      "transforms": [
+        "real-application-screenshot-for-expanded-presentation"
+      ],
+      "public_sha256": "cb40f516bf3332b718964cc9580ff158c94e8e89f458e49d30eeacdda1644633",
+      "bytes": 60212
+    },
+    {
+      "path": "assets/research_paired.png",
+      "original_sha256": "2dacba1a8a6ca15f32fb0792cf5b968ceb5c26ee314a403a8121507ce518162e",
+      "transforms": [
+        "real-application-screenshot-for-expanded-presentation"
+      ],
+      "public_sha256": "2dacba1a8a6ca15f32fb0792cf5b968ceb5c26ee314a403a8121507ce518162e",
+      "bytes": 54525
+    },
+    {
+      "path": "assets/research_rankflow.png",
+      "original_sha256": "06f554876831b441b896db09757a672d9cc849a5597f12a0b52214d4ceb2aaea",
+      "transforms": [
+        "real-application-screenshot-for-expanded-presentation"
+      ],
+      "public_sha256": "06f554876831b441b896db09757a672d9cc849a5597f12a0b52214d4ceb2aaea",
+      "bytes": 39063
+    },
+    {
+      "path": "assets/research_removal_complete.jpg",
+      "original_sha256": "4a0ab44fd908b70632cde2dfb4e2f931800be5691b205a420177525c3850d6c0",
+      "transforms": [
+        "real-application-screenshot-for-expanded-presentation"
+      ],
+      "public_sha256": "4a0ab44fd908b70632cde2dfb4e2f931800be5691b205a420177525c3850d6c0",
+      "bytes": 105766
+    },
+    {
+      "path": "assets/research_training.png",
+      "original_sha256": "0f11cc435bef566415f4baff4b51d3d6b678474dd9fbcc9ef3ab267dee10f5e4",
+      "transforms": [
+        "real-application-screenshot-for-expanded-presentation"
+      ],
+      "public_sha256": "0f11cc435bef566415f4baff4b51d3d6b678474dd9fbcc9ef3ab267dee10f5e4",
+      "bytes": 40610
     },
     {
       "path": "assets/shoplens_direct_request_compare.jpg",
@@ -107,29 +164,97 @@
       "transforms": []
     },
     {
-      "path": "assets/qwen_compare_baby.jpg",
-      "original_sha256": "c71b07d9634be1059ffdaa5ac5e5e8c86a31eac725f86913a0a18d0da204fc59",
-      "public_sha256": "c71b07d9634be1059ffdaa5ac5e5e8c86a31eac725f86913a0a18d0da204fc59",
-      "bytes": 103633,
+      "path": "assets/studio_brief.png",
+      "original_sha256": "3fe29c9c3879139ee49f8040bda172c535d7b9861f651055faf2502bb7c99784",
+      "transforms": [
+        "real-application-screenshot-for-expanded-presentation"
+      ],
+      "public_sha256": "3fe29c9c3879139ee49f8040bda172c535d7b9861f651055faf2502bb7c99784",
+      "bytes": 47252
+    },
+    {
+      "path": "assets/studio_evidence.png",
+      "original_sha256": "2f8b80228db5e6412622e86c1f66fbe97f1e3ac8c72d8ff13b31ce566581b98f",
+      "transforms": [
+        "real-application-screenshot-for-expanded-presentation"
+      ],
+      "public_sha256": "2f8b80228db5e6412622e86c1f66fbe97f1e3ac8c72d8ff13b31ce566581b98f",
+      "bytes": 65113
+    },
+    {
+      "path": "assets/studio_export.png",
+      "original_sha256": "ba43b3fe2f0426072ffd119a22c6b1539578cc7f2de7bb72dd7305d2ed87e8fc",
+      "transforms": [
+        "real-application-screenshot-for-expanded-presentation"
+      ],
+      "public_sha256": "ba43b3fe2f0426072ffd119a22c6b1539578cc7f2de7bb72dd7305d2ed87e8fc",
+      "bytes": 40291
+    },
+    {
+      "path": "assets/studio_feedback.png",
+      "original_sha256": "60d99ca4f28bf5d1dec98de2a864284d41742f83b4234a22a8b7bcf57421058b",
+      "transforms": [
+        "real-application-screenshot-for-expanded-presentation"
+      ],
+      "public_sha256": "60d99ca4f28bf5d1dec98de2a864284d41742f83b4234a22a8b7bcf57421058b",
+      "bytes": 46732
+    },
+    {
+      "path": "assets/studio_models.jpg",
+      "original_sha256": "5484464dfde22652f796eb3d1fc5a0a5b70c4588bf639cd3195ce592a2af1f18",
+      "transforms": [
+        "real-application-screenshot-for-expanded-presentation"
+      ],
+      "public_sha256": "5484464dfde22652f796eb3d1fc5a0a5b70c4588bf639cd3195ce592a2af1f18",
+      "bytes": 121564
+    },
+    {
+      "path": "assets/studio_shortlist.png",
+      "original_sha256": "c6907239f1ff13da204ff9103e0d47c1876ae1f726b4f13dc8f5b90c6409dc93",
+      "transforms": [
+        "real-application-screenshot-for-expanded-presentation"
+      ],
+      "public_sha256": "c6907239f1ff13da204ff9103e0d47c1876ae1f726b4f13dc8f5b90c6409dc93",
+      "bytes": 56029
+    },
+    {
+      "path": "assets/studio_visual_filters.png",
+      "original_sha256": "a0003086a41a80a474e399c08e196c8f1c3d0abee530431e059eb5a0bc9b4587",
+      "transforms": [
+        "real-application-screenshot-for-expanded-presentation"
+      ],
+      "public_sha256": "a0003086a41a80a474e399c08e196c8f1c3d0abee530431e059eb5a0bc9b4587",
+      "bytes": 47559
+    },
+    {
+      "path": "results_qwen_summary.csv",
+      "original_sha256": "a5ee7164d4c927a423e9246c9dcc06db0c8ba81bab449910bd9ee28d9faf359a",
+      "public_sha256": "a5ee7164d4c927a423e9246c9dcc06db0c8ba81bab449910bd9ee28d9faf359a",
+      "bytes": 1863,
       "transforms": []
     },
     {
-      "path": "ShopLens_Direct_Request_Comparison_code_submission.zip",
-      "original_sha256": "870d137cff726f5b506ee6b07f95434bf7b6a6b274ed7ecb5445704c77bab380",
-      "public_sha256": "870d137cff726f5b506ee6b07f95434bf7b6a6b274ed7ecb5445704c77bab380",
-      "bytes": 18372235,
+      "path": "results_qwen_summary.json",
+      "original_sha256": "c898f8fb3db52d413882c3f731a37ae4217a73a48caf4a03cb5144a5e719b54b",
+      "public_sha256": "7cb8dc062d459a666a35d50cb6519b094c8fbbbf8a27e87bfddf9515d8c209f4",
+      "bytes": 180304,
       "transforms": [
-        "immutable-already-sanitized-coursework-snapshot-retained"
+        "public-copy-operational-identifiers-or-local-evidence-links-normalized"
       ]
     },
     {
-      "path": "ShopLens_Direct_Request_Comparison_code_submission.zip.manifest.json",
-      "original_sha256": "434f9935bb39f89a5e89d7acd076176954f702f8b0f87a91198fc4a9f19e8f28",
-      "public_sha256": "434f9935bb39f89a5e89d7acd076176954f702f8b0f87a91198fc4a9f19e8f28",
-      "bytes": 168279,
-      "transforms": [
-        "immutable-already-sanitized-coursework-snapshot-retained"
-      ]
+      "path": "贡献反思模板.md",
+      "original_sha256": "bb1da9f63298ef58fc8b8a4d8cd3135a7f3424f90025cc50d12f2e43137b7457",
+      "public_sha256": "bb1da9f63298ef58fc8b8a4d8cd3135a7f3424f90025cc50d12f2e43137b7457",
+      "bytes": 1309,
+      "transforms": []
     }
-  ]
+  ],
+  "presentation": {
+    "slides": 26,
+    "main_slides": 18,
+    "optional_appendix_slides": 8,
+    "real_ui_screenshots": 15,
+    "human_narration_spoken_words": 848
+  }
 }

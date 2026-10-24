@@ -1,189 +1,347 @@
-# ShopLens Qwen human narration script
+# ShopLens: English human narration
 
-A real group member must record the narration. No artificial voice accompanies this deck.
-The entire recording must stay below 10 minutes, including slides, code, the UI demonstration, discussion, references and transitions.
-The formal narration is about 800–850 words, approximately 7–7.5 minutes at 110–120 words per minute. Results, limitations and the brief reference acknowledgement are already part of that narration.
-Reserve 90–120 seconds total for real operation and code within the same 10-minute budget: about 60–80 seconds for the UI and 30–40 seconds for code. These are not extra minutes after the slides. Aim for 9:30 overall and verify the actual duration by rehearsal.
-Use the source notes for discussion. Do not read the technical notes and URLs aloud.
-Prepared narration: approximately 850 words. Presenter names and genuine contributions remain for the team to complete.
+**Source paths (reference only, not spoken).** Source path convention: Resolve src/..., submission/..., data/..., and artifacts/... from the repository root. Resolve assets/... relative to submission/. Runtime data and artifacts require a separate runtime asset installation.
 
-## Slide 1: ShopLens
+Main presentation: 18 slides, approximately 848 spoken words.
+At 115–125 words per minute, narration takes approximately 6.8–7.4 minutes. Reserve the remaining time within a 10-minute total for transitions, about 60 seconds of actual UI operation and 30 seconds of code explanation. Rehearse to 9:30.
+Appendix slides 19–26 support questions and are outside the timed narration. Do not read the source links or discussion notes aloud.
+A real team member must record the presentation. Complete genuine names and contributions before submission.
 
-ShopLens studies whether adapting language representations improves multimodal recommendation. Product photographs provide an additional input, while the main experiment focuses on text. We compare frozen Qwen embeddings with two LoRA objectives: matching reviews to descriptions, and directly learning preference rankings. We then export compact vectors so that the demonstration can run on a local machine.
+## 1. ShopLens
+
+ShopLens combines a controlled recommendation study with an interactive shopping interface. We compare frozen Qwen with semantic alignment and user preference LoRA. I will show the actual offline results, then a complete local workflow from a written request to a saved decision.
 
 **Sources**
 
-- https://huggingface.co/Qwen/Qwen3-Embedding-0.6B
+- https://huggingface.co/Qwen/Qwen3-Embedding-0.6B/tree/97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3
 - https://arxiv.org/abs/2106.09685
 - https://proceedings.mlr.press/v139/radford21a.html
 
-**Discussion notes outside timed narration**
+## 2. Semantic alignment and user preference
 
-ShopLens studies how language adaptation changes recommendation. We keep product photographs as an additional modality and focus on the text representation. The central experiment compares a frozen Qwen embedding model with two LoRA objectives. One aligns reviews with descriptions. The other trains directly for preference ranking. The trained system exports compact item vectors so that an interactive demonstration can run locally.
+The central question separates semantic matching from preference learning. Semantic LoRA matches training reviews with product descriptions. Preference LoRA learns directly from ranking loss. Every arm trains its recommendation head, including Frozen. The image encoder stays fixed, so the controlled comparison concerns the language objective.
 
-## Slide 2: Research question
+**Discussion notes**
 
-A model can recognise that a review describes a product without learning what a particular user prefers next. The semantic arm matches review language to product descriptions. The preference arm learns to rank a liked product above an unobserved product, given earlier history. The experiment asks whether these objectives produce the same benefit on the recommendation metric. The model family and image features stay fixed.
+Semantic InfoNCE uses frozen base-Qwen training-review anchors and live candidate descriptions, with multiple positives for the same item. Its BPR text input is detached. Preference training never uses the target review as its recommendation query.
 
 **Sources**
 
-- https://github.com/QwenLM/Qwen3-Embedding/blob/main/docs/training/SWIFT.md
-- https://arxiv.org/abs/1205.2618
 - src/shoplens/qwen_pipeline.py
+- src/shoplens/qwen_models.py
+- https://arxiv.org/abs/1205.2618
 
-**Discussion notes outside timed narration**
+## 3. Three Amazon domains and one ranking protocol
 
-A model can understand that a review refers to a product without learning which product a particular user prefers next. We therefore separate semantic alignment from preference ranking. The semantic arm pairs a positive training review with its matching description. The preference arm uses the user’s earlier liked products to train a positive item above an unobserved item. All arms use the same Qwen model family and fixed image features. The question is empirical: under this controlled budget, does semantic improvement transfer to the recommendation metric, or does the ranking objective produce a different result?
+The data contains real product text, reviews and photographs across Baby, Sports and Clothing. We split chronologically and use only strictly earlier positive history. Ranking covers the full prepared catalogue, excluding previous positives. Metrics first average targets within users. These are three domains from one Amazon source, which the instructor still needs to accept as the dataset requirement.
 
-## Slide 3: Datasets
+**Discussion notes**
 
-We use three product domains from Amazon Reviews 2014. These are real reviews, catalogue descriptions and downloaded photographs. The table shows the cleaned data counts. Four- and five-star interactions count as positive feedback. Only training-period reviews supply semantic supervision. Product text contains the title and description. These are separate benchmarks from one data source, so the course instructor still needs to confirm that they satisfy the requested dataset count.
+Global timestamp quantiles retain ties in the earlier split. Evaluation is prequential: earlier held-out observations may enter later histories while weights remain fixed. Repeated targets already in history do not enter evaluation. A stable item-ID rule breaks score ties. Positive interactions have ratings of four or five stars.
 
 **Sources**
 
 - https://mcauleylab.ucsd.edu/public_datasets/data/amazon/datasets.html
+- src/shoplens/qwen_evaluate.py
 - data/processed/baby/audit.json
 - data/processed/sports/audit.json
 - data/processed/clothing/audit.json
 
-**Discussion notes outside timed narration**
+## 4. History and candidate representations
 
-The project uses three domains from the Amazon Reviews 2014 collection. We retain products with usable text and real, decodable product photographs. The table reads directly from the processed data audits. Four- and five-star interactions provide positive behavioural feedback. Training-period review text supplies semantic supervision. Catalogue text itself contains only the title and description. These are separate domain benchmarks from a single source. We must ask the course instructor whether that satisfies the required number of datasets, rather than calling them three independently sourced collections.
-
-## Slide 4: Evaluation protocol
-
-Each domain uses chronological training, validation and test splits. A target receives only strictly earlier positive history, with at most twenty recent distinct products. The model ranks the full prepared catalogue and excludes products already liked. Earlier held-out observations may enter later histories, but weights stay fixed. We average targets within each user, then average users. Validation selects the checkpoint. Test labels never select the model.
+The formal model uses an asymmetric architecture. Histories always enter through frozen base text and fixed images. Candidate text changes across objectives. Separate towers produce compact vectors. A user network pools history and scores candidates by a dot product. Adapted candidate vectors must never replace the frozen history inputs.
 
 **Sources**
 
-- src/shoplens/models.py
-- src/shoplens/qwen_evaluate.py
-
-**Discussion notes outside timed narration**
-
-Each domain uses global timestamp quantiles for training, validation and test. Timestamp ties stay in the earlier split, so record counts need not equal the nominal percentages exactly. A target uses only strictly earlier positive history, with at most twenty recent distinct products. Repeated targets that already occur in that history do not enter evaluation. We rank the complete prepared catalogue and exclude earlier positives. Scores use a stable item-ID tie rule. The evaluation is prequential: earlier observations within a held-out split may enter a later history, while model weights stay fixed. We average target scores within each user before calculating the user macro mean.
-
-## Slide 5: Asymmetric architecture
-
-The history path always receives frozen base-Qwen text and frozen CLIP images. The candidate path receives either base text or selected LoRA text, with the same images. Small projection and fusion networks produce separate one-hundred-and-twenty-eight-dimensional vectors. A user network pools history and scores candidates through a dot product. Frozen refers to the Qwen encoder. Its recommendation head still trains. Exported history and candidate caches preserve this distinction during local inference.
-
-**Sources**
-
-- https://huggingface.co/Qwen/Qwen3-Embedding-0.6B
-- https://proceedings.mlr.press/v139/radford21a.html
 - src/shoplens/qwen_models.py
 - src/shoplens/qwen_inference.py
 
-**Discussion notes outside timed narration**
+## 5. Shared initialization and adaptation budget
 
-All three arms receive the same frozen base-Qwen history embeddings and frozen CLIP image embeddings. Only the candidate text representation changes across objectives. Separate small projection and fusion networks form history and candidate vectors. The user encoder mean-pools recent history vectors and applies an MLP. A dot product scores every candidate. The small ranking head can update in every arm, including frozen. Frozen therefore means a frozen Qwen encoder, not an untrained recommender. At export, we save history vectors and candidate vectors separately. The local interface must use the frozen-history path instead of accidentally using adapted candidate vectors as history.
+Each domain and seed first selects a common warmup head. The three arms then share thirty thousand matched training cases, their order and sampled negatives for two adaptation epochs. Validation selects epoch one or two. Three complete pipeline seeds give twenty-seven formal test records. Test scores never choose the checkpoint.
 
-## Slide 6: Objectives and gradients
+**Discussion notes**
 
-The frozen arm trains only the recommendation head with BPR. The semantic arm uses detached text vectors for BPR, while a separate contrastive loss updates LoRA by matching descriptions to frozen review anchors. Reviews of the same product count as multiple positives. The preference arm lets BPR update both the head and LoRA. It never uses the target review as a preference query. All arms keep the image encoder fixed.
-
-**Sources**
-
-- https://arxiv.org/abs/2106.09685
-- https://github.com/QwenLM/Qwen3-Embedding/blob/main/docs/training/SWIFT.md
-- src/shoplens/qwen_text.py
-- src/shoplens/qwen_pipeline.py
-
-**Discussion notes outside timed narration**
-
-The frozen arm updates the recommendation head using BPR while keeping Qwen fixed. The semantic arm runs live candidate embeddings, but detaches them for the ranking-head loss. Its separate symmetric contrastive loss updates LoRA by matching product descriptions to frozen review anchors from the base Qwen model. Reviews for the same product count as multiple positives, preventing them from becoming obvious false negatives. The preference arm lets the BPR gradient update both the ranking head and LoRA through positive and negative candidate text. We configure LoRA with rank eight, alpha sixteen and dropout zero point zero five on the query and value projections. The target review never enters the preference query.
-
-## Slide 7: Training budget and checkpoint selection
-
-Every domain and seed first trains a common head on all eligible cases. The three arms share that selected initialization. Adaptation uses the same thirty thousand review-matched cases, order and sampled negatives for two epochs. Full-catalogue validation NDCG selects epoch one or two in every arm. Warmup epoch zero cannot replace a poor adaptation result. Three complete pipeline seeds across three domains and three arms produce twenty-seven test records.
+Warmup uses all eligible cases, at most 20 epochs and validation early stopping. Adaptation batch size is 32. Head learning rate is 1e-4 and LoRA learning rate is 2e-5. LoRA rank 8, alpha 16, dropout 0.05, q_proj/v_proj. Epoch 0 cannot replace a poor adaptation checkpoint.
 
 **Sources**
 
 - src/shoplens/qwen_data.py
 - src/shoplens/qwen_pipeline.py
-- deliverables/results_qwen_summary.json
+- submission/results_qwen_summary.json
 
-**Discussion notes outside timed narration**
+## 6. Formal test results
 
-For each domain and seed, we first train a common ranking head using every eligible training case. Warmup runs for at most twenty epochs, with patience three after at least five epochs, selecting through full-catalogue validation NDCG. Every objective starts from that same head. Adaptation then uses thirty thousand eligible training cases with matching positive review text. The case order and negative arrays match across arms. We run two adaptation epochs with batch size thirty-two. The head learning rate is one times ten to the minus four, and the LoRA learning rate is two times ten to the minus five. Every arm selects epoch one or two using the same downstream validation metric. Warmup epoch zero cannot replace a failed adaptation checkpoint. Test evaluation runs only after selection. Three seeds repeat the full pipeline, rather than only the final head.
+These bars come from all twenty-seven audited test records after validation-only selection. Frozen has the highest observed mean in each domain. Semantic alignment loses to Frozen in seven of nine matched comparisons. Preference LoRA loses in six of nine. The experiment does not support a general improvement from adaptation under this budget.
 
-The study uses a full-input warmup, sampled adaptation, and full evaluation. It does not claim that every eligible case enters the LoRA adaptation stage. Formal unit hashes record the common warmup, cases, order and negatives. The existing five-epoch MiniLM comparisons remain a separate earlier experiment with a different budget.
+**Discussion notes**
 
-## Slide 8: Test ranking results
-
-These are actual test scores after validation-only selection. The chart shows mean user-macro NDCG at ten across three complete pipeline seeds. Semantic alignment exceeds frozen NDCG@10 in 2 of 9 matched domain-and-seed comparisons. Preference ranking exceeds frozen NDCG@10 in 3 of 9 matched domain-and-seed comparisons. The following slide checks variation rather than relying on a single best seed. These measurements describe offline ranking under this budget.
+Means and sample standard deviations appear in Appendix 1. A matched win is a positive difference for the same domain and seed. These measurements describe the declared offline protocol, not purchasing conversion.
 
 **Sources**
 
-- deliverables/results_qwen_summary.json
+- submission/results_qwen_summary.json
 - artifacts/qwen/baby/results.json
 - artifacts/qwen/sports/results.json
 - artifacts/qwen/clothing/results.json
 
-**Discussion notes outside timed narration**
+## 7. Seed variation in the Research lab
 
-The chart reports actual test NDCG at ten after validation-only checkpoint selection. Baby: Frozen has the highest observed mean, 0.0128. Sports: Frozen has the highest observed mean, 0.0071. Clothing: Frozen has the highest observed mean, 0.0052. Semantic alignment exceeds frozen NDCG@10 in 2 of 9 matched domain-and-seed comparisons. Preference ranking exceeds frozen NDCG@10 in 3 of 9 matched domain-and-seed comparisons. These are observations under the declared budget, rather than claims about online purchasing behaviour. The next slide reports seed variation and paired changes.
-
-## Slide 9: Seed variation
-
-The table shows means and sample standard deviations. Each paired change compares the same domain and seed, sharing initialization and adaptation cases. A win counts a positive metric difference. It does not mean statistical significance. Three seeds provide a limited view of variation. We retain settings where LoRA hurts, rather than silently replacing them with the warmup checkpoint.
+The Research lab keeps the matched seed differences visible. We inspect paired changes against Frozen rather than selecting the best run. Three seeds provide limited evidence about variability. A positive bar is an observed difference, not statistical significance. The negative results stay in the report and interface.
 
 **Sources**
 
-- deliverables/results_qwen_summary.json
+- assets/research_paired.png
+- src/shoplens/visual_charts.py
+- src/shoplens/ui.py
+- submission/results_qwen_summary.json
 
-**Discussion notes outside timed narration**
+## 8. A shopping request without a liked-product history
 
-Semantic alignment exceeds frozen NDCG@10 in 2 of 9 matched domain-and-seed comparisons. Preference ranking exceeds frozen NDCG@10 in 3 of 9 matched domain-and-seed comparisons. The table reports sample standard deviation across the three independent pipeline seeds. We pair changes by domain and seed because the three arms share warmup and adaptation examples for that seed. A win means a positive metric difference, not a statistical significance result. With three seeds, these differences remain descriptive. We retain results where LoRA hurts rather than replacing them with the warmup checkpoint.
-
-## Slide 10: Sparse item results
-
-This analysis groups targets with at most five distinct training-positive users, including zero. It asks where language representations may help when behavioural evidence is sparse. Every method still ranks the same full catalogue. The cohort mixes unseen products with products that have some interactions, so it does not establish strict item cold-start performance. The saved results retain cohort user and target counts.
+Studio starts with a written request, here a compact stroller for everyday outings. Interpretation uses transparent rules and leaves editable fields. The user reviews omitted nuance before searching. Qwen retrieves products after Find products. Positive feedback is optional.
 
 **Sources**
 
-- deliverables/results_qwen_summary.json
+- assets/studio_brief.png
+- src/shoplens/studio_ui.py
+- src/shoplens/studio.py
+
+## 9. The same request across three trained models
+
+The same stroller request runs through all three selected checkpoints. Each arm encodes the query in the same space as its candidate text vectors. The comparison shows actual products, overlap and observed ranks. The respective candidate pools can differ. This is exploratory request retrieval, separate from the controlled history-based test.
+
+**Discussion notes**
+
+The example uses no positive feedback. Current Studio retrieves each model's own top 200 text-similar candidates, including boundary ties. Missing Top-K ranks stay unknown. Raw Studio scores are not compared across models.
+
+**Sources**
+
+- assets/studio_models.jpg
+- src/shoplens/studio_encoders.py
+- src/shoplens/studio_models.py
+- src/shoplens/studio_ui.py
+
+## 10. Visual reference and explicit constraints
+
+This later state adds a catalogue photo, soft avoidance of bulky products and a historical price ceiling of one hundred and fifty dollars. Frozen CLIP supplies the image signal. Uploads stay in local memory. Filters can leave fewer results without expanding the retrieved pool.
+
+**Discussion notes**
+
+This screenshot shows a later state than the earlier zero-image, unrestricted comparison. Actual selected reference is Capri Stroller - Red Tech and text weight is 0.65. The image source is Use catalog example, not an uploaded file. Current UI limits uploads to single JPG/PNG/WebP, 8 MB and 16 megapixels. Budget filtering excludes unknown prices. Source metadata categories are not verified product types. An avoid penalty does not guarantee perfect semantic exclusion.
+
+**Sources**
+
+- assets/studio_visual_filters.png
+- src/shoplens/studio_encoders.py
+- src/shoplens/studio.py
+
+## 11. Feedback, exact hiding and undo
+
+More like this adds positive evidence and activates the selected model’s trained history recommender. Less like this penalizes similar products. Hide removes an exact product. All reference products leave subsequent suggestions. The feedback manager exposes the current state and Undo. These actions rerank products using cached request vectors rather than retraining a model.
+
+**Discussion notes**
+
+At most the latest 20 distinct positive products enter the history network. Shortlisting alone gives no training feedback. Feedback and query percentiles follow a disclosed application policy rather than the formal evaluation score.
+
+**Sources**
+
+- assets/studio_feedback.png
+- src/shoplens/studio_ui.py
+- src/shoplens/studio.py
+- src/shoplens/studio_models.py
+
+## 12. A shortlist with original product evidence
+
+The shortlist compares a few real candidates through photographs, historical prices, categories and original descriptions. Source details can reveal information that embeddings miss. The user makes the final choice. Saving a shortlist item supplies no preference feedback.
+
+**Sources**
+
+- assets/studio_shortlist.png
+- src/shoplens/studio_ui.py
+
+## 13. A final choice with portable exports
+
+After confirming a final choice, the user downloads the decision. JSON retains context and model provenance. CSV provides a simple shortlist. HTML includes catalogue photos in a standalone card. Exporting preserves the record after the session ends. The app places no order.
+
+**Sources**
+
+- assets/studio_export.png
+- src/shoplens/studio.py
+- src/shoplens/studio_ui.py
+
+## 14. Product atlas with a real product inspector
+
+Product atlas places catalogue products, selected preferences and recommendations on one fixed PCA map. Clicking a point opens its photo, title and product ID and can add a preference. Switching models changes highlights while keeping coordinates fixed. The two-dimensional view loses information.
+
+**Discussion notes**
+
+This earlier actual Baby capture shows the complete map and inspector together. The displayed capture does not identify all history items, so it is not treated as the same session as the fresh Research figures. The fixed PCA uses the Frozen candidate tower. The plotted sample is not the ranking candidate set. Ranking still uses the full eligible catalogue. The 2D variance fraction is shown, and proximity is a lossy projection rather than a causal explanation.
+
+**Sources**
+
+- assets/research_atlas_complete.jpg
+- src/shoplens/visual_data.py
+- src/shoplens/visual_ui.py
+
+## 15. Preference relationships in the actual tower
+
+Preference lab shows how selected history products relate to recommended candidates in the actual one-hundred-and-twenty-eight-dimensional towers. The network retains positive and negative cosine links. A heatmap provides the same numerical relationship in a different form. These links are neither attention weights nor causal contributions to the final ranking.
+
+**Sources**
+
+- assets/research_network.png
+- src/shoplens/visual_ui.py
+- src/shoplens/visual_charts.py
+
+## 16. Observed rank flow across objectives
+
+Rank flow follows products across the three model lists for a fixed history. The adjacent view reports Top-K Jaccard overlap. Lines break when products leave the displayed list. We never invent their missing ranks. These views describe disagreement, rather than which list is correct.
+
+**Sources**
+
+- assets/research_rankflow.png
+- src/shoplens/visual_charts.py
+- src/shoplens/ui.py
+
+## 17. Removal sensitivity for the current history
+
+The removal experiment drops one active history item at a time and reruns the recommender. It measures score changes and retention of the original Top-K. It never backfills older history. Original selected products stay excluded. This is session sensitivity, rather than causal attribution.
+
+**Discussion notes**
+
+This earlier actual Baby capture names Peg Perego Aria Twin, Capri Stroller Red Tech and Prince Lionheart Stroller Connectors. The model selector lies outside the capture. No numeric comparison with another capture or model is inferred. The result is conditional on its current history and selected seed42 model. It is neither a formal held-out metric nor a causal attribution. Empty and single-item histories do not invent a removal experiment.
+
+**Sources**
+
+- assets/research_removal_complete.jpg
+- src/shoplens/visual_data.py
+- src/shoplens/visual_ui.py
+
+## 18. Findings and limits
+
+Our main finding is negative: neither adaptation objective improves average NDCG at ten in any domain under this budget. The interface makes the trained models inspectable and supports a complete decision workflow, but attractive examples cannot replace relevance evaluation. Three seeds, one Amazon source and static metadata limit the evidence. The references are the original Amazon archive, official Qwen documentation, LoRA, CLIP and BPR.
+
+**Discussion notes**
+
+Earlier MiniLM baselines remain separate because their architecture and training budget differ. Clothing live CUDA LoRA training used MATH SDPA after a reproduced gradient failure, while earlier completed runs retained automatic dispatch. No specific fused-kernel cause or bitwise trajectory identity is established.
+
+**Sources**
+
+- submission/results_qwen_summary.json
+- https://mcauleylab.ucsd.edu/public_datasets/data/amazon/datasets.html
+- https://huggingface.co/Qwen/Qwen3-Embedding-0.6B/tree/97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3
+- https://arxiv.org/abs/2106.09685
+- https://proceedings.mlr.press/v139/radford21a.html
+- https://arxiv.org/abs/1205.2618
+
+## 19. Formal NDCG@10 detail (optional appendix)
+
+Optional discussion: every cell uses the three actual complete pipeline seeds. Variation is a sample standard deviation, not a population confidence interval. Matched win counts pair the same domain and seed.
+
+**Discussion notes**
+
+All 27 raw records passed the declared artifact and protocol audit. No diagnostic or synthetic run supplies these values.
+
+**Sources**
+
+- submission/results_qwen_summary.json
+
+## 20. Sparse items and numerical scope (optional appendix)
+
+Optional discussion: sparse-item results remain close to zero, including zero in Baby. The cohort combines unseen items with low-interaction items, so it does not establish strict cold start. Clothing LoRA training used the MATH attention backend after same-state nonfinite-gradient diagnostics. That recovery does not identify a particular fused-kernel cause or establish bitwise-equivalent training.
+
+**Discussion notes**
+
+Candidate cache numerical checks cover only the first min(4,N) live-Qwen candidates and one validation history. CPU serving replay checks a different layer of correctness.
+
+**Sources**
+
+- submission/results_qwen_summary.json
+
+## 21. Request retrieval and history evaluation (optional appendix)
+
+Optional discussion: the application and the formal experiment answer different questions. Studio uses a matching query encoder for each candidate space and retrieves a model-specific pool before applying constraints and feedback. The formal test instead begins with actual earlier history and ranks the complete eligible catalogue. Studio scores and examples cannot be substituted for those metrics.
+
+**Discussion notes**
+
+All query arms share the shopping instruction, left padding, last-valid-token pooling, maximum 256 tokens and L2 normalization. Image-only requests can produce identical base retrieval lists. The trained head activates with positive history, which always uses frozen base history inputs.
+
+**Sources**
+
+- src/shoplens/studio_encoders.py
+- src/shoplens/studio_models.py
+- src/shoplens/studio.py
 - src/shoplens/qwen_evaluate.py
 
-**Discussion notes outside timed narration**
+## 22. Studio source evidence (optional appendix)
 
-We also report recommendation quality for products with at most five distinct positive users in the training period. This includes some zero-interaction products, but it combines them with products that do have training feedback. It therefore does not isolate strict item cold start. Baby: Frozen 0.0000 ± 0.0000, Semantic alignment 0.0000 ± 0.0000, Preference ranking 0.0000 ± 0.0000. Sports: Frozen 0.0002 ± 0.0001, Semantic alignment 0.0001 ± 0.0001, Preference ranking 0.0002 ± 0.0001. Clothing: Frozen 0.0003 ± 0.0000, Semantic alignment 0.0003 ± 0.0001, Preference ranking 0.0002 ± 0.0001. The cohort uses the same full candidate catalogue as the primary evaluation. Its user and target counts appear in the raw saved results. These scores address where language information might matter, while retaining the same limitations of an offline observational dataset.
+Optional discussion: a result card exposes its original title, source category, historical price and computed text and image signals. The disclosed retrieval pool and penalty policy help the user inspect the current result. These signals do not establish suitability or explain the score causally.
 
-## Slide 11: Local demonstration
+**Discussion notes**
 
-The local interface displays real product photographs and accepts a short history of liked products. We hold that history fixed while comparing the three objectives. The screen shows ranked products, rank changes and actual saved metrics. It uses compact exported vectors, so the Qwen encoder stays outside the local recommendation path. Similarities and matching text provide diagnostic evidence, rather than causal explanations. I will now briefly demonstrate the same preference history across the three columns.
+This is the later Baby state with a reference photo, a 150 USD historical budget, soft avoid bulky and optional positive/negative/hidden feedback. The screenshot concerns Baby Trend Snap N Go Stroller, not the final chosen Aprica. Its observed text-query cosine is 0.7240 and image-query cosine is 0.9293 in this state.
 
 **Sources**
 
+- assets/studio_evidence.png
+- src/shoplens/studio_ui.py
+- src/shoplens/studio.py
+
+## 23. Research recommendation evidence (optional appendix)
+
+Optional discussion: Research recommendation evidence combines the product record with the selected history and model. It exposes cross-tower similarities and structured inference evidence. This page supports inspection of an individual recommendation, while the experiment dashboard provides the held-out quality measurements.
+
+**Discussion notes**
+
+The actual Baby example selects Frozen and Fisher-Price Booster Seat, Blue/Green/Gray (B0000DEW8N), with the three displayed preset history items. This slide retains the original candidate description. The full inference evidence view exposes the actual scoring and provenance fields. Similarities remain diagnostics rather than causal score contributions.
+
+**Sources**
+
+- assets/research_evidence_product.png
 - src/shoplens/ui.py
-- src/shoplens/qwen_inference.py
-- assets/qwen_compare_baby.jpg
 
-**Discussion notes outside timed narration**
+## 24. Similarity heatmap (optional appendix)
 
-The interface shows real product photographs and lets the audience choose a short preference history. The comparison keeps that history fixed across the frozen, semantic and preference arms. It displays ranked products, rank changes and saved evaluation metrics. Original baseline methods remain available as separate references. The local application loads the exported history and candidate vectors with the small ranking head, so it does not need to load the Qwen encoder to recommend. Feature similarities and matching text provide diagnostic evidence, rather than a causal explanation of the ranking. During a live demonstration, choose a few products and compare the three columns without changing the history.
+Optional discussion: the heatmap gives a numerical alternative to the preference network. Rows are actual active history products and columns are current candidates. Entries use the complete one-hundred-and-twenty-eight-dimensional cross-tower cosine, with negative values retained. These values do not decompose the final user-network score.
 
-## Slide 12: Findings and limitations
+**Discussion notes**
 
-Semantic alignment exceeds frozen NDCG@10 in 2 of 9 matched domain-and-seed comparisons. Preference ranking exceeds frozen NDCG@10 in 3 of 9 matched domain-and-seed comparisons. The earlier baselines remain available, but their different architecture and budget prevent attributing a score change to Qwen alone. The domains share one Amazon source, and static catalogue metadata limits historical realism. These offline observations do not establish online conversion or broad cold-start gains. Clothing used MATH SDPA after a reproduced gradient failure. Earlier completed runs kept automatic dispatch. We claim no bitwise trajectory identity. The main contribution is a controlled comparison of semantic and preference objectives, with a reproducible local demonstration. Our references are Amazon Reviews 2014, official Qwen documentation, and the original LoRA, CLIP and BPR papers. Thank you.
+The image shows a real session diagnostic, not a new benchmark or attention map.
+
+**Sources**
+
+- assets/research_heatmap.png
+- src/shoplens/visual_ui.py
+- src/shoplens/visual_charts.py
+
+## 25. Training traces and selected checkpoints (optional appendix)
+
+Optional discussion: the experiment dashboard exposes saved training traces and selection evidence. The public demonstration uses the selected seed-forty-two exports, while aggregate results retain all three formal seeds. The plotted trace describes the recorded run. Its appearance is not a new performance claim.
+
+**Discussion notes**
+
+The displayed Baby semantic seed42 trace selects adaptation epoch 2 using 30,000 examples. The line is adaptation_curve/validation_ndcg@10, not test performance. Across the study, all three groups select adaptation epoch 1 or 2 by full-catalogue validation NDCG@10. Existing aggregate results and original baseline results remain separate.
+
+**Sources**
+
+- assets/research_training.png
+- src/shoplens/ui.py
+- artifacts/qwen/baby/qwen_semantic/seed42/training.json
+
+## 26. Sources and reproducibility (optional appendix)
+
+Optional discussion: the speaker notes contain primary source links and project-relative evidence references. The team should record a real human presentation, complete genuine contribution statements and review the AI disclosure before submission.
+
+**Discussion notes**
+
+Public release preparation is separate from a completed code submission. No private account, machine path, operational log or user-level review data is required to explain the work.
 
 **Sources**
 
 - https://mcauleylab.ucsd.edu/public_datasets/data/amazon/datasets.html
-- https://huggingface.co/Qwen/Qwen3-Embedding-0.6B
-- https://github.com/QwenLM/Qwen3-Embedding/blob/main/docs/training/SWIFT.md
+- https://huggingface.co/Qwen/Qwen3-Embedding-0.6B/tree/97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3
 - https://arxiv.org/abs/2106.09685
 - https://proceedings.mlr.press/v139/radford21a.html
 - https://arxiv.org/abs/1205.2618
-- deliverables/results_qwen_summary.json
-- experiments/qwen/recovery_note.json
-
-**Discussion notes outside timed narration**
-
-The central finding is the measured relationship between a semantic objective and a preference objective. Semantic alignment exceeds frozen NDCG@10 in 2 of 9 matched domain-and-seed comparisons. Preference ranking exceeds frozen NDCG@10 in 3 of 9 matched domain-and-seed comparisons. Baby: Frozen has the highest observed mean, 0.0128. Sports: Frozen has the highest observed mean, 0.0071. Clothing: Frozen has the highest observed mean, 0.0052. We preserve the earlier six-method comparisons and independent MF budget check. Their architecture and training budget differ from this upgrade, so a score difference cannot establish that changing the text backbone alone caused an improvement. The three domains share a single Amazon source. Catalogue metadata comes from a static crawl whose historical availability is unknown. Our measurements predict recorded positive interactions and do not establish online purchase conversion. The human team must complete its genuine contribution statements and record the presentation in a real member’s voice. Thank you.
-
-Baby preserved TF-IDF mean NDCG@10: 0.007049 (3 records). Sports preserved TF-IDF mean NDCG@10: 0.013770 (3 records). Clothing preserved TF-IDF mean NDCG@10: 0.014282 (3 records).
-
-The recovery policy applies MATH SDPA only to live CUDA candidate training forward for all six Clothing LoRA units. Earlier completed Baby/Sports LoRA units keep automatic dispatch. Evaluation and cache encoding keep automatic dispatch. The objective, samples, learning rates and budget remain unchanged. The same clean state, batch and RNG reproduced nonfinite LoRA gradients under automatic dispatch, while MATH replay and a fresh prefix stayed finite. These observations do not establish a particular fused-kernel root cause, bitwise trajectory equality or a performance improvement. Cross-domain differences remain conditional on the numerical configurations.
-
-Primary references: Amazon Reviews 2014 data archive, Qwen3-Embedding official model card and training documentation, Hu et al. (LoRA), Radford et al. (CLIP), Rendle et al. (BPR). Full URLs appear above. Statistical significance and online evaluation remain outside this study.
+- submission/results_qwen_summary.json
+- submission/ShopLens_Qwen_AI_disclosure_draft.md
