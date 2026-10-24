@@ -43,6 +43,16 @@ STUDIO_CSS = """
 .studio-brief h3 {font-size:17px;margin:0 0 9px;}
 .studio-brief p {font-size:13px;line-height:1.7;color:#526984;margin:0;}
 .studio-source {font-size:11px;color:#8290a5;line-height:1.55;}
+.studio-arena-stats {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:10px 0 14px;}
+.studio-arena-stat {background:#f2f6fc;border:1px solid #e0e8f3;border-radius:13px;padding:13px 15px;}
+.studio-arena-stat b {display:block;font-size:27px;line-height:1.2;color:#243d63;}
+.studio-arena-stat span {font-size:11px;color:#63758e;}
+.studio-arena-band {display:flex;height:12px;overflow:hidden;border-radius:8px;background:#edf2f8;margin:0 0 9px;}
+.studio-arena-key {display:flex;flex-wrap:wrap;gap:7px 16px;font-size:11px;color:#65758e;margin-bottom:20px;}
+.studio-arena-key i {display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;}
+.studio-arena-ranks {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:13px 0;}
+.studio-arena-rank {border-top:3px solid var(--model);background:#f5f8fc;border-radius:6px;padding:8px;font-size:11px;}
+.studio-arena-rank b {display:block;font-size:21px;color:var(--model);line-height:1.5;}
 @media(max-width:1100px) {
  [class*="st-key-shoplens_studio_layout_"] > [data-testid="stLayoutWrapper"] > [data-testid="stHorizontalBlock"] {flex-wrap:wrap !important;flex-direction:column-reverse;}
  [class*="st-key-shoplens_studio_layout_"] > [data-testid="stLayoutWrapper"] > [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] {flex:1 1 100% !important;width:100% !important;min-width:0 !important;}
@@ -432,6 +442,55 @@ def _rank_changes(reference, selected):
             "jaccard": len(shared) / len(set(before) | set(after)) if before or after else None}
 
 
+def _model_arena(state, root, domain, catalog):
+    from .studio_charts import COLORS, LABELS, arena_data, rank_story_figure
+
+    data = arena_data(state.get("rows_by_model", {}), state.get("model_errors", {}))
+    st.markdown("#### Model arena")
+    if not data["complete"]:
+        st.caption("The arena needs all three current model lists. Available results remain below; unavailable lists are not treated as empty recommendations.")
+        return
+    if not data["item_ids"]:
+        st.info("No eligible products appear in any current list. Adjust the request or constraints to explore the arena.")
+        return
+    exclusive = sum(data["exclusive"].values())
+    st.markdown('<div class="studio-arena-stats">' + "".join(
+        f'<div class="studio-arena-stat"><b>{count}</b><span>{label}</span></div>'
+        for count, label in ((data["union"], "Distinct products"), (data["all_three"], "On all three lists"),
+                             (exclusive, "On one list only"))) + '</div>', unsafe_allow_html=True)
+    segments = [("All three", data["all_three"], "#9CAFC9"), ("Any two", data["two_models"], "#CBD8EB"),
+                *[(f"{LABELS[mode]} only", data["exclusive"][mode], COLORS[mode]) for mode in MODES]]
+    st.markdown('<div class="studio-arena-band">' + "".join(
+        f'<span style="width:{100 * count / data["union"]:.4f}%;background:{color}"></span>'
+        for _, count, color in segments if count) + '</div><div class="studio-arena-key">' + "".join(
+        f'<span><i style="background:{color}"></i>{label} · {count}</span>'
+        for label, count, color in segments) + '</div>', unsafe_allow_html=True)
+    st.caption("Each product is counted once across the observed Top-12 lists. Set membership describes diversity, not recommendation quality.")
+    key = f"studio_arena_product_{domain}"
+    if st.session_state.get(key) not in data["item_ids"]:
+        st.session_state[key] = data["item_ids"][0]
+    item_id = st.selectbox("Follow a product across models", data["item_ids"],
+                           format_func=lambda value: _title(catalog[value]), key=key)
+    photo, details = st.columns([1, 3], gap="medium")
+    with photo:
+        _product_image(root, catalog[item_id])
+    with details:
+        st.markdown(f'<div class="sl-product-title">{html.escape(_title(catalog[item_id]))}</div>', unsafe_allow_html=True)
+        st.caption(f"{item_id} · {_metadata(catalog[item_id])['Historical catalog price (USD)']} historical price")
+        st.markdown('<div class="studio-arena-ranks">' + "".join(
+            f'<div class="studio-arena-rank" style="--model:{COLORS[mode]}">{LABELS[mode]}'
+            f'<b>{"#" + str(data["ranks"][mode][item_id]) if item_id in data["ranks"][mode] else "—"}</b>'
+            f'{"Observed" if item_id in data["ranks"][mode] else "Not in Top-12"}</div>'
+            for mode in MODES) + '</div>', unsafe_allow_html=True)
+        if st.button("✓ Shortlisted" if item_id in state["shortlist"] else "Shortlist this product",
+                     key=f"studio_arena_save_{domain}_{item_id}"):
+            _add_shortlist(state, item_id)
+            st.rerun()
+    st.plotly_chart(rank_story_figure(data, catalog, item_id), width="stretch",
+                    key=f"studio_arena_story_{domain}", config={"displayModeBar": False})
+    st.caption("Bold = selected product; faint = other observed products. A gap means its rank is unknown outside that model’s Top-12. The horizontal axis compares objectives; it is not a training timeline.")
+
+
 def _compare_models(state, root, domain, catalog):
     st.markdown("### Same request. Three text models.")
     st.caption("The request, image, constraints and feedback are the same. Each objective uses its own actual query encoder and candidate text vectors, so its candidate pool can differ. This is exploratory request retrieval, not a formal quality evaluation; raw scores are not compared.")
@@ -442,6 +501,7 @@ def _compare_models(state, root, domain, catalog):
     groups = state.get("rows_by_model", {})
     errors = state.get("model_errors", {})
     reference = groups.get(MODES[0], [])
+    _model_arena(state, root, domain, catalog)
     if MODES[0] in errors:
         st.info("The Frozen reference is unavailable; no baseline rank changes or overlaps are inferred.")
     else:
@@ -458,11 +518,12 @@ def _compare_models(state, root, domain, catalog):
         rank_table = [{"Product": row["Product"],
                        **{label: row[MODEL_LABELS[mode]] for label, mode in zip(("Frozen", "Semantic", "Preference"), MODES)}}
                       for row in table]
-        st.dataframe(rank_table, hide_index=True, width="stretch",
-                     column_config={"Product": st.column_config.TextColumn(width="medium"),
-                                    **{label: st.column_config.NumberColumn(width="small", format="%d")
-                                       for label in ("Frozen", "Semantic", "Preference")}})
-        st.caption("Ranks use this exact request and feedback; a smaller number means a higher position. Changes use Frozen as the fixed reference. Missing positions are outside the observed Top-12, not an assumed rank 13.")
+        with st.expander("Full rank table & exact positions"):
+            st.dataframe(rank_table, hide_index=True, width="stretch",
+                         column_config={"Product": st.column_config.TextColumn(width="medium"),
+                                        **{label: st.column_config.NumberColumn(width="small", format="%d")
+                                           for label in ("Frozen", "Semantic", "Preference")}})
+            st.caption("Ranks use this exact request and feedback; a smaller number means a higher position. Changes use Frozen as the fixed reference. Missing positions are outside the observed Top-12, not an assumed rank 13.")
     st.markdown("#### Browse each model’s Top 3")
     with st.container(key=f"studio_model_comparison_{domain}"):
         for column, mode in zip(st.columns(3), MODES):

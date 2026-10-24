@@ -103,6 +103,9 @@ h3 {font-size:1.15rem !important;}
 .sl-rank {font-size:11px; color:#3a69d6; font-weight:700; margin-bottom:7px;}
 .sl-pill {background:#edf3ff; border-radius:7px; padding:4px 8px; display:inline-block; color:#4063a4; font-size:11px; margin-right:4px; margin-bottom:4px;}
 .sl-footer {font-size:11px; color:#8794a7; border-top:1px solid #e2e8f2; padding-top:16px; margin-top:30px;}
+.st-key-shoplens_workspace_nav [role="radiogroup"] {gap:9px;flex-wrap:wrap;margin-bottom:12px;}
+.st-key-shoplens_workspace_nav [data-testid="stRadio"] label {padding:7px 13px;border:1px solid #dce4ef;border-radius:11px;background:white;}
+.st-key-shoplens_workspace_nav [data-testid="stRadio"] label:has(input:checked) {background:#eef0ff;border-color:#a7a9f7;}
 .sl-empty {background:white; padding:35px; border:1px dashed #cfd9e8; border-radius:16px; color:#62718a; line-height:1.9; margin:12px 0;}
 .sl-legend {font-size:12px; color:#607089; margin:7px 0 12px;}
 .sl-objective {background:#fff; border:1px solid #e0e8f1; border-top:3px solid var(--accent); border-radius:14px; padding:17px 19px; min-height:176px;}
@@ -353,7 +356,13 @@ def _sidebar(root: Path) -> str:
     with st.sidebar:
         st.markdown('<div class="sl-brand">ShopLens<span style="color:#7d9fff">.</span></div>', unsafe_allow_html=True)
         st.caption("LANGUAGE × VISION × PREFERENCE")
-        st.radio("Workspace", ["Shopping Studio", "Research lab"], key="shoplens_workspace")
+        if st.session_state.get("shoplens_workspace") == "Experiment gallery":
+            st.markdown("**Experiment gallery**")
+            st.caption("Three collections · Three objectives · Three seeds")
+            st.markdown("① Explore the performance landscape\n\n② Follow matched seed effects\n\n③ Inspect validation dynamics\n\n④ Export figures and exact values")
+            st.divider()
+            st.caption("Recorded experiments · No model weights needed for this view")
+            return "baby"
         st.divider()
         st.markdown("**Product collection**")
         domain = st.selectbox("Select dataset", list(DOMAINS), format_func=lambda d: f"{DOMAINS[d][2]}  {DOMAINS[d][1]}", label_visibility="collapsed")
@@ -775,8 +784,14 @@ def main() -> None:
     st.set_page_config(page_title="ShopLens · Multimodal Recommendation Lab", page_icon="◈", layout="wide", initial_sidebar_state="collapsed")
     st.markdown(CSS, unsafe_allow_html=True)
     root = _root()
+    with st.container(key="shoplens_workspace_nav"):
+        st.radio("Workspace", ["Shopping Studio", "Research lab", "Experiment gallery"], horizontal=True, key="shoplens_workspace")
     domain = _sidebar(root)
     workspace = st.session_state.get("shoplens_workspace", "Shopping Studio")
+    if workspace == "Experiment gallery":
+        from shoplens.experiment_ui import render_gallery
+        render_gallery(Path(__file__).resolve().parents[2], root)
+        return
     processed = root / "data" / "processed" / domain
     artifacts = root / "artifacts" / domain
     audit = _json(processed / "audit.json")
