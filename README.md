@@ -16,6 +16,8 @@ Repository: [cjk041212/ShopLens](https://github.com/cjk041212/ShopLens).
 
 Each objective uses its own pinned Frozen/LoRA query encoder and corresponding candidate text vectors, so its candidate pool can differ. CLIP image features are shared. Positive references can additionally activate each objective's trained history/candidate towers and user network. This request retrieval is an **exploratory extension**, separate from the formal history-based recommendation evaluation; no quality or performance improvement is assumed.
 
+The prepared catalog contains **47,801 products**: Baby **7,037**, Sports & Outdoors **18,273**, and Clothing & Accessories **22,491**. Compare models displays the first three recommendations per objective; Discover normally displays twelve results. These are display limits, not catalog sizes.
+
 ## Three parts to install
 
 | Part | Delivery | Purpose |
@@ -26,7 +28,7 @@ Each objective uses its own pinned Frozen/LoRA query encoder and corresponding c
 
 **Cloning the source does not install catalogs, trained exports, or model weights.** The declared runtime payload is about 1.52 GB before compression; weights and Python packages need additional disk space. Runtime assets exclude raw reviews, interaction histories, user identifiers, private course materials, credentials, and base model weights. They are a demo installation, not a complete training-data or checkpoint archive.
 
-No public asset-download URL is configured in this source distribution. Obtain the actual archive and its external publisher manifest through the available distribution channel. An inventory or manifest alone is not the archive. See [INSTALL.md](INSTALL.md) for local installation and the optional URL workflow once a real URL is published.
+Runtime assets are published in [runtime-v1](https://github.com/cjk041212/ShopLens/releases/tag/runtime-v1). The archive is **1,457,809,593 bytes** and its GitHub-reported SHA256 matches the identity in [runtime-assets.json](runtime-assets.json). The source and runtime package are separate downloads; base encoders are prepared explicitly from official pinned sources. See [INSTALL.md](INSTALL.md) for installation and environment limits.
 
 Use **Python 3.12**. Exact pins reflect the exercised Python 3.12.14/macOS arm64 environment. NumPy 2.5.4 and SciPy 1.18.1 require Python 3.12, so this pinned recipe is not compatible with Python 3.11.
 
@@ -42,11 +44,11 @@ python -m pip install -r requirements.txt
 python -m pip install -e . --no-deps
 ~~~
 
-The verified archive identity is recorded in [runtime-assets.json](runtime-assets.json). Install the supplied archive at its actual local path:
+Install the published runtime archive with checksum verification:
 
 ~~~bash
 python scripts/install_assets.py \
-  --archive "/path/to/shoplens-runtime-seed42-v1.tar.gz" \
+  --url "https://github.com/cjk041212/ShopLens/releases/download/runtime-v1/shoplens-runtime-seed42-v1.tar.gz" \
   --sha256 2f1fc93175adedca6ffb987ecc42f50fcd4a0959679d187aa4c81b7a8ad904c9
 ~~~
 
@@ -90,4 +92,6 @@ Tests use explicitly labeled synthetic fixtures where appropriate; fixture succe
 
 ## Coursework materials
 
-See [the Chinese submission checklist](提交清单.md) and [submission/](submission/) for public copies of the report, slides, narration, results, UI evidence, and the retained coursework code snapshot. Video, signed individual contributions, and the official AI declaration still require the group to complete them.
+The English deck contains **26 slides: 18 main slides and 8 optional appendix slides**, including **15 real application screenshots**. The matching human narration has 848 spoken words; reserve time within the course video limit for actual UI operation and a brief Python walkthrough.
+
+See [the Chinese submission checklist](提交清单.md) and [submission/](submission/) for public copies of the report, slides, narration, results, and UI evidence. The coursework source is the repository itself; use **Code → Download ZIP** for a source archive. Runtime assets and base weights remain separate installation steps. Video, signed group contributions, and the official AI declaration still require the group to complete them.

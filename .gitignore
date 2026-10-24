@@ -54,5 +54,3 @@ credentials.json
 token.json
 
 
-# Explicitly requested coursework snapshot (sanitized; under 25 MB).
-!/submission/ShopLens_Direct_Request_Comparison_code_submission.zip

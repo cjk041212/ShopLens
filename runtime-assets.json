@@ -5,6 +5,7 @@
   "bytes": 1457809593,
   "payload_files": 47906,
   "payload_bytes": 1518029978,
-  "url": null,
-  "scope": "Three catalogs/photos, aligned caches, 9 seed42 exports, 6 LoRA adapters, selected curves and measured aggregates. Base Qwen/CLIP weights are prepared separately from official pinned sources."
+  "url": "https://github.com/cjk041212/ShopLens/releases/download/runtime-v1/shoplens-runtime-seed42-v1.tar.gz",
+  "scope": "Three catalogs/photos, aligned caches, 9 seed42 exports, 6 LoRA adapters, selected curves and measured aggregates. Base Qwen/CLIP weights are prepared separately from official pinned sources.",
+  "release_url": "https://github.com/cjk041212/ShopLens/releases/tag/runtime-v1"
 }

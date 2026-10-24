@@ -47,29 +47,17 @@ The declared runtime scope contains:
 
 It excludes raw reviews, chronological events/user histories, user identifiers, private course materials, credentials, base Qwen/CLIP weights, and other seeds' complete training checkpoints. The declared uncompressed payload is about **1.52 GB**. Allow additional space for the archive, Python environment, model downloads, and installer work files.
 
-No public archive URL is configured. Obtain the actual archive and external manifest, then replace the example local path below:
+The actual archive and external manifest are available from [runtime-v1](https://github.com/cjk041212/ShopLens/releases/tag/runtime-v1). Install the public archive directly:
 
 ~~~bash
 python scripts/install_assets.py \
-  --archive "/path/to/shoplens-runtime-seed42-v1.tar.gz" \
-  --sha256 2f1fc93175adedca6ffb987ecc42f50fcd4a0959679d187aa4c81b7a8ad904c9 --dry-run
-
-python scripts/install_assets.py \
-  --archive "/path/to/shoplens-runtime-seed42-v1.tar.gz" \
+  --url "https://github.com/cjk041212/ShopLens/releases/download/runtime-v1/shoplens-runtime-seed42-v1.tar.gz" \
   --sha256 2f1fc93175adedca6ffb987ecc42f50fcd4a0959679d187aa4c81b7a8ad904c9
 ~~~
 
-Both local and URL modes require the archive checksum. The installer validates the archive and internal file manifest. A mismatch is an error, not a reason to bypass verification. Use --root TARGET only to install intentionally into another project copy.
+For a separately downloaded local copy, use `--archive "/actual/path/to/shoplens-runtime-seed42-v1.tar.gz"` instead of `--url`. Add `--dry-run` to validate without installing payload files. Both modes require the archive checksum. The installer validates the complete archive and internal per-file manifest before installing; a mismatch is an error. Use `--root TARGET` only to install intentionally into another project copy.
 
-Once a real publisher URL and matching manifest are available, the supported remote form is:
-
-~~~bash
-python scripts/install_assets.py \
-  --url "$SHOPLENS_ASSET_URL" \
-  --sha256 2f1fc93175adedca6ffb987ecc42f50fcd4a0959679d187aa4c81b7a8ad904c9
-~~~
-
-SHOPLENS_ASSET_URL must contain the actual HTTP(S) archive URL; no example release endpoint is implied. Review [ATTRIBUTION.md](ATTRIBUTION.md) and upstream terms before using or redistributing third-party payloads. Checksums establish integrity, not permission.
+The release API's archive size and digest were checked against the actual local package. Its external manifest is a companion inventory, not the payload itself. Review [ATTRIBUTION.md](ATTRIBUTION.md) and upstream terms before using or redistributing third-party payloads. Checksums establish integrity, not permission.
 
 ## 3. Prepare pinned base encoders
 
