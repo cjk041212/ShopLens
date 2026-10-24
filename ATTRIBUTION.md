@@ -10,7 +10,7 @@ Prepared catalogs use the Baby, Sports & Outdoors, and Clothing, Shoes & Jewelry
 
 These are three domains of one source. Titles, descriptions, brands, categories, historical prices, and photos remain third-party catalog content. A local photograph or metadata record is not newly authored ShopLens content. Attribution, a downloaded copy, or a checksum manifest does not state that redistribution permission has been obtained.
 
-The source repository excludes the runtime catalog/photo payload. A separately supplied runtime package may contain catalogs, local photos, aligned caches, selected adapters/exports, and compact results; its manifest records scope and transformations. It excludes raw reviews, chronological events/user histories, user identifiers, private course documents, credentials, and base weights. Distribution of that separate payload must be assessed against the applicable source terms.
+The repository tracks the selected runtime catalog/photo payload as bounded data chunks under `assets/runtime/`, with selected heads and adapters under `models/`. Its manifest records every restored path, checksum, scope and transformation. The local installer reconstructs catalogs, photos, aligned caches and selected exports without downloading a Release package. It excludes raw reviews, chronological events/user histories, user identifiers, private course documents, credentials, and base weights. Distribution of that runtime payload remains subject to the applicable source terms.
 
 ## Models
 
@@ -20,7 +20,7 @@ The source repository excludes the runtime catalog/photo payload. A separately s
 | CLIP ViT-B/32 | [OpenAI model repository](https://huggingface.co/openai/clip-vit-base-patch32/tree/3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268), [original implementation](https://github.com/openai/CLIP), [paper](https://proceedings.mlr.press/v139/radford21a.html) | openai/clip-vit-base-patch32, revision 3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268 |
 | MiniLM retained baseline | [Sentence Transformers repository](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2) | sentence-transformers/all-MiniLM-L6-v2 |
 
-The explicit preparation helper obtains pinned Qwen/CLIP weights directly from upstream. Base weights are not part of the source or runtime-asset archive. LoRA adapters and fitted heads are experiment outputs derived using the declared base models; their hashes provide provenance, not replacement upstream terms. No affiliation with or endorsement by upstream providers is claimed.
+The explicit preparation helper obtains pinned Qwen/CLIP weights directly from upstream. Base weights are not part of the tracked runtime assets. LoRA adapters and fitted heads are experiment outputs derived using the declared base models; their hashes provide provenance, not replacement upstream terms. No affiliation with or endorsement by upstream providers is claimed.
 
 ## Software and methods
 

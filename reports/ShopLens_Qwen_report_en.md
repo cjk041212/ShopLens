@@ -172,7 +172,7 @@ Figures can be saved from the browser as SVG or PNG, and the view exports self-c
 python scripts/export_experiment_gallery.py --output dist/experiment-gallery
 ```
 
-Open `dist/experiment-gallery/index.html` and keep the companion CSV/JSON files beside it. This command exports existing evidence; it does not train, run recommendation inference or repeat the original evaluation. Published downloadable artifacts are listed in the repository's [Releases](https://github.com/cjk041212/ShopLens/releases).
+Open `dist/experiment-gallery/index.html` and keep the companion CSV/JSON files beside it. This command exports existing evidence; it does not train, run recommendation inference or repeat the original evaluation. The selected shopping runtime is tracked directly under `models/` and `assets/runtime/`; the repository setup installs those local files without a Release archive.
 
 ### Validation of the presentation update
 
@@ -186,7 +186,7 @@ The machine-readable source is [results_qwen_summary.json](../results/qwen/resul
 
 The gallery validates completeness and unique identities, finite metric values, matched seeds, paired mean/sample-SD arithmetic, cross-objective paired consistency and validation-selected checkpoints. Recorded evidence hashes identify the historical sources. Baseline byte preservation is claimed only where the separate saved verification evidence supplies it.
 
-The runtime release selects seed42 for interaction and includes nine selected exports and six LoRA adapters. It does not contain every seed's complete checkpoint, raw review text or interaction events. Installing the runtime package or opening the summary-only gallery does not reproduce the 27 training pipelines. Full training requires separately prepared source data and compute.
+The runtime tracked in Git selects seed42 for interaction and includes nine selected exports and six LoRA adapters. It does not contain every seed's complete checkpoint, raw review text or interaction events. Installing the runtime package or opening the summary-only gallery does not reproduce the 27 training pipelines. Full training requires separately prepared source data and compute.
 
 Three seeds describe observed variation, not population uncertainty. A mean gain can coexist with seed-level losses; near-zero low-interaction metrics must remain visible. Domain-specific numerical-backend choices and the limited export probe scope further restrict conclusions. Formal history-to-item evaluation and exploratory free-text shopping must be assessed separately.
 

@@ -26,14 +26,15 @@
     {
       "path": "reports/ShopLens_Qwen_report_en.md",
       "original_sha256": "10ca73632c866aa0df225e71778165df7e41c9ccc10b9ab29bef6cc7e9a3945e",
-      "public_sha256": "3c926983c73a6611e3a8df1943fd6e736e4057fee008d65f7c0022590da87b40",
-      "bytes": 23687,
+      "public_sha256": "dfc1242910bb48ca5f219bc7c9212d90b1e095498e95ff937c20af39f4e59bd0",
+      "bytes": 23734,
       "transforms": [
         "retain-original-formal-statistical-tables",
         "update-measured-interactive-features",
         "remove-course-submission-administration",
         "repository-relative-evidence-links",
-        "repository-layout-source-links"
+        "repository-layout-source-links",
+        "tracked-runtime-source-description"
       ]
     },
     {

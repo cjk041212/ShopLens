@@ -1,0 +1,4 @@
+models/**/*.pt binary
+models/**/*.safetensors binary
+assets/runtime/chunks/*.bin binary
+*.pptx binary

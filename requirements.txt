@@ -1,5 +1,5 @@
 # Runtime pins observed in the exercised Python 3.12.14/macOS arm64 environment.
-# NumPy/SciPy below require Python >=3.12. See INSTALL.md for Linux CPU wheels.
+# NumPy/SciPy below require Python >=3.12. See README.md for setup notes.
 numpy==2.5.4
 scipy==1.18.1
 scikit-learn==1.9.1

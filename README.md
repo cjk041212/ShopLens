@@ -20,16 +20,18 @@ Frozen Qwen, Semantic alignment LoRA, and User preference LoRA each use their co
 | `reports/` | One experiment report, the presentation and their screenshots |
 | `results/qwen/` | Recorded 27-run experiment summary in JSON and CSV |
 | `examples/` | Example exported shopping shortlist |
-| `metadata/` | Runtime download metadata and material checksums |
+| `models/qwen/` | Nine seed42 trained recommendation heads and six LoRA adapters |
+| `assets/runtime/` | Versioned catalog/photo/cache bytes in bounded Git data chunks, plus their manifest |
+| `metadata/` | Runtime inventory and material checksums |
 
-Local runtime data and model assets install under `data/` and `artifacts/`; these generated directories stay out of Git.
+The checkout includes the complete selected shopping runtime, approximately 1.53 GB before Git overhead. Installation restores its original `data/` and `artifacts/` paths locally; these restored directories stay out of Git. Allow additional space for the restored assets, dependencies and official base encoders.
 
 ## Install the source
 
 Use **Python 3.12**. The pinned recipe and local CPU encoding were exercised on macOS arm64, including an M4 with 16 GB memory; a fresh Linux/Windows installation and equivalent MPS behavior are not established by that check.
 
 ```bash
-git clone https://github.com/cjk041212/ShopLens.git
+git clone --depth 1 https://github.com/cjk041212/ShopLens.git
 cd ShopLens
 python3.12 -m venv .venv
 source .venv/bin/activate
@@ -50,17 +52,17 @@ Open **http://127.0.0.1:8501/**. The server binds to loopback.
 
 ## Prepare the shopping runtime
 
-Shopping Studio and Research lab additionally require the separate [runtime-v1 assets](https://github.com/cjk041212/ShopLens/releases/tag/runtime-v1) and pinned base encoders. The runtime archive is **1,457,809,593 bytes**. It includes catalogs/photos, feature caches, nine trained seed42 recommendation heads/exports and six LoRA adapters. These trained weights are in the runtime attachment, rather than tracked in Git; using them requires no retraining. Base weights, raw reviews and interaction histories are excluded. The download URL, checksum and scope are recorded in [metadata/runtime-assets.json](metadata/runtime-assets.json). Allow additional space for dependencies, downloaded weights and installer work files.
+Shopping Studio and Research lab use the assets already included in this Git checkout. **No Release archive or separate runtime-package download is required, and no retraining is needed.** The tracked runtime contains all 47,801 catalog photos, matching catalogs and feature caches, nine seed42 recommendation heads/exports, and six LoRA adapters. Other seeds' full checkpoints, raw reviews and interaction histories are excluded.
 
 ```bash
-python scripts/install_assets.py \
-  --url "https://github.com/cjk041212/ShopLens/releases/download/runtime-v1/shoplens-runtime-seed42-v1.tar.gz" \
-  --sha256 2f1fc93175adedca6ffb987ecc42f50fcd4a0959679d187aa4c81b7a8ad904c9
+python scripts/install_assets.py --repo .
 python scripts/prepare_studio_models.py --root . --include-clip
 python scripts/check_install.py --root . --require-weights
 ```
 
-The preparation helper explicitly downloads official pinned **Qwen/Qwen3-Embedding-0.6B** and **openai/clip-vit-base-patch32** files. Searching does not download weights automatically or require an external inference API key. For an already prepared supported cache, use `--offline` on the preparation helper. A downloaded runtime archive can instead be installed with `--archive /actual/path/to/archive.tar.gz` and the same SHA256. Source, runtime assets and base weights are separate installation parts.
+`install_assets.py --repo .` uses only local repository files. It verifies the manifest, model files, all data chunks and restored-file checksums before installing; existing different files are never overwritten. A fresh restore needs approximately 1.9 GB of free space beyond the checkout, excluding dependencies and base encoders; the installer checks the destination filesystem before writing. The inventory is in [metadata/runtime-assets.json](metadata/runtime-assets.json), with per-file provenance in `assets/runtime/manifest.json`.
+
+The preparation helper separately downloads official pinned **Qwen/Qwen3-Embedding-0.6B** and **openai/clip-vit-base-patch32** base weights from Hugging Face. These upstream base weights are not duplicated in this repository. This is a download, not training; no external inference API key is needed. For an already prepared supported cache, use `--offline` on the preparation helper. Searches do not download weights automatically.
 
 Start the app with the Streamlit command above. Prices are historical USD metadata; unknown prices are excluded by budget filters. Avoid terms are soft preferences. Similarity and input-removal views are descriptive, not causal explanations.
 
@@ -76,7 +78,7 @@ Generate the portable seven-figure gallery and its exact data:
 python scripts/export_experiment_gallery.py --output dist/experiment-gallery
 ```
 
-Open `dist/experiment-gallery/index.html`. Plotly is embedded for offline use; keep companion CSV/JSON files beside the HTML to retain its download links. The figure pack is optional and can be generated locally; **runtime-v1** is the separate shopping runtime with its original checksum. Neither installing the demo assets nor exporting charts reruns the historical study.
+Open `dist/experiment-gallery/index.html`. Plotly is embedded for offline use; keep companion CSV/JSON files beside the HTML to retain its download links. The figure pack is optional and can be generated locally. Installing tracked runtime assets or exporting charts does not rerun the historical study.
 
 ## Report and presentation
 

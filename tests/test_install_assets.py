@@ -102,6 +102,16 @@ class AssetInstallerTests(unittest.TestCase):
             installer.install(archive, sha, self.root)
         self.assert_no_install()
 
+    def test_many_tiny_files_include_block_and_metadata_space_before_any_writes(self):
+        payload = {f"data/images/baby/fixture-{index}.jpg": b"x" for index in range(100)}
+        archive, sha = self.bundle(payload=payload)
+        # Logical bytes and the old reserve fit; actual small-file allocation does not.
+        free = installer.SPACE_RESERVE + 100_000
+        with patch.object(installer, "_free_space", return_value=free), patch.object(installer, "_filesystem_block_size", return_value=4096):
+            with self.assertRaisesRegex(installer.AssetError, "filesystem overhead"):
+                installer.install(archive, sha, self.root)
+        self.assert_no_install()
+
     def test_manifest_traversal_and_private_dataset_paths_are_not_installable(self):
         paths = ("../escape.txt", "/absolute", "data/../escape.txt", "data\\escape.txt", "C:/escape.txt",
                  "data/processed/baby/reviews_train.jsonl", "data/processed/baby/events.jsonl",
@@ -177,6 +187,156 @@ class AssetInstallerTests(unittest.TestCase):
         completed = subprocess.run([sys.executable, "-S", str(SCRIPT), "--help"], capture_output=True, text=True)
         self.assertEqual(completed.returncode, 0, completed.stderr)
         self.assertIn("--sha256", completed.stdout)
+
+
+class RepositoryAssetInstallerTests(unittest.TestCase):
+    """Exercise a tiny checkout with split data and a directly tracked model."""
+
+    def setUp(self):
+        temporary = tempfile.TemporaryDirectory(prefix="shoplens-repo-assets-fixture-")
+        self.addCleanup(temporary.cleanup)
+        self.work = Path(temporary.name)
+        self.repo, self.root = self.work / "repo", self.work / "target"
+        self.payload = {
+            "data/processed/baby/items.jsonl": b'{"item_id":"FIXTURE"}\n',
+            "data/processed/baby/audit.json": b'{"fixture_only":true}',
+            "artifacts/qwen/baby/qwen_frozen/seed42/models/qwen_frozen.pt": b"DIAGNOSTIC MODEL BYTES",
+        }
+        self.model_source = "models/qwen/baby/qwen_frozen/seed42/head.pt"
+        self.manifest_path = self.repo / installer.REPO_MANIFEST
+        packed, rows = bytearray(), []
+        for path, content in self.payload.items():
+            source = {"offset": len(packed)}
+            if path.endswith(".pt"):
+                source = {"path": self.model_source}
+                model = self.repo / self.model_source
+                model.parent.mkdir(parents=True)
+                model.write_bytes(content)
+            else:
+                packed.extend(content)
+            rows.append({"path": path, "bytes": len(content), "sha256": hashlib.sha256(content).hexdigest(), "source": source})
+        parts = []
+        for index, offset in enumerate(range(0, len(packed), 13)):
+            content = packed[offset:offset + 13]
+            path = f"assets/runtime/chunks/part-{index:03d}.bin"
+            target = self.repo / path
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes(content)
+            parts.append({"path": path, "bytes": len(content), "sha256": hashlib.sha256(content).hexdigest()})
+        self.manifest = {"schema_version": 2, "files": rows, "parts": parts}
+        self.write_manifest()
+
+    def write_manifest(self):
+        self.manifest_path.write_text(json.dumps(self.manifest), encoding="utf-8")
+
+    def assert_rejected_without_writes(self, message=None):
+        with self.assertRaisesRegex(installer.AssetError, message or "."):
+            installer.install_repo(self.repo, self.root)
+        self.assertFalse(self.root.exists())
+
+    def test_installs_split_payload_and_direct_model_and_resumes_partial_checkout(self):
+        existing = self.root / next(iter(self.payload))
+        existing.parent.mkdir(parents=True)
+        existing.write_bytes(self.payload[next(iter(self.payload))])
+        source_hashes = {path: installer.sha256(path) for path in self.repo.rglob("*") if path.is_file()}
+        with patch.object(installer.urllib.request, "urlopen") as network:
+            report = installer.install_repo(self.repo, self.root)
+            network.assert_not_called()
+        self.assertEqual(report["files_installed"], 2)
+        self.assertEqual(report["identical_files_retained"], 1)
+        for path, content in self.payload.items():
+            self.assertEqual((self.root / path).read_bytes(), content)
+        self.assertEqual(source_hashes, {path: installer.sha256(path) for path in source_hashes})
+        again = installer.install_repo(self.repo, self.root)
+        self.assertEqual(again["files_installed"], 0)
+        self.assertEqual(again["identical_files_retained"], 3)
+
+    def test_dry_run_verifies_every_source_without_creating_target(self):
+        report = installer.install_repo(self.repo, self.root, dry_run=True)
+        self.assertTrue(report["dry_run"])
+        self.assertEqual(report["files_installed"], 0)
+        self.assertEqual(report["payload_files"], 3)
+        self.assertFalse(self.root.exists())
+
+    def test_corrupt_chunk_is_rejected_before_creating_target(self):
+        part = self.repo / self.manifest["parts"][0]["path"]
+        part.write_bytes(b"!" + part.read_bytes()[1:])
+        self.assert_rejected_without_writes("Payload content SHA256")
+
+    def test_individual_payload_hash_is_checked_even_when_part_hash_matches(self):
+        part = self.repo / self.manifest["parts"][0]["path"]
+        part.write_bytes(b"!" + part.read_bytes()[1:])
+        self.manifest["parts"][0]["sha256"] = installer.sha256(part)
+        self.write_manifest()
+        self.assert_rejected_without_writes("Payload content SHA256")
+
+    def test_corrupt_direct_model_is_rejected_before_any_data_install(self):
+        model = self.repo / self.model_source
+        model.write_bytes(b"!" + model.read_bytes()[1:])
+        self.assert_rejected_without_writes("Payload content SHA256")
+
+    def test_invalid_ranges_are_rejected_before_any_target_creation(self):
+        original = self.manifest["files"][1]["source"]["offset"]
+        for offset in (-1, True, 10**9, 0, original + 1):
+            with self.subTest(offset=offset):
+                self.manifest["files"][1]["source"]["offset"] = offset
+                self.write_manifest()
+                self.assert_rejected_without_writes("range")
+
+    def test_unlisted_chunk_tail_and_missing_parts_are_rejected(self):
+        self.manifest["files"].pop(1)
+        self.write_manifest()
+        self.assert_rejected_without_writes("cover")
+        (self.repo / self.manifest["parts"][0]["path"]).unlink()
+        self.assert_rejected_without_writes("Missing repository asset")
+
+    def test_source_paths_cannot_read_private_or_traversing_files(self):
+        for source in ("../private", "/absolute", "data/private.json", "models/qwen/baby/qwen_frozen/seed43/head.pt"):
+            with self.subTest(source=source):
+                self.manifest["files"][-1]["source"] = {"path": source}
+                self.write_manifest()
+                self.assert_rejected_without_writes()
+
+    def test_source_file_and_parent_symlinks_are_rejected(self):
+        model = self.repo / self.model_source
+        outside = self.work / "outside-model"
+        model.rename(outside)
+        model.symlink_to(outside)
+        self.assert_rejected_without_writes("symlink")
+        model.unlink()
+        outside.rename(model)
+        chunks = self.repo / "assets/runtime/chunks"
+        outside_chunks = self.work / "outside-chunks"
+        chunks.rename(outside_chunks)
+        chunks.symlink_to(outside_chunks, target_is_directory=True)
+        self.assert_rejected_without_writes("symlink")
+
+    def test_existing_conflict_and_low_disk_fail_before_any_new_payload(self):
+        conflicting = self.root / "data/processed/baby/audit.json"
+        conflicting.parent.mkdir(parents=True)
+        conflicting.write_bytes(b"KEEP ORIGINAL")
+        with self.assertRaisesRegex(installer.AssetError, "existing different file"):
+            installer.install_repo(self.repo, self.root)
+        self.assertEqual(conflicting.read_bytes(), b"KEEP ORIGINAL")
+        self.assertFalse((self.root / next(iter(self.payload))).exists())
+        conflicting.unlink()
+        with patch.object(installer, "_free_space", return_value=0), self.assertRaisesRegex(installer.AssetError, "Insufficient disk space"):
+            installer.install_repo(self.repo, self.root)
+        self.assertEqual(list(self.root.rglob("*.*")), [])
+
+    def test_malformed_source_and_oversize_part_metadata_are_rejected(self):
+        self.manifest["files"][0]["source"] = {"offset": 0, "path": self.model_source}
+        self.write_manifest()
+        self.assert_rejected_without_writes("exactly one source")
+        self.manifest["parts"][0]["bytes"] = installer.MAX_REPO_PART_BYTES + 1
+        self.write_manifest()
+        self.assert_rejected_without_writes("part size")
+
+    def test_repo_cli_uses_only_stdlib_and_needs_no_archive_checksum(self):
+        completed = subprocess.run([sys.executable, "-S", str(SCRIPT), "--repo", str(self.repo), "--root", str(self.root), "--dry-run"], capture_output=True, text=True)
+        self.assertEqual(completed.returncode, 0, completed.stderr)
+        self.assertEqual(json.loads(completed.stdout)["payload_files"], 3)
+        self.assertFalse(self.root.exists())
 
 
 if __name__ == "__main__":

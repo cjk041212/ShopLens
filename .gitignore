@@ -53,4 +53,8 @@ id_ed25519*
 credentials.json
 token.json
 
-
+# Selected inference models and bounded runtime data are versioned on purpose.
+!/models/
+!/models/qwen/
+!/models/qwen/**
+!/assets/runtime/chunks/*.bin
