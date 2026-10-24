@@ -12,7 +12,14 @@ These are three domains of one source. Titles, descriptions, brands, categories,
 
 The repository tracks the selected runtime catalog/photo payload as bounded data chunks under `assets/runtime/`, with selected heads and adapters under `models/`. Its manifest records every restored path, checksum, scope and transformation. The local installer reconstructs catalogs, photos, aligned caches and selected exports without downloading a Release package. It excludes raw reviews, chronological events/user histories, user identifiers, private course documents, credentials, and base weights. Distribution of that runtime payload remains subject to the applicable source terms.
 
-## Models
+## Additional benchmark sources
+
+- **Amazon Shopping Queries / ESCI:** [official dataset and ranking code](https://github.com/amazon-science/esci-data/tree/7916cdf6ab75a462e77f20ab40428a10923998d5). Its README declares Apache-2.0. The bounded public input subset retains official query/product identifiers, product titles and E/S/C/I judgments; source and selected-file hashes accompany the results. No product images are supplied by this benchmark. The declared primary gains follow `ranking/train.py`; the reversed S/C mapping in the qrel-export script is preserved as a separate sensitivity.
+- **FashionIQ:** [official annotations and research dataset](https://github.com/XiaoxiaoGuo/fashion-iq/tree/f71b16c3b09ef03b02c0fed160fa072fb3b8aa16), [official-linked image URL metadata](https://github.com/hongwang600/fashion-iq-metadata/tree/3bb39d7d9a024d92f1b0fd0929b38d73dff24a0a). The annotation README names a Community Data License Agreement (CDLA) and links cdla.io without specifying its variant/version; no particular CDLA variant is asserted here. Captions, paired product identifiers and photographs are third-party dataset content. The portable subset preserves source revisions, per-image URLs and hashes, split membership and unavailable-image records in `assets/benchmarks/fashion/manifest.json`. Its trained fusion projection and frozen feature cache are derived experiment outputs. These subset files do not supply a new photograph license or claim provider endorsement; upstream dataset and content terms continue to apply.
+
+Benchmark labels were already supplied by the dataset authors; this extension collected no new human annotations. User-history diagnostics publish aggregates only. New measurements are separated from the original Amazon Reviews 2014 experiment and do not establish online purchase, satisfaction or fairness outcomes.
+
+## Models and derived checkpoints
 
 | Component | Official source | Identity used by the demo |
 | --- | --- | --- |

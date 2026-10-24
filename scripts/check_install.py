@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import importlib
 import json
 import platform
@@ -100,15 +101,65 @@ def check(root, *, require_weights=False):
     return report
 
 
+def check_benchmarks(root):
+    """Check the portable benchmark view without shopping assets or encoders."""
+    root = Path(root).expanduser().resolve()
+    report = {"ok": False, "scope": "Portable recorded benchmarks and image/model checksums; no inference, downloads or training.",
+              "benchmarks": {}, "errors": []}
+    sys.path.insert(0, str(root / "src"))
+    try:
+        from shoplens.search_benchmark import load_search_results
+        from shoplens.fashion_retrieval import load_fashion_results
+        from shoplens.recommendation_diagnostics import load_recommendation_diagnostics
+        search = load_search_results(root)
+        report["benchmarks"]["esci"] = {"queries": len(search["queries"]), "models": len(search["summary"]["models"])}
+        fashion = load_fashion_results(root)
+        summary = fashion["summary"]
+        for relative, expected in (("assets/benchmarks/fashion/manifest.json", summary["manifest_sha256"]),
+                                   ("assets/benchmarks/fashion/features.npz", summary["features_sha256"]),
+                                   (summary["model_path"], summary["model_sha256"])):
+            path = (root / relative).resolve()
+            if not path.is_relative_to(root) or hashlib.sha256(path.read_bytes()).hexdigest() != expected:
+                raise ValueError(f"FashionIQ checksum mismatch: {relative}")
+        manifest = json.loads((root / "assets/benchmarks/fashion/manifest.json").read_text())
+        for image in manifest["images"].values():
+            path = (root / image["path"]).resolve()
+            if not path.is_relative_to(root) or path.stat().st_size != image["bytes"] or hashlib.sha256(path.read_bytes()).hexdigest() != image["sha256"]:
+                raise ValueError("FashionIQ photograph checksum mismatch")
+        split_hashes = {phase: {manifest["images"][item_id]["sha256"]
+                               for pool in pools.values() for item_id in pool}
+                        for phase, pools in manifest["candidate_pools"].items()}
+        if any(split_hashes[a] & split_hashes[b] for a, b in (("train", "dev"), ("train", "evaluation"), ("dev", "evaluation"))):
+            raise ValueError("FashionIQ candidate splits contain byte-identical photographs")
+        report["benchmarks"]["fashion"] = {"queries": len(fashion["queries"]), "verified_photos": len(manifest["images"]), "fusion_checkpoint": True}
+        diagnostic = load_recommendation_diagnostics(root / "results/diagnostics/recommendation_diagnostics.json")
+        report["benchmarks"]["diagnostics"] = {"history_records": len(diagnostic["history_curves"]), "checkpoints": len(diagnostic["exposure"])}
+        performance = json.loads((root / "results/performance/studio.json").read_text())
+        if performance.get("complete") is not True or len(performance.get("ranking_parity", [])) != 3 or not all(r.get("identical_complete_rows") is True for r in performance["ranking_parity"]):
+            raise ValueError("Studio performance profile is incomplete or row parity failed")
+        report["benchmarks"]["performance"] = {"measured_stages": len(performance["stages"]), "parity_cases": 3}
+    except (OSError, ValueError, KeyError, TypeError, ImportError) as exc:
+        report["errors"].append(str(exc))
+    report["ok"] = not report["errors"]
+    return report
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument("--require-weights", action="store_true", help="Fail if pinned local Qwen/CLIP files are not prepared.")
     parser.add_argument("--json", action="store_true", help="Print the complete compact check report as JSON.")
+    parser.add_argument("--benchmarks-only", action="store_true", help="Verify recorded benchmark files and photos without restoring the shopping runtime.")
     args = parser.parse_args()
-    report = check(args.root, require_weights=args.require_weights)
+    report = check_benchmarks(args.root) if args.benchmarks_only else check(args.root, require_weights=args.require_weights)
     if args.json:
         print(json.dumps(report, indent=2))
+    elif args.benchmarks_only:
+        print("ShopLens portable benchmarks: " + ("PASS" if report["ok"] else "NOT READY"))
+        for name, details in report["benchmarks"].items():
+            print(f"  {name}: {json.dumps(details)}")
+        for message in report["errors"]:
+            print("ERROR: " + message)
     else:
         print("ShopLens runtime check: " + ("PASS" if report["ok"] else "NOT READY"))
         for domain, details in report["domains"].items():

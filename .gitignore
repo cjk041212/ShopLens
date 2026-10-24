@@ -57,4 +57,7 @@ token.json
 !/models/
 !/models/qwen/
 !/models/qwen/**
+!/models/fashion/
+!/models/fashion/**
+!/assets/benchmarks/fashion/features.npz
 !/assets/runtime/chunks/*.bin

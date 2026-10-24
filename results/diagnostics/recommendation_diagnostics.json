@@ -1,0 +1,2628 @@
+{
+  "schema_version": 1,
+  "complete": true,
+  "kind": "held_out_recommendation_diagnostics",
+  "protocol": {
+    "checkpoint_seed": 42,
+    "cohort_seed": 20261025,
+    "max_users_per_domain": 1000,
+    "models": [
+      "qwen_frozen",
+      "qwen_semantic",
+      "qwen_preference"
+    ],
+    "domains": [
+      "baby",
+      "sports",
+      "clothing"
+    ],
+    "history_caps": [
+      1,
+      3,
+      5,
+      10,
+      20
+    ],
+    "split": "test",
+    "device": "cpu",
+    "batch_size": 128,
+    "cohort_selection": "Sort eligible user IDs; NumPy default_rng(cohort_seed).permutation, take at most max_users; retain every eligible target for those users. Same cases for every objective and cap.",
+    "candidate_set": "Full prepared catalog, excluding ALL strictly earlier positive items even when visible history is truncated.",
+    "history": "Most recent distinct rating>=4 items with timestamp strictly before the target; cap truncates only model input.",
+    "evaluation": "Prequential fixed weights: earlier validation/test feedback can enter a later history; same-time feedback cannot.",
+    "averaging": "Within-user target mean, then equal user macro-average; popularity cohorts recompute macro-average within their eligible users.",
+    "popularity": "Distinct rating>=4 TRAIN users per item; bins 0,1-5,6-20,21+.",
+    "exposure": "Cap20 Top10 slots counted per eligible target (event weighted); coverage denominator is the full prepared catalog, including zero-exposure items.",
+    "bootstrap_repeats": 1000,
+    "bootstrap": "Paired user resampling within each cap vs cap20 comparison; conditional on one checkpoint/cohort, not independent training repeats.",
+    "training_runs_added": 0,
+    "manual_labels_added": 0
+  },
+  "domains": [
+    {
+      "domain": "baby",
+      "catalog_items": 7037,
+      "eligible_users": 3597,
+      "eligible_targets": 9243,
+      "selected_users": 1000,
+      "selected_targets": 2596,
+      "evaluation_subset": true,
+      "history_length_distribution": [
+        {
+          "length": 1,
+          "targets": 345
+        },
+        {
+          "length": 2,
+          "targets": 362
+        },
+        {
+          "length": 3,
+          "targets": 332
+        },
+        {
+          "length": 4,
+          "targets": 295
+        },
+        {
+          "length": 5,
+          "targets": 207
+        },
+        {
+          "length": 6,
+          "targets": 163
+        },
+        {
+          "length": 7,
+          "targets": 136
+        },
+        {
+          "length": 8,
+          "targets": 81
+        },
+        {
+          "length": 9,
+          "targets": 94
+        },
+        {
+          "length": 10,
+          "targets": 92
+        },
+        {
+          "length": 11,
+          "targets": 66
+        },
+        {
+          "length": 12,
+          "targets": 53
+        },
+        {
+          "length": 13,
+          "targets": 31
+        },
+        {
+          "length": 14,
+          "targets": 23
+        },
+        {
+          "length": 15,
+          "targets": 29
+        },
+        {
+          "length": 16,
+          "targets": 25
+        },
+        {
+          "length": 17,
+          "targets": 23
+        },
+        {
+          "length": 18,
+          "targets": 28
+        },
+        {
+          "length": 19,
+          "targets": 31
+        },
+        {
+          "length": 20,
+          "targets": 180
+        }
+      ],
+      "catalog_popularity": [
+        {
+          "bucket": "0",
+          "items": 230
+        },
+        {
+          "bucket": "1-5",
+          "items": 2692
+        },
+        {
+          "bucket": "6-20",
+          "items": 2967
+        },
+        {
+          "bucket": "21+",
+          "items": 1148
+        }
+      ]
+    },
+    {
+      "domain": "sports",
+      "catalog_items": 18273,
+      "eligible_users": 8789,
+      "eligible_targets": 21188,
+      "selected_users": 1000,
+      "selected_targets": 2429,
+      "evaluation_subset": true,
+      "history_length_distribution": [
+        {
+          "length": 1,
+          "targets": 275
+        },
+        {
+          "length": 2,
+          "targets": 253
+        },
+        {
+          "length": 3,
+          "targets": 326
+        },
+        {
+          "length": 4,
+          "targets": 312
+        },
+        {
+          "length": 5,
+          "targets": 223
+        },
+        {
+          "length": 6,
+          "targets": 182
+        },
+        {
+          "length": 7,
+          "targets": 131
+        },
+        {
+          "length": 8,
+          "targets": 112
+        },
+        {
+          "length": 9,
+          "targets": 70
+        },
+        {
+          "length": 10,
+          "targets": 70
+        },
+        {
+          "length": 11,
+          "targets": 62
+        },
+        {
+          "length": 12,
+          "targets": 36
+        },
+        {
+          "length": 13,
+          "targets": 42
+        },
+        {
+          "length": 14,
+          "targets": 28
+        },
+        {
+          "length": 15,
+          "targets": 28
+        },
+        {
+          "length": 16,
+          "targets": 29
+        },
+        {
+          "length": 17,
+          "targets": 16
+        },
+        {
+          "length": 18,
+          "targets": 10
+        },
+        {
+          "length": 19,
+          "targets": 21
+        },
+        {
+          "length": 20,
+          "targets": 203
+        }
+      ],
+      "catalog_popularity": [
+        {
+          "bucket": "0",
+          "items": 341
+        },
+        {
+          "bucket": "1-5",
+          "items": 7950
+        },
+        {
+          "bucket": "6-20",
+          "items": 7967
+        },
+        {
+          "bucket": "21+",
+          "items": 2015
+        }
+      ]
+    },
+    {
+      "domain": "clothing",
+      "catalog_items": 22491,
+      "eligible_users": 9219,
+      "eligible_targets": 17507,
+      "selected_users": 1000,
+      "selected_targets": 1865,
+      "evaluation_subset": true,
+      "history_length_distribution": [
+        {
+          "length": 1,
+          "targets": 271
+        },
+        {
+          "length": 2,
+          "targets": 325
+        },
+        {
+          "length": 3,
+          "targets": 317
+        },
+        {
+          "length": 4,
+          "targets": 312
+        },
+        {
+          "length": 5,
+          "targets": 171
+        },
+        {
+          "length": 6,
+          "targets": 99
+        },
+        {
+          "length": 7,
+          "targets": 82
+        },
+        {
+          "length": 8,
+          "targets": 61
+        },
+        {
+          "length": 9,
+          "targets": 36
+        },
+        {
+          "length": 10,
+          "targets": 30
+        },
+        {
+          "length": 11,
+          "targets": 21
+        },
+        {
+          "length": 12,
+          "targets": 24
+        },
+        {
+          "length": 13,
+          "targets": 14
+        },
+        {
+          "length": 14,
+          "targets": 21
+        },
+        {
+          "length": 15,
+          "targets": 16
+        },
+        {
+          "length": 16,
+          "targets": 14
+        },
+        {
+          "length": 17,
+          "targets": 11
+        },
+        {
+          "length": 18,
+          "targets": 7
+        },
+        {
+          "length": 19,
+          "targets": 7
+        },
+        {
+          "length": 20,
+          "targets": 26
+        }
+      ],
+      "catalog_popularity": [
+        {
+          "bucket": "0",
+          "items": 480
+        },
+        {
+          "bucket": "1-5",
+          "items": 11850
+        },
+        {
+          "bucket": "6-20",
+          "items": 8948
+        },
+        {
+          "bucket": "21+",
+          "items": 1213
+        }
+      ]
+    }
+  ],
+  "history_curves": [
+    {
+      "domain": "baby",
+      "model": "qwen_frozen",
+      "seed": 42,
+      "history_cap": 1,
+      "n_users": 1000,
+      "n_targets": 2596,
+      "recall@10": 0.02046761571761572,
+      "ndcg@10": 0.010361004109545626,
+      "recall@20": 0.03879387834387834,
+      "ndcg@20": 0.014955936765661931,
+      "effective_history_mean": 1.0,
+      "changed_history_targets": 2251,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": -0.0024610926607676175,
+        "ci95_low": -0.005240039920348684,
+        "ci95_high": 0.00026623677693344785,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "baby",
+      "model": "qwen_frozen",
+      "seed": 42,
+      "history_cap": 3,
+      "n_users": 1000,
+      "n_targets": 2596,
+      "recall@10": 0.026870247296563086,
+      "ndcg@10": 0.013227039625797382,
+      "recall@20": 0.03993936706568286,
+      "ndcg@20": 0.016589611562398576,
+      "effective_history_mean": 2.5947611710323573,
+      "changed_history_targets": 1557,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": 0.0004049428554841373,
+        "ci95_low": -0.000712498341949595,
+        "ci95_high": 0.0014665063904376811,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "baby",
+      "model": "qwen_frozen",
+      "seed": 42,
+      "history_cap": 5,
+      "n_users": 1000,
+      "n_targets": 2596,
+      "recall@10": 0.026477823054138844,
+      "ndcg@10": 0.013160570395556143,
+      "recall@20": 0.04002386590018169,
+      "ndcg@20": 0.01658003050503758,
+      "effective_history_mean": 3.680662557781202,
+      "changed_history_targets": 1055,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": 0.0003384736252428998,
+        "ci95_low": 2.8374473520246163e-05,
+        "ci95_high": 0.0006567602846504571,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "baby",
+      "model": "qwen_frozen",
+      "seed": 42,
+      "history_cap": 10,
+      "n_users": 1000,
+      "n_targets": 2596,
+      "recall@10": 0.025672592173907965,
+      "ndcg@10": 0.012909086819319925,
+      "recall@20": 0.039004085680401465,
+      "ndcg@20": 0.016286083885215134,
+      "effective_history_mean": 5.205701078582434,
+      "changed_history_targets": 489,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": 8.699004900667905e-05,
+        "ci95_low": -0.00010484682990381618,
+        "ci95_high": 0.0003420561976311015,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "baby",
+      "model": "qwen_frozen",
+      "seed": 42,
+      "history_cap": 20,
+      "n_users": 1000,
+      "n_targets": 2596,
+      "recall@10": 0.025672592173907965,
+      "ndcg@10": 0.012822096770313245,
+      "recall@20": 0.03899009966641545,
+      "ndcg@20": 0.016192297089356766,
+      "effective_history_mean": 6.406009244992296,
+      "changed_history_targets": 0,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": 0.0,
+        "ci95_low": 0.0,
+        "ci95_high": 0.0,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "baby",
+      "model": "qwen_semantic",
+      "seed": 42,
+      "history_cap": 1,
+      "n_users": 1000,
+      "n_targets": 2596,
+      "recall@10": 0.016061902863218652,
+      "ndcg@10": 0.008409164941853276,
+      "recall@20": 0.025563501264817053,
+      "ndcg@20": 0.01084386452218535,
+      "effective_history_mean": 1.0,
+      "changed_history_targets": 2251,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": -0.0013591411656972358,
+        "ci95_low": -0.003948949939727317,
+        "ci95_high": 0.0011836559383273193,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "baby",
+      "model": "qwen_semantic",
+      "seed": 42,
+      "history_cap": 3,
+      "n_users": 1000,
+      "n_targets": 2596,
+      "recall@10": 0.019586902863218653,
+      "ndcg@10": 0.009749615543773325,
+      "recall@20": 0.030027054378370166,
+      "ndcg@20": 0.012429157039475029,
+      "effective_history_mean": 2.5947611710323573,
+      "changed_history_targets": 1557,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": -1.869056377718703e-05,
+        "ci95_low": -0.001974189436820585,
+        "ci95_high": 0.0017829960715070733,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "baby",
+      "model": "qwen_semantic",
+      "seed": 42,
+      "history_cap": 5,
+      "n_users": 1000,
+      "n_targets": 2596,
+      "recall@10": 0.019020236196551986,
+      "ndcg@10": 0.010031366816461695,
+      "recall@20": 0.03344372104503684,
+      "ndcg@20": 0.013662537908575183,
+      "effective_history_mean": 3.680662557781202,
+      "changed_history_targets": 1055,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": 0.0002630607089111843,
+        "ci95_low": -0.0003992772640049023,
+        "ci95_high": 0.001171938041513067,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "baby",
+      "model": "qwen_semantic",
+      "seed": 42,
+      "history_cap": 10,
+      "n_users": 1000,
+      "n_targets": 2596,
+      "recall@10": 0.017895236196551985,
+      "ndcg@10": 0.009817951404775118,
+      "recall@20": 0.03042064412195991,
+      "ndcg@20": 0.013028398504573147,
+      "effective_history_mean": 5.205701078582434,
+      "changed_history_targets": 489,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": 4.964529722460595e-05,
+        "ci95_low": -0.00041999850581739897,
+        "ci95_high": 0.00048750836730303293,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "baby",
+      "model": "qwen_semantic",
+      "seed": 42,
+      "history_cap": 20,
+      "n_users": 1000,
+      "n_targets": 2596,
+      "recall@10": 0.018345236196551987,
+      "ndcg@10": 0.009768306107550511,
+      "recall@20": 0.030163068364384153,
+      "ndcg@20": 0.012792872671214324,
+      "effective_history_mean": 6.406009244992296,
+      "changed_history_targets": 0,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": 0.0,
+        "ci95_low": 0.0,
+        "ci95_high": 0.0,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "baby",
+      "model": "qwen_preference",
+      "seed": 42,
+      "history_cap": 1,
+      "n_users": 1000,
+      "n_targets": 2596,
+      "recall@10": 0.018650180375180375,
+      "ndcg@10": 0.010161113330022073,
+      "recall@20": 0.02784936174936175,
+      "ndcg@20": 0.012431487245282894,
+      "effective_history_mean": 1.0,
+      "changed_history_targets": 2251,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": -0.003244933277525047,
+        "ci95_low": -0.005806582997123754,
+        "ci95_high": -0.0006591839123593479,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "baby",
+      "model": "qwen_preference",
+      "seed": 42,
+      "history_cap": 3,
+      "n_users": 1000,
+      "n_targets": 2596,
+      "recall@10": 0.026391847041847043,
+      "ndcg@10": 0.013636230544681938,
+      "recall@20": 0.03697226749858328,
+      "ndcg@20": 0.01625546609408798,
+      "effective_history_mean": 2.5947611710323573,
+      "changed_history_targets": 1557,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": 0.00023018393713481874,
+        "ci95_low": -0.0005150543157344959,
+        "ci95_high": 0.0009531526304431442,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "baby",
+      "model": "qwen_preference",
+      "seed": 42,
+      "history_cap": 5,
+      "n_users": 1000,
+      "n_targets": 2596,
+      "recall@10": 0.026475180375180377,
+      "ndcg@10": 0.013790387444863878,
+      "recall@20": 0.03960408568040147,
+      "ndcg@20": 0.017119058764153906,
+      "effective_history_mean": 3.680662557781202,
+      "changed_history_targets": 1055,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": 0.00038434083731675694,
+        "ci95_low": -0.00015110111155335884,
+        "ci95_high": 0.0012029136142228051,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "baby",
+      "model": "qwen_preference",
+      "seed": 42,
+      "history_cap": 10,
+      "n_users": 1000,
+      "n_targets": 2596,
+      "recall@10": 0.02543427128427128,
+      "ndcg@10": 0.013440639085953771,
+      "recall@20": 0.03666317658949238,
+      "ndcg@20": 0.016285907421859085,
+      "effective_history_mean": 5.205701078582434,
+      "changed_history_targets": 489,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": 3.4592478406651795e-05,
+        "ci95_low": -2.5762625642421095e-05,
+        "ci95_high": 0.0001144885610791774,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "baby",
+      "model": "qwen_preference",
+      "seed": 42,
+      "history_cap": 20,
+      "n_users": 1000,
+      "n_targets": 2596,
+      "recall@10": 0.025384271284271287,
+      "ndcg@10": 0.01340604660754712,
+      "recall@20": 0.03711317658949238,
+      "ndcg@20": 0.016346340436545623,
+      "effective_history_mean": 6.406009244992296,
+      "changed_history_targets": 0,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": 0.0,
+        "ci95_low": 0.0,
+        "ci95_high": 0.0,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "sports",
+      "model": "qwen_frozen",
+      "seed": 42,
+      "history_cap": 1,
+      "n_users": 1000,
+      "n_targets": 2429,
+      "recall@10": 0.009797222222222223,
+      "ndcg@10": 0.00424223690518982,
+      "recall@20": 0.018143290043290045,
+      "ndcg@20": 0.0062622260936132206,
+      "effective_history_mean": 1.0,
+      "changed_history_targets": 2154,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": -0.0014577049669026604,
+        "ci95_low": -0.003912824599091972,
+        "ci95_high": 0.0007528952306435989,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "sports",
+      "model": "qwen_frozen",
+      "seed": 42,
+      "history_cap": 3,
+      "n_users": 1000,
+      "n_targets": 2429,
+      "recall@10": 0.010830988455988455,
+      "ndcg@10": 0.004876534854313049,
+      "recall@20": 0.018210209235209236,
+      "ndcg@20": 0.006633670476760009,
+      "effective_history_mean": 2.669411280362289,
+      "changed_history_targets": 1575,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": -0.0008234070177794309,
+        "ci95_low": -0.003065933845590297,
+        "ci95_high": 0.00127957832429342,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "sports",
+      "model": "qwen_frozen",
+      "seed": 42,
+      "history_cap": 5,
+      "n_users": 1000,
+      "n_targets": 2429,
+      "recall@10": 0.013230988455988456,
+      "ndcg@10": 0.005764007602441552,
+      "recall@20": 0.020964249639249637,
+      "ndcg@20": 0.00765352869339697,
+      "effective_history_mean": 3.8377933305887195,
+      "changed_history_targets": 1040,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": 6.406573034907128e-05,
+        "ci95_low": -0.000522341232117522,
+        "ci95_high": 0.000604404658351144,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "sports",
+      "model": "qwen_frozen",
+      "seed": 42,
+      "history_cap": 10,
+      "n_users": 1000,
+      "n_targets": 2429,
+      "recall@10": 0.011940151515151516,
+      "ndcg@10": 0.005398705617515336,
+      "recall@20": 0.019504725829725827,
+      "ndcg@20": 0.007249266457802102,
+      "effective_history_mean": 5.396047756278304,
+      "changed_history_targets": 475,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": -0.0003012362545771449,
+        "ci95_low": -0.0007260252113959891,
+        "ci95_high": -5.929705254614647e-06,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "sports",
+      "model": "qwen_frozen",
+      "seed": 42,
+      "history_cap": 20,
+      "n_users": 1000,
+      "n_targets": 2429,
+      "recall@10": 0.012551262626262627,
+      "ndcg@10": 0.005699941872092481,
+      "recall@20": 0.019721392496392497,
+      "ndcg@20": 0.007460126590690658,
+      "effective_history_mean": 6.6710580485796624,
+      "changed_history_targets": 0,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": 0.0,
+        "ci95_low": 0.0,
+        "ci95_high": 0.0,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "sports",
+      "model": "qwen_semantic",
+      "seed": 42,
+      "history_cap": 1,
+      "n_users": 1000,
+      "n_targets": 2429,
+      "recall@10": 0.010164321789321789,
+      "ndcg@10": 0.005114138599342306,
+      "recall@20": 0.016964321789321786,
+      "ndcg@20": 0.006833734642172436,
+      "effective_history_mean": 1.0,
+      "changed_history_targets": 2154,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": -0.0003203550525609033,
+        "ci95_low": -0.0024562056305629265,
+        "ci95_high": 0.0020324773716121924,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "sports",
+      "model": "qwen_semantic",
+      "seed": 42,
+      "history_cap": 3,
+      "n_users": 1000,
+      "n_targets": 2429,
+      "recall@10": 0.00775674603174603,
+      "ndcg@10": 0.003952586463866935,
+      "recall@20": 0.014197655122655122,
+      "ndcg@20": 0.005558439905974389,
+      "effective_history_mean": 2.669411280362289,
+      "changed_history_targets": 1575,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": -0.0014819071880362736,
+        "ci95_low": -0.003174253134061539,
+        "ci95_high": 4.0932017460418826e-05,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "sports",
+      "model": "qwen_semantic",
+      "seed": 42,
+      "history_cap": 5,
+      "n_users": 1000,
+      "n_targets": 2429,
+      "recall@10": 0.010947655122655121,
+      "ndcg@10": 0.005057358790021515,
+      "recall@20": 0.018564321789321787,
+      "ndcg@20": 0.006957435255002088,
+      "effective_history_mean": 3.8377933305887195,
+      "changed_history_targets": 1040,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": -0.000377134861881694,
+        "ci95_low": -0.001156210530972924,
+        "ci95_high": 0.0003470809062459728,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "sports",
+      "model": "qwen_semantic",
+      "seed": 42,
+      "history_cap": 10,
+      "n_users": 1000,
+      "n_targets": 2429,
+      "recall@10": 0.01138553391053391,
+      "ndcg@10": 0.0051295022518574466,
+      "recall@20": 0.017513564213564217,
+      "ndcg@20": 0.006643624697741162,
+      "effective_history_mean": 5.396047756278304,
+      "changed_history_targets": 475,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": -0.0003049914000457622,
+        "ci95_low": -0.0008608986515059132,
+        "ci95_high": 9.122683564842417e-05,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "sports",
+      "model": "qwen_semantic",
+      "seed": 42,
+      "history_cap": 20,
+      "n_users": 1000,
+      "n_targets": 2429,
+      "recall@10": 0.01238553391053391,
+      "ndcg@10": 0.005434493651903209,
+      "recall@20": 0.018113564213564214,
+      "ndcg@20": 0.006827968676115169,
+      "effective_history_mean": 6.6710580485796624,
+      "changed_history_targets": 0,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": 0.0,
+        "ci95_low": 0.0,
+        "ci95_high": 0.0,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "sports",
+      "model": "qwen_preference",
+      "seed": 42,
+      "history_cap": 1,
+      "n_users": 1000,
+      "n_targets": 2429,
+      "recall@10": 0.011376443001443,
+      "ndcg@10": 0.004846392065504599,
+      "recall@20": 0.02059134199134199,
+      "ndcg@20": 0.0072157156219398175,
+      "effective_history_mean": 1.0,
+      "changed_history_targets": 2154,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": -0.0009689303598158456,
+        "ci95_low": -0.0034929179866177848,
+        "ci95_high": 0.001333178454457127,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "sports",
+      "model": "qwen_preference",
+      "seed": 42,
+      "history_cap": 3,
+      "n_users": 1000,
+      "n_targets": 2429,
+      "recall@10": 0.011242099567099567,
+      "ndcg@10": 0.005157815349992973,
+      "recall@20": 0.01995901875901876,
+      "ndcg@20": 0.007329377614498963,
+      "effective_history_mean": 2.669411280362289,
+      "changed_history_targets": 1575,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": -0.0006575070753274709,
+        "ci95_low": -0.002913792209512855,
+        "ci95_high": 0.0014590777660593401,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "sports",
+      "model": "qwen_preference",
+      "seed": 42,
+      "history_cap": 5,
+      "n_users": 1000,
+      "n_targets": 2429,
+      "recall@10": 0.01310321067821068,
+      "ndcg@10": 0.005625606098766438,
+      "recall@20": 0.020875685425685426,
+      "ndcg@20": 0.007597441512176051,
+      "effective_history_mean": 3.8377933305887195,
+      "changed_history_targets": 1040,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": -0.00018971632655400626,
+        "ci95_low": -0.001049628016928897,
+        "ci95_high": 0.0006120181099754572,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "sports",
+      "model": "qwen_preference",
+      "seed": 42,
+      "history_cap": 10,
+      "n_users": 1000,
+      "n_targets": 2429,
+      "recall@10": 0.012293686868686869,
+      "ndcg@10": 0.005711287833425744,
+      "recall@20": 0.020150685425685422,
+      "ndcg@20": 0.007695432945006166,
+      "effective_history_mean": 5.396047756278304,
+      "changed_history_targets": 475,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": -0.00010403459189470019,
+        "ci95_low": -0.0006164844840280447,
+        "ci95_high": 0.00035800850345537975,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "sports",
+      "model": "qwen_preference",
+      "seed": 42,
+      "history_cap": 20,
+      "n_users": 1000,
+      "n_targets": 2429,
+      "recall@10": 0.012293686868686869,
+      "ndcg@10": 0.005815322425320444,
+      "recall@20": 0.01967449494949495,
+      "ndcg@20": 0.007692024248407947,
+      "effective_history_mean": 6.6710580485796624,
+      "changed_history_targets": 0,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": 0.0,
+        "ci95_low": 0.0,
+        "ci95_high": 0.0,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "clothing",
+      "model": "qwen_frozen",
+      "seed": 42,
+      "history_cap": 1,
+      "n_users": 1000,
+      "n_targets": 1865,
+      "recall@10": 0.010759523809523809,
+      "ndcg@10": 0.005586634545593498,
+      "recall@20": 0.01572063492063492,
+      "ndcg@20": 0.006769931106807457,
+      "effective_history_mean": 1.0,
+      "changed_history_targets": 1594,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": 8.24672669160714e-05,
+        "ci95_low": -0.0028615530904305105,
+        "ci95_high": 0.0028739856438154024,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "clothing",
+      "model": "qwen_frozen",
+      "seed": 42,
+      "history_cap": 3,
+      "n_users": 1000,
+      "n_targets": 1865,
+      "recall@10": 0.009781746031746032,
+      "ndcg@10": 0.004356999965443153,
+      "recall@20": 0.016581746031746027,
+      "ndcg@20": 0.006061736121316668,
+      "effective_history_mean": 2.5351206434316356,
+      "changed_history_targets": 952,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": -0.0011471673132342742,
+        "ci95_low": -0.0024041692003635502,
+        "ci95_high": -7.818970753434446e-05,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "clothing",
+      "model": "qwen_frozen",
+      "seed": 42,
+      "history_cap": 5,
+      "n_users": 1000,
+      "n_targets": 1865,
+      "recall@10": 0.012948412698412697,
+      "ndcg@10": 0.005846467946183859,
+      "recall@20": 0.019581746031746033,
+      "ndcg@20": 0.007518968408392,
+      "effective_history_mean": 3.388739946380697,
+      "changed_history_targets": 469,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": 0.0003423006675064313,
+        "ci95_low": -0.0003444951368573064,
+        "ci95_high": 0.0011407409474981942,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "clothing",
+      "model": "qwen_frozen",
+      "seed": 42,
+      "history_cap": 10,
+      "n_users": 1000,
+      "n_targets": 1865,
+      "recall@10": 0.012115079365079363,
+      "ndcg@10": 0.005547171563772281,
+      "recall@20": 0.019415079365079364,
+      "ndcg@20": 0.007365283796094251,
+      "effective_history_mean": 4.2171581769437,
+      "changed_history_targets": 161,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": 4.300428509485445e-05,
+        "ci95_low": 0.0,
+        "ci95_high": 0.00012901285528456335,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "clothing",
+      "model": "qwen_frozen",
+      "seed": 42,
+      "history_cap": 20,
+      "n_users": 1000,
+      "n_targets": 1865,
+      "recall@10": 0.011972222222222221,
+      "ndcg@10": 0.0055041672786774265,
+      "recall@20": 0.019415079365079364,
+      "ndcg@20": 0.00736088496163187,
+      "effective_history_mean": 4.654155495978553,
+      "changed_history_targets": 0,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": 0.0,
+        "ci95_low": 0.0,
+        "ci95_high": 0.0,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "clothing",
+      "model": "qwen_semantic",
+      "seed": 42,
+      "history_cap": 1,
+      "n_users": 1000,
+      "n_targets": 1865,
+      "recall@10": 0.00780952380952381,
+      "ndcg@10": 0.003691423024782411,
+      "recall@20": 0.01455952380952381,
+      "ndcg@20": 0.005365517217023309,
+      "effective_history_mean": 1.0,
+      "changed_history_targets": 1594,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": 0.0006533513966035738,
+        "ci95_low": -0.001890858116522465,
+        "ci95_high": 0.0030120576008385467,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "clothing",
+      "model": "qwen_semantic",
+      "seed": 42,
+      "history_cap": 3,
+      "n_users": 1000,
+      "n_targets": 1865,
+      "recall@10": 0.007420634920634921,
+      "ndcg@10": 0.0030225654173837027,
+      "recall@20": 0.016176190476190476,
+      "ndcg@20": 0.005262212805518623,
+      "effective_history_mean": 2.5351206434316356,
+      "changed_history_targets": 952,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": -1.550621079513431e-05,
+        "ci95_low": -0.0011021522315426532,
+        "ci95_high": 0.0010161168308019345,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "clothing",
+      "model": "qwen_semantic",
+      "seed": 42,
+      "history_cap": 5,
+      "n_users": 1000,
+      "n_targets": 1865,
+      "recall@10": 0.007170634920634921,
+      "ndcg@10": 0.00308974307090791,
+      "recall@20": 0.013292857142857141,
+      "ndcg@20": 0.0046821569009463,
+      "effective_history_mean": 3.388739946380697,
+      "changed_history_targets": 469,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": 5.167144272907281e-05,
+        "ci95_low": -0.0001955759618333075,
+        "ci95_high": 0.0003121232641961857,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "clothing",
+      "model": "qwen_semantic",
+      "seed": 42,
+      "history_cap": 10,
+      "n_users": 1000,
+      "n_targets": 1865,
+      "recall@10": 0.007170634920634921,
+      "ndcg@10": 0.003088591102955129,
+      "recall@20": 0.01501904761904762,
+      "ndcg@20": 0.005120457547131448,
+      "effective_history_mean": 4.2171581769437,
+      "changed_history_targets": 161,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": 5.0519474776292074e-05,
+        "ci95_low": 0.0,
+        "ci95_high": 0.00012981394200788638,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "clothing",
+      "model": "qwen_semantic",
+      "seed": 42,
+      "history_cap": 20,
+      "n_users": 1000,
+      "n_targets": 1865,
+      "recall@10": 0.007170634920634921,
+      "ndcg@10": 0.003038071628178837,
+      "recall@20": 0.015376190476190476,
+      "ndcg@20": 0.005174603241785963,
+      "effective_history_mean": 4.654155495978553,
+      "changed_history_targets": 0,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": 0.0,
+        "ci95_low": 0.0,
+        "ci95_high": 0.0,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "clothing",
+      "model": "qwen_preference",
+      "seed": 42,
+      "history_cap": 1,
+      "n_users": 1000,
+      "n_targets": 1865,
+      "recall@10": 0.010226190476190476,
+      "ndcg@10": 0.005039666343667942,
+      "recall@20": 0.014826190476190475,
+      "ndcg@20": 0.006183617874136502,
+      "effective_history_mean": 1.0,
+      "changed_history_targets": 1594,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": -0.0003605681990403414,
+        "ci95_low": -0.0031749048861129912,
+        "ci95_high": 0.0023502915801254473,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "clothing",
+      "model": "qwen_preference",
+      "seed": 42,
+      "history_cap": 3,
+      "n_users": 1000,
+      "n_targets": 1865,
+      "recall@10": 0.009148412698412699,
+      "ndcg@10": 0.004729859034991629,
+      "recall@20": 0.0172484126984127,
+      "ndcg@20": 0.006758209519216329,
+      "effective_history_mean": 2.5351206434316356,
+      "changed_history_targets": 952,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": -0.000670375507716656,
+        "ci95_low": -0.0018786047602156702,
+        "ci95_high": 0.0003368024250600282,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "clothing",
+      "model": "qwen_preference",
+      "seed": 42,
+      "history_cap": 5,
+      "n_users": 1000,
+      "n_targets": 1865,
+      "recall@10": 0.013315079365079363,
+      "ndcg@10": 0.006113837533090948,
+      "recall@20": 0.02033174603174603,
+      "ndcg@20": 0.007865007570497752,
+      "effective_history_mean": 3.388739946380697,
+      "changed_history_targets": 469,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": 0.000713602990382663,
+        "ci95_low": -0.00011178131191130954,
+        "ci95_high": 0.0017257164346538053,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "clothing",
+      "model": "qwen_preference",
+      "seed": 42,
+      "history_cap": 10,
+      "n_users": 1000,
+      "n_targets": 1865,
+      "recall@10": 0.01148174603174603,
+      "ndcg@10": 0.005436366725403871,
+      "recall@20": 0.021665079365079363,
+      "ndcg@20": 0.007989863112292033,
+      "effective_history_mean": 4.2171581769437,
+      "changed_history_targets": 161,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": 3.613218269558755e-05,
+        "ci95_low": -1.786845654760455e-05,
+        "ci95_high": 0.0001351992329081695,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    },
+    {
+      "domain": "clothing",
+      "model": "qwen_preference",
+      "seed": 42,
+      "history_cap": 20,
+      "n_users": 1000,
+      "n_targets": 1865,
+      "recall@10": 0.011338888888888888,
+      "ndcg@10": 0.005400234542708285,
+      "recall@20": 0.021665079365079363,
+      "ndcg@20": 0.007997287886295126,
+      "effective_history_mean": 4.654155495978553,
+      "changed_history_targets": 0,
+      "paired_ndcg_delta_vs_cap20": {
+        "mean": 0.0,
+        "ci95_low": 0.0,
+        "ci95_high": 0.0,
+        "bootstrap_repeats": 1000,
+        "scope": "Paired user bootstrap conditional on the fixed seed42 checkpoint and selected cohort; not training-seed uncertainty."
+      }
+    }
+  ],
+  "popularity_cohorts": [
+    {
+      "domain": "baby",
+      "model": "qwen_frozen",
+      "seed": 42,
+      "bucket": "0",
+      "n_users": 173,
+      "n_targets": 361,
+      "recall@10": 0.0,
+      "ndcg@10": 0.0,
+      "recall@20": 0.0,
+      "ndcg@20": 0.0
+    },
+    {
+      "domain": "baby",
+      "model": "qwen_frozen",
+      "seed": 42,
+      "bucket": "1-5",
+      "n_users": 314,
+      "n_targets": 391,
+      "recall@10": 0.0,
+      "ndcg@10": 0.0,
+      "recall@20": 0.0,
+      "ndcg@20": 0.0
+    },
+    {
+      "domain": "baby",
+      "model": "qwen_frozen",
+      "seed": 42,
+      "bucket": "6-20",
+      "n_users": 430,
+      "n_targets": 608,
+      "recall@10": 0.0,
+      "ndcg@10": 0.0,
+      "recall@20": 0.0,
+      "ndcg@20": 0.0
+    },
+    {
+      "domain": "baby",
+      "model": "qwen_frozen",
+      "seed": 42,
+      "bucket": "21+",
+      "n_users": 626,
+      "n_targets": 1236,
+      "recall@10": 0.04842886302550838,
+      "ndcg@10": 0.023870641237182175,
+      "recall@20": 0.07576480805314671,
+      "ndcg@20": 0.03081377009448408
+    },
+    {
+      "domain": "baby",
+      "model": "qwen_semantic",
+      "seed": 42,
+      "bucket": "0",
+      "n_users": 173,
+      "n_targets": 361,
+      "recall@10": 0.0,
+      "ndcg@10": 0.0,
+      "recall@20": 0.0,
+      "ndcg@20": 0.0
+    },
+    {
+      "domain": "baby",
+      "model": "qwen_semantic",
+      "seed": 42,
+      "bucket": "1-5",
+      "n_users": 314,
+      "n_targets": 391,
+      "recall@10": 0.0,
+      "ndcg@10": 0.0,
+      "recall@20": 0.0,
+      "ndcg@20": 0.0
+    },
+    {
+      "domain": "baby",
+      "model": "qwen_semantic",
+      "seed": 42,
+      "bucket": "6-20",
+      "n_users": 430,
+      "n_targets": 608,
+      "recall@10": 0.0,
+      "ndcg@10": 0.0,
+      "recall@20": 0.0,
+      "ndcg@20": 0.0
+    },
+    {
+      "domain": "baby",
+      "model": "qwen_semantic",
+      "seed": 42,
+      "bucket": "21+",
+      "n_users": 626,
+      "n_targets": 1236,
+      "recall@10": 0.0350363228358436,
+      "ndcg@10": 0.01825754607169691,
+      "recall@20": 0.05959892743039707,
+      "ndcg@20": 0.024509579279210172
+    },
+    {
+      "domain": "baby",
+      "model": "qwen_preference",
+      "seed": 42,
+      "bucket": "0",
+      "n_users": 173,
+      "n_targets": 361,
+      "recall@10": 0.0,
+      "ndcg@10": 0.0,
+      "recall@20": 0.0,
+      "ndcg@20": 0.0
+    },
+    {
+      "domain": "baby",
+      "model": "qwen_preference",
+      "seed": 42,
+      "bucket": "1-5",
+      "n_users": 314,
+      "n_targets": 391,
+      "recall@10": 0.0,
+      "ndcg@10": 0.0,
+      "recall@20": 0.0,
+      "ndcg@20": 0.0
+    },
+    {
+      "domain": "baby",
+      "model": "qwen_preference",
+      "seed": 42,
+      "bucket": "6-20",
+      "n_users": 430,
+      "n_targets": 608,
+      "recall@10": 0.0,
+      "ndcg@10": 0.0,
+      "recall@20": 0.0,
+      "ndcg@20": 0.0
+    },
+    {
+      "domain": "baby",
+      "model": "qwen_preference",
+      "seed": 42,
+      "bucket": "21+",
+      "n_users": 626,
+      "n_targets": 1236,
+      "recall@10": 0.04849954358740301,
+      "ndcg@10": 0.025152470586057074,
+      "recall@20": 0.07095409249961965,
+      "ndcg@20": 0.03079727421211561
+    },
+    {
+      "domain": "sports",
+      "model": "qwen_frozen",
+      "seed": 42,
+      "bucket": "0",
+      "n_users": 147,
+      "n_targets": 214,
+      "recall@10": 0.0,
+      "ndcg@10": 0.0,
+      "recall@20": 0.0,
+      "ndcg@20": 0.0
+    },
+    {
+      "domain": "sports",
+      "model": "qwen_frozen",
+      "seed": 42,
+      "bucket": "1-5",
+      "n_users": 407,
+      "n_targets": 536,
+      "recall@10": 0.0,
+      "ndcg@10": 0.0,
+      "recall@20": 0.0,
+      "ndcg@20": 0.0
+    },
+    {
+      "domain": "sports",
+      "model": "qwen_frozen",
+      "seed": 42,
+      "bucket": "6-20",
+      "n_users": 530,
+      "n_targets": 806,
+      "recall@10": 0.0,
+      "ndcg@10": 0.0,
+      "recall@20": 0.001572327044025157,
+      "ndcg@20": 0.00041397917298416744
+    },
+    {
+      "domain": "sports",
+      "model": "qwen_frozen",
+      "seed": 42,
+      "bucket": "21+",
+      "n_users": 500,
+      "n_targets": 873,
+      "recall@10": 0.037399999999999996,
+      "ndcg@10": 0.0168218012588476,
+      "recall@20": 0.056753846153846155,
+      "ndcg@20": 0.02152553360877253
+    },
+    {
+      "domain": "sports",
+      "model": "qwen_semantic",
+      "seed": 42,
+      "bucket": "0",
+      "n_users": 147,
+      "n_targets": 214,
+      "recall@10": 0.0,
+      "ndcg@10": 0.0,
+      "recall@20": 0.0,
+      "ndcg@20": 0.0
+    },
+    {
+      "domain": "sports",
+      "model": "qwen_semantic",
+      "seed": 42,
+      "bucket": "1-5",
+      "n_users": 407,
+      "n_targets": 536,
+      "recall@10": 0.0,
+      "ndcg@10": 0.0,
+      "recall@20": 0.0,
+      "ndcg@20": 0.0
+    },
+    {
+      "domain": "sports",
+      "model": "qwen_semantic",
+      "seed": 42,
+      "bucket": "6-20",
+      "n_users": 530,
+      "n_targets": 806,
+      "recall@10": 0.0,
+      "ndcg@10": 0.0,
+      "recall@20": 0.00037735849056603777,
+      "ndcg@20": 8.59133013950766e-05
+    },
+    {
+      "domain": "sports",
+      "model": "qwen_semantic",
+      "seed": 42,
+      "bucket": "21+",
+      "n_users": 500,
+      "n_targets": 873,
+      "recall@10": 0.036720512820512814,
+      "ndcg@10": 0.016228890404820857,
+      "recall@20": 0.05204102564102564,
+      "ndcg@20": 0.019977329018390926
+    },
+    {
+      "domain": "sports",
+      "model": "qwen_preference",
+      "seed": 42,
+      "bucket": "0",
+      "n_users": 147,
+      "n_targets": 214,
+      "recall@10": 0.0,
+      "ndcg@10": 0.0,
+      "recall@20": 0.0,
+      "ndcg@20": 0.0
+    },
+    {
+      "domain": "sports",
+      "model": "qwen_preference",
+      "seed": 42,
+      "bucket": "1-5",
+      "n_users": 407,
+      "n_targets": 536,
+      "recall@10": 0.0,
+      "ndcg@10": 0.0,
+      "recall@20": 0.0,
+      "ndcg@20": 0.0
+    },
+    {
+      "domain": "sports",
+      "model": "qwen_preference",
+      "seed": 42,
+      "bucket": "6-20",
+      "n_users": 530,
+      "n_targets": 806,
+      "recall@10": 0.0009433962264150943,
+      "ndcg@10": 0.0002727026663376301,
+      "recall@20": 0.002830188679245283,
+      "ndcg@20": 0.0007343074627871131
+    },
+    {
+      "domain": "sports",
+      "model": "qwen_preference",
+      "seed": 42,
+      "bucket": "21+",
+      "n_users": 500,
+      "n_targets": 873,
+      "recall@10": 0.031966666666666664,
+      "ndcg@10": 0.015097778414045226,
+      "recall@20": 0.055353846153846156,
+      "ndcg@20": 0.021057121566345063
+    },
+    {
+      "domain": "clothing",
+      "model": "qwen_frozen",
+      "seed": 42,
+      "bucket": "0",
+      "n_users": 132,
+      "n_targets": 147,
+      "recall@10": 0.0,
+      "ndcg@10": 0.0,
+      "recall@20": 0.0,
+      "ndcg@20": 0.0
+    },
+    {
+      "domain": "clothing",
+      "model": "qwen_frozen",
+      "seed": 42,
+      "bucket": "1-5",
+      "n_users": 492,
+      "n_targets": 671,
+      "recall@10": 0.0,
+      "ndcg@10": 0.0,
+      "recall@20": 0.0020325203252032522,
+      "ndcg@20": 0.0005492645415189426
+    },
+    {
+      "domain": "clothing",
+      "model": "qwen_frozen",
+      "seed": 42,
+      "bucket": "6-20",
+      "n_users": 487,
+      "n_targets": 663,
+      "recall@10": 0.002053388090349076,
+      "ndcg@10": 0.0006477718209152542,
+      "recall@20": 0.002053388090349076,
+      "ndcg@20": 0.0006477718209152542
+    },
+    {
+      "domain": "clothing",
+      "model": "qwen_frozen",
+      "seed": 42,
+      "bucket": "21+",
+      "n_users": 311,
+      "n_targets": 384,
+      "recall@10": 0.05653804930332261,
+      "ndcg@10": 0.028298435274924306,
+      "recall@20": 0.0935155412647374,
+      "ndcg@20": 0.03750151104880553
+    },
+    {
+      "domain": "clothing",
+      "model": "qwen_semantic",
+      "seed": 42,
+      "bucket": "0",
+      "n_users": 132,
+      "n_targets": 147,
+      "recall@10": 0.0,
+      "ndcg@10": 0.0,
+      "recall@20": 0.0,
+      "ndcg@20": 0.0
+    },
+    {
+      "domain": "clothing",
+      "model": "qwen_semantic",
+      "seed": 42,
+      "bucket": "1-5",
+      "n_users": 492,
+      "n_targets": 671,
+      "recall@10": 0.0,
+      "ndcg@10": 0.0,
+      "recall@20": 0.0040650406504065045,
+      "ndcg@20": 0.001036688254055795
+    },
+    {
+      "domain": "clothing",
+      "model": "qwen_semantic",
+      "seed": 42,
+      "bucket": "6-20",
+      "n_users": 487,
+      "n_targets": 663,
+      "recall@10": 0.006160164271047228,
+      "ndcg@10": 0.0021735623637131264,
+      "recall@20": 0.007186858316221766,
+      "ndcg@20": 0.0024599514249565866
+    },
+    {
+      "domain": "clothing",
+      "model": "qwen_semantic",
+      "seed": 42,
+      "bucket": "21+",
+      "n_users": 311,
+      "n_targets": 384,
+      "recall@10": 0.03027867095391211,
+      "ndcg@10": 0.01301829989254842,
+      "recall@20": 0.06296891747052519,
+      "ndcg@20": 0.021403728715262176
+    },
+    {
+      "domain": "clothing",
+      "model": "qwen_preference",
+      "seed": 42,
+      "bucket": "0",
+      "n_users": 132,
+      "n_targets": 147,
+      "recall@10": 0.0,
+      "ndcg@10": 0.0,
+      "recall@20": 0.0,
+      "ndcg@20": 0.0
+    },
+    {
+      "domain": "clothing",
+      "model": "qwen_preference",
+      "seed": 42,
+      "bucket": "1-5",
+      "n_users": 492,
+      "n_targets": 671,
+      "recall@10": 0.0,
+      "ndcg@10": 0.0,
+      "recall@20": 0.0020325203252032522,
+      "ndcg@20": 0.0005669572066079875
+    },
+    {
+      "domain": "clothing",
+      "model": "qwen_preference",
+      "seed": 42,
+      "bucket": "6-20",
+      "n_users": 487,
+      "n_targets": 663,
+      "recall@10": 0.002053388090349076,
+      "ndcg@10": 0.0006844626967830253,
+      "recall@20": 0.00513347022587269,
+      "ndcg@20": 0.0014243798399002853
+    },
+    {
+      "domain": "clothing",
+      "model": "qwen_preference",
+      "seed": 42,
+      "bucket": "21+",
+      "n_users": 311,
+      "n_targets": 384,
+      "recall@10": 0.05332261521972133,
+      "ndcg@10": 0.027827581200203323,
+      "recall@20": 0.0935155412647374,
+      "ndcg@20": 0.03802529793311448
+    }
+  ],
+  "exposure": [
+    {
+      "domain": "baby",
+      "model": "qwen_frozen",
+      "seed": 42,
+      "recommendation_slots": 25960,
+      "covered_items": 72,
+      "catalog_items": 7037,
+      "coverage@10": 0.010231632798067358,
+      "gini": 0.9978248364959768,
+      "hhi": 0.062158440981859006,
+      "mean_training_positive_users": 264.3531972265023,
+      "top_1pct_exposure_share": 0.9999614791987675,
+      "popularity_exposure": [
+        {
+          "bucket": "0",
+          "catalog_items": 230,
+          "catalog_share": 0.03268438254938184,
+          "recommendation_slots": 0,
+          "exposure_share": 0.0
+        },
+        {
+          "bucket": "1-5",
+          "catalog_items": 2692,
+          "catalog_share": 0.3825493818388518,
+          "recommendation_slots": 7,
+          "exposure_share": 0.00026964560862865946
+        },
+        {
+          "bucket": "6-20",
+          "catalog_items": 2967,
+          "catalog_share": 0.42162853488702573,
+          "recommendation_slots": 248,
+          "exposure_share": 0.009553158705701078
+        },
+        {
+          "bucket": "21+",
+          "catalog_items": 1148,
+          "catalog_share": 0.16313770072474065,
+          "recommendation_slots": 25705,
+          "exposure_share": 0.9901771956856703
+        }
+      ],
+      "most_exposed_products": [
+        {
+          "item_id": "B0000DEW8N",
+          "title": "Fisher-Price Booster Seat, Blue/Green/Gray",
+          "recommendation_slots": 2497,
+          "training_positive_users": 384
+        },
+        {
+          "item_id": "B000IDSLOG",
+          "title": "Vulli Sophie the Giraffe Teether",
+          "recommendation_slots": 2483,
+          "training_positive_users": 547
+        },
+        {
+          "item_id": "B002C30S96",
+          "title": "Skip Hop Zoo Pack Little Kid Backpack, Dog",
+          "recommendation_slots": 2286,
+          "training_positive_users": 145
+        },
+        {
+          "item_id": "B000LXQVA4",
+          "title": "Fisher-Price Rainforest Jumperoo",
+          "recommendation_slots": 2095,
+          "training_positive_users": 321
+        },
+        {
+          "item_id": "B001DVRTEA",
+          "title": "Baby Buddy Secure-A-Toy, Navy/Red",
+          "recommendation_slots": 1962,
+          "training_positive_users": 232
+        }
+      ]
+    },
+    {
+      "domain": "baby",
+      "model": "qwen_semantic",
+      "seed": 42,
+      "recommendation_slots": 25960,
+      "covered_items": 84,
+      "catalog_items": 7037,
+      "coverage@10": 0.011936904931078584,
+      "gini": 0.997334691186559,
+      "hhi": 0.05643626795757845,
+      "mean_training_positive_users": 219.16182588597846,
+      "top_1pct_exposure_share": 0.9986132511556238,
+      "popularity_exposure": [
+        {
+          "bucket": "0",
+          "catalog_items": 230,
+          "catalog_share": 0.03268438254938184,
+          "recommendation_slots": 0,
+          "exposure_share": 0.0
+        },
+        {
+          "bucket": "1-5",
+          "catalog_items": 2692,
+          "catalog_share": 0.3825493818388518,
+          "recommendation_slots": 2237,
+          "exposure_share": 0.08617103235747303
+        },
+        {
+          "bucket": "6-20",
+          "catalog_items": 2967,
+          "catalog_share": 0.42162853488702573,
+          "recommendation_slots": 451,
+          "exposure_share": 0.017372881355932204
+        },
+        {
+          "bucket": "21+",
+          "catalog_items": 1148,
+          "catalog_share": 0.16313770072474065,
+          "recommendation_slots": 23272,
+          "exposure_share": 0.8964560862865948
+        }
+      ],
+      "most_exposed_products": [
+        {
+          "item_id": "B001DVRTEA",
+          "title": "Baby Buddy Secure-A-Toy, Navy/Red",
+          "recommendation_slots": 2396,
+          "training_positive_users": 232
+        },
+        {
+          "item_id": "B000IDSLOG",
+          "title": "Vulli Sophie the Giraffe Teether",
+          "recommendation_slots": 2323,
+          "training_positive_users": 547
+        },
+        {
+          "item_id": "B0038JE5QA",
+          "title": "OXO Tot Baby Food Masher, Green",
+          "recommendation_slots": 2196,
+          "training_positive_users": 3
+        },
+        {
+          "item_id": "B0000DEW8N",
+          "title": "Fisher-Price Booster Seat, Blue/Green/Gray",
+          "recommendation_slots": 2124,
+          "training_positive_users": 384
+        },
+        {
+          "item_id": "B000LXQVA4",
+          "title": "Fisher-Price Rainforest Jumperoo",
+          "recommendation_slots": 1953,
+          "training_positive_users": 321
+        }
+      ]
+    },
+    {
+      "domain": "baby",
+      "model": "qwen_preference",
+      "seed": 42,
+      "recommendation_slots": 25960,
+      "covered_items": 87,
+      "catalog_items": 7037,
+      "coverage@10": 0.012363222964331391,
+      "gini": 0.9971001943721203,
+      "hhi": 0.049824261457119046,
+      "mean_training_positive_users": 256.22226502311247,
+      "top_1pct_exposure_share": 0.998112480739599,
+      "popularity_exposure": [
+        {
+          "bucket": "0",
+          "catalog_items": 230,
+          "catalog_share": 0.03268438254938184,
+          "recommendation_slots": 0,
+          "exposure_share": 0.0
+        },
+        {
+          "bucket": "1-5",
+          "catalog_items": 2692,
+          "catalog_share": 0.3825493818388518,
+          "recommendation_slots": 0,
+          "exposure_share": 0.0
+        },
+        {
+          "bucket": "6-20",
+          "catalog_items": 2967,
+          "catalog_share": 0.42162853488702573,
+          "recommendation_slots": 166,
+          "exposure_share": 0.006394453004622496
+        },
+        {
+          "bucket": "21+",
+          "catalog_items": 1148,
+          "catalog_share": 0.16313770072474065,
+          "recommendation_slots": 25794,
+          "exposure_share": 0.9936055469953775
+        }
+      ],
+      "most_exposed_products": [
+        {
+          "item_id": "B0000DEW8N",
+          "title": "Fisher-Price Booster Seat, Blue/Green/Gray",
+          "recommendation_slots": 2511,
+          "training_positive_users": 384
+        },
+        {
+          "item_id": "B001DVRTEA",
+          "title": "Baby Buddy Secure-A-Toy, Navy/Red",
+          "recommendation_slots": 2131,
+          "training_positive_users": 232
+        },
+        {
+          "item_id": "B000LXQVA4",
+          "title": "Fisher-Price Rainforest Jumperoo",
+          "recommendation_slots": 2097,
+          "training_positive_users": 321
+        },
+        {
+          "item_id": "B000YDDF6O",
+          "title": "Baby Einstein Take Along Tunes",
+          "recommendation_slots": 1585,
+          "training_positive_users": 439
+        },
+        {
+          "item_id": "B000IDSLOG",
+          "title": "Vulli Sophie the Giraffe Teether",
+          "recommendation_slots": 1563,
+          "training_positive_users": 547
+        }
+      ]
+    },
+    {
+      "domain": "sports",
+      "model": "qwen_frozen",
+      "seed": 42,
+      "recommendation_slots": 24290,
+      "covered_items": 269,
+      "catalog_items": 18273,
+      "coverage@10": 0.014721173315821156,
+      "gini": 0.9962604176530616,
+      "hhi": 0.016843971084268737,
+      "mean_training_positive_users": 203.39847673939894,
+      "top_1pct_exposure_share": 0.9910662824207492,
+      "popularity_exposure": [
+        {
+          "bucket": "0",
+          "catalog_items": 341,
+          "catalog_share": 0.018661413013736115,
+          "recommendation_slots": 14,
+          "exposure_share": 0.0005763688760806917
+        },
+        {
+          "bucket": "1-5",
+          "catalog_items": 7950,
+          "catalog_share": 0.4350681333114431,
+          "recommendation_slots": 395,
+          "exposure_share": 0.01626183614656237
+        },
+        {
+          "bucket": "6-20",
+          "catalog_items": 7967,
+          "catalog_share": 0.4359984676845619,
+          "recommendation_slots": 1000,
+          "exposure_share": 0.04116920543433512
+        },
+        {
+          "bucket": "21+",
+          "catalog_items": 2015,
+          "catalog_share": 0.11027198599025885,
+          "recommendation_slots": 22881,
+          "exposure_share": 0.9419925895430218
+        }
+      ],
+      "most_exposed_products": [
+        {
+          "item_id": "B001T7QJ9O",
+          "title": "Howard Leight R-01526 Impact Sport Electronic Earmuff",
+          "recommendation_slots": 1165,
+          "training_positive_users": 571
+        },
+        {
+          "item_id": "B000S5ODN2",
+          "title": "Rothco 550lb. Type III Nylon Paracord",
+          "recommendation_slots": 969,
+          "training_positive_users": 537
+        },
+        {
+          "item_id": "B002GO04MC",
+          "title": "UTG Model 4/15 4 Prong A2 Front Sight Tool",
+          "recommendation_slots": 910,
+          "training_positive_users": 175
+        },
+        {
+          "item_id": "B001HBHNHE",
+          "title": "Butler Creek Lula Universal Pistol Magazine Loader",
+          "recommendation_slots": 813,
+          "training_positive_users": 821
+        },
+        {
+          "item_id": "B0000C50K3",
+          "title": "Hoppe's BoreSnake Rifle Bore Cleaner (Choose Your Caliber)",
+          "recommendation_slots": 738,
+          "training_positive_users": 320
+        }
+      ]
+    },
+    {
+      "domain": "sports",
+      "model": "qwen_semantic",
+      "seed": 42,
+      "recommendation_slots": 24290,
+      "covered_items": 295,
+      "catalog_items": 18273,
+      "coverage@10": 0.016144037651179336,
+      "gini": 0.9958209550286867,
+      "hhi": 0.014553231070767135,
+      "mean_training_positive_users": 168.69032523672294,
+      "top_1pct_exposure_share": 0.9860436393577604,
+      "popularity_exposure": [
+        {
+          "bucket": "0",
+          "catalog_items": 341,
+          "catalog_share": 0.018661413013736115,
+          "recommendation_slots": 277,
+          "exposure_share": 0.011403869905310827
+        },
+        {
+          "bucket": "1-5",
+          "catalog_items": 7950,
+          "catalog_share": 0.4350681333114431,
+          "recommendation_slots": 408,
+          "exposure_share": 0.01679703581720873
+        },
+        {
+          "bucket": "6-20",
+          "catalog_items": 7967,
+          "catalog_share": 0.4359984676845619,
+          "recommendation_slots": 2193,
+          "exposure_share": 0.09028406751749692
+        },
+        {
+          "bucket": "21+",
+          "catalog_items": 2015,
+          "catalog_share": 0.11027198599025885,
+          "recommendation_slots": 21412,
+          "exposure_share": 0.8815150267599835
+        }
+      ],
+      "most_exposed_products": [
+        {
+          "item_id": "B000S5ODN2",
+          "title": "Rothco 550lb. Type III Nylon Paracord",
+          "recommendation_slots": 870,
+          "training_positive_users": 537
+        },
+        {
+          "item_id": "B001HBHNHE",
+          "title": "Butler Creek Lula Universal Pistol Magazine Loader",
+          "recommendation_slots": 828,
+          "training_positive_users": 821
+        },
+        {
+          "item_id": "B002ZYRV2E",
+          "title": "OFF SET TACTICAL Weapon Mount For Olight M20/M21/M30, Fenix TK11, TK12, TA21, JETBeam M1X/M2S/JET-III M/RRT-1/RRT-2 and many more 1\" Diameter size Flashlight",
+          "recommendation_slots": 789,
+          "training_positive_users": 326
+        },
+        {
+          "item_id": "B001T7QJ9O",
+          "title": "Howard Leight R-01526 Impact Sport Electronic Earmuff",
+          "recommendation_slots": 748,
+          "training_positive_users": 571
+        },
+        {
+          "item_id": "B0035KU9SK",
+          "title": "UTG Tactical OP Bipod - SWAT/Combat Profile Adjustable Height",
+          "recommendation_slots": 698,
+          "training_positive_users": 163
+        }
+      ]
+    },
+    {
+      "domain": "sports",
+      "model": "qwen_preference",
+      "seed": 42,
+      "recommendation_slots": 24290,
+      "covered_items": 294,
+      "catalog_items": 18273,
+      "coverage@10": 0.016089312099819404,
+      "gini": 0.9962184486299765,
+      "hhi": 0.016956933011143482,
+      "mean_training_positive_users": 193.6532317826266,
+      "top_1pct_exposure_share": 0.9882256072457801,
+      "popularity_exposure": [
+        {
+          "bucket": "0",
+          "catalog_items": 341,
+          "catalog_share": 0.018661413013736115,
+          "recommendation_slots": 6,
+          "exposure_share": 0.0002470152326060107
+        },
+        {
+          "bucket": "1-5",
+          "catalog_items": 7950,
+          "catalog_share": 0.4350681333114431,
+          "recommendation_slots": 531,
+          "exposure_share": 0.021860848085631948
+        },
+        {
+          "bucket": "6-20",
+          "catalog_items": 7967,
+          "catalog_share": 0.4359984676845619,
+          "recommendation_slots": 1508,
+          "exposure_share": 0.06208316179497736
+        },
+        {
+          "bucket": "21+",
+          "catalog_items": 2015,
+          "catalog_share": 0.11027198599025885,
+          "recommendation_slots": 22245,
+          "exposure_share": 0.9158089748867847
+        }
+      ],
+      "most_exposed_products": [
+        {
+          "item_id": "B001T7QJ9O",
+          "title": "Howard Leight R-01526 Impact Sport Electronic Earmuff",
+          "recommendation_slots": 1115,
+          "training_positive_users": 571
+        },
+        {
+          "item_id": "B000S5ODN2",
+          "title": "Rothco 550lb. Type III Nylon Paracord",
+          "recommendation_slots": 1005,
+          "training_positive_users": 537
+        },
+        {
+          "item_id": "B002GO04MC",
+          "title": "UTG Model 4/15 4 Prong A2 Front Sight Tool",
+          "recommendation_slots": 817,
+          "training_positive_users": 175
+        },
+        {
+          "item_id": "B001HBHNHE",
+          "title": "Butler Creek Lula Universal Pistol Magazine Loader",
+          "recommendation_slots": 779,
+          "training_positive_users": 821
+        },
+        {
+          "item_id": "B002E6X44C",
+          "title": "Tapco Intrafuse AR Stock Spanner Wrench TOOL0904",
+          "recommendation_slots": 778,
+          "training_positive_users": 159
+        }
+      ]
+    },
+    {
+      "domain": "clothing",
+      "model": "qwen_frozen",
+      "seed": 42,
+      "recommendation_slots": 18650,
+      "covered_items": 502,
+      "catalog_items": 22491,
+      "coverage@10": 0.022320039126761816,
+      "gini": 0.9945563211879926,
+      "hhi": 0.010419757203746164,
+      "mean_training_positive_users": 69.11597855227882,
+      "top_1pct_exposure_share": 0.9461662198391421,
+      "popularity_exposure": [
+        {
+          "bucket": "0",
+          "catalog_items": 480,
+          "catalog_share": 0.021341870081365878,
+          "recommendation_slots": 198,
+          "exposure_share": 0.010616621983914208
+        },
+        {
+          "bucket": "1-5",
+          "catalog_items": 11850,
+          "catalog_share": 0.5268774176337202,
+          "recommendation_slots": 1027,
+          "exposure_share": 0.055067024128686325
+        },
+        {
+          "bucket": "6-20",
+          "catalog_items": 8948,
+          "catalog_share": 0.3978480281001289,
+          "recommendation_slots": 3392,
+          "exposure_share": 0.18187667560321716
+        },
+        {
+          "bucket": "21+",
+          "catalog_items": 1213,
+          "catalog_share": 0.05393268418478502,
+          "recommendation_slots": 14033,
+          "exposure_share": 0.7524396782841823
+        }
+      ],
+      "most_exposed_products": [
+        {
+          "item_id": "B003DNR4XC",
+          "title": "BEARPAW Women's Emma Tall 612-W Boot",
+          "recommendation_slots": 562,
+          "training_positive_users": 79
+        },
+        {
+          "item_id": "B005LERHD8",
+          "title": "Vintage, Retro Colorful Crystal Owl Pendant and Long Chain Necklace with Antiqued Bronze/Brass Finish",
+          "recommendation_slots": 513,
+          "training_positive_users": 308
+        },
+        {
+          "item_id": "B0013KDS96",
+          "title": "eBags Packing Cubes - 3pc Set",
+          "recommendation_slots": 455,
+          "training_positive_users": 99
+        },
+        {
+          "item_id": "B0007YR8WW",
+          "title": "Playtex Women's 18-Hour Original Comfort-Strap Bra #4693",
+          "recommendation_slots": 417,
+          "training_positive_users": 110
+        },
+        {
+          "item_id": "B003DNR2HK",
+          "title": "BEARPAW Women's Emma Short Boot",
+          "recommendation_slots": 410,
+          "training_positive_users": 113
+        }
+      ]
+    },
+    {
+      "domain": "clothing",
+      "model": "qwen_semantic",
+      "seed": 42,
+      "recommendation_slots": 18650,
+      "covered_items": 598,
+      "catalog_items": 22491,
+      "coverage@10": 0.026588413143034992,
+      "gini": 0.9935622506375206,
+      "hhi": 0.01043547786586549,
+      "mean_training_positive_users": 52.057211796246655,
+      "top_1pct_exposure_share": 0.9203217158176945,
+      "popularity_exposure": [
+        {
+          "bucket": "0",
+          "catalog_items": 480,
+          "catalog_share": 0.021341870081365878,
+          "recommendation_slots": 65,
+          "exposure_share": 0.003485254691689008
+        },
+        {
+          "bucket": "1-5",
+          "catalog_items": 11850,
+          "catalog_share": 0.5268774176337202,
+          "recommendation_slots": 2997,
+          "exposure_share": 0.1606970509383378
+        },
+        {
+          "bucket": "6-20",
+          "catalog_items": 8948,
+          "catalog_share": 0.3978480281001289,
+          "recommendation_slots": 5175,
+          "exposure_share": 0.2774798927613941
+        },
+        {
+          "bucket": "21+",
+          "catalog_items": 1213,
+          "catalog_share": 0.05393268418478502,
+          "recommendation_slots": 10413,
+          "exposure_share": 0.558337801608579
+        }
+      ],
+      "most_exposed_products": [
+        {
+          "item_id": "B007OUFMAW",
+          "title": "Lee Women's Classic Fit Straight Leg Jackie O Pant",
+          "recommendation_slots": 749,
+          "training_positive_users": 14
+        },
+        {
+          "item_id": "B003DNR4XC",
+          "title": "BEARPAW Women's Emma Tall 612-W Boot",
+          "recommendation_slots": 576,
+          "training_positive_users": 79
+        },
+        {
+          "item_id": "B005GYGD7O",
+          "title": "Spalding Women's Capri Legging",
+          "recommendation_slots": 471,
+          "training_positive_users": 151
+        },
+        {
+          "item_id": "B007WNWEFC",
+          "title": "Vintage Steampunk Nautical Style Antiqued Bronze Octopus Necklace 28 inch Long Chain",
+          "recommendation_slots": 434,
+          "training_positive_users": 140
+        },
+        {
+          "item_id": "B0013KDS96",
+          "title": "eBags Packing Cubes - 3pc Set",
+          "recommendation_slots": 415,
+          "training_positive_users": 99
+        }
+      ]
+    },
+    {
+      "domain": "clothing",
+      "model": "qwen_preference",
+      "seed": 42,
+      "recommendation_slots": 18650,
+      "covered_items": 495,
+      "catalog_items": 22491,
+      "coverage@10": 0.022008803521408563,
+      "gini": 0.9945579900116139,
+      "hhi": 0.010536218904757456,
+      "mean_training_positive_users": 71.07528150134047,
+      "top_1pct_exposure_share": 0.9468096514745308,
+      "popularity_exposure": [
+        {
+          "bucket": "0",
+          "catalog_items": 480,
+          "catalog_share": 0.021341870081365878,
+          "recommendation_slots": 220,
+          "exposure_share": 0.011796246648793566
+        },
+        {
+          "bucket": "1-5",
+          "catalog_items": 11850,
+          "catalog_share": 0.5268774176337202,
+          "recommendation_slots": 979,
+          "exposure_share": 0.052493297587131366
+        },
+        {
+          "bucket": "6-20",
+          "catalog_items": 8948,
+          "catalog_share": 0.3978480281001289,
+          "recommendation_slots": 2899,
+          "exposure_share": 0.15544235924932975
+        },
+        {
+          "bucket": "21+",
+          "catalog_items": 1213,
+          "catalog_share": 0.05393268418478502,
+          "recommendation_slots": 14552,
+          "exposure_share": 0.7802680965147453
+        }
+      ],
+      "most_exposed_products": [
+        {
+          "item_id": "B003DNR4XC",
+          "title": "BEARPAW Women's Emma Tall 612-W Boot",
+          "recommendation_slots": 588,
+          "training_positive_users": 79
+        },
+        {
+          "item_id": "B005LERHD8",
+          "title": "Vintage, Retro Colorful Crystal Owl Pendant and Long Chain Necklace with Antiqued Bronze/Brass Finish",
+          "recommendation_slots": 515,
+          "training_positive_users": 308
+        },
+        {
+          "item_id": "B0013KDS96",
+          "title": "eBags Packing Cubes - 3pc Set",
+          "recommendation_slots": 455,
+          "training_positive_users": 99
+        },
+        {
+          "item_id": "B007WA3K4Y",
+          "title": "Allegra K Women's Self Tie Knot Stand Collar Striped Autumn Shirt",
+          "recommendation_slots": 409,
+          "training_positive_users": 113
+        },
+        {
+          "item_id": "B0007YR8WW",
+          "title": "Playtex Women's 18-Hour Original Comfort-Strap Bra #4693",
+          "recommendation_slots": 396,
+          "training_positive_users": 110
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "inputs": [
+      {
+        "path": "data/processed/baby/items.jsonl",
+        "bytes": 9952909,
+        "sha256": "6883d8355ea9e91a86d65be0228a718d9d2bb19f0e767f85fa1357ad220949eb"
+      },
+      {
+        "path": "data/processed/baby/events.jsonl",
+        "bytes": 17556130,
+        "sha256": "daa3a62f47b49cf3b2bc9b53baa64fb04e7d34ebb94718d67228e3af868a0842"
+      },
+      {
+        "path": "data/processed/baby/audit.json",
+        "bytes": 2678,
+        "sha256": "8e2745f6963c1c677ad2caec47cd8e0c54a056e97fb109da914633e3b702ce8e"
+      },
+      {
+        "path": "artifacts/qwen/baby/qwen_frozen/seed42/serving.npz",
+        "bytes": 6713835,
+        "sha256": "45e4abb4ed5128424fbe181d6e3c13dffc937dd645ddb5e68aaa86fbf406fbe6"
+      },
+      {
+        "path": "artifacts/qwen/baby/qwen_frozen/seed42/models/qwen_frozen.json",
+        "bytes": 184732,
+        "sha256": "5cb995e848f7ad75c8e194386038c107e38f5a1b7916923ed4f85225a20d9c95"
+      },
+      {
+        "path": "artifacts/qwen/baby/qwen_frozen/seed42/models/qwen_frozen.pt",
+        "bytes": 1979151,
+        "sha256": "23447e52599a62af6cfdb642ff18ae235914d9209579f7a0bb216624d0eb53b9"
+      },
+      {
+        "path": "artifacts/qwen/baby/qwen_semantic/seed42/serving.npz",
+        "bytes": 6717830,
+        "sha256": "5cf62fa9a7aadbc1a3d80f95c81a7954f04f0db0a6cf7e4dd890b70e02c2e3c4"
+      },
+      {
+        "path": "artifacts/qwen/baby/qwen_semantic/seed42/models/qwen_semantic.json",
+        "bytes": 184940,
+        "sha256": "f316232d6efac79b3d235a57ffaed7681f6151669968d9296c6ac4415d49e9c9"
+      },
+      {
+        "path": "artifacts/qwen/baby/qwen_semantic/seed42/models/qwen_semantic.pt",
+        "bytes": 1979151,
+        "sha256": "f5e7f4b1e76940a7c6cb361c1c3e3cadb43f478d38508e3d6b40609df2607f51"
+      },
+      {
+        "path": "artifacts/qwen/baby/qwen_preference/seed42/serving.npz",
+        "bytes": 6717805,
+        "sha256": "0bd432fe912b1230b819ba9af44d99c86d1b9bae032a49472d45e78fbba919af"
+      },
+      {
+        "path": "artifacts/qwen/baby/qwen_preference/seed42/models/qwen_preference.json",
+        "bytes": 184944,
+        "sha256": "0eaa03927447019d88f7a527939d416d49cdc12b0bb7b8563f99a1e285525a69"
+      },
+      {
+        "path": "artifacts/qwen/baby/qwen_preference/seed42/models/qwen_preference.pt",
+        "bytes": 1979151,
+        "sha256": "b04550ead31901746dbcd2b8f83c0f9cf515ca4ec69d1e342d5434ccc6b3596e"
+      },
+      {
+        "path": "data/processed/sports/items.jsonl",
+        "bytes": 26990390,
+        "sha256": "6c1126ce1c5a8e8a6494f68163c0b2883ad8868b7d886ef9adb962c7b7fa3610"
+      },
+      {
+        "path": "data/processed/sports/events.jsonl",
+        "bytes": 32763256,
+        "sha256": "1ac920a560c56607d7535189bf6e921209200a55fe746e6473197d01583045c3"
+      },
+      {
+        "path": "data/processed/sports/audit.json",
+        "bytes": 2717,
+        "sha256": "1b07538809b250494c3aedb61fbf922f32c79b015aaf2cfc7f9f9ea5afb0f997"
+      },
+      {
+        "path": "artifacts/qwen/sports/qwen_frozen/seed42/serving.npz",
+        "bytes": 17434647,
+        "sha256": "a2ac2121f77d424cf8f753517eb02eef7852f30597f01da5179618635d69c224"
+      },
+      {
+        "path": "artifacts/qwen/sports/qwen_frozen/seed42/models/qwen_frozen.json",
+        "bytes": 469062,
+        "sha256": "d07322a325d6ff91e5330110a921cf71687dacb61ba2b3545cadaaafbcc03e2d"
+      },
+      {
+        "path": "artifacts/qwen/sports/qwen_frozen/seed42/models/qwen_frozen.pt",
+        "bytes": 1979151,
+        "sha256": "dfecae1400da197179c3156cf55f27923a99c1675136d3d967d32f6f0e9c2801"
+      },
+      {
+        "path": "artifacts/qwen/sports/qwen_semantic/seed42/serving.npz",
+        "bytes": 17410555,
+        "sha256": "9903523fa7dbd590b901c078ed1fc4673955b31f63f139291d767e7e4a6a0c44"
+      },
+      {
+        "path": "artifacts/qwen/sports/qwen_semantic/seed42/models/qwen_semantic.json",
+        "bytes": 469270,
+        "sha256": "d51cfb94101e66831bfd15dfe442346ccde32c8ec54b48d14b75884a75b8c5c0"
+      },
+      {
+        "path": "artifacts/qwen/sports/qwen_semantic/seed42/models/qwen_semantic.pt",
+        "bytes": 1979151,
+        "sha256": "b7f4e1145ec6719e1a91216472017534a18717f6ee8475b101d6facc3a0e0de7"
+      },
+      {
+        "path": "artifacts/qwen/sports/qwen_preference/seed42/serving.npz",
+        "bytes": 17424499,
+        "sha256": "7a3c34f7a1e81405566ec018d79e9de20cc4b564a732f5ab9e23606853a5f2ce"
+      },
+      {
+        "path": "artifacts/qwen/sports/qwen_preference/seed42/models/qwen_preference.json",
+        "bytes": 469274,
+        "sha256": "69598da2c60997ff15dbde63f94e4c3596412e10a1a33c9dd4a3767c916b2525"
+      },
+      {
+        "path": "artifacts/qwen/sports/qwen_preference/seed42/models/qwen_preference.pt",
+        "bytes": 1979151,
+        "sha256": "b558f5a025c168f8b27bf88326a1158c1c7289d3c39caeeaba0c4decc17df3cb"
+      },
+      {
+        "path": "data/processed/clothing/items.jsonl",
+        "bytes": 12987982,
+        "sha256": "fbd17c247b49db3678fff7100a903dcb969c5aea777fec516729fd0afc85c0bb"
+      },
+      {
+        "path": "data/processed/clothing/events.jsonl",
+        "bytes": 28931290,
+        "sha256": "8e0962d3c81323d812680e9d1b5357d73d7ae39e0cc67b1a30e2a88b15393aa7"
+      },
+      {
+        "path": "data/processed/clothing/audit.json",
+        "bytes": 2732,
+        "sha256": "4e2b5c40d95c0d0afe512772ac44756281693c64f87482f6deba66cd13eb18f2"
+      },
+      {
+        "path": "artifacts/qwen/clothing/qwen_frozen/seed42/serving.npz",
+        "bytes": 21373958,
+        "sha256": "afd38486b2d05039577af0be7f04236d4afa6c50ea92074df8ae32e41c5df564"
+      },
+      {
+        "path": "artifacts/qwen/clothing/qwen_frozen/seed42/models/qwen_frozen.json",
+        "bytes": 574015,
+        "sha256": "7969bd368c28a4af88f55e149002ceed01937c8cbeff897b2f4eba6c4fe5aad4"
+      },
+      {
+        "path": "artifacts/qwen/clothing/qwen_frozen/seed42/models/qwen_frozen.pt",
+        "bytes": 1979151,
+        "sha256": "39ba1ad5370e64fbf0b859ec9b7f7bfb8eefb24bb06294fc70fef7bba4a8412a"
+      },
+      {
+        "path": "artifacts/qwen/clothing/qwen_semantic/seed42/serving.npz",
+        "bytes": 21347056,
+        "sha256": "e98f1a4ba5405393ecfa0a02ccf71cadd207f36a3021b94d62dd6b901db0d74e"
+      },
+      {
+        "path": "artifacts/qwen/clothing/qwen_semantic/seed42/models/qwen_semantic.json",
+        "bytes": 574223,
+        "sha256": "1e0e9a450c89bcfadbc0838a0f7327131630df84d0c4fbe9ff45f7785ee68893"
+      },
+      {
+        "path": "artifacts/qwen/clothing/qwen_semantic/seed42/models/qwen_semantic.pt",
+        "bytes": 1979151,
+        "sha256": "bc3280d6d70a4d4d3197e12e644e1e4d5fdb8042c7cfe3088ce3831a41cb578b"
+      },
+      {
+        "path": "artifacts/qwen/clothing/qwen_preference/seed42/serving.npz",
+        "bytes": 21369412,
+        "sha256": "daa6a8924466ccd84a49e8018cbc775b2400de72972a9aed4bf90cf656c12b2c"
+      },
+      {
+        "path": "artifacts/qwen/clothing/qwen_preference/seed42/models/qwen_preference.json",
+        "bytes": 574227,
+        "sha256": "ad6038b98b3bd20df7fb0724a43c2f45728f311793cfced3780cc1590ff3e830"
+      },
+      {
+        "path": "artifacts/qwen/clothing/qwen_preference/seed42/models/qwen_preference.pt",
+        "bytes": 1979151,
+        "sha256": "eb85e9bdc2dea5571735cdf963cba89b710e4606ee287db93e23b78bf8f9d173"
+      }
+    ],
+    "diagnostic_code_sha256": "c5d154f6c355c1a124171a5b01588213c541453d6a7160728825236a2ea12712"
+  },
+  "limitations": [
+    "One predeclared seed42 checkpoint per objective/domain and at most1000 test users per domain by default; separate from the original27 full-test records.",
+    "Historical rating>=4 events are positive feedback, not natural-language query relevance or explicit negative judgments.",
+    "History truncation changes model input at inference; models are not retrained for each cap. The mean-pooling head has no positional history model.",
+    "Popularity/coverage/exposure concentration describe this fixed cohort and catalog; coverage is not satisfaction, and low-interaction is not strict cold start.",
+    "Bootstrap intervals condition on selected checkpoints/users and do not measure training-seed uncertainty or establish a general fine-tuning gain."
+  ],
+  "execution": {
+    "elapsed_seconds": 15.659529708093032,
+    "python": "3.12.14",
+    "torch": "2.14.1",
+    "platform": "Darwin",
+    "architecture": "arm64",
+    "torch_threads": 4
+  }
+}

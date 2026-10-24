@@ -1,0 +1,325 @@
+{
+  "schema_version": 1,
+  "benchmark_id": "esci_title_reranking_v1",
+  "complete": true,
+  "diagnostic": false,
+  "protocol": {
+    "schema_version": 1,
+    "benchmark_id": "esci_title_reranking_v1",
+    "dataset": "Amazon Shopping Queries / ESCI Task 1, reduced version",
+    "source_repository": "https://github.com/amazon-science/esci-data",
+    "source_commit": "7916cdf6ab75a462e77f20ab40428a10923998d5",
+    "locale": "us",
+    "small_version": 1,
+    "test_queries": 500,
+    "tfidf_train_queries": 500,
+    "selection": "Sort eligible query IDs by SHA256(shoplens-esci-v1|42|split|query_id), take first 500, independent of labels and text.",
+    "seed": 42,
+    "candidate_min": 2,
+    "candidate_max": 40,
+    "candidate_policy": "Complete official query candidate list, without pruning, reretrieval, or adding unjudged items.",
+    "product_fields": [
+      "product_title"
+    ],
+    "images_used": false,
+    "models": [
+      "tfidf",
+      "qwen_frozen",
+      "qwen_semantic",
+      "qwen_preference"
+    ],
+    "adapter_domain": "clothing",
+    "adapter_seed": 42,
+    "adapter_selection": "Clothing seed42 selected exports fixed before ESCI test labels are read; no best-domain selection.",
+    "dense_score": "Cosine of matching base/LoRA query and title embeddings, without recommendation heads or image signals.",
+    "query_instruction": "Given a shopping request, retrieve product descriptions that match the user's needs.",
+    "document_instruction": null,
+    "encoding": {
+      "max_length": 256,
+      "padding_side": "left",
+      "pooling": "last valid token",
+      "normalization": "L2"
+    },
+    "tfidf": {
+      "ngram_range": [
+        1,
+        2
+      ],
+      "lowercase": true,
+      "sublinear_tf": true,
+      "max_features": 100000,
+      "norm": "l2",
+      "fit": "Distinct candidate titles of the preselected 500 official training queries only."
+    },
+    "configuration_selection": "Fixed settings, no ESCI tuning or ESCI fine-tuning. No development subset required.",
+    "primary_metric": "ndcg@10",
+    "secondary_metrics": [
+      "ndcg@all",
+      "mrr_exact@10",
+      "recall_exact@10"
+    ],
+    "gains": {
+      "E": 1.0,
+      "S": 0.1,
+      "C": 0.01,
+      "I": 0.0
+    },
+    "dcg": "sum(gain / log2(rank+1)), using linear gains, not 2**gain-1",
+    "gain_mapping_source": "https://github.com/amazon-science/esci-data/blob/7916cdf6ab75a462e77f20ab40428a10923998d5/ranking/train.py#L45-L50",
+    "gain_mapping_discrepancy": "prepare_trec_eval_files.py maps S to qrel 2 and C to 3, then declares qrel gains 0.01 and 0.1 respectively. Report that reversed S/C mapping as a separate sensitivity.",
+    "sensitivity_gains": {
+      "E": 1.0,
+      "S": 0.01,
+      "C": 0.1,
+      "I": 0.0
+    },
+    "ties": "Descending score, ascending product_id",
+    "aggregation": "Unweighted arithmetic mean over the 500 selected test queries",
+    "zero_ideal_gain": "NDCG=0, retained and counted",
+    "no_exact_items": "Exact MRR and recall=0, retained and counted",
+    "scope": "A deterministic 500-query labelled candidate-list transfer benchmark, not full-catalogue retrieval or a replication of the published ESCI baseline."
+  },
+  "protocol_sha256": "44d4beb311182eda1d655cc3f3da68b4d3446e4c9c9561f4680770634a36dd54",
+  "source_provenance": {
+    "repository": "https://github.com/amazon-science/esci-data",
+    "commit": "7916cdf6ab75a462e77f20ab40428a10923998d5",
+    "examples": {
+      "name": "shopping_queries_dataset_examples.parquet",
+      "bytes": 51286808,
+      "sha256": "4a735b693b4a424a6fc67f5be6e4c811495c488bbf66d02a602d308b2744263a",
+      "full_file_sha256_verified": true,
+      "bytes_downloaded_this_prepare": 0,
+      "bytes_downloaded_cumulative": 51286808
+    },
+    "products": {
+      "name": "shopping_queries_dataset_products.parquet",
+      "bytes": 1108857465,
+      "sha256": "25124442d064d64b26f74082d6fa09438d679efc0c183cf28d19064a2b65a265",
+      "full_file_sha256_verified": false,
+      "verification_note": "Immutable pinned upstream LFS SHA256 recorded, but only required Parquet byte ranges read. Actual extracted titles and every cached range have their own SHA256.",
+      "columns_read": [
+        "product_id",
+        "product_locale",
+        "product_title"
+      ],
+      "range_network_bytes_this_prepare": 0,
+      "unique_cached_ranges": 4,
+      "unique_cached_range_bytes": 125963398,
+      "extracted_product_count": 18976,
+      "extracted_products_sha256": "db9084eafede20d9c43d250572385442dfa350eb4084dddb941bb227017d11f5",
+      "range_network_bytes_cumulative": 125963398
+    },
+    "test_inputs_sha256": "d2396258009ae963359fd431f2fd9c18547ae5140dd6bfa4ecb2334334401a10",
+    "tfidf_training_inputs_sha256": "59ebb0e59ecff47670357f3accf43d7f0e04785c652598d98de62ad617661f9f",
+    "query_ids_sha256": "a6213c32fe55667d76c97343e201e24500bdaa27d418b7ed3fcd7497fd9d1e16",
+    "selection_counts": {
+      "train": {
+        "official_queries": 20888,
+        "eligible_queries_2_to_40": 20413,
+        "excluded_query_count_by_candidate_count": 475
+      },
+      "test": {
+        "official_queries": 8956,
+        "eligible_queries_2_to_40": 8758,
+        "excluded_query_count_by_candidate_count": 198
+      }
+    },
+    "mapping_sources": {
+      "train.py": {
+        "url": "https://raw.githubusercontent.com/amazon-science/esci-data/7916cdf6ab75a462e77f20ab40428a10923998d5/ranking/train.py",
+        "sha256": "767d911670834442865eeffbbcea3cdc30f743835bd2c9ace0748f384b7f8014"
+      },
+      "prepare_trec_eval_files.py": {
+        "url": "https://raw.githubusercontent.com/amazon-science/esci-data/7916cdf6ab75a462e77f20ab40428a10923998d5/ranking/prepare_trec_eval_files.py",
+        "sha256": "688f9255e1b94ea2a55fa20e1e06cbb27257702c85c9f6460e980133b3067095"
+      }
+    }
+  },
+  "models": [
+    {
+      "model": "tfidf",
+      "label": "TF-IDF",
+      "metrics": {
+        "ndcg@10": 0.6915837904181256,
+        "ndcg@all": 0.8215935010640373,
+        "mrr_exact@10": 0.7439547619047618,
+        "recall_exact@10": 0.6611328943557521,
+        "ndcg@10_qrels_script_variant": 0.6682321560567938,
+        "ndcg@all_qrels_script_variant": 0.7991664836040477
+      },
+      "paired_ndcg10_vs_frozen": {
+        "mean_delta": -0.03287610646898411,
+        "wins": 229,
+        "losses": 265,
+        "ties": 6
+      }
+    },
+    {
+      "model": "qwen_frozen",
+      "label": "Frozen Qwen",
+      "metrics": {
+        "ndcg@10": 0.7244598968871097,
+        "ndcg@all": 0.840688004205202,
+        "mrr_exact@10": 0.789147619047619,
+        "recall_exact@10": 0.6835080828364609,
+        "ndcg@10_qrels_script_variant": 0.7003480513850373,
+        "ndcg@all_qrels_script_variant": 0.8181274209993341
+      },
+      "paired_ndcg10_vs_frozen": {
+        "mean_delta": 0.0,
+        "wins": 0,
+        "losses": 0,
+        "ties": 500
+      }
+    },
+    {
+      "model": "qwen_semantic",
+      "label": "Clothing semantic LoRA",
+      "metrics": {
+        "ndcg@10": 0.7241732679546133,
+        "ndcg@all": 0.8390807582484276,
+        "mrr_exact@10": 0.7828849206349207,
+        "recall_exact@10": 0.6889833701028607,
+        "ndcg@10_qrels_script_variant": 0.6977179017576179,
+        "ndcg@all_qrels_script_variant": 0.8145104865920267
+      },
+      "paired_ndcg10_vs_frozen": {
+        "mean_delta": -0.0002866289324963014,
+        "wins": 228,
+        "losses": 245,
+        "ties": 27
+      }
+    },
+    {
+      "model": "qwen_preference",
+      "label": "Clothing preference LoRA",
+      "metrics": {
+        "ndcg@10": 0.7304411548007471,
+        "ndcg@all": 0.8419096138927247,
+        "mrr_exact@10": 0.7863547619047618,
+        "recall_exact@10": 0.6984026271810052,
+        "ndcg@10_qrels_script_variant": 0.7077797046984672,
+        "ndcg@all_qrels_script_variant": 0.8199532088146082
+      },
+      "paired_ndcg10_vs_frozen": {
+        "mean_delta": 0.005981257913637421,
+        "wins": 188,
+        "losses": 141,
+        "ties": 171
+      }
+    }
+  ],
+  "model_exports": {
+    "qwen_frozen": {
+      "model_id": "Qwen/Qwen3-Embedding-0.6B",
+      "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+      "domain": "clothing",
+      "seed": 42,
+      "selected_epoch": 2,
+      "head_metadata_sha256": "b98519a438663c9317cde435de5b238e58a13650a2aabb6d65a9bf59bf76fdf2",
+      "adapter_sha256": null,
+      "head_used": false
+    },
+    "qwen_semantic": {
+      "model_id": "Qwen/Qwen3-Embedding-0.6B",
+      "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+      "domain": "clothing",
+      "seed": 42,
+      "selected_epoch": 2,
+      "head_metadata_sha256": "bf60d5fd9fda3f521d6bb851c6acde50c61082acaf47dc967a5709af072411ee",
+      "adapter_sha256": "41c8777ccb1203dc4f85a07b379a16bb1cce42b606d641e80b3359b245d1b2e8",
+      "head_used": false
+    },
+    "qwen_preference": {
+      "model_id": "Qwen/Qwen3-Embedding-0.6B",
+      "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+      "domain": "clothing",
+      "seed": 42,
+      "selected_epoch": 2,
+      "head_metadata_sha256": "883c99643cf29409d51c1d4d6fa91fed08754633a1c0e6f1bc1e7a4b4ed21c97",
+      "adapter_sha256": "ee7963af37a8b4bddcd0fd4029a9da146658cc1f6e6adbae86cf9c99f891f9be",
+      "head_used": false
+    }
+  },
+  "query_count": 500,
+  "base_model_hashes": {
+    "config.json": {
+      "sha256": "b5bf1f51fc45be473a54718cef92448d90a1be001bf9b9a44b8c7f10a19feaa9",
+      "bytes": 727
+    },
+    "merges.txt": {
+      "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+      "bytes": 1671853
+    },
+    "model.safetensors": {
+      "sha256": "0437e45c94563b09e13cb7a64478fc406947a93cb34a7e05870fc8dcd48e23fd",
+      "bytes": 1191586416
+    },
+    "tokenizer.json": {
+      "sha256": "def76fb086971c7867b829c23a26261e38d9d74e02139253b38aeb9df8b4b50a",
+      "bytes": 11423705
+    },
+    "tokenizer_config.json": {
+      "sha256": "253153d0738ceb4c668d2eff957714dd2bea0b56de772a9fdccd96cbf517e6a0",
+      "bytes": 9706
+    },
+    "vocab.json": {
+      "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+      "bytes": 2776833
+    }
+  },
+  "candidate_count": 9766,
+  "unique_test_products": 9704,
+  "tfidf_training_unique_products": 9417,
+  "source_catalog_overlap": {
+    "clothing_training_catalog_products": 22491,
+    "unique_test_products_also_in_source_catalog": 5,
+    "test_candidate_occurrences_also_in_source_catalog": 5,
+    "note": "Product-ID overlap with the original adapter catalogue is reported, not filtered. This is not a guarantee of unseen-product transfer."
+  },
+  "query_ids_sha256": "a6213c32fe55667d76c97343e201e24500bdaa27d418b7ed3fcd7497fd9d1e16",
+  "queries_sha256": "19d0dd748d5cb78ffc0d04a0f394292f4bb6ed69f5c2eee68dc9afaf081f5c07",
+  "zero_ideal_gain_queries": 0,
+  "no_exact_queries": 0,
+  "runtime": {
+    "device": "cpu",
+    "dtype": "float32",
+    "cpu_threads": 4,
+    "batch_size": 16,
+    "python": "3.12.14",
+    "torch": "2.14.1",
+    "versions": {
+      "numpy": "2.5.4",
+      "transformers": "4.57.6",
+      "peft": "0.17.1",
+      "scikit-learn": "1.9.1",
+      "pyarrow": "26.0.0"
+    },
+    "seconds": 1127.036720416043,
+    "encoding": {
+      "qwen_frozen": {
+        "seconds": 352.82221954199485,
+        "feature_cache_reused": false,
+        "feature_cache_sha256": "91f71190ec26e6887bee46c722121100ac9c4f5b4a55aead95d27f48ab679d4e"
+      },
+      "qwen_semantic": {
+        "seconds": 375.449363166932,
+        "feature_cache_reused": false,
+        "feature_cache_sha256": "97945b95231886b1288fbf27486a5c9ad7a0870ffeffe49230c3a20667d19b5a"
+      },
+      "qwen_preference": {
+        "seconds": 397.6475139160175,
+        "feature_cache_reused": false,
+        "feature_cache_sha256": "4e906b58c82a8c97b366867e6e4b1266f1fd1ef9e0f078e6fdfff71736b53dde"
+      }
+    }
+  },
+  "limitations": [
+    "A label-blind deterministic subset of 500 official English Task1 test queries, not the complete public test set.",
+    "Each model ranks the same small official per-query candidate pool. This does not measure full-catalogue retrieval.",
+    "Clothing seed42 transfer adapters are fixed in advance, trained on a different historical recommendation task, and not fine-tuned on ESCI.",
+    "Title-only text evaluation. No product images, preference histories, user heads or online outcomes.",
+    "NDCG uses the declared training-code gain mapping. Reversed S/C qrel-script gains are reported separately as a sensitivity.",
+    "The existing 27 history recommendation evaluations remain separate. These results do not replace their protocol or scores."
+  ]
+}

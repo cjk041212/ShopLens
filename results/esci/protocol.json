@@ -1,0 +1,112 @@
+{
+  "protocol": {
+    "schema_version": 1,
+    "benchmark_id": "esci_title_reranking_v1",
+    "dataset": "Amazon Shopping Queries / ESCI Task 1, reduced version",
+    "source_repository": "https://github.com/amazon-science/esci-data",
+    "source_commit": "7916cdf6ab75a462e77f20ab40428a10923998d5",
+    "locale": "us",
+    "small_version": 1,
+    "test_queries": 500,
+    "tfidf_train_queries": 500,
+    "selection": "Sort eligible query IDs by SHA256(shoplens-esci-v1|42|split|query_id), take first 500, independent of labels and text.",
+    "seed": 42,
+    "candidate_min": 2,
+    "candidate_max": 40,
+    "candidate_policy": "Complete official query candidate list, without pruning, reretrieval, or adding unjudged items.",
+    "product_fields": [
+      "product_title"
+    ],
+    "images_used": false,
+    "models": [
+      "tfidf",
+      "qwen_frozen",
+      "qwen_semantic",
+      "qwen_preference"
+    ],
+    "adapter_domain": "clothing",
+    "adapter_seed": 42,
+    "adapter_selection": "Clothing seed42 selected exports fixed before ESCI test labels are read; no best-domain selection.",
+    "dense_score": "Cosine of matching base/LoRA query and title embeddings, without recommendation heads or image signals.",
+    "query_instruction": "Given a shopping request, retrieve product descriptions that match the user's needs.",
+    "document_instruction": null,
+    "encoding": {
+      "max_length": 256,
+      "padding_side": "left",
+      "pooling": "last valid token",
+      "normalization": "L2"
+    },
+    "tfidf": {
+      "ngram_range": [
+        1,
+        2
+      ],
+      "lowercase": true,
+      "sublinear_tf": true,
+      "max_features": 100000,
+      "norm": "l2",
+      "fit": "Distinct candidate titles of the preselected 500 official training queries only."
+    },
+    "configuration_selection": "Fixed settings, no ESCI tuning or ESCI fine-tuning. No development subset required.",
+    "primary_metric": "ndcg@10",
+    "secondary_metrics": [
+      "ndcg@all",
+      "mrr_exact@10",
+      "recall_exact@10"
+    ],
+    "gains": {
+      "E": 1.0,
+      "S": 0.1,
+      "C": 0.01,
+      "I": 0.0
+    },
+    "dcg": "sum(gain / log2(rank+1)), using linear gains, not 2**gain-1",
+    "gain_mapping_source": "https://github.com/amazon-science/esci-data/blob/7916cdf6ab75a462e77f20ab40428a10923998d5/ranking/train.py#L45-L50",
+    "gain_mapping_discrepancy": "prepare_trec_eval_files.py maps S to qrel 2 and C to 3, then declares qrel gains 0.01 and 0.1 respectively. Report that reversed S/C mapping as a separate sensitivity.",
+    "sensitivity_gains": {
+      "E": 1.0,
+      "S": 0.01,
+      "C": 0.1,
+      "I": 0.0
+    },
+    "ties": "Descending score, ascending product_id",
+    "aggregation": "Unweighted arithmetic mean over the 500 selected test queries",
+    "zero_ideal_gain": "NDCG=0, retained and counted",
+    "no_exact_items": "Exact MRR and recall=0, retained and counted",
+    "scope": "A deterministic 500-query labelled candidate-list transfer benchmark, not full-catalogue retrieval or a replication of the published ESCI baseline."
+  },
+  "protocol_sha256": "44d4beb311182eda1d655cc3f3da68b4d3446e4c9c9561f4680770634a36dd54",
+  "model_exports": {
+    "qwen_frozen": {
+      "model_id": "Qwen/Qwen3-Embedding-0.6B",
+      "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+      "domain": "clothing",
+      "seed": 42,
+      "selected_epoch": 2,
+      "head_metadata_sha256": "b98519a438663c9317cde435de5b238e58a13650a2aabb6d65a9bf59bf76fdf2",
+      "adapter_sha256": null,
+      "head_used": false
+    },
+    "qwen_semantic": {
+      "model_id": "Qwen/Qwen3-Embedding-0.6B",
+      "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+      "domain": "clothing",
+      "seed": 42,
+      "selected_epoch": 2,
+      "head_metadata_sha256": "bf60d5fd9fda3f521d6bb851c6acde50c61082acaf47dc967a5709af072411ee",
+      "adapter_sha256": "41c8777ccb1203dc4f85a07b379a16bb1cce42b606d641e80b3359b245d1b2e8",
+      "head_used": false
+    },
+    "qwen_preference": {
+      "model_id": "Qwen/Qwen3-Embedding-0.6B",
+      "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+      "domain": "clothing",
+      "seed": 42,
+      "selected_epoch": 2,
+      "head_metadata_sha256": "883c99643cf29409d51c1d4d6fa91fed08754633a1c0e6f1bc1e7a4b4ed21c97",
+      "adapter_sha256": "ee7963af37a8b4bddcd0fd4029a9da146658cc1f6e6adbae86cf9c99f891f9be",
+      "head_used": false
+    }
+  },
+  "declaration": "Written before loading ESCI test relevance labels. Parameters and Clothing transfer adapters are fixed."
+}

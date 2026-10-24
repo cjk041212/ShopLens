@@ -356,6 +356,12 @@ def _sidebar(root: Path) -> str:
     with st.sidebar:
         st.markdown('<div class="sl-brand">ShopLens<span style="color:#7d9fff">.</span></div>', unsafe_allow_html=True)
         st.caption("LANGUAGE × VISION × PREFERENCE")
+        if st.session_state.get("shoplens_workspace") == "Benchmark lab":
+            st.markdown("**Benchmark lab**")
+            st.markdown("① Labeled search relevance\n\n② Image + language retrieval\n\n③ History and exposure diagnostics\n\n④ Local inference performance")
+            st.divider()
+            st.caption("Recorded real measurements · No training or model downloads in this view")
+            return "baby"
         if st.session_state.get("shoplens_workspace") == "Experiment gallery":
             st.markdown("**Experiment gallery**")
             st.caption("Three collections · Three objectives · Three seeds")
@@ -785,9 +791,13 @@ def main() -> None:
     st.markdown(CSS, unsafe_allow_html=True)
     root = _root()
     with st.container(key="shoplens_workspace_nav"):
-        st.radio("Workspace", ["Shopping Studio", "Research lab", "Experiment gallery"], horizontal=True, key="shoplens_workspace")
+        st.radio("Workspace", ["Shopping Studio", "Research lab", "Experiment gallery", "Benchmark lab"], horizontal=True, key="shoplens_workspace")
     domain = _sidebar(root)
     workspace = st.session_state.get("shoplens_workspace", "Shopping Studio")
+    if workspace == "Benchmark lab":
+        from shoplens.benchmark_ui import render_benchmarks
+        render_benchmarks(Path(__file__).resolve().parents[2], root)
+        return
     if workspace == "Experiment gallery":
         from shoplens.experiment_ui import render_gallery
         render_gallery(Path(__file__).resolve().parents[2], root)

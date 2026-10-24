@@ -1,0 +1,581 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "dataset": "FashionIQ",
+  "protocol": {
+    "seed": 42,
+    "train_per_category": 300,
+    "dev_per_category": 30,
+    "evaluation_per_category": 100,
+    "distractors_per_category": 100,
+    "epochs": 40,
+    "batch_size": 64,
+    "learning_rate": 0.001,
+    "weight_decay": 0.01,
+    "temperature": 0.07,
+    "hidden_dimension": 128,
+    "checkpoint_selection": "internal-dev macro recall@10; earliest tied epoch",
+    "evaluation_pool": "category-specific union of selected reference/targets plus 100 fixed distractors",
+    "scope": "bounded available-image FashionIQ subset; not the official full-gallery leaderboard",
+    "image_integrity_policy": "Preserve the fixed evaluation gallery, then development gallery; remove cross-phase identical image SHA256s from lower-priority phases and affected query pairs without replacement.",
+    "data_integrity_amendment": {
+      "reason": "Different FashionIQ product IDs can reuse identical image bytes.",
+      "timing": "Introduced after inspecting the initial experiment results. The deterministic repair is independent of labels, ranks and scores; final results always replace preliminary results, regardless of performance.",
+      "policy": "Preserve the fixed evaluation gallery, then development gallery; remove cross-phase identical image SHA256s from lower-priority phases and affected query pairs without replacement.",
+      "priority": [
+        "evaluation",
+        "dev",
+        "train"
+      ],
+      "initial_pairwise_hash_overlap_counts": {
+        "train_dev": 1,
+        "train_evaluation": 3,
+        "dev_evaluation": 1
+      },
+      "initial_pairwise_overlap_count_sum": 5,
+      "removed": {
+        "train": {
+          "image_ids": [
+            "B00BFPGCYM",
+            "B00CFXUOS8",
+            "B00CV18M6U"
+          ],
+          "query_ids": [
+            "train-dress-0103",
+            "train-dress-0111",
+            "train-dress-0248"
+          ],
+          "image_count": 3,
+          "query_count": 3
+        },
+        "dev": {
+          "image_ids": [
+            "B00B2JHHBS"
+          ],
+          "query_ids": [],
+          "image_count": 1,
+          "query_count": 0
+        }
+      },
+      "evaluation_queries_and_entire_gallery_preserved": true,
+      "replacement_sampling": false
+    }
+  },
+  "selected_epoch": 12,
+  "trainable_parameters": 262784,
+  "clip_frozen": true,
+  "clip_revision": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268",
+  "phase_queries": {
+    "train": 850,
+    "dev": 82,
+    "evaluation": 287
+  },
+  "candidate_counts": {
+    "train": {
+      "dress": 559,
+      "shirt": 570,
+      "toptee": 585
+    },
+    "dev": {
+      "dress": 150,
+      "shirt": 153,
+      "toptee": 156
+    },
+    "evaluation": {
+      "dress": 281,
+      "shirt": 292,
+      "toptee": 293
+    }
+  },
+  "image_count": 3043,
+  "download_failures": 86,
+  "split_overlap_images": 0,
+  "split_overlap_image_ids": 0,
+  "split_overlap_image_sha256": 0,
+  "data_integrity_amendment": {
+    "reason": "Different FashionIQ product IDs can reuse identical image bytes.",
+    "timing": "Introduced after inspecting the initial experiment results. The deterministic repair is independent of labels, ranks and scores; final results always replace preliminary results, regardless of performance.",
+    "policy": "Preserve the fixed evaluation gallery, then development gallery; remove cross-phase identical image SHA256s from lower-priority phases and affected query pairs without replacement.",
+    "priority": [
+      "evaluation",
+      "dev",
+      "train"
+    ],
+    "initial_pairwise_hash_overlap_counts": {
+      "train_dev": 1,
+      "train_evaluation": 3,
+      "dev_evaluation": 1
+    },
+    "initial_pairwise_overlap_count_sum": 5,
+    "removed": {
+      "train": {
+        "image_ids": [
+          "B00BFPGCYM",
+          "B00CFXUOS8",
+          "B00CV18M6U"
+        ],
+        "query_ids": [
+          "train-dress-0103",
+          "train-dress-0111",
+          "train-dress-0248"
+        ],
+        "image_count": 3,
+        "query_count": 3
+      },
+      "dev": {
+        "image_ids": [
+          "B00B2JHHBS"
+        ],
+        "query_ids": [],
+        "image_count": 1,
+        "query_count": 0
+      }
+    },
+    "evaluation_queries_and_entire_gallery_preserved": true,
+    "replacement_sampling": false
+  },
+  "macro_metrics": [
+    {
+      "method": "image_only",
+      "queries": 287,
+      "recall@1": 0.07299739830859593,
+      "recall@5": 0.1706720223733275,
+      "recall@10": 0.21252909385586508,
+      "recall@50": 0.4178966817771929,
+      "mrr": 0.12588106601590407
+    },
+    {
+      "method": "text_only",
+      "queries": 287,
+      "recall@1": 0.2160058857936682,
+      "recall@5": 0.4250315310375082,
+      "recall@10": 0.5605449233506373,
+      "recall@50": 0.7800900538617143,
+      "mrr": 0.3161962395920573
+    },
+    {
+      "method": "fixed_fusion",
+      "queries": 287,
+      "recall@1": 0.15291029952962396,
+      "recall@5": 0.3102082876361775,
+      "recall@10": 0.4010123443250226,
+      "recall@50": 0.641290274426653,
+      "mrr": 0.2399637558859554
+    },
+    {
+      "method": "trained_fusion",
+      "queries": 287,
+      "recall@1": 0.20902336038604954,
+      "recall@5": 0.41482964100314396,
+      "recall@10": 0.5227061551022397,
+      "recall@50": 0.8013308535010114,
+      "mrr": 0.31089428670041325
+    }
+  ],
+  "category_metrics": [
+    {
+      "category": "dress",
+      "method": "image_only",
+      "candidate_count": 281,
+      "queries": 94,
+      "recall@1": 0.0425531914893617,
+      "recall@5": 0.14893617021276595,
+      "recall@10": 0.20212765957446807,
+      "recall@50": 0.39361702127659576,
+      "mrr": 0.09852656687532278,
+      "median_rank": 71.5
+    },
+    {
+      "category": "shirt",
+      "method": "image_only",
+      "candidate_count": 292,
+      "queries": 96,
+      "recall@1": 0.11458333333333333,
+      "recall@5": 0.21875,
+      "recall@10": 0.23958333333333334,
+      "recall@50": 0.4270833333333333,
+      "mrr": 0.1632157456792186,
+      "median_rank": 70.0
+    },
+    {
+      "category": "toptee",
+      "method": "image_only",
+      "candidate_count": 293,
+      "queries": 97,
+      "recall@1": 0.061855670103092786,
+      "recall@5": 0.14432989690721648,
+      "recall@10": 0.1958762886597938,
+      "recall@50": 0.4329896907216495,
+      "mrr": 0.11590088549317086,
+      "median_rank": 61.0
+    },
+    {
+      "category": "dress",
+      "method": "text_only",
+      "candidate_count": 281,
+      "queries": 94,
+      "recall@1": 0.22340425531914893,
+      "recall@5": 0.44680851063829785,
+      "recall@10": 0.5638297872340425,
+      "recall@50": 0.7659574468085106,
+      "mrr": 0.32195214841455483,
+      "median_rank": 7.5
+    },
+    {
+      "category": "shirt",
+      "method": "text_only",
+      "candidate_count": 292,
+      "queries": 96,
+      "recall@1": 0.1875,
+      "recall@5": 0.34375,
+      "recall@10": 0.4270833333333333,
+      "recall@50": 0.7083333333333334,
+      "mrr": 0.2693789591071097,
+      "median_rank": 13.0
+    },
+    {
+      "category": "toptee",
+      "method": "text_only",
+      "candidate_count": 293,
+      "queries": 97,
+      "recall@1": 0.23711340206185566,
+      "recall@5": 0.4845360824742268,
+      "recall@10": 0.6907216494845361,
+      "recall@50": 0.865979381443299,
+      "mrr": 0.3572576112545073,
+      "median_rank": 6.0
+    },
+    {
+      "category": "dress",
+      "method": "fixed_fusion",
+      "candidate_count": 281,
+      "queries": 94,
+      "recall@1": 0.11702127659574468,
+      "recall@5": 0.32978723404255317,
+      "recall@10": 0.44680851063829785,
+      "recall@50": 0.6808510638297872,
+      "mrr": 0.22723099564520413,
+      "median_rank": 19.0
+    },
+    {
+      "category": "shirt",
+      "method": "fixed_fusion",
+      "candidate_count": 292,
+      "queries": 96,
+      "recall@1": 0.14583333333333334,
+      "recall@5": 0.28125,
+      "recall@10": 0.3541666666666667,
+      "recall@50": 0.5729166666666666,
+      "mrr": 0.22451289955954098,
+      "median_rank": 36.0
+    },
+    {
+      "category": "toptee",
+      "method": "fixed_fusion",
+      "candidate_count": 293,
+      "queries": 97,
+      "recall@1": 0.1958762886597938,
+      "recall@5": 0.31958762886597936,
+      "recall@10": 0.4020618556701031,
+      "recall@50": 0.6701030927835051,
+      "mrr": 0.268147372453121,
+      "median_rank": 25.0
+    },
+    {
+      "category": "dress",
+      "method": "trained_fusion",
+      "candidate_count": 281,
+      "queries": 94,
+      "recall@1": 0.2127659574468085,
+      "recall@5": 0.44680851063829785,
+      "recall@10": 0.5531914893617021,
+      "recall@50": 0.8297872340425532,
+      "mrr": 0.3250807332371047,
+      "median_rank": 7.5
+    },
+    {
+      "category": "shirt",
+      "method": "trained_fusion",
+      "candidate_count": 292,
+      "queries": 96,
+      "recall@1": 0.1875,
+      "recall@5": 0.375,
+      "recall@10": 0.4479166666666667,
+      "recall@50": 0.6979166666666666,
+      "mrr": 0.2832376701386607,
+      "median_rank": 13.0
+    },
+    {
+      "category": "toptee",
+      "method": "trained_fusion",
+      "candidate_count": 293,
+      "queries": 97,
+      "recall@1": 0.2268041237113402,
+      "recall@5": 0.422680412371134,
+      "recall@10": 0.5670103092783505,
+      "recall@50": 0.8762886597938144,
+      "mrr": 0.32436445672547437,
+      "median_rank": 7.0
+    }
+  ],
+  "training_curve": [
+    {
+      "epoch": 0,
+      "train_loss": null,
+      "dev_macro_recall@10": 0.5922660098522168,
+      "dev_macro_recall@50": 0.8879638752052545
+    },
+    {
+      "epoch": 1,
+      "train_loss": 5.4331003938402445,
+      "dev_macro_recall@10": 0.5789326765188835,
+      "dev_macro_recall@50": 0.8397372742200329
+    },
+    {
+      "epoch": 2,
+      "train_loss": 5.228519065039499,
+      "dev_macro_recall@10": 0.6285878489326765,
+      "dev_macro_recall@50": 0.8516420361247947
+    },
+    {
+      "epoch": 3,
+      "train_loss": 4.990674700055804,
+      "dev_macro_recall@10": 0.591855500821018,
+      "dev_macro_recall@50": 0.8635467980295566
+    },
+    {
+      "epoch": 4,
+      "train_loss": 4.835520880562918,
+      "dev_macro_recall@10": 0.6538259441707718,
+      "dev_macro_recall@50": 0.903136288998358
+    },
+    {
+      "epoch": 5,
+      "train_loss": 4.73248781476702,
+      "dev_macro_recall@10": 0.7024630541871922,
+      "dev_macro_recall@50": 0.8883743842364531
+    },
+    {
+      "epoch": 6,
+      "train_loss": 4.613410575049264,
+      "dev_macro_recall@10": 0.688111658456486,
+      "dev_macro_recall@50": 0.9283743842364531
+    },
+    {
+      "epoch": 7,
+      "train_loss": 4.544129167284284,
+      "dev_macro_recall@10": 0.726272577996716,
+      "dev_macro_recall@50": 0.9017077175697864
+    },
+    {
+      "epoch": 8,
+      "train_loss": 4.456096478870937,
+      "dev_macro_recall@10": 0.7396059113300493,
+      "dev_macro_recall@50": 0.9017077175697864
+    },
+    {
+      "epoch": 9,
+      "train_loss": 4.341641187667847,
+      "dev_macro_recall@10": 0.7277011494252874,
+      "dev_macro_recall@50": 0.9136124794745485
+    },
+    {
+      "epoch": 10,
+      "train_loss": 4.292200292859759,
+      "dev_macro_recall@10": 0.6679802955665025,
+      "dev_macro_recall@50": 0.9002791461412151
+    },
+    {
+      "epoch": 11,
+      "train_loss": 4.245319025857108,
+      "dev_macro_recall@10": 0.7047126436781609,
+      "dev_macro_recall@50": 0.9136124794745485
+    },
+    {
+      "epoch": 12,
+      "train_loss": 4.20929263319288,
+      "dev_macro_recall@10": 0.7414449917898193,
+      "dev_macro_recall@50": 0.9136124794745485
+    },
+    {
+      "epoch": 13,
+      "train_loss": 4.101298383304051,
+      "dev_macro_recall@10": 0.7285221674876846,
+      "dev_macro_recall@50": 0.9017077175697864
+    },
+    {
+      "epoch": 14,
+      "train_loss": 4.058538334710257,
+      "dev_macro_recall@10": 0.7032840722495894,
+      "dev_macro_recall@50": 0.9002791461412151
+    },
+    {
+      "epoch": 15,
+      "train_loss": 3.9966774668012346,
+      "dev_macro_recall@10": 0.7036945812807881,
+      "dev_macro_recall@50": 0.9002791461412151
+    },
+    {
+      "epoch": 16,
+      "train_loss": 3.932723505156381,
+      "dev_macro_recall@10": 0.7061412151067324,
+      "dev_macro_recall@50": 0.9002791461412151
+    },
+    {
+      "epoch": 17,
+      "train_loss": 3.8865815230778287,
+      "dev_macro_recall@10": 0.7166174055829228,
+      "dev_macro_recall@50": 0.9002791461412151
+    },
+    {
+      "epoch": 18,
+      "train_loss": 3.8432628086635043,
+      "dev_macro_recall@10": 0.7162068965517241,
+      "dev_macro_recall@50": 0.9117733990147783
+    },
+    {
+      "epoch": 19,
+      "train_loss": 3.796459742954799,
+      "dev_macro_recall@10": 0.7299507389162562,
+      "dev_macro_recall@50": 0.9136124794745485
+    },
+    {
+      "epoch": 20,
+      "train_loss": 3.728661928858076,
+      "dev_macro_recall@10": 0.6679802955665025,
+      "dev_macro_recall@50": 0.9136124794745485
+    },
+    {
+      "epoch": 21,
+      "train_loss": 3.707765851702009,
+      "dev_macro_recall@10": 0.6542364532019704,
+      "dev_macro_recall@50": 0.9002791461412151
+    },
+    {
+      "epoch": 22,
+      "train_loss": 3.6219393014907837,
+      "dev_macro_recall@10": 0.657504105090312,
+      "dev_macro_recall@50": 0.9251067323481116
+    },
+    {
+      "epoch": 23,
+      "train_loss": 3.5865553276879445,
+      "dev_macro_recall@10": 0.6560755336617407,
+      "dev_macro_recall@50": 0.9002791461412151
+    },
+    {
+      "epoch": 24,
+      "train_loss": 3.551574162074498,
+      "dev_macro_recall@10": 0.7043021346469622,
+      "dev_macro_recall@50": 0.9251067323481116
+    },
+    {
+      "epoch": 25,
+      "train_loss": 3.5058533464159285,
+      "dev_macro_recall@10": 0.6809031198686372,
+      "dev_macro_recall@50": 0.8883743842364531
+    },
+    {
+      "epoch": 26,
+      "train_loss": 3.4668023075376238,
+      "dev_macro_recall@10": 0.6772249589490968,
+      "dev_macro_recall@50": 0.9002791461412151
+    },
+    {
+      "epoch": 27,
+      "train_loss": 3.419589485440935,
+      "dev_macro_recall@10": 0.6790640394088671,
+      "dev_macro_recall@50": 0.9251067323481116
+    },
+    {
+      "epoch": 28,
+      "train_loss": 3.3669204882213046,
+      "dev_macro_recall@10": 0.6308374384236454,
+      "dev_macro_recall@50": 0.9251067323481116
+    },
+    {
+      "epoch": 29,
+      "train_loss": 3.3278303146362305,
+      "dev_macro_recall@10": 0.6772249589490968,
+      "dev_macro_recall@50": 0.9232676518883416
+    },
+    {
+      "epoch": 30,
+      "train_loss": 3.3016571487699236,
+      "dev_macro_recall@10": 0.6772249589490968,
+      "dev_macro_recall@50": 0.8998686371100164
+    },
+    {
+      "epoch": 31,
+      "train_loss": 3.2542769568307057,
+      "dev_macro_recall@10": 0.6193431855500822,
+      "dev_macro_recall@50": 0.9117733990147783
+    },
+    {
+      "epoch": 32,
+      "train_loss": 3.2257919822420393,
+      "dev_macro_recall@10": 0.6193431855500822,
+      "dev_macro_recall@50": 0.8984400656814451
+    },
+    {
+      "epoch": 33,
+      "train_loss": 3.187367013522557,
+      "dev_macro_recall@10": 0.6675697865353039,
+      "dev_macro_recall@50": 0.8998686371100164
+    },
+    {
+      "epoch": 34,
+      "train_loss": 3.160457032067435,
+      "dev_macro_recall@10": 0.6197536945812808,
+      "dev_macro_recall@50": 0.9002791461412151
+    },
+    {
+      "epoch": 35,
+      "train_loss": 3.11923725264413,
+      "dev_macro_recall@10": 0.6074384236453202,
+      "dev_macro_recall@50": 0.8998686371100164
+    },
+    {
+      "epoch": 36,
+      "train_loss": 3.0948032481329784,
+      "dev_macro_recall@10": 0.6294088669950739,
+      "dev_macro_recall@50": 0.9117733990147783
+    },
+    {
+      "epoch": 37,
+      "train_loss": 3.0407861300877164,
+      "dev_macro_recall@10": 0.6433497536945813,
+      "dev_macro_recall@50": 0.9117733990147783
+    },
+    {
+      "epoch": 38,
+      "train_loss": 3.0009566886084422,
+      "dev_macro_recall@10": 0.6215927750410509,
+      "dev_macro_recall@50": 0.8998686371100164
+    },
+    {
+      "epoch": 39,
+      "train_loss": 2.985875334058489,
+      "dev_macro_recall@10": 0.617504105090312,
+      "dev_macro_recall@50": 0.9117733990147783
+    },
+    {
+      "epoch": 40,
+      "train_loss": 2.953674384525844,
+      "dev_macro_recall@10": 0.6082594417077176,
+      "dev_macro_recall@50": 0.8998686371100164
+    }
+  ],
+  "model_path": "models/fashion/fusion.pt",
+  "model_sha256": "c11883011c50fdb7c4e2125313870f1a14eb2b51a9811c1951fd1f2416994c0a",
+  "manifest_sha256": "f64f097170f2f90c9b517e3758ebb2b439ac6703e74e9006cabcdf73b4646d02",
+  "features_sha256": "193dfc6583f757fd282b33067e40ce796efae2eeeffd82a771349ac71830ec8d",
+  "training_and_evaluation_seconds": 2.876558250049129,
+  "limitations": [
+    "Fixed seed42 bounded available-image subset, not a full FashionIQ benchmark or Amazon next-item comparison.",
+    "Known FashionIQ target is the single relevance label; other suitable garments can be counted as negatives.",
+    "Candidate gallery is category-specific and much smaller than the official full gallery.",
+    "CLIP pretraining contamination cannot be ruled out; no claimed causal generalization guarantee.",
+    "Official validation is evaluated after train-only development checkpoint selection; no hidden test scores."
+  ]
+}

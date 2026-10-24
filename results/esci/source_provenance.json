@@ -1,0 +1,55 @@
+{
+  "repository": "https://github.com/amazon-science/esci-data",
+  "commit": "7916cdf6ab75a462e77f20ab40428a10923998d5",
+  "examples": {
+    "name": "shopping_queries_dataset_examples.parquet",
+    "bytes": 51286808,
+    "sha256": "4a735b693b4a424a6fc67f5be6e4c811495c488bbf66d02a602d308b2744263a",
+    "full_file_sha256_verified": true,
+    "bytes_downloaded_this_prepare": 0,
+    "bytes_downloaded_cumulative": 51286808
+  },
+  "products": {
+    "name": "shopping_queries_dataset_products.parquet",
+    "bytes": 1108857465,
+    "sha256": "25124442d064d64b26f74082d6fa09438d679efc0c183cf28d19064a2b65a265",
+    "full_file_sha256_verified": false,
+    "verification_note": "Immutable pinned upstream LFS SHA256 recorded, but only required Parquet byte ranges read. Actual extracted titles and every cached range have their own SHA256.",
+    "columns_read": [
+      "product_id",
+      "product_locale",
+      "product_title"
+    ],
+    "range_network_bytes_this_prepare": 0,
+    "unique_cached_ranges": 4,
+    "unique_cached_range_bytes": 125963398,
+    "extracted_product_count": 18976,
+    "extracted_products_sha256": "db9084eafede20d9c43d250572385442dfa350eb4084dddb941bb227017d11f5",
+    "range_network_bytes_cumulative": 125963398
+  },
+  "test_inputs_sha256": "d2396258009ae963359fd431f2fd9c18547ae5140dd6bfa4ecb2334334401a10",
+  "tfidf_training_inputs_sha256": "59ebb0e59ecff47670357f3accf43d7f0e04785c652598d98de62ad617661f9f",
+  "query_ids_sha256": "a6213c32fe55667d76c97343e201e24500bdaa27d418b7ed3fcd7497fd9d1e16",
+  "selection_counts": {
+    "train": {
+      "official_queries": 20888,
+      "eligible_queries_2_to_40": 20413,
+      "excluded_query_count_by_candidate_count": 475
+    },
+    "test": {
+      "official_queries": 8956,
+      "eligible_queries_2_to_40": 8758,
+      "excluded_query_count_by_candidate_count": 198
+    }
+  },
+  "mapping_sources": {
+    "train.py": {
+      "url": "https://raw.githubusercontent.com/amazon-science/esci-data/7916cdf6ab75a462e77f20ab40428a10923998d5/ranking/train.py",
+      "sha256": "767d911670834442865eeffbbcea3cdc30f743835bd2c9ace0748f384b7f8014"
+    },
+    "prepare_trec_eval_files.py": {
+      "url": "https://raw.githubusercontent.com/amazon-science/esci-data/7916cdf6ab75a462e77f20ab40428a10923998d5/ranking/prepare_trec_eval_files.py",
+      "sha256": "688f9255e1b94ea2a55fa20e1e06cbb27257702c85c9f6460e980133b3067095"
+    }
+  }
+}

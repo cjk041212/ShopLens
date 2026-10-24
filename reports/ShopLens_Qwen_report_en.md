@@ -1,4 +1,4 @@
-# ShopLens: Qwen objective comparison and interactive evidence
+# ShopLens: multimodal shopping and automatic benchmark evidence
 
 ## Study overview
 
@@ -6,9 +6,9 @@ ShopLens compares three ways of using Qwen text embeddings for multimodal produc
 
 **Frozen has the highest mean held-out NDCG@10 in all three domains.** The recorded study does not establish a consistent improvement from either LoRA objective. Preference training is generally closer to Frozen than semantic alignment, while several individual paired seeds reverse the mean ordering. These descriptive results are reported without a statistical-significance or online-performance claim.
 
-The application now exposes the experiment through an interactive Experiment gallery and makes current shopping recommendations easier to inspect through Model arena. This presentation upgrade adds **no training runs and no new formal benchmark scores**. The gallery presents historical measurements; Shopping Studio is a separate exploratory free-text retrieval interaction.
+The application exposes the historical experiment through Experiment gallery and makes current shopping recommendations inspectable through Model arena. A separate **automatic benchmark extension** now adds labeled ESCI search, FashionIQ image + language retrieval, same-case recommendation diagnostics and local inference profiling. The extension trains one lightweight FashionIQ fusion model; it does not retrain or replace the original 27 Qwen pipelines. Shopping Studio remains a separate exploratory free-text interaction.
 
-The three benchmarks are domains of the **same Amazon 2014 source**, not independently sourced datasets. The prepared interactive catalog contains 47,801 products: Baby 7,037; Sports & Outdoors 18,273; Clothing & Accessories 22,491.
+The original three domains come from the **same Amazon 2014 source**. The extension adds **two independently sourced datasets, Amazon ESCI and FashionIQ**, for three sources overall. Their tasks, candidate sets and metrics remain separate. The prepared Amazon 2014 interactive catalog contains 47,801 products: Baby 7,037; Sports & Outdoors 18,273; Clothing & Accessories 22,491.
 
 ## Formal method and protocol
 
@@ -174,11 +174,124 @@ python scripts/export_experiment_gallery.py --output dist/experiment-gallery
 
 Open `dist/experiment-gallery/index.html` and keep the companion CSV/JSON files beside it. This command exports existing evidence; it does not train, run recommendation inference or repeat the original evaluation. The selected shopping runtime is tracked directly under `models/` and `assets/runtime/`; the repository setup installs those local files without a Release archive.
 
-### Validation of the presentation update
+### Validation of the earlier gallery update
 
-The updated local source passed **296 tests and 127 subtests**. These cover evidence parsing, exact chart values, seed identities, sample-SD and paired-difference handling, checkpoint exports, Studio state boundaries and the no-runtime gallery route. Invalid or incomplete summaries produce an error instead of replacement scores. The real-model arena capture and browser interactions provide additional application evidence, separate from the automated fixtures.
+The preceding gallery version passed **296 tests and 127 subtests**. These covered evidence parsing, exact chart values, seed identities, sample-SD and paired-difference handling, checkpoint exports, Studio state boundaries and the no-runtime gallery route. Invalid or incomplete summaries produce an error instead of replacement scores. Its real-model arena capture and browser interactions provide historical application evidence, separate from the automated fixtures. Current extension validation is recorded with the new measurements below.
 
 These checks support software behavior and faithfulness to the recorded measurements. They are **not new recommendation-quality experiments**, do not make the historical audit a fresh full-export byte audit, and do not establish online performance gains. The original 27-run metrics, baseline results and selected training checkpoints were not changed by this upgrade.
+
+## Automatic benchmark extension
+
+The extension uses existing dataset labels, fixed checkpoints and programmatic measurements. It requires no new manual annotations, user interviews or user study. Label-based ranking, catalog exposure and local CPU timing answer different questions; their values are not combined into a single quality score. Initial subsets and budgets are fixed before inspecting outcomes. A subsequently discovered FashionIQ byte-duplicate integrity amendment is explicitly disclosed below; it preserves the already fixed evaluation queries and gallery. These are three separate dataset releases and annotation tasks, but they can share underlying Amazon products; no claim of product-disjoint or pretraining-disjoint transfer follows from the dataset count.
+
+### ESCI: labeled query-to-product ranking
+
+The official reduced Task1 English (`us`) test split supplies query-specific candidate lists and Exact / Substitute / Complement / Irrelevant judgments. We select **500 queries** by a seed42 SHA256 ordering of query IDs, using only split and candidate-count metadata. Of 8,956 official English reduced-test queries, 8,758 have the declared 2–40 distinct candidates; the other 198 are excluded solely by that structural rule. The selected test has **9,766 candidate occurrences and 9,704 unique products**. All methods rank each same complete official list; this does not evaluate retrieval from the full catalog.
+
+Four fixed methods use **titles only**: TF-IDF cosine, frozen Qwen cosine, Clothing seed42 Semantic LoRA cosine and Clothing seed42 Preference LoRA cosine. TF-IDF fits distinct titles from a separate fixed set of 500 official TRAIN queries. Dense queries use the existing shopping instruction and their matching base/adapter title space. Neither recommendation heads nor CLIP images are used. The two adapters are fixed before test-label loading, with no ESCI fine-tuning, best-domain selection or test-tuned hyperparameters.
+
+Primary linear gains are **E=1, S=.1, C=.01, I=0**, following the official `ranking/train.py`. The official qrel-preparation script instead reverses the S/C gain positions; its mapping is evaluated separately as a sensitivity. Ties use ascending product ID. Each metric is an unweighted mean over the selected queries; no-exact/zero-ideal queries would be retained with zero metrics under the declared policy, although neither occurs in this selected subset.
+
+| Method | NDCG@10, primary | NDCG@all | Exact MRR@10 | Exact Recall@10 | NDCG@10, qrel-script sensitivity |
+|---|---:|---:|---:|---:|---:|
+| TF-IDF | 0.691584 | 0.821594 | 0.743955 | 0.661133 | 0.668232 |
+| Frozen Qwen | 0.724460 | 0.840688 | 0.789148 | 0.683508 | 0.700348 |
+| Semantic LoRA | 0.724173 | 0.839081 | 0.782885 | 0.688983 | 0.697718 |
+| Preference LoRA | 0.730441 | 0.841910 | 0.786355 | 0.698403 | 0.707780 |
+
+Preference exceeds Frozen in primary NDCG@10 by **.005981**, with **188 wins / 171 ties / 141 losses** at the query level. Semantic differs by −.000287, with 228 wins / 27 ties / 245 losses. Frozen retains the highest Exact MRR@10. This is a descriptive **single-checkpoint, small-candidate title-transfer result**, not a general LoRA improvement or online search result. It does not replace the negative three-seed history-recommendation finding. Five test products also occur in the original Clothing adapter catalog, so transfer is not asserted to be entirely product-unseen. Qwen pretraining overlap is not established or ruled out.
+
+The source examples Parquet is completely SHA-verified. Only ID/locale/title byte ranges of the upstream 1.109 GB products file are downloaded, using about **177.25 MB total source traffic** including examples; the complete product-file SHA is recorded as an upstream identity, **not claimed to have been verified**. Extracted inputs and accessed ranges have separate hashes. Three real encoder passes on CPU, float32, four threads and batch16 took 352.82 / 375.45 / 397.65 seconds. Those transfer-run durations are separate from the controlled local request timings below.
+
+The **Search relevance** view shows aggregate metrics, paired-query changes, every query's actual E/S/C/I-labeled candidate ranks and four methods' Top3 lists. Its loader verifies all seven evidence files, complete candidate pools and score-sorted rank permutations, then recomputes every query metric, summary mean and paired count without loading Qwen. All saved cosine scores were additionally replayed from the actual embedding caches with maximum absolute difference zero.
+
+![ESCI measured title-ranking comparison; native presentation chart exported from the actual result JSON.](assets/benchmark_esci.png)
+
+### FashionIQ: relative image + language retrieval
+
+FashionIQ supplies a reference photograph, two relative modification captions and a paired target image. The captions are joined with “and”. CLIP ViT-B/32 image and text encoders stay frozen in their shared 512-dimensional space. Four methods retrieve from the same category pool: reference-image cosine, modification-text cosine, normalized image + text addition, and a learned residual fusion projection. This task does not reuse the incompatible 1024-dimensional Qwen space by direct vector addition.
+
+Selection initially fixed 900 train, 90 image-ID-disjoint internal-dev and 300 official-validation queries, balanced across dress/shirt/toptee. Of 3,129 selected image URLs, **86 were unavailable** (85 HTTP404 and one timeout) and were omitted without replacement. Downloads contain **3,043 real images**, initially yielding 853 train, 82 internal-dev and 287 evaluation queries. Evaluation pools contain dress 281, shirt 292 and toptee 293 images before excluding each query's reference item. Each pool includes the selected reference/target union and up to 100 fixed distractors; this is a much smaller task than official full-gallery evaluation.
+
+**Data-integrity amendment:** a later audit found different product IDs with byte-identical photographs: pairwise hash-overlap counts were train/dev1, train/evaluation3 and dev/evaluation1. This was discovered after the initial, unpublished results had been inspected. A deterministic repair prioritizes **evaluation, then dev, then train**, removes colliding lower-priority IDs and affected query pairs without replacement, and ignores labels, ranks and scores. It removes three train IDs/pairs and one dev distractor ID, retaining **850 train / 82 dev / all 287 evaluation queries**. The complete fixed evaluation gallery remains unchanged. Final candidate pools have **zero cross-phase ID overlap and zero cross-phase JPEG-SHA overlap**; this does not establish perceptual-near-duplicate or pretraining disjointness. The manifest and summary preserve this amendment, including removed IDs and timing of the decision. Exactly one same-configuration fusion rerun replaces the preliminary result regardless of whether its score rises or falls; the three frozen baselines remain numerically unchanged.
+
+The fusion model concatenates reference, text and elementwise product features, passes them through a 128-hidden-unit MLP, and adds the result to the original image + text vector before L2 normalization. It has **262,784 trainable parameters**, with the last layer initially zero so the untrained residual starts at fixed fusion. Contrastive training uses the final 850 TRAIN pairs for 40 epochs, seed42, AdamW learning rate .001, weight decay .01, batch64 and temperature .07. **Epoch12** is selected by internal-dev macro Recall@10, choosing the earliest tie. Official-validation targets never select an epoch or method.
+
+| Method | Macro Recall@1 | Macro Recall@10 | Macro Recall@50 | Macro MRR |
+|---|---:|---:|---:|---:|
+| Image only | 7.30% | 21.25% | 41.79% | 0.12588 |
+| Text only | 21.60% | 56.05% | 78.01% | 0.31620 |
+| Fixed fusion | 15.29% | 40.10% | 64.13% | 0.23996 |
+| Learned fusion | 20.90% | 52.27% | 80.13% | 0.31089 |
+
+Each metric is first averaged within category, then equally across the three categories; retained query counts are 94/96/97. **Learned fusion improves on fixed fusion by 12.17 percentage points at Recall@10, but remains 3.78 points below text only.** At Recall@50 it exceeds text only by 2.12 points. The experiment therefore supports an improvement over this simple fusion baseline at this operating point, not a general superiority over text-only retrieval or the FashionIQ leaderboard. One seed, available-image selection, small category pools, single paired-target labels and possible CLIP pretraining contamination limit the result.
+
+![Final FashionIQ measurements after the disclosed byte-duplicate repair, with frozen baselines retained.](assets/benchmark_fashion.png)
+
+The new **Image + language** view shows the actual reference, captions, paired target and four methods' target ranks and photos. **Try my own modification** runs the prepared local CLIP text encoder and bundled learned fusion checkpoint for a newly edited request. It excludes the reference from every result list. Custom requests have **no ground-truth target, target rank or accuracy score**. Two actual custom edits were checked: image-only rankings remained identical, while text/fixed/learned rankings changed. This is a live inference behavior check, not a new quality measurement.
+
+### Recommendation diagnostics: history, popularity and exposure
+
+This is a separate **seed42 diagnostic subset**, not another three-seed training study. A deterministic NumPy seed20261025 selects up to 1,000 eligible test users per domain and retains every eligible target for those users: Baby 2,596, Sports 2,429 and Clothing 1,865 targets, **6,890 total**. All three objectives use these same cases at visible history caps **1/3/5/10/20**. Only model input is truncated; **all strictly earlier positive items remain excluded** from the full candidate catalog. Weights and original temporal prequential evaluation stay fixed.
+
+| Domain | Cap20 Frozen NDCG@10 | Semantic | Preference | Frozen catalog coverage@10 | Semantic | Preference |
+|---|---:|---:|---:|---:|---:|---:|
+| Baby | 0.012822 | 0.009768 | 0.013406 | 1.0232% | 1.1937% | 1.2363% |
+| Sports | 0.005700 | 0.005434 | 0.005815 | 1.4721% | 1.6144% | 1.6089% |
+| Clothing | 0.005504 | 0.003038 | 0.005400 | 2.2320% | 2.6588% | 2.2009% |
+
+NDCG and Recall are user macro-averages. Catalog coverage counts distinct products exposed at cap20 divided by the entire catalog. Exposure itself counts Top-10 slots per eligible test event, so its weighting differs from the accuracy average. Gini/HHI and the share captured by the most-exposed 1% of catalog products are descriptive concentration measures; that 1% is ranked by **observed exposure**, not TRAIN popularity.
+
+The Semantic model covers more catalog products than Frozen in all three domains, while its NDCG@10 is lower in all three. It has the widest coverage in Sports and Clothing; Preference has the widest coverage in Baby. Higher coverage alone is not better relevance or evidence of fairness. For Clothing, products with at least 21 positive TRAIN users make up 5.39% of the catalog but receive 75.24% of Frozen's Top-10 slots and 55.83% of Semantic's. TRAIN distinct-positive-user bins are 0 / 1–5 / 6–20 / 21+; no future test interactions define those bins.
+
+More visible history is not monotonic: Baby Preference NDCG@10 at caps1/3/5/10/20 is .010161 / .013636 / .013790 / .013441 / .013406. The cap5 peak is a diagnostic observation, **not a newly selected serving setting**. Paired user-bootstrap intervals use 1,000 resamples and condition on this fixed checkpoint/cohort; they do not represent uncertainty over training seeds. A subset's single-seed ordering cannot overturn the original three-seed mean result.
+
+Only aggregate tables, protocol/hashes and public catalog examples are distributed. Raw user identifiers, chronological events and histories are excluded. Recomputing these diagnostics requires separately prepared source interactions; viewing the recorded results does not.
+
+![Clothing same-case history curves and Top-10 catalog coverage from the fixed seed42 diagnostic.](assets/benchmark_diagnostics.png)
+
+### Local inference and a ranking-stage optimization
+
+The performance run uses the real **22,491-item Clothing catalog**, three selected seed42 Qwen models, real CLIP images and learned recommendation heads. Torch and BLAS thread settings are four; the measured device is **CPU**. The host was separately verified as **Apple M4 with 16GiB memory** by a read-only host query. Hardware lookup was unavailable within the measurement process, so those separately verified host facts are labeled separately from process observations. No MPS performance is claimed.
+
+One standalone process records first-use stages, model-warm new inputs and exact-repeat cache hits. It uses 12 distinct image-byte hashes and distinct request strings, and verifies cache hit/miss counters. ESCI encoding, fusion training, PPT rendering, broad tests and Git packing were stopped during this measurement. OS disk caches and normal system activity are not controlled.
+
+The small `studio.py` optimization processes text matching, price and category metadata **only for products already admitted to the fixed query pool**. All catalog embeddings, similarities and global rank percentiles are computed as before, with the same cutoff-tie handling and exclusions. The reference implementation is loaded from public commit `eb53149346207b2500d8e160682e3894fb30125d`. For text, image+feedback and avoid+budget scenarios, all three groups' **complete returned rows match exactly**, including scores, components and evidence.
+
+| Three-model ranking stage | Original p50 / p95, ms | Optimized p50 / p95, ms | Original / optimized p50 |
+|---|---:|---:|---:|
+| Text request | 393.405 / 472.092 | 103.617 / 104.667 | 3.797× |
+| Image + positive feedback + precomputed real head scores | 418.258 / 492.984 | 127.773 / 130.524 | 3.273× |
+| Avoid terms + budget | 864.727 / 939.790 | 109.407 / 109.959 | 7.904× |
+
+Each comparison alternates before/after order over **12 repetitions**, with identical inputs. These ratios describe the **ranking stage only**, not full application acceleration or model quality. User-head inference is timed separately and is not part of this precomputed-score ranker comparison.
+
+| Optimized engine / encoder stage | n | p50, ms | p95, ms |
+|---|---:|---:|---:|
+| Full engine, new text; three encoders, cached reference image, heads and rankers | 12 | 367.420 | 409.483 |
+| Full engine, exact repeated text/image request | 12 | 137.054 | 138.088 |
+| New text, three Qwen encoders only | 11 | 231.185 | 272.325 |
+| Exact repeated text, three encoder cache lookups | 12 | 1.799 | 2.229 |
+| New image, CLIP encoding | 11 | 21.349 | 21.840 |
+| Exact repeated image, encoder cache lookup | 12 | 0.676 | 0.843 |
+
+The first three-query-encoder stage took **6,818.820 ms**, and the first CLIP stage **1,004.340 ms**. Each is a single process-first observation, **not a cold-start distribution**. Process peak RSS was **3,232.438 MiB**, conditional on this workload. Stage distributions are measured separately and should not be added as if they shared the same samples. Only the optimized full engine is measured; there is no before/after full-engine or browser latency comparison.
+
+![Paired ranking-stage timing comparison and separately measured local-engine costs.](assets/benchmark_performance.png)
+
+These wall times exclude Python startup outside the stage, Streamlit rendering, browser work, network and model downloads. Exact repeats reuse already existing embedding caches; new requests still execute the actual model. Small-sample p50/p95 values are descriptive measurements on one host, not a latency guarantee. Raw samples for all **19 measured stages**, source hashes, cache counters and row-parity hashes are included in `results/performance/studio.json`.
+
+### Interface, packaging and current validation
+
+**Benchmark lab** adds four English views inside the existing application: Search relevance, Image + language, Recommendation diagnostics and Local performance. Recorded views work from Git files without restoring the 1.53GB shopping runtime or loading base encoders. The FashionIQ custom-edit button explicitly invokes a prepared local CLIP model; it never silently downloads or trains, and never assigns a target rank to an unlabeled custom edit. Original Shopping Studio, Research lab, Model arena and Experiment gallery remain available.
+
+The selected original heads/adapters, new trained fusion checkpoint, portable FashionIQ photographs/features and all result evidence are ordinary Git files. No Release archive is needed. Official pinned Qwen/CLIP base weights still require the explicit preparation download for fresh live inference; this is not retraining. Raw chronological user data remains excluded.
+
+`python scripts/check_install.py --root . --benchmarks-only` passed: it validates the 500-query ESCI evidence, all 3,043 photograph hashes, fusion/feature/manifest hashes, zero cross-phase JPEG-SHA overlap, 45 diagnostic history records and three performance-parity scenarios without inference or network. `python scripts/export_benchmarks.py --output dist/benchmark-gallery` generated **ten self-contained interactive figures** with exact source JSON. These exports present existing measurements and do not repeat training.
+
+The complete updated source passed **367 tests and 165 subtests**. This includes the four recorded Benchmark lab routes with an absent shopping runtime, explicit custom-form submission, reference changes invalidating prior results, corrupted/mismatched evidence rejection, real-output metric reconstruction, cross-phase duplicate checks and complete-row ranker parity. Software fixtures remain separate from the actual dataset/model runs described above; passing tests does not establish recommendation quality or a performance guarantee.
+
+The updated PPT preserves the original 26 slides and adds eight automatic-benchmark pages, including real product photos and native measured charts. Browser page access was rejected by the current permission gate, so this extension adds **no newly captured browser screenshots**. Its application routes and form interactions are checked through Streamlit AppTest; earlier genuine interface screenshots are retained as historical evidence. Presentation rendering and native-object integrity are checked separately from recommendation quality.
 
 ## Audit, reproducibility and limitations
 
@@ -192,7 +305,7 @@ Three seeds describe observed variation, not population uncertainty. A mean gain
 
 ## Source map
 
-This report and the presentation live under `reports/`. Code links below resolve to repository-root `src/` and `scripts/`; recorded metrics live under `results/qwen/`; image links use `reports/assets/`.
+This report and the presentation live under `reports/`. Code links below resolve to repository-root `src/` and `scripts/`; the historical metrics remain under `results/qwen/`, while each new task has its own `results/` directory. Image links use `reports/assets/` unless they point directly at a dataset image.
 
 | Evidence or implementation | Repository source |
 |---|---|
@@ -206,5 +319,10 @@ This report and the presentation live under `reports/`. Code links below resolve
 | Model arena and its recorded-rank chart | [studio_ui.py](../src/shoplens/studio_ui.py), [studio_charts.py](../src/shoplens/studio_charts.py) |
 | Summary validation and experiment figures | [experiment_data.py](../src/shoplens/experiment_data.py), [experiment_charts.py](../src/shoplens/experiment_charts.py), [experiment_ui.py](../src/shoplens/experiment_ui.py) |
 | Offline figure-pack exporter | [export_experiment_gallery.py](../scripts/export_experiment_gallery.py) |
+| ESCI protocol, complete candidate inputs and measured ranks | [summary.json](../results/esci/summary.json), [protocol.json](../results/esci/protocol.json), [queries.jsonl](../results/esci/queries.jsonl), [search_benchmark.py](../src/shoplens/search_benchmark.py), [run_esci_benchmark.py](../scripts/run_esci_benchmark.py) |
+| FashionIQ data, learned fusion and measured comparisons | [summary.json](../results/fashion/summary.json), [queries.json](../results/fashion/queries.json), [manifest.json](../assets/benchmarks/fashion/manifest.json), [fusion.pt](../models/fashion/fusion.pt), [fashion_retrieval.py](../src/shoplens/fashion_retrieval.py), [run_fashion_experiment.py](../scripts/run_fashion_experiment.py) |
+| History/popularity/exposure diagnostics | [recommendation_diagnostics.json](../results/diagnostics/recommendation_diagnostics.json), [recommendation_diagnostics.py](../src/shoplens/recommendation_diagnostics.py), [run_recommendation_diagnostics.py](../scripts/run_recommendation_diagnostics.py) |
+| Full local engine stages and ranker optimization | [studio.json](../results/performance/studio.json), [benchmark_studio.py](../scripts/benchmark_studio.py), [studio.py](../src/shoplens/studio.py) |
+| Portable benchmark interface and ten-figure export | [benchmark_ui.py](../src/shoplens/benchmark_ui.py), [export_benchmarks.py](../scripts/export_benchmarks.py) |
 
-Upstream sources: [pinned Qwen model](https://huggingface.co/Qwen/Qwen3-Embedding-0.6B/tree/97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3), [Amazon 2014 original data](https://mcauleylab.ucsd.edu/public_datasets/data/amazon/datasets.html), and the [CLIP paper](https://proceedings.mlr.press/v139/radford21a.html).
+Upstream sources: [pinned Qwen model](https://huggingface.co/Qwen/Qwen3-Embedding-0.6B/tree/97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3), [Amazon 2014 original data](https://mcauleylab.ucsd.edu/public_datasets/data/amazon/datasets.html), [CLIP paper](https://proceedings.mlr.press/v139/radford21a.html), [official ESCI data and code](https://github.com/amazon-science/esci-data/tree/7916cdf6ab75a462e77f20ab40428a10923998d5), and [official FashionIQ annotations](https://github.com/XiaoxiaoGuo/fashion-iq/tree/f71b16c3b09ef03b02c0fed160fa072fb3b8aa16). [ATTRIBUTION.md](../ATTRIBUTION.md) records upstream rights statements; dataset releases and product photographs retain their source terms.

@@ -339,16 +339,22 @@ def rank_products(items, text_vectors, image_vectors, *, query_vector=None, imag
     avoid_cos = _cosine(text, avoid)
     avoid_score = None if avoid_cos is None else _percentiles(avoid_cos)
     terms = _terms(avoid_terms)
-    catalog_text = [_text(item) for item in items]
-    hits = [_term_hits(value, terms) for value in catalog_text]
+    # Metadata can affect only admitted candidates. Keep all embedding scores and
+    # percentiles global, while avoiding repeated text/JSON work outside the pool.
+    admitted = np.flatnonzero(pool)
+    catalog_text = {i: _text(items[i]) for i in admitted} if terms else {}
+    hits = {i: _term_hits(catalog_text[i], terms) if terms else [] for i in admitted}
     negative_penalty = np.zeros(len(items)) if negative_score is None else NEGATIVE_WEIGHT * negative_score
     semantic_penalty = np.zeros(len(items)) if avoid_score is None else AVOID_SEMANTIC_WEIGHT * avoid_score
-    terms_penalty = np.array([AVOID_TERMS_WEIGHT if row else 0. for row in hits])
+    terms_penalty = np.zeros(len(items))
+    for i in admitted:
+        if hits[i]:
+            terms_penalty[i] = AVOID_TERMS_WEIGHT
     scores = base - negative_penalty - semantic_penalty - terms_penalty
     excluded = set(positive) | set(negative) | set(hidden)
-    prices = [_price(item) for item in items]
-    category_paths = [_category_paths(item) for item in items]
-    eligible = [i for i in range(len(items)) if pool[i] and i not in excluded
+    prices = {i: _price(items[i]) for i in admitted}
+    category_paths = {i: _category_paths(items[i]) for i in admitted}
+    eligible = [i for i in admitted if i not in excluded
                 and (required_category is None or required_category.casefold() in {path.casefold() for path in category_paths[i]})
                 and (max_price is None or (prices[i] is not None and prices[i] <= max_price))]
     ranking = sorted(eligible, key=lambda i: (-float(scores[i]), ids[i]))[:int(k)]

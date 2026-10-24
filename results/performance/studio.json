@@ -1,0 +1,531 @@
+{
+  "schema_version": 1,
+  "complete": true,
+  "benchmark_id": "studio_cpu_seed42",
+  "environment": {
+    "platform": "macOS-27.0.1-arm64-arm-64bit",
+    "machine": "arm64",
+    "processor": "arm",
+    "logical_cpus": 10,
+    "hardware": {},
+    "torch": "2.14.1",
+    "numpy": "2.5.4",
+    "torch_threads": 4,
+    "thread_environment": {
+      "OMP_NUM_THREADS": "4",
+      "OPENBLAS_NUM_THREADS": "4",
+      "MKL_NUM_THREADS": "4",
+      "VECLIB_MAXIMUM_THREADS": "4",
+      "NUMEXPR_NUM_THREADS": "4"
+    },
+    "device": "cpu",
+    "mps_available": false,
+    "process_peak_rss_mib": 3232.4375,
+    "host_hardware_verified_separately": {
+      "cpu": "Apple M4",
+      "memory_bytes": 17179869184,
+      "verification": "Read-only host sysctl outside the measured process; measured timings and process observations unchanged."
+    }
+  },
+  "protocol": {
+    "domain": "clothing",
+    "catalog_size": 22491,
+    "models": [
+      "qwen_frozen",
+      "qwen_semantic",
+      "qwen_preference"
+    ],
+    "repeats": 12,
+    "unique_query_count": 11,
+    "unique_image_count": 11,
+    "queries": [
+      "Comfortable cotton shirt for everyday wear",
+      "Lightweight jacket for a rainy commute",
+      "Black shoes for walking to work",
+      "Summer dress with a floral pattern",
+      "Warm socks for winter hiking",
+      "Blue jeans with a relaxed fit",
+      "Small shoulder bag for travel",
+      "Soft sweater for a cool evening",
+      "Running shorts with pockets",
+      "Waterproof boots for wet weather",
+      "Simple white t shirt for exercise",
+      "Breathable hat for a sunny afternoon"
+    ],
+    "engine_unique_queries": [
+      "Comfortable cotton shirt for everyday wear for casual daily use",
+      "Lightweight jacket for a rainy commute for casual daily use",
+      "Black shoes for walking to work for casual daily use",
+      "Summer dress with a floral pattern for casual daily use",
+      "Warm socks for winter hiking for casual daily use",
+      "Blue jeans with a relaxed fit for casual daily use",
+      "Small shoulder bag for travel for casual daily use",
+      "Soft sweater for a cool evening for casual daily use",
+      "Running shorts with pockets for casual daily use",
+      "Waterproof boots for wet weather for casual daily use",
+      "Simple white t shirt for exercise for casual daily use",
+      "Breathable hat for a sunny afternoon for casual daily use"
+    ],
+    "image_samples": [
+      {
+        "item_id": "0000031887",
+        "path": "data/images/clothing/0000031887.jpg",
+        "sha256": "13995d202b0513613b495f7eb6ec47fa08946adcc17e5122e6ba1456ffddaa16"
+      },
+      {
+        "item_id": "0123456479",
+        "path": "data/images/clothing/0123456479.jpg",
+        "sha256": "d312ce258c28a5c0b20a040a0e31bd9ab698e7647a611ea529ffbb8b1d746ec4"
+      },
+      {
+        "item_id": "B00001W0KA",
+        "path": "data/images/clothing/B00001W0KA.jpg",
+        "sha256": "128cdcf5a6a92174aaa60b8c17912a59ab87ad485629d9fbac3b225e02e3f0c1"
+      },
+      {
+        "item_id": "B00001WRHJ",
+        "path": "data/images/clothing/B00001WRHJ.jpg",
+        "sha256": "ab232f301bffd73d052238366f0103348551a336c4ee5a700146717213e4f05c"
+      },
+      {
+        "item_id": "B00004SR8W",
+        "path": "data/images/clothing/B00004SR8W.jpg",
+        "sha256": "eaee909c52bfbc988d7a2939beaf212715809314cdf4871edbe6e1ac975df282"
+      },
+      {
+        "item_id": "B00004SR8Z",
+        "path": "data/images/clothing/B00004SR8Z.jpg",
+        "sha256": "5a4ed9e41daa469377641d0db750a6ef59a8a4b03d55c03cbbc3c887a4534972"
+      },
+      {
+        "item_id": "B00004SR9P",
+        "path": "data/images/clothing/B00004SR9P.jpg",
+        "sha256": "9f17b68852165d2e0df643b92b2cd0eb63410b39e6c2c6e95caf2b9d9f5973f9"
+      },
+      {
+        "item_id": "B00004U1J2",
+        "path": "data/images/clothing/B00004U1J2.jpg",
+        "sha256": "d0dbe718c38a045692ff1175b15f99d03068aab9abc2accf3f6ce13777cac8ea"
+      },
+      {
+        "item_id": "B000051SEN",
+        "path": "data/images/clothing/B000051SEN.jpg",
+        "sha256": "77e5fb7889b0854dab69d28430bd74bbf48e8b5745c64e9660d5aa431522b245"
+      },
+      {
+        "item_id": "B000051SEP",
+        "path": "data/images/clothing/B000051SEP.jpg",
+        "sha256": "99a11aa53aea0624697acc30b2097338d25b040bd7d4c1caf32a7fb7cd589cfa"
+      },
+      {
+        "item_id": "B00005JHKE",
+        "path": "data/images/clothing/B00005JHKE.jpg",
+        "sha256": "a8d25f5b86c2267ef3032a69f5a16f67ccfa8e9056340f538cdd61047b1a6d87"
+      },
+      {
+        "item_id": "B00005JSBK",
+        "path": "data/images/clothing/B00005JSBK.jpg",
+        "sha256": "ca48cc37850a4fd89045df638a3200643fdc09d2859fa68604270656536860e7"
+      }
+    ],
+    "baseline_ref": "eb53149346207b2500d8e160682e3894fb30125d",
+    "baseline_source_sha256": "2ae6240894f08a037890dd71b32a89177f8fce08b14887e287ced525b72cab44",
+    "optimized_source_sha256": "71f08fe684ba7e9822af4831257971a0203a7ae85360fb3d775609ed83b70e95",
+    "timing": "perf_counter wall time; CPU synchronous; paired alternating ranker order",
+    "background_compute": "Run without other benchmark/training processes"
+  },
+  "stages": [
+    {
+      "stage": "cold_catalog_validation",
+      "n": 1,
+      "p50_ms": 600.44970898889,
+      "p95_ms": 600.44970898889,
+      "samples_ms": [
+        600.44970898889
+      ]
+    },
+    {
+      "stage": "cold_selected_exports",
+      "n": 1,
+      "p50_ms": 1528.0484589748085,
+      "p95_ms": 1528.0484589748085,
+      "samples_ms": [
+        1528.0484589748085
+      ]
+    },
+    {
+      "stage": "warm_catalog_lookup",
+      "n": 12,
+      "p50_ms": 0.0668129650875926,
+      "p95_ms": 0.11229760712012644,
+      "samples_ms": [
+        0.08779112249612808,
+        0.08224998600780964,
+        0.07041613571345806,
+        0.06804196164011955,
+        0.062125036492943764,
+        0.14224997721612453,
+        0.0814169179648161,
+        0.06558396853506565,
+        0.06170920096337795,
+        0.062000006437301636,
+        0.06070919334888458,
+        0.05962490104138851
+      ]
+    },
+    {
+      "stage": "cold_three_query_encoders",
+      "n": 1,
+      "p50_ms": 6818.819624837488,
+      "p95_ms": 6818.819624837488,
+      "samples_ms": [
+        6818.819624837488
+      ]
+    },
+    {
+      "stage": "warm_unique_three_queries",
+      "n": 11,
+      "p50_ms": 231.18512495420873,
+      "p95_ms": 272.32516650110483,
+      "samples_ms": [
+        271.0777909960598,
+        239.9057080037892,
+        227.32433397322893,
+        230.7210408616811,
+        273.5725420061499,
+        223.41158404015005,
+        231.18512495420873,
+        238.73441596515477,
+        231.87775001861155,
+        225.69000022485852,
+        227.32508392073214
+      ]
+    },
+    {
+      "stage": "exact_repeat_three_query_cache",
+      "n": 12,
+      "p50_ms": 1.7993329092860222,
+      "p95_ms": 2.2285585058853026,
+      "samples_ms": [
+        2.5753341615200043,
+        1.8662079237401485,
+        1.7926248256117105,
+        1.789500005543232,
+        1.7961659468710423,
+        1.8024998717010021,
+        1.7876250203698874,
+        1.8044160678982735,
+        1.7915840726345778,
+        1.944832969456911,
+        1.9284170120954514,
+        1.7793751321732998
+      ]
+    },
+    {
+      "stage": "cold_three_user_heads",
+      "n": 1,
+      "p50_ms": 654.3047910090536,
+      "p95_ms": 654.3047910090536,
+      "samples_ms": [
+        654.3047910090536
+      ]
+    },
+    {
+      "stage": "warm_three_user_heads",
+      "n": 12,
+      "p50_ms": 4.860250046476722,
+      "p95_ms": 5.646045575849712,
+      "samples_ms": [
+        5.926500074565411,
+        5.069375038146973,
+        4.593665944412351,
+        4.823458846658468,
+        4.740749951452017,
+        4.984375089406967,
+        4.7510419972240925,
+        4.839583998546004,
+        5.147458985447884,
+        4.71058301627636,
+        4.880916094407439,
+        5.416582804173231
+      ]
+    },
+    {
+      "stage": "cold_image_encoder",
+      "n": 1,
+      "p50_ms": 1004.3396670371294,
+      "p95_ms": 1004.3396670371294,
+      "samples_ms": [
+        1004.3396670371294
+      ]
+    },
+    {
+      "stage": "warm_unique_image",
+      "n": 11,
+      "p50_ms": 21.348625188693404,
+      "p95_ms": 21.840250003151596,
+      "samples_ms": [
+        20.94700001180172,
+        21.348625188693404,
+        21.710500121116638,
+        21.397124975919724,
+        21.969999885186553,
+        21.48729213513434,
+        21.18337480351329,
+        20.92533395625651,
+        21.101291989907622,
+        21.373458905145526,
+        20.80708392895758
+      ]
+    },
+    {
+      "stage": "exact_repeat_image_cache",
+      "n": 12,
+      "p50_ms": 0.6757710361853242,
+      "p95_ms": 0.8435333613306282,
+      "samples_ms": [
+        0.9733338374644518,
+        0.7373329717665911,
+        0.7009580731391907,
+        0.6722919642925262,
+        0.6799169350415468,
+        0.6929999217391014,
+        0.6622078362852335,
+        0.6689999718219042,
+        0.6675829645246267,
+        0.6600830238312483,
+        0.6633331067860126,
+        0.6792501080781221
+      ]
+    },
+    {
+      "stage": "three_rankers_text_before",
+      "n": 12,
+      "p50_ms": 393.40497949160635,
+      "p95_ms": 472.0919395564124,
+      "samples_ms": [
+        472.08970808424056,
+        317.42649991065264,
+        472.0946669112891,
+        321.45120901986957,
+        467.2551671974361,
+        317.1544591896236,
+        467.48783299699426,
+        313.31983394920826,
+        465.42862500064075,
+        316.9929999858141,
+        465.35874996334314,
+        316.0869169514626
+      ]
+    },
+    {
+      "stage": "three_rankers_text_after",
+      "n": 12,
+      "p50_ms": 103.61739608924836,
+      "p95_ms": 104.66685430146754,
+      "samples_ms": [
+        103.68166700936854,
+        104.53095799311996,
+        104.74774986505508,
+        104.60066702216864,
+        103.55312516912818,
+        103.13416598364711,
+        103.54645806364715,
+        102.90175001136959,
+        104.03158399276435,
+        102.76008304208517,
+        103.88137493282557,
+        102.72837500087917
+      ]
+    },
+    {
+      "stage": "three_rankers_multimodal_feedback_before",
+      "n": 12,
+      "p50_ms": 418.25783310923725,
+      "p95_ms": 492.98373992787674,
+      "samples_ms": [
+        346.8897910788655,
+        492.8780838381499,
+        342.85929217003286,
+        491.46129097789526,
+        340.2614579536021,
+        492.8190840873867,
+        340.9061669372022,
+        489.625875139609,
+        341.156667098403,
+        491.7901670560241,
+        340.7734588254243,
+        493.112875148654
+      ]
+    },
+    {
+      "stage": "three_rankers_multimodal_feedback_after",
+      "n": 12,
+      "p50_ms": 127.77345802169293,
+      "p95_ms": 130.52390234079212,
+      "samples_ms": [
+        132.7692079357803,
+        128.6868341267109,
+        127.94112507253885,
+        128.00466688349843,
+        127.30612512677908,
+        126.95854203775525,
+        128.10304202139378,
+        127.60579097084701,
+        127.33812490478158,
+        126.46925006993115,
+        126.92124978639185,
+        128.33400000818074
+      ]
+    },
+    {
+      "stage": "three_rankers_avoid_budget_before",
+      "n": 12,
+      "p50_ms": 864.7267705528066,
+      "p95_ms": 939.7900538169779,
+      "samples_ms": [
+        938.0874170456082,
+        792.3940001055598,
+        939.9086248595268,
+        793.5425830073655,
+        939.198249951005,
+        788.068792084232,
+        935.9109580982476,
+        788.0594169255346,
+        939.0605830121785,
+        789.5238341297954,
+        939.6930411458015,
+        789.7193341050297
+      ]
+    },
+    {
+      "stage": "three_rankers_avoid_budget_after",
+      "n": 12,
+      "p50_ms": 109.40710408613086,
+      "p95_ms": 109.95875383960083,
+      "samples_ms": [
+        109.85116614028811,
+        109.225207939744,
+        109.76033308543265,
+        109.5090419985354,
+        109.30516617372632,
+        108.8138751219958,
+        109.2799580655992,
+        109.66308391653001,
+        110.0902499165386,
+        108.98070805706084,
+        109.51941693201661,
+        108.68329205550253
+      ]
+    },
+    {
+      "stage": "warm_exact_repeat_engine",
+      "n": 12,
+      "p50_ms": 137.05352053511888,
+      "p95_ms": 138.08762121479958,
+      "samples_ms": [
+        138.3947499562055,
+        136.87649997882545,
+        136.43700000829995,
+        136.9524160400033,
+        136.48712495341897,
+        137.4889169819653,
+        137.42570811882615,
+        136.66233303956687,
+        137.30712491087615,
+        137.0072909630835,
+        137.8363340627402,
+        137.09975010715425
+      ]
+    },
+    {
+      "stage": "warm_unique_request_engine",
+      "n": 12,
+      "p50_ms": 367.4203334376216,
+      "p95_ms": 409.4830793794244,
+      "samples_ms": [
+        388.6619168333709,
+        375.11787516996264,
+        366.1950840614736,
+        378.0556251294911,
+        364.0602498780936,
+        365.2825409080833,
+        368.11991687864065,
+        368.080124957487,
+        364.05562493018806,
+        366.7605419177562,
+        365.9378751181066,
+        434.9311669357121
+      ]
+    }
+  ],
+  "ranking_parity": [
+    {
+      "variant": "text",
+      "identical_complete_rows": true,
+      "sha256": "4f345e5ca3c8dd712d2092eed2d234a67029f0cce06fd316980fc07ba80db76e"
+    },
+    {
+      "variant": "multimodal_feedback",
+      "identical_complete_rows": true,
+      "sha256": "bfc3b2cedf7dc8c9c65a6bafbbbb99b9122f61ea3bad3f2eedf4502851bfba02"
+    },
+    {
+      "variant": "avoid_budget",
+      "identical_complete_rows": true,
+      "sha256": "d16de558c50fc8effce3f947b4b07ba5f2d0d9d6d493515f34e7a8c774071c48"
+    }
+  ],
+  "cache_evidence": {
+    "query_before_repeat": {
+      "frozen": {
+        "hits": 0,
+        "misses": 12,
+        "maxsize": 32,
+        "currsize": 12
+      },
+      "adapted": {
+        "hits": 0,
+        "misses": 24,
+        "maxsize": 64,
+        "currsize": 24
+      }
+    },
+    "query_after_repeat": {
+      "frozen": {
+        "hits": 12,
+        "misses": 12,
+        "maxsize": 32,
+        "currsize": 12
+      },
+      "adapted": {
+        "hits": 24,
+        "misses": 24,
+        "maxsize": 64,
+        "currsize": 24
+      }
+    },
+    "image_before_repeat": {
+      "hits": 0,
+      "misses": 13,
+      "maxsize": 8,
+      "currsize": 8
+    },
+    "image_after_repeat": {
+      "hits": 12,
+      "misses": 13,
+      "maxsize": 8,
+      "currsize": 8
+    }
+  },
+  "limitations": [
+    "One local CPU environment and one selected seed/domain; timings are environment-specific.",
+    "Cold rows are one process-first observation, not a cold-start distribution; OS disk cache is not flushed.",
+    "Engine measurements exclude Streamlit rendering, browser, network and model downloads.",
+    "Exact repeats reuse request embeddings; unique requests still require real model forwards.",
+    "Small timing samples give descriptive p50/p95, not a latency service guarantee; each row records its actual count.",
+    "Unique engine requests include model forwards and ranking; exact-repeat engine requests reuse embeddings. No baseline end-to-end model-forward speedup is asserted.",
+    "Metadata optimization preserves the complete ranker rows; it does not change model quality."
+  ],
+  "measurement_record_sha256_before_host_metadata": "a79742f7bcda9243b3b927395446410bb98076cf29690f7a1fcc2c53819483f1"
+}
