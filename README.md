@@ -9,6 +9,21 @@
 
 Frozen Qwen, Semantic alignment LoRA, and User preference LoRA each use their corresponding text encoder and candidate vectors. CLIP image features are shared. The catalog contains **47,801 products** across Baby, Sports & Outdoors, and Clothing & Accessories. Displayed Top-3/Top-12 lists are display limits, not catalog sizes.
 
+## Repository layout
+
+| Path | Contents |
+| --- | --- |
+| `app.py` | Streamlit entry point |
+| `src/shoplens/` | Recommendation models, training, inference and interface code |
+| `scripts/` | Runtime setup, experiment runners, checks and figure export commands |
+| `tests/` | Automated checks |
+| `reports/` | One experiment report, the presentation and their screenshots |
+| `results/qwen/` | Recorded 27-run experiment summary in JSON and CSV |
+| `examples/` | Example exported shopping shortlist |
+| `metadata/` | Runtime download metadata and material checksums |
+
+Local runtime data and model assets install under `data/` and `artifacts/`; these generated directories stay out of Git.
+
 ## Install the source
 
 Use **Python 3.12**. The pinned recipe and local CPU encoding were exercised on macOS arm64, including an M4 with 16 GB memory; a fresh Linux/Windows installation and equivalent MPS behavior are not established by that check.
@@ -23,7 +38,7 @@ python -m pip install -r requirements.txt
 python -m pip install -e . --no-deps
 ```
 
-**To view recorded experiments only**, start the app and select **Experiment gallery**. This route reads `submission/results_qwen_summary.json` and needs neither model weights nor the shopping runtime assets:
+**To view recorded experiments only**, start the app and select **Experiment gallery**. This route reads `results/qwen/results_qwen_summary.json` and needs neither model weights nor the shopping runtime assets:
 
 ```bash
 python -m streamlit run app.py \
@@ -35,7 +50,7 @@ Open **http://127.0.0.1:8501/**. The server binds to loopback.
 
 ## Prepare the shopping runtime
 
-Shopping Studio and Research lab additionally require the separate [runtime-v1 assets](https://github.com/cjk041212/ShopLens/releases/tag/runtime-v1) and pinned base encoders. The runtime archive is **1,457,809,593 bytes**, includes catalogs/photos, selected seed42 exports and six LoRA adapters, and excludes base weights, raw reviews and interaction histories. Allow additional space for dependencies, downloaded weights and installer work files.
+Shopping Studio and Research lab additionally require the separate [runtime-v1 assets](https://github.com/cjk041212/ShopLens/releases/tag/runtime-v1) and pinned base encoders. The runtime archive is **1,457,809,593 bytes**. It includes catalogs/photos, feature caches, nine trained seed42 recommendation heads/exports and six LoRA adapters. These trained weights are in the runtime attachment, rather than tracked in Git; using them requires no retraining. Base weights, raw reviews and interaction histories are excluded. The download URL, checksum and scope are recorded in [metadata/runtime-assets.json](metadata/runtime-assets.json). Allow additional space for dependencies, downloaded weights and installer work files.
 
 ```bash
 python scripts/install_assets.py \
@@ -61,12 +76,12 @@ Generate the portable seven-figure gallery and its exact data:
 python scripts/export_experiment_gallery.py --output dist/experiment-gallery
 ```
 
-Open `dist/experiment-gallery/index.html`. Plotly is embedded for offline use; keep companion CSV/JSON files beside the HTML to retain its download links. See [Releases](https://github.com/cjk041212/ShopLens/releases) for downloadable showcase bundles. The showcase contains figures and evidence; **runtime-v1** remains the separate shopping runtime with its original checksum. Neither installing the demo assets nor exporting charts reruns the historical study.
+Open `dist/experiment-gallery/index.html`. Plotly is embedded for offline use; keep companion CSV/JSON files beside the HTML to retain its download links. The figure pack is optional and can be generated locally; **runtime-v1** is the separate shopping runtime with its original checksum. Neither installing the demo assets nor exporting charts reruns the historical study.
 
 ## Report and presentation
 
-- [English experiment report](submission/ShopLens_Qwen_report_en.md)
-- [PowerPoint presentation](submission/ShopLens_Qwen_presentation.pptx)
-- Recorded results: [JSON](submission/results_qwen_summary.json) · [CSV](submission/results_qwen_summary.csv)
+- [English experiment report](reports/ShopLens_Qwen_report_en.md)
+- [PowerPoint presentation](reports/ShopLens_Qwen_presentation.pptx)
+- Recorded results: [JSON](results/qwen/results_qwen_summary.json) · [CSV](results/qwen/results_qwen_summary.csv)
 
 See [ATTRIBUTION.md](ATTRIBUTION.md) for dataset/model sources, upstream credit and rights status.
