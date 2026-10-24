@@ -1,0 +1,135 @@
+{
+  "scope": "Public copies only. Original final coursework files remain unchanged. Draft forms are not completed official forms. GitHub publication is not school submission.",
+  "files": [
+    {
+      "path": "ShopLens_Qwen_presentation.pptx",
+      "original_sha256": "deaa6bb519b505f2c2bc541b725f7ada46a3608d2f7db1f9430c4cf191120c11",
+      "public_sha256": "7a17eb2942eb44e28f0fac74e0f7169b22587d4fccb45bf34430cfcd1e6c6bcd",
+      "bytes": 147383,
+      "transforms": [
+        "pptx-container-repacked",
+        "pptx-private-paths-redacted"
+      ]
+    },
+    {
+      "path": "ShopLens_Qwen_human_narration.md",
+      "original_sha256": "13d7252cbff68c779178b3e293a21693d95e6c67c83bfe62c815308c7fb048ac",
+      "public_sha256": "b2adfc7d47a8b853142af9cdd01436e5c13bdb8db3dfb60fa6ee5d0d4a47e51f",
+      "bytes": 19622,
+      "transforms": [
+        "private-paths-made-relative-or-redacted",
+        "public-copy-operational-identifiers-or-local-evidence-links-normalized"
+      ]
+    },
+    {
+      "path": "ShopLens_Qwen_report_en.md",
+      "original_sha256": "10ca73632c866aa0df225e71778165df7e41c9ccc10b9ab29bef6cc7e9a3945e",
+      "public_sha256": "0b9e15d419f177c46a9fb6bd67f693fed10e652e44bc3df618f8ec2b58a12670",
+      "bytes": 13320,
+      "transforms": [
+        "public-copy-operational-identifiers-or-local-evidence-links-normalized"
+      ]
+    },
+    {
+      "path": "ShopLens_Studio_guide.md",
+      "original_sha256": "8319c7468dea424bf9066ace4a9fc81d1acabc0b06705c001dd0ba6baae83f3b",
+      "public_sha256": "8319c7468dea424bf9066ace4a9fc81d1acabc0b06705c001dd0ba6baae83f3b",
+      "bytes": 8789,
+      "transforms": []
+    },
+    {
+      "path": "ShopLens_Qwen_AI_disclosure_draft.md",
+      "original_sha256": "10fb7daf941b92a324a8547a9e0a7a23f61adeb098b039ca4f981ab6dd4b945a",
+      "public_sha256": "10fb7daf941b92a324a8547a9e0a7a23f61adeb098b039ca4f981ab6dd4b945a",
+      "bytes": 1678,
+      "transforms": []
+    },
+    {
+      "path": "贡献反思模板.md",
+      "original_sha256": "bb1da9f63298ef58fc8b8a4d8cd3135a7f3424f90025cc50d12f2e43137b7457",
+      "public_sha256": "bb1da9f63298ef58fc8b8a4d8cd3135a7f3424f90025cc50d12f2e43137b7457",
+      "bytes": 1309,
+      "transforms": []
+    },
+    {
+      "path": "results_qwen_summary.csv",
+      "original_sha256": "a5ee7164d4c927a423e9246c9dcc06db0c8ba81bab449910bd9ee28d9faf359a",
+      "public_sha256": "a5ee7164d4c927a423e9246c9dcc06db0c8ba81bab449910bd9ee28d9faf359a",
+      "bytes": 1863,
+      "transforms": []
+    },
+    {
+      "path": "results_qwen_summary.json",
+      "original_sha256": "c898f8fb3db52d413882c3f731a37ae4217a73a48caf4a03cb5144a5e719b54b",
+      "public_sha256": "7cb8dc062d459a666a35d50cb6519b094c8fbbbf8a27e87bfddf9515d8c209f4",
+      "bytes": 180304,
+      "transforms": [
+        "public-copy-operational-identifiers-or-local-evidence-links-normalized"
+      ]
+    },
+    {
+      "path": "ShopLens_Direct_Request_example_shortlist.json",
+      "original_sha256": "ba9a01b32451556ed0defb38c1bb69f2fb86916c42fe55a5f62ed6750c68af31",
+      "public_sha256": "3a8952fafca0d4b7c87c6286a8d56c7be804b8a4a179b025e7a93d9ea82f7a37",
+      "bytes": 17365,
+      "transforms": [
+        "json-format-normalized"
+      ]
+    },
+    {
+      "path": "ShopLens_Qwen_report_zh.md",
+      "original_sha256": "3768d5eb677d139c2d84929eb183d86ec308156908a8ffa5bbc8bcba4595c775",
+      "public_sha256": "071ab2c224cc22d862d758d68ac7767a9624988fa1246f58797f0d91c3e12c27",
+      "bytes": 12681,
+      "transforms": [
+        "public-copy-operational-identifiers-or-local-evidence-links-normalized"
+      ]
+    },
+    {
+      "path": "assets/shoplens_direct_request_compare.jpg",
+      "original_sha256": "a5cafdc5a0af36a938109b46c2c22858086f079537f2a9add2f848a17cacb2bb",
+      "public_sha256": "a5cafdc5a0af36a938109b46c2c22858086f079537f2a9add2f848a17cacb2bb",
+      "bytes": 133658,
+      "transforms": []
+    },
+    {
+      "path": "assets/shoplens_direct_request_models.jpg",
+      "original_sha256": "5484464dfde22652f796eb3d1fc5a0a5b70c4588bf639cd3195ce592a2af1f18",
+      "public_sha256": "5484464dfde22652f796eb3d1fc5a0a5b70c4588bf639cd3195ce592a2af1f18",
+      "bytes": 121564,
+      "transforms": []
+    },
+    {
+      "path": "assets/shoplens_direct_request_narrow.jpg",
+      "original_sha256": "7b34aaa8614013212b15b01860e7b571ba8f32f185c7261e48f45fde9bf14209",
+      "public_sha256": "7b34aaa8614013212b15b01860e7b571ba8f32f185c7261e48f45fde9bf14209",
+      "bytes": 86114,
+      "transforms": []
+    },
+    {
+      "path": "assets/qwen_compare_baby.jpg",
+      "original_sha256": "c71b07d9634be1059ffdaa5ac5e5e8c86a31eac725f86913a0a18d0da204fc59",
+      "public_sha256": "c71b07d9634be1059ffdaa5ac5e5e8c86a31eac725f86913a0a18d0da204fc59",
+      "bytes": 103633,
+      "transforms": []
+    },
+    {
+      "path": "ShopLens_Direct_Request_Comparison_code_submission.zip",
+      "original_sha256": "870d137cff726f5b506ee6b07f95434bf7b6a6b274ed7ecb5445704c77bab380",
+      "public_sha256": "870d137cff726f5b506ee6b07f95434bf7b6a6b274ed7ecb5445704c77bab380",
+      "bytes": 18372235,
+      "transforms": [
+        "immutable-already-sanitized-coursework-snapshot-retained"
+      ]
+    },
+    {
+      "path": "ShopLens_Direct_Request_Comparison_code_submission.zip.manifest.json",
+      "original_sha256": "434f9935bb39f89a5e89d7acd076176954f702f8b0f87a91198fc4a9f19e8f28",
+      "public_sha256": "434f9935bb39f89a5e89d7acd076176954f702f8b0f87a91198fc4a9f19e8f28",
+      "bytes": 168279,
+      "transforms": [
+        "immutable-already-sanitized-coursework-snapshot-retained"
+      ]
+    }
+  ]
+}

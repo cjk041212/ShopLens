@@ -1,0 +1,3960 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-24T23:05:22.234980+08:00",
+  "archive_root": "ShopLens",
+  "uncompressed_bytes_before_manifest": 62835762,
+  "source_files_unchanged": true,
+  "experimental_status": {
+    "expected_primary_records": 54,
+    "unique_primary_records": 54,
+    "primary_complete": true,
+    "missing_primary_records": [],
+    "duplicate_primary_records": [],
+    "unexpected_primary_records": [],
+    "rejected_synthetic_or_diagnostic_records": [],
+    "expected_budget_checks": 9,
+    "completed_budget_checks": 9,
+    "budget_checks": [
+      [
+        "baby",
+        42
+      ],
+      [
+        "baby",
+        43
+      ],
+      [
+        "baby",
+        44
+      ],
+      [
+        "sports",
+        42
+      ],
+      [
+        "sports",
+        43
+      ],
+      [
+        "sports",
+        44
+      ],
+      [
+        "clothing",
+        42
+      ],
+      [
+        "clothing",
+        43
+      ],
+      [
+        "clothing",
+        44
+      ]
+    ],
+    "baseline_verification_passed": true,
+    "qwen_expected_records": 27,
+    "qwen_unique_records": 27,
+    "qwen_matrix_complete": true,
+    "qwen_verification_passed": true,
+    "qwen_evidence_errors": [],
+    "baseline_preservation_verified": true,
+    "missing_required_documents": [],
+    "qwen_environment_evidence_present": true,
+    "all_final_requirements_met": true
+  },
+  "excluded_categories": [
+    "venv",
+    "raw-data",
+    "raw-product-photos",
+    "processed-reviews/catalog/events",
+    "HF-cache-and-weights",
+    "model-checkpoints",
+    "feature-matrices",
+    "accounts-and-authentication",
+    "logs",
+    "original-course-materials",
+    "chat-history-and-invented-AI-records",
+    "existing-submission-ZIPs"
+  ],
+  "files": [
+    {
+      "path": ".streamlit/config.toml",
+      "source_sha256": "77b66c4a61e54ab9a1822c8e511a65a20f827959e6b875bae7514d04a46b69f8",
+      "archive_sha256": "77b66c4a61e54ab9a1822c8e511a65a20f827959e6b875bae7514d04a46b69f8",
+      "archive_bytes": 223,
+      "transformations": []
+    },
+    {
+      "path": "README.md",
+      "source_sha256": "a159cc382d252472c39dbce3d0d9a63fad72a55d1419d3b9ff6221275f74d238",
+      "archive_sha256": "a159cc382d252472c39dbce3d0d9a63fad72a55d1419d3b9ff6221275f74d238",
+      "archive_bytes": 6867,
+      "transformations": []
+    },
+    {
+      "path": "README_QWEN.md",
+      "source_sha256": "88410b40a35021bde95cbe637a7ccc667834766caee86bb64cae23616d8c152a",
+      "archive_sha256": "88410b40a35021bde95cbe637a7ccc667834766caee86bb64cae23616d8c152a",
+      "archive_bytes": 11315,
+      "transformations": []
+    },
+    {
+      "path": "SUBMISSION_README.md",
+      "source_sha256": null,
+      "archive_sha256": "3afd4eb06a1c411753f9ecd2d191c2e9cc3cc0d020a9fd3b159ff870a1979ea7",
+      "archive_bytes": 2681,
+      "transformations": [
+        "generated-packaging-document"
+      ]
+    },
+    {
+      "path": "app.py",
+      "source_sha256": "14a5988b854b6b438b2eaa69f78f990990bfaa7b80e668da0346476e66e4b5c9",
+      "archive_sha256": "14a5988b854b6b438b2eaa69f78f990990bfaa7b80e668da0346476e66e4b5c9",
+      "archive_bytes": 241,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/baby/features.json",
+      "source_sha256": "ad8ef7f09751d8a161de1513065eea059790e2f470a8e972500c395d97745fd6",
+      "archive_sha256": "75bc0052064815e2cb3252bece43c29f334bb18a86496aec98242ad0427627cc",
+      "archive_bytes": 1584,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/baby/models/adapted.json",
+      "source_sha256": "7eeb467860ce6841aee1fc6196dd2b991f9cdbacd2608d357f281757693eec9a",
+      "archive_sha256": "f212584c3b9bd8f2ba96a5915238e6b651dae1145017843cf87584ac476dccd7",
+      "archive_bytes": 184394,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/baby/models/mf.json",
+      "source_sha256": "24fc4141113f48829328e7e0d8490f345b1a6be3d46d54b805c6719ec7cd388d",
+      "archive_sha256": "d7c9c3b103a83fff6068bdadb870850c5c79037559e5acd4da117877a340bcda",
+      "archive_bytes": 476486,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/baby/models/multimodal.json",
+      "source_sha256": "549f3d036631e04fae2e9940a95d2b12362c061e50078a1dba243ff3ebabe403",
+      "archive_sha256": "8262ef00a34a98c4ca2a30c5d08eca57727db493a1ee305d721f58eb75f7a631",
+      "archive_bytes": 184402,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/baby/models/popularity.json",
+      "source_sha256": "c7b338bf1d946db2c2e25c4a0c75ca45bc29ea9b13a956bac8da1083dc15031d",
+      "archive_sha256": "206e83150c77da238e5eb36b8c8d89b4b9e0bd78ccd237563f9891cee4c5a7ee",
+      "archive_bytes": 183613,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/baby/models/text.json",
+      "source_sha256": "929ca4770470f2bec80f98e716027f83019964f84ec02baac1048a127aa62b8b",
+      "archive_sha256": "b94490c8dcf3b1bb1d7a867096fa9dbe9959f57c8687b07bd7e09b4c7b837c64",
+      "archive_bytes": 184396,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/baby/models/tfidf.json",
+      "source_sha256": "445130c6edcf965640fd86258c398ad3d96d5cbb77a8f74a17a4ba43927a4301",
+      "archive_sha256": "474fa65b817b8d3df54dded7fda990d803a25eef482e13370230c03e41b11036",
+      "archive_bytes": 183705,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/baby/results.json",
+      "source_sha256": "a7ce7339f6840141650d6e7d12ec450426e463178ccaf7ad7f71a9fa4ca44381",
+      "archive_sha256": "3e5a40e18d22a67fbd2d54a548b4e093b82dfd492a2ec88beb906a547415425e",
+      "archive_bytes": 128808,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/baby/text_adaptation/adaptation.json",
+      "source_sha256": "61a937cca3d7957b762536c54fb9582bd0c414caae3c16d7acb407f48c510cb9",
+      "archive_sha256": "8e96e83433f9dae2d1a6b68de654d3495d6f38611bbf43434310cfce2fbd6538",
+      "archive_bytes": 797,
+      "transformations": [
+        "json-format-normalized"
+      ]
+    },
+    {
+      "path": "artifacts/budget_check/baby/seed42/budget_check.json",
+      "source_sha256": "eec9a701d89555f7aa43980c91b4a6fd30f506df30c2fea75a4feb584879c6ae",
+      "archive_sha256": "5b59ec60405a241079a8d98533b2792980b5b06347c9418869fb97dd4d11aaca",
+      "archive_bytes": 5852,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/budget_check/baby/seed42/models/mf.json",
+      "source_sha256": "59104e9c5a5416a1f6208ffe1da8136282929d427b727c775e6bfd50e79a4e33",
+      "archive_sha256": "2b80f48dbde71138b8287a0e11480691e988f04b5b018c32168e1ab7ef56788a",
+      "archive_bytes": 475578,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/budget_check/baby/seed42/results.json",
+      "source_sha256": "11a5d6e7f9ece85d1e8577c99e53d14d608327b3a64d81235efa10e593365661",
+      "archive_sha256": "918dba4615ccbde99975f26e77c16f69d0d9bc7dc2e89e7a92acf4f589c3b5a9",
+      "archive_bytes": 5305,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/budget_check/baby/seed43/budget_check.json",
+      "source_sha256": "9030950d9c0027beca7360d3caa56c363bab41266985a50275b62e77a537c971",
+      "archive_sha256": "46325e548571722d8c1397961da7283da7313a5780549225c2466c0d18470dde",
+      "archive_bytes": 5892,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/budget_check/baby/seed43/models/mf.json",
+      "source_sha256": "af4092a8e02aa728ab228fe2418a01f7549c1ca6e3c0a2a4473cb3c0ccdeaf3c",
+      "archive_sha256": "c66f2eadb510023621b8ef82e8c85da1c08785d42395c6ccf9078e0bad5f9d37",
+      "archive_bytes": 475582,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/budget_check/baby/seed43/results.json",
+      "source_sha256": "94d99416118bec42cacfb70656a6c5b50e8c12e5475f0b3915e015d00fc8dfb2",
+      "archive_sha256": "4640c50a63207b1985740a6d0664d3e5c76f16f095b0262820fa1bb7928ef4c2",
+      "archive_bytes": 5344,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/budget_check/baby/seed44/budget_check.json",
+      "source_sha256": "5c11cc3d16c04b456dd457b5a122b8f6ee2d19deb8f427422cc973a126d82fe2",
+      "archive_sha256": "c33832d91bb9c2697b53c54c69c6057da43772ae5cb03ddaa0edab7a400f02dc",
+      "archive_bytes": 5859,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/budget_check/baby/seed44/models/mf.json",
+      "source_sha256": "9142d07acb43f2e236cf009b81319fa0844afcfe5ef8281b61e0df0e93df95f7",
+      "archive_sha256": "daf407ff39e5b36938bdf15eb7093a1bd3dc7ede5cf7022cd637225f7c6eddd0",
+      "archive_bytes": 475584,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/budget_check/baby/seed44/results.json",
+      "source_sha256": "408bc9b8246b7f7481d65193dd21622a9c6d926d9f8599f364df26775a0dc0bf",
+      "archive_sha256": "a35f5871bc0af8452a75aecce70cf09c65351c803c113c8b3567fa40bca93948",
+      "archive_bytes": 5307,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/budget_check/clothing/seed42/budget_check.json",
+      "source_sha256": "7691d86ac7b14fd1d8525b7ea87b839f9b248976fce1ff95198d0858a8afa31d",
+      "archive_sha256": "07ef83b480ebf4e93f9747f4769b1d6bccbc0d9d39ef9ac8d75baedddc143b3e",
+      "archive_bytes": 6000,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/budget_check/clothing/seed42/models/mf.json",
+      "source_sha256": "0f2c038c18a9afd4b0fd09d99172adb2dfd07a13403fa4485bc92c5a6339574e",
+      "archive_sha256": "475070485ebfedf4765be470ffe64ec2b7caa82a1aca0c60bee2729e37095348",
+      "archive_bytes": 1217512,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/budget_check/clothing/seed42/results.json",
+      "source_sha256": "8a7a45c826b36f003fcd1912f1efcb112b436d4ed5bd5d8594e317045a81071c",
+      "archive_sha256": "313a4f4b5ec24dc0d238d3af28aab180bba57f4f0a53e3ff480d0f14893e766f",
+      "archive_bytes": 5439,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/budget_check/clothing/seed43/budget_check.json",
+      "source_sha256": "d5db5b75bc2bd88d4d13ed5e91a4f096da0c784bbcc9230857babe5d3a1ab8d4",
+      "archive_sha256": "fd3cebb177dd1961f4d72532ad013a5948166e04181ab62543144e2cb149390c",
+      "archive_bytes": 6004,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/budget_check/clothing/seed43/models/mf.json",
+      "source_sha256": "ead68baf9c83a4cc25ab42e1927d66b09efc597dee0b83133acf2db7359cde5e",
+      "archive_sha256": "fc5f5e6335558ccb5cdaed24821e705c6341904928ae735ca225e7c49ec64580",
+      "archive_bytes": 1217512,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/budget_check/clothing/seed43/results.json",
+      "source_sha256": "9301763cd09393a825bc0d7c1e5f925ebdabbdf8f7af0bbe50dce63847180fd9",
+      "archive_sha256": "845b787e9fcf0d59df3d971546547506197ca58162193fe022483c5106ef2f4b",
+      "archive_bytes": 5440,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/budget_check/clothing/seed44/budget_check.json",
+      "source_sha256": "09730c22588539d92909ef90ba5d593c71dd1bc4304b8b09661efbea2cf5e71a",
+      "archive_sha256": "17ad29af8bd97ceb1c86aa5ab15979b7482a20de417da3f538e241366aa92016",
+      "archive_bytes": 6001,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/budget_check/clothing/seed44/models/mf.json",
+      "source_sha256": "43762c3798de81c87cac11335841853d8a9a9be23bdddce0c2b5bbc940a28a38",
+      "archive_sha256": "2b76373105458cfbbf2ed36c1c107894d8e978c348973e91630eb1a8b46adb97",
+      "archive_bytes": 1217513,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/budget_check/clothing/seed44/results.json",
+      "source_sha256": "58a86d513ad351441bc45303205d8728d96ee06a841a323c8c027400ca4f412e",
+      "archive_sha256": "d64aa840d463cfe8d977aa4fecb0d04e9a3c40efb84322a916df3709588da940",
+      "archive_bytes": 5440,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/budget_check/sports/seed42/budget_check.json",
+      "source_sha256": "b53f0ba0d76b0443a0fcbdcd2ae3720e059f603ceba72be6415ebd6688cfdf91",
+      "archive_sha256": "95555293a78fd021b28b4ce50bf62257da23725ff3a5a7e7cc2b8b6a404e5d8a",
+      "archive_bytes": 5982,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/budget_check/sports/seed42/models/mf.json",
+      "source_sha256": "7bd793dd5bb4182e21a962ad435643fbc74d35a52adce3aea9cc0b9ae54a84cc",
+      "archive_sha256": "3abe1783c590aa2a1334577625d399450ece76302ab9f9c80bcbdcef31998373",
+      "archive_bytes": 1065659,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/budget_check/sports/seed42/results.json",
+      "source_sha256": "2f9216790301f3d59f2f04e0c4715575450a8b2a15047955b0fd63144754ab60",
+      "archive_sha256": "aa17ae2c10898b5e4cfa92d3c0fe49fed3428f7421f1543d9c4d486a478dbfaa",
+      "archive_bytes": 5425,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/budget_check/sports/seed43/budget_check.json",
+      "source_sha256": "48e8a7fa101860cbdbd7c9ae38ae71eead3902bd01cf6dc8aac60d96b2f11122",
+      "archive_sha256": "a6a0b81357cc6466b1b39bb22bbbcbc1e3c21063c44d2acc9c4a2b7ff868b13f",
+      "archive_bytes": 5977,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/budget_check/sports/seed43/models/mf.json",
+      "source_sha256": "718309baaa41519a90d2b1ee99ef6f298a6c80090bb47d1ce62bafd803838791",
+      "archive_sha256": "85c2aac0f701c1625077696d9804ff3d336e37dde898ad6b7cf8736c88809324",
+      "archive_bytes": 1065658,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/budget_check/sports/seed43/results.json",
+      "source_sha256": "eb5fb729d5bb13162c3175d91ea162f2021831ae8804a4afcd2732f569659514",
+      "archive_sha256": "683092cb3ed567d8107b0cad8d52be1082748035c16b5b580282f4eb25299c8f",
+      "archive_bytes": 5424,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/budget_check/sports/seed44/budget_check.json",
+      "source_sha256": "08fc73e79bb770797a8531b73b9c1a79fadf32c6ca954a2499d1805f7b751d2d",
+      "archive_sha256": "71d618875d80942ef44db0e9653641d87697dffc1f6297af27e105533004122e",
+      "archive_bytes": 5978,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/budget_check/sports/seed44/models/mf.json",
+      "source_sha256": "d3088246b90dae9b83406e1db6a2988d25a580ec7e38f1d2ccc094e4a311ae02",
+      "archive_sha256": "1dd8e73e03766316b5db7074a20fe6fac4d1c784a51ed5691e12fac5bed5bea2",
+      "archive_bytes": 1065664,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/budget_check/sports/seed44/results.json",
+      "source_sha256": "a8bad7d6ee17055de8432588ec142870e6318eebc515dc0f5d72a9206c9347b8",
+      "archive_sha256": "3f184ea6d609b6dcf6283eec129ae86e820bbb5c6713fec5a92698c8be1c450e",
+      "archive_bytes": 5424,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/clothing/features.json",
+      "source_sha256": "fdb346430ff73b48ca3911b3122ea4f7be24e251fc67e52050e710261f28e5cd",
+      "archive_sha256": "e93223cd8479cea29c0f026b38989638643daa46c0b684bd6a6ef7b0db5d5405",
+      "archive_bytes": 1591,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/clothing/models/adapted.json",
+      "source_sha256": "ee8fb232ecbc2d1181278d2e6584c06f7aa9273d4e26bc78949b746ebbbea05b",
+      "archive_sha256": "a59df93d132b9c88ba177cd3978ad25ea8ab5ef851307a0fe54d42dc5d62ef4d",
+      "archive_bytes": 572658,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/clothing/models/mf.json",
+      "source_sha256": "413ac38840ff76ee9520652dc7fb52a52d50a76b6736512acde277f6a7299a09",
+      "archive_sha256": "b8ed7d52dec86cbe9db573ee99f2b4c51ef1dfd484006e91fe4f4f6affa92aa1",
+      "archive_bytes": 1218413,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/clothing/models/multimodal.json",
+      "source_sha256": "7d8f7526ede65cf78360f35d91e62972f6886a06a657288c74c9852066414ac0",
+      "archive_sha256": "8aab19437fbd5543c2759532b1259feab50333a3e68ea445f2647be301895496",
+      "archive_bytes": 572659,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/clothing/models/popularity.json",
+      "source_sha256": "304229bfd71c780531cdc57a98f3506bb90b7770be332967a9651bdbade4002f",
+      "archive_sha256": "79e0e6a5f31335920035de25eac5062ba5fbe086bb26268990d36242219a510f",
+      "archive_bytes": 571866,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/clothing/models/text.json",
+      "source_sha256": "4a733eb05f3483a942204b1420af73a1dcb359e28aaabc7e0f64580800b5052a",
+      "archive_sha256": "14426132479842e4fff3e893909e8ee7753855e8c238555dca9b0c5b63c538f2",
+      "archive_bytes": 572655,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/clothing/models/tfidf.json",
+      "source_sha256": "d51973b09dbdeeaffda6ed123653a524a4d369ba43307a13f5163cd2164c90fd",
+      "archive_sha256": "fc4a888ff115ac6bcb54414b97c9be38bb5c8b31a39bcd2cc867cbacaa393d7b",
+      "archive_bytes": 571958,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/clothing/results.json",
+      "source_sha256": "01e5015b663e86d6a1d3407df2ed260bebc0553fad21a6a658a7710361f862d6",
+      "archive_sha256": "e53b17fcd7e9cf012580faf3c61600a96cc5de7fa76a7e2b6fe3b2093d9fa2ce",
+      "archive_bytes": 130677,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/clothing/text_adaptation/adaptation.json",
+      "source_sha256": "83a3e9956f9327bf31fc9aacd2b975e4c20911a2c1e1d1fa5985d872b08bbe02",
+      "archive_sha256": "6ca91e9830cffa7f75e6898f45cf4b6deaa97e71c2c69ad14c1ed221e9136a84",
+      "archive_bytes": 797,
+      "transformations": [
+        "json-format-normalized"
+      ]
+    },
+    {
+      "path": "artifacts/local_benchmark.json",
+      "source_sha256": "d360f0e42c6fbf3893aec7b372014f21d65815d4ba9a66203938efc4c1877d65",
+      "archive_sha256": "cd6b01dfbd22afd327f329bf47fdfeb650f46dba2627c0d4011f1a0d84fc11b8",
+      "archive_bytes": 6036,
+      "transformations": [
+        "json-format-normalized"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/baby/base/features.json",
+      "source_sha256": "00ea5a775ddb469dd4dfc0b03a5dc0b88572b7d92e0d0f8ce9e0d481d04286fe",
+      "archive_sha256": "00ea5a775ddb469dd4dfc0b03a5dc0b88572b7d92e0d0f8ce9e0d481d04286fe",
+      "archive_bytes": 812,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_frozen/seed42/complete.json",
+      "source_sha256": "4598336dcc5ad8ba262459834b143532102b46a9b37a070037196501a96f40e2",
+      "archive_sha256": "4598336dcc5ad8ba262459834b143532102b46a9b37a070037196501a96f40e2",
+      "archive_bytes": 528,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_frozen/seed42/models/qwen_frozen.json",
+      "source_sha256": "5cb995e848f7ad75c8e194386038c107e38f5a1b7916923ed4f85225a20d9c95",
+      "archive_sha256": "326d62cb078b0238cda41000351b3b2fcc7e12ac09aeac01ce2f7d73a8686e87",
+      "archive_bytes": 184658,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_frozen/seed42/results.json",
+      "source_sha256": "e02600753f3fac6a55ea095040194b0ec2f3c9e1b2c759b767621324552e51ab",
+      "archive_sha256": "b353e554655b09d47b9ddd4518dff81b5dfe9fd1a4480f941aad2e6dc3f26c3a",
+      "archive_bytes": 8698,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_frozen/seed42/training.json",
+      "source_sha256": "98a4e79e7005631bed99b7cf1f2be7812d6bba28a69f9eaf960d2e035e06364b",
+      "archive_sha256": "98a4e79e7005631bed99b7cf1f2be7812d6bba28a69f9eaf960d2e035e06364b",
+      "archive_bytes": 6472,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_frozen/seed43/complete.json",
+      "source_sha256": "9185da950497db1db85f182a3f29ffa7c7d65baaac3599307c441ca9f8a871c5",
+      "archive_sha256": "9185da950497db1db85f182a3f29ffa7c7d65baaac3599307c441ca9f8a871c5",
+      "archive_bytes": 528,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_frozen/seed43/models/qwen_frozen.json",
+      "source_sha256": "f16d24f1c7bf992edc0a6541c1f70c537f2fba6dc877ad3a265379e8296a7602",
+      "archive_sha256": "63827e9ea2065583ee91f32db0e0675b7ab70f0dd8981c346df72505a9b80cf6",
+      "archive_bytes": 185560,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_frozen/seed43/results.json",
+      "source_sha256": "f4a4a97cf8cb725b024dc7cda0481b42ef79c60298787e8e4eae43bbc664d8dd",
+      "archive_sha256": "769fb1a980eac63026f3ad81742479e7e08a51e26e490c52ec0fc55d6b61be4f",
+      "archive_bytes": 9809,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_frozen/seed43/training.json",
+      "source_sha256": "f62b3dbd3c8a35576269d5d9b7c9d57deca1b4b923691d2d6b7f5bccdedac994",
+      "archive_sha256": "f62b3dbd3c8a35576269d5d9b7c9d57deca1b4b923691d2d6b7f5bccdedac994",
+      "archive_bytes": 7370,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_frozen/seed44/complete.json",
+      "source_sha256": "3123b342cdf0039a1418eb88f2403105a9c7c3022ff3b54ef77a4a3eebc26acc",
+      "archive_sha256": "3123b342cdf0039a1418eb88f2403105a9c7c3022ff3b54ef77a4a3eebc26acc",
+      "archive_bytes": 528,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_frozen/seed44/models/qwen_frozen.json",
+      "source_sha256": "95a6dd1a946708caa5d93dc3c8bb37894e456cf6c96563d37c2eaf52586c9051",
+      "archive_sha256": "d47b54b341b941c149960360fb8d0fb66ecd15491422df2d39e07995316602b8",
+      "archive_bytes": 185430,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_frozen/seed44/results.json",
+      "source_sha256": "74fdd4b5820f56676939cad1bde8a216a005f72e0d249e1773916db3fa317e77",
+      "archive_sha256": "7e5c91ed4315e68ccb22953158a2d87d9df38e415b5d7d18d3275d539a55012a",
+      "archive_bytes": 9651,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_frozen/seed44/training.json",
+      "source_sha256": "423a9f57955de28db15395904ca7123b3958eef292538a58ac821455dc7f202f",
+      "archive_sha256": "423a9f57955de28db15395904ca7123b3958eef292538a58ac821455dc7f202f",
+      "archive_bytes": 7242,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_preference/seed42/adapter/adapter_config.json",
+      "source_sha256": "b6950cc06c7ad04f81214bfe2a86345b49565d9294046db5434f7ed0d6977800",
+      "archive_sha256": "4269f9b95b70a51ff6ab3d916822ef374d65c26f6d765b0f134b08aaa191cdfd",
+      "archive_bytes": 876,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_preference/seed42/complete.json",
+      "source_sha256": "57fc47425aee7a7492626deab2a930a287230af2d3858595a2e18ec1dc260308",
+      "archive_sha256": "57fc47425aee7a7492626deab2a930a287230af2d3858595a2e18ec1dc260308",
+      "archive_bytes": 594,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_preference/seed42/models/qwen_preference.json",
+      "source_sha256": "0eaa03927447019d88f7a527939d416d49cdc12b0bb7b8563f99a1e285525a69",
+      "archive_sha256": "65c99cda058fa38d8edd0bfc61ca67aaaac5c7db37ad145197c7255e57886622",
+      "archive_bytes": 184870,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_preference/seed42/results.json",
+      "source_sha256": "00c22c9995bed16232cecae6c7bca01cc05f4b5bffb029bb1302d89f75f7e758",
+      "archive_sha256": "4a5d8b77cb7aadf2f2b2769751bf260a87a0880da642eb58c816033742d25f67",
+      "archive_bytes": 8970,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_preference/seed42/training.json",
+      "source_sha256": "cb02b2a614247dd83c6bb5e7c538f56e7f09623432e2c9f9f811f9a8861159b4",
+      "archive_sha256": "cb02b2a614247dd83c6bb5e7c538f56e7f09623432e2c9f9f811f9a8861159b4",
+      "archive_bytes": 6713,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_preference/seed43/adapter/adapter_config.json",
+      "source_sha256": "b6950cc06c7ad04f81214bfe2a86345b49565d9294046db5434f7ed0d6977800",
+      "archive_sha256": "4269f9b95b70a51ff6ab3d916822ef374d65c26f6d765b0f134b08aaa191cdfd",
+      "archive_bytes": 876,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_preference/seed43/complete.json",
+      "source_sha256": "4955fb87165aeadae19bf6f6c57c9a93ca56e395bca98878cc24fbd389f506f0",
+      "archive_sha256": "4955fb87165aeadae19bf6f6c57c9a93ca56e395bca98878cc24fbd389f506f0",
+      "archive_bytes": 594,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_preference/seed43/models/qwen_preference.json",
+      "source_sha256": "2c5a3ba400f84ad1bccbaa39d03d548af98da6694f7b8f4a479e04727d1d9c61",
+      "archive_sha256": "72d7a0f9881d7eb79def2124477f5820a5bb6fdac44da10ca75a883b70b89138",
+      "archive_bytes": 185772,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_preference/seed43/results.json",
+      "source_sha256": "fed77be4dc6cc6b9862b7ae64906c709498da4ad24d11b4dfc2827bbfa682a1c",
+      "archive_sha256": "5557db6f40de9db4c291703031460126e279f1a863a9ae9c3463df615de21ea5",
+      "archive_bytes": 10079,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_preference/seed43/training.json",
+      "source_sha256": "8817344d8c8c9a3f98509b1fd1909ec7d1a0664a2217d31ea5af3e9c880f8f99",
+      "archive_sha256": "8817344d8c8c9a3f98509b1fd1909ec7d1a0664a2217d31ea5af3e9c880f8f99",
+      "archive_bytes": 7615,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_preference/seed44/adapter/adapter_config.json",
+      "source_sha256": "b6950cc06c7ad04f81214bfe2a86345b49565d9294046db5434f7ed0d6977800",
+      "archive_sha256": "4269f9b95b70a51ff6ab3d916822ef374d65c26f6d765b0f134b08aaa191cdfd",
+      "archive_bytes": 876,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_preference/seed44/complete.json",
+      "source_sha256": "2d8250a55279d808ea948033dcbe272955ddadd19b3c16e0438d8d1f0c6c3e3d",
+      "archive_sha256": "2d8250a55279d808ea948033dcbe272955ddadd19b3c16e0438d8d1f0c6c3e3d",
+      "archive_bytes": 594,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_preference/seed44/models/qwen_preference.json",
+      "source_sha256": "ec66c9ca86a633604b071684f6578c2d20c2b3d1fb1ee583809878f60c653c55",
+      "archive_sha256": "f07b9d0cefe3bbc21b781870d9a0550ad9be01136f2a360143f90d38dad95091",
+      "archive_bytes": 185642,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_preference/seed44/results.json",
+      "source_sha256": "766af9027d9a4ea5a93d1ed9eeb79567dbcb2a0de19f7211e17699177ca53527",
+      "archive_sha256": "dd4abfc2c3a1a13aeccbea3fe2c3c31b9f0b3784775440e8a122ec8383a56611",
+      "archive_bytes": 9919,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_preference/seed44/training.json",
+      "source_sha256": "5085eee24d6c3cea77ac0c3db2a3e958d4b8bfc1c3a6055f33eda098c7bb6850",
+      "archive_sha256": "5085eee24d6c3cea77ac0c3db2a3e958d4b8bfc1c3a6055f33eda098c7bb6850",
+      "archive_bytes": 7489,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_semantic/seed42/adapter/adapter_config.json",
+      "source_sha256": "b6950cc06c7ad04f81214bfe2a86345b49565d9294046db5434f7ed0d6977800",
+      "archive_sha256": "4269f9b95b70a51ff6ab3d916822ef374d65c26f6d765b0f134b08aaa191cdfd",
+      "archive_bytes": 876,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_semantic/seed42/complete.json",
+      "source_sha256": "557c50ec883b78e5c4369b86d963455372d26bd89e812f3788cbe1eb8fae4190",
+      "archive_sha256": "557c50ec883b78e5c4369b86d963455372d26bd89e812f3788cbe1eb8fae4190",
+      "archive_bytes": 592,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_semantic/seed42/models/qwen_semantic.json",
+      "source_sha256": "f316232d6efac79b3d235a57ffaed7681f6151669968d9296c6ac4415d49e9c9",
+      "archive_sha256": "c95a504789576c7d9d703cfa5c7b9c1daa47ac9ea9fe203497b581c537dd2211",
+      "archive_bytes": 184866,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_semantic/seed42/results.json",
+      "source_sha256": "627e4e52bc6ea7114338f5d3062fea81dcfc6cb1cb8c1fe5098cbb4d9cf077bd",
+      "archive_sha256": "394704952c02a6a314add9b40c235601cae8dd8c0eb63b7be9c15d6aa68de56e",
+      "archive_bytes": 8961,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_semantic/seed42/training.json",
+      "source_sha256": "22a57a6f079bd6436b1fb970d859c928116d6f9958f3b513091b935eb83bd042",
+      "archive_sha256": "22a57a6f079bd6436b1fb970d859c928116d6f9958f3b513091b935eb83bd042",
+      "archive_bytes": 6727,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_semantic/seed43/adapter/adapter_config.json",
+      "source_sha256": "b6950cc06c7ad04f81214bfe2a86345b49565d9294046db5434f7ed0d6977800",
+      "archive_sha256": "4269f9b95b70a51ff6ab3d916822ef374d65c26f6d765b0f134b08aaa191cdfd",
+      "archive_bytes": 876,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_semantic/seed43/complete.json",
+      "source_sha256": "e2ec37a76ec9993e1f6a009ac3995dcb57de35d1bc84f79a118708b39c45d309",
+      "archive_sha256": "e2ec37a76ec9993e1f6a009ac3995dcb57de35d1bc84f79a118708b39c45d309",
+      "archive_bytes": 592,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_semantic/seed43/models/qwen_semantic.json",
+      "source_sha256": "af17252c0be234e62ca58ea981d73ee62c2fbe759a39fb3b2a0723603d143397",
+      "archive_sha256": "97d4a994565decc9adfbf65b4be3bf79ceb4e76b30ba27f29a3fa8d59dc72fa5",
+      "archive_bytes": 185768,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_semantic/seed43/results.json",
+      "source_sha256": "22dc090bcfe2db580587e7774f0da9ab5f231827053d8e439dc542a3f36700be",
+      "archive_sha256": "d52afca86b85b62b66f860e22247b8703e4db9cc9efbd1d12742055737e275bb",
+      "archive_bytes": 10074,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_semantic/seed43/training.json",
+      "source_sha256": "7b49abff2e14fe99c70b81f7b20f9dc5cb89d670700ab752212df7c79e91e611",
+      "archive_sha256": "7b49abff2e14fe99c70b81f7b20f9dc5cb89d670700ab752212df7c79e91e611",
+      "archive_bytes": 7626,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_semantic/seed44/adapter/adapter_config.json",
+      "source_sha256": "b6950cc06c7ad04f81214bfe2a86345b49565d9294046db5434f7ed0d6977800",
+      "archive_sha256": "4269f9b95b70a51ff6ab3d916822ef374d65c26f6d765b0f134b08aaa191cdfd",
+      "archive_bytes": 876,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_semantic/seed44/complete.json",
+      "source_sha256": "b50490406f7c8995bba4d375674347768879f47415dc6e4d1ddd3343bf852a76",
+      "archive_sha256": "b50490406f7c8995bba4d375674347768879f47415dc6e4d1ddd3343bf852a76",
+      "archive_bytes": 592,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_semantic/seed44/models/qwen_semantic.json",
+      "source_sha256": "8fd486f5be08b1ff108772de212a59a1c9967351b59ae52d778c6b804b3d6a03",
+      "archive_sha256": "90e5608c5a2200c225bc79cc8ad3a77ab3aeaec5151590eaeb6259e358aa3f5b",
+      "archive_bytes": 185638,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_semantic/seed44/results.json",
+      "source_sha256": "a8455b1c1eeb7b2c4e25428378de8825ef5fb657eb91f083ec87597b5a43e55b",
+      "archive_sha256": "9b2dd75bb8329efaefd09847a3c56bb3d7f84c744b6f9272afd8e90fcbdbec48",
+      "archive_bytes": 9917,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/baby/qwen_semantic/seed44/training.json",
+      "source_sha256": "c75af2f8d6f0b1d40a8bb2e2234dc9c449ebee8032a634b0f6d2195e570132b4",
+      "archive_sha256": "c75af2f8d6f0b1d40a8bb2e2234dc9c449ebee8032a634b0f6d2195e570132b4",
+      "archive_bytes": 7498,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/baby/results.json",
+      "source_sha256": "45123f1d77d0002447620ac1650673a0768e4f139c960809b6188c2eccda71cd",
+      "archive_sha256": "aad762aa003b0c542ed24b7384f215d04eef937955e24e69d83b9fd432fcb584",
+      "archive_bytes": 85902,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/baby/warmup/seed42/complete.json",
+      "source_sha256": "23cc5d5f19de30a6ecb2fa48342cc3dffa83f866dbc175331ff49613ba4310f0",
+      "archive_sha256": "23cc5d5f19de30a6ecb2fa48342cc3dffa83f866dbc175331ff49613ba4310f0",
+      "archive_bytes": 907,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/baby/warmup/seed42/review_anchors.json",
+      "source_sha256": "62133ac13728adda7dede14459a458748627f5b79d9bd779bc61ed54f26088de",
+      "archive_sha256": "62133ac13728adda7dede14459a458748627f5b79d9bd779bc61ed54f26088de",
+      "archive_bytes": 364,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/baby/warmup/seed42/sampling.json",
+      "source_sha256": "0e7430b04e35684cd35275859388e2a8ab63cbb8cf8a40e2892152e8c7eb49b6",
+      "archive_sha256": "0e7430b04e35684cd35275859388e2a8ab63cbb8cf8a40e2892152e8c7eb49b6",
+      "archive_bytes": 921,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/baby/warmup/seed43/complete.json",
+      "source_sha256": "31e895ab44295b71fad31806904f701ff68201905b692efc83a2bfe7948cba70",
+      "archive_sha256": "31e895ab44295b71fad31806904f701ff68201905b692efc83a2bfe7948cba70",
+      "archive_bytes": 1739,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/baby/warmup/seed43/review_anchors.json",
+      "source_sha256": "6c25180bd7f7c410e0f997edc0d50295c6f6e53e5a6205b43658088fe05cbf73",
+      "archive_sha256": "6c25180bd7f7c410e0f997edc0d50295c6f6e53e5a6205b43658088fe05cbf73",
+      "archive_bytes": 364,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/baby/warmup/seed43/sampling.json",
+      "source_sha256": "7e9b5171e9a51f3e24d6105c409a7dac8ddf53abdf92693a9a6faaed85ce019a",
+      "archive_sha256": "7e9b5171e9a51f3e24d6105c409a7dac8ddf53abdf92693a9a6faaed85ce019a",
+      "archive_bytes": 921,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/baby/warmup/seed44/complete.json",
+      "source_sha256": "02bc9c61b58410f867baa74ae395e61eb6f0bcf53b1474a4cb25df93612d2373",
+      "archive_sha256": "02bc9c61b58410f867baa74ae395e61eb6f0bcf53b1474a4cb25df93612d2373",
+      "archive_bytes": 1619,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/baby/warmup/seed44/review_anchors.json",
+      "source_sha256": "4c1ab56bc1227bf15ed2d909044e58578eec6eb73b787b6c88ede83567f2773f",
+      "archive_sha256": "4c1ab56bc1227bf15ed2d909044e58578eec6eb73b787b6c88ede83567f2773f",
+      "archive_bytes": 364,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/baby/warmup/seed44/sampling.json",
+      "source_sha256": "813fed427db70a1eb6cd46576005e4a0330bfb8c46e1c50a968b1242dab5d65c",
+      "archive_sha256": "813fed427db70a1eb6cd46576005e4a0330bfb8c46e1c50a968b1242dab5d65c",
+      "archive_bytes": 921,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/clothing/base/features.json",
+      "source_sha256": "61f38e6dc73a2df50c4e024cf2ce38d1450d2f2d9422269e4119ac334764d1e0",
+      "archive_sha256": "61f38e6dc73a2df50c4e024cf2ce38d1450d2f2d9422269e4119ac334764d1e0",
+      "archive_bytes": 812,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_frozen/seed42/complete.json",
+      "source_sha256": "b0cc78fff94fc864e5fc137fe922a211c4c9b5e598a5a82490697461dcce3ee6",
+      "archive_sha256": "b0cc78fff94fc864e5fc137fe922a211c4c9b5e598a5a82490697461dcce3ee6",
+      "archive_bytes": 528,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_frozen/seed42/models/qwen_frozen.json",
+      "source_sha256": "7969bd368c28a4af88f55e149002ceed01937c8cbeff897b2f4eba6c4fe5aad4",
+      "archive_sha256": "b98519a438663c9317cde435de5b238e58a13650a2aabb6d65a9bf59bf76fdf2",
+      "archive_bytes": 573941,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_frozen/seed42/results.json",
+      "source_sha256": "26567d8e47a54664e79d4624c15ebef3552e82036b98ea1513b3e4c0526d6b66",
+      "archive_sha256": "48e9e7d062a4684f2b4965487ef05b2e29b7b3e755ad6982d0d6ace3c199a132",
+      "archive_bytes": 10110,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_frozen/seed42/training.json",
+      "source_sha256": "7557eaeb131b191f0bac3aeb306e19a3a8da632088fc037318786200977f4218",
+      "archive_sha256": "7557eaeb131b191f0bac3aeb306e19a3a8da632088fc037318786200977f4218",
+      "archive_bytes": 7514,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_frozen/seed43/complete.json",
+      "source_sha256": "ab61715d7a1d464cbf9bbaa7df7efae17f07dbcee711e992eeddb80d055cfc92",
+      "archive_sha256": "ab61715d7a1d464cbf9bbaa7df7efae17f07dbcee711e992eeddb80d055cfc92",
+      "archive_bytes": 528,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_frozen/seed43/models/qwen_frozen.json",
+      "source_sha256": "3f59f3513d1e17e5d9be5eeed2ead42e66b984ba3b176e4e111c690086c139b6",
+      "archive_sha256": "75e81734f67c3a81aaa2767f8b1728d7617dce38357e76f5524790f0676d2f9d",
+      "archive_bytes": 573808,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_frozen/seed43/results.json",
+      "source_sha256": "2350021aba3fc9580e4ec3a210812b5582f84c5ce866c2766586bd1c6bfd812f",
+      "archive_sha256": "85396531eed54f0e7edcc282705009516dd15d8fdfc92a088cb4f39255c09a56",
+      "archive_bytes": 9946,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_frozen/seed43/training.json",
+      "source_sha256": "16e1b6320e289edafe333221bdef4f7131f3f344e05fce8ada8c125898e2ebef",
+      "archive_sha256": "16e1b6320e289edafe333221bdef4f7131f3f344e05fce8ada8c125898e2ebef",
+      "archive_bytes": 7558,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_frozen/seed44/complete.json",
+      "source_sha256": "0cd79d191ee177e3ee64fe6c72da6328f0cbea63433da0ea1aca8f18eb5889c0",
+      "archive_sha256": "0cd79d191ee177e3ee64fe6c72da6328f0cbea63433da0ea1aca8f18eb5889c0",
+      "archive_bytes": 528,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_frozen/seed44/models/qwen_frozen.json",
+      "source_sha256": "ffc080ed876f6e10cfee086653be28f1848279dda58d88b0c3c4e007c9f2f385",
+      "archive_sha256": "b4c945a754903664b89bd9e088fc9bdf7c52881431f11724df8558c4ae7e658f",
+      "archive_bytes": 573809,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_frozen/seed44/results.json",
+      "source_sha256": "8320b587dd80e35ab6fa35bf957c913be2a3716bacb32dc74eecc4c6f1efb7d0",
+      "archive_sha256": "f4f45518dbc53e4c2f8054a65a54cfc6d7d61c8ea6502925f6cb075fd36b9311",
+      "archive_bytes": 9949,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_frozen/seed44/training.json",
+      "source_sha256": "ecc97833fdb83a87219add8f575419bcea94d01ed0e3f0384028e7f071d824bc",
+      "archive_sha256": "ecc97833fdb83a87219add8f575419bcea94d01ed0e3f0384028e7f071d824bc",
+      "archive_bytes": 7554,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_preference/seed42/adapter/adapter_config.json",
+      "source_sha256": "b6950cc06c7ad04f81214bfe2a86345b49565d9294046db5434f7ed0d6977800",
+      "archive_sha256": "4269f9b95b70a51ff6ab3d916822ef374d65c26f6d765b0f134b08aaa191cdfd",
+      "archive_bytes": 876,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_preference/seed42/complete.json",
+      "source_sha256": "da551e717bbc74dbdfb692c8d03fa0ac699f6191e027517abfb4ead649835101",
+      "archive_sha256": "da551e717bbc74dbdfb692c8d03fa0ac699f6191e027517abfb4ead649835101",
+      "archive_bytes": 594,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_preference/seed42/models/qwen_preference.json",
+      "source_sha256": "ad6038b98b3bd20df7fb0724a43c2f45728f311793cfced3780cc1590ff3e830",
+      "archive_sha256": "4a5221a1c5bd93546d6ecbbbcc7c84272c3922a4a4381509c1c99d56151a4812",
+      "archive_bytes": 574153,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_preference/seed42/results.json",
+      "source_sha256": "c20feaa6ba9c49d470d3a22535def63bb615021564273559c252e4ea8564ed3b",
+      "archive_sha256": "e31b841bdb0d816339280fbb1d155b47902a96d4bd036791976370496a082bd6",
+      "archive_bytes": 10380,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_preference/seed42/training.json",
+      "source_sha256": "d862fc24488eed71701d6874406419986f8648e9c12d1441c1bc7497331a3add",
+      "archive_sha256": "d862fc24488eed71701d6874406419986f8648e9c12d1441c1bc7497331a3add",
+      "archive_bytes": 7920,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_preference/seed43/adapter/adapter_config.json",
+      "source_sha256": "b6950cc06c7ad04f81214bfe2a86345b49565d9294046db5434f7ed0d6977800",
+      "archive_sha256": "4269f9b95b70a51ff6ab3d916822ef374d65c26f6d765b0f134b08aaa191cdfd",
+      "archive_bytes": 876,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_preference/seed43/complete.json",
+      "source_sha256": "050ae01818037e21401a2326c57cc293d6699c5864afd311bc45ea6d7102a808",
+      "archive_sha256": "050ae01818037e21401a2326c57cc293d6699c5864afd311bc45ea6d7102a808",
+      "archive_bytes": 594,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_preference/seed43/models/qwen_preference.json",
+      "source_sha256": "c8471044f4363325d2f49a831ffec442edb776163ffd7911f28ade7f79d469c4",
+      "archive_sha256": "b4fd25078b6769e051b5ab0763b51efed7411d7f321d8b8440f5a0a6e1dd48d6",
+      "archive_bytes": 574020,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_preference/seed43/results.json",
+      "source_sha256": "6e95b2894b3d41847631c4fdace3e04b9c50dd5e6b4462c34704e5eb12aaedf2",
+      "archive_sha256": "b9a7ad3c19638573ac2202558efd542c0d7d0b6ec6218a874b2423e0d131f1d3",
+      "archive_bytes": 10213,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_preference/seed43/training.json",
+      "source_sha256": "8d6fe522343f83ef6eaa025cc22e837be2e22fb0a87f21edffb750a11361d058",
+      "archive_sha256": "8d6fe522343f83ef6eaa025cc22e837be2e22fb0a87f21edffb750a11361d058",
+      "archive_bytes": 7787,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_preference/seed44/adapter/adapter_config.json",
+      "source_sha256": "b6950cc06c7ad04f81214bfe2a86345b49565d9294046db5434f7ed0d6977800",
+      "archive_sha256": "4269f9b95b70a51ff6ab3d916822ef374d65c26f6d765b0f134b08aaa191cdfd",
+      "archive_bytes": 876,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_preference/seed44/complete.json",
+      "source_sha256": "a7ea3afc32e6265f472c20de8689f7837ed2a8a9e63d9323993e124434b04728",
+      "archive_sha256": "a7ea3afc32e6265f472c20de8689f7837ed2a8a9e63d9323993e124434b04728",
+      "archive_bytes": 594,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_preference/seed44/models/qwen_preference.json",
+      "source_sha256": "579cce614a664055e860a91d20750300e104ac26e62651e2425fdec2ff21a390",
+      "archive_sha256": "9878cbd93ccbc295f6bdc9a566566ce4e7a52ee16b53f55e984546a5a32daa98",
+      "archive_bytes": 574021,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_preference/seed44/results.json",
+      "source_sha256": "96772718b541851ff259343b35aefc7dd3bc439f8bd8639066826211d07132a5",
+      "archive_sha256": "70a2797aaa728d2cc413dd84ee35f4d6f23b82ca2003a74e167f71933e05554c",
+      "archive_bytes": 10219,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_preference/seed44/training.json",
+      "source_sha256": "0c711ec80d63bc6cc1a06d9e779a0396c5434912726f39596390a3a94e3764c9",
+      "archive_sha256": "0c711ec80d63bc6cc1a06d9e779a0396c5434912726f39596390a3a94e3764c9",
+      "archive_bytes": 7790,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_semantic/seed42/adapter/adapter_config.json",
+      "source_sha256": "b6950cc06c7ad04f81214bfe2a86345b49565d9294046db5434f7ed0d6977800",
+      "archive_sha256": "4269f9b95b70a51ff6ab3d916822ef374d65c26f6d765b0f134b08aaa191cdfd",
+      "archive_bytes": 876,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_semantic/seed42/complete.json",
+      "source_sha256": "c05e2ae2f0f4ff4720dfdcbc11c74d7cca3bb724954ebd7baf087c620ebf1938",
+      "archive_sha256": "c05e2ae2f0f4ff4720dfdcbc11c74d7cca3bb724954ebd7baf087c620ebf1938",
+      "archive_bytes": 592,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_semantic/seed42/models/qwen_semantic.json",
+      "source_sha256": "1e0e9a450c89bcfadbc0838a0f7327131630df84d0c4fbe9ff45f7785ee68893",
+      "archive_sha256": "d0bfc126e217ea5f7a15e64482be1c41629a2f5ddf44cafe35755a7acebbb89d",
+      "archive_bytes": 574149,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_semantic/seed42/results.json",
+      "source_sha256": "4072730e59ec26b6c03f66e499e7f0d6851b607092d8e2290b7bf25ccb178f3b",
+      "archive_sha256": "54efc7bf5ddf9a461344f737d9336523210b5dffcbf5b57539f654b0ee5cf757",
+      "archive_bytes": 10377,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_semantic/seed42/training.json",
+      "source_sha256": "ed3ad3944c908e4644b89237249bba5f55df0a149a6c61997f2ed72235ac9b61",
+      "archive_sha256": "ed3ad3944c908e4644b89237249bba5f55df0a149a6c61997f2ed72235ac9b61",
+      "archive_bytes": 7933,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_semantic/seed43/adapter/adapter_config.json",
+      "source_sha256": "b6950cc06c7ad04f81214bfe2a86345b49565d9294046db5434f7ed0d6977800",
+      "archive_sha256": "4269f9b95b70a51ff6ab3d916822ef374d65c26f6d765b0f134b08aaa191cdfd",
+      "archive_bytes": 876,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_semantic/seed43/complete.json",
+      "source_sha256": "1231a5311065200658bda91ecd9b6fd08ef7f95dbb5e39d4f1ec76a882432806",
+      "archive_sha256": "1231a5311065200658bda91ecd9b6fd08ef7f95dbb5e39d4f1ec76a882432806",
+      "archive_bytes": 592,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_semantic/seed43/models/qwen_semantic.json",
+      "source_sha256": "d058b013c1c83d86c71cba37b2d6fef15bb15e3687ca4763fa197e3c3ac21c7f",
+      "archive_sha256": "5192e50ea2bed6b4a9aa1f22d681feee7236cdea1429ec63f5dff1dcff5879bc",
+      "archive_bytes": 574016,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_semantic/seed43/results.json",
+      "source_sha256": "95424223fbcc540a682b0ce1571f14462006d4cec3f2a5c68d1df64228d2dd42",
+      "archive_sha256": "7d91898563c0ea9d6c280809e6a876e76ff9f0fd7020a58298676cd3e4b2aac0",
+      "archive_bytes": 10211,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_semantic/seed43/training.json",
+      "source_sha256": "e2b9bc275e02908093aff589b508fd48a946123fef353293db8358c6dd63cce7",
+      "archive_sha256": "e2b9bc275e02908093aff589b508fd48a946123fef353293db8358c6dd63cce7",
+      "archive_bytes": 7801,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_semantic/seed44/adapter/adapter_config.json",
+      "source_sha256": "b6950cc06c7ad04f81214bfe2a86345b49565d9294046db5434f7ed0d6977800",
+      "archive_sha256": "4269f9b95b70a51ff6ab3d916822ef374d65c26f6d765b0f134b08aaa191cdfd",
+      "archive_bytes": 876,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_semantic/seed44/complete.json",
+      "source_sha256": "02d360ea397a59bc7905c0d428dcb30aa6810ac52d091366980573c8d8a96a31",
+      "archive_sha256": "02d360ea397a59bc7905c0d428dcb30aa6810ac52d091366980573c8d8a96a31",
+      "archive_bytes": 592,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_semantic/seed44/models/qwen_semantic.json",
+      "source_sha256": "96333ad7b216e395da1593a473ff035c48f9457cdcd61d238ca277db45762027",
+      "archive_sha256": "1595e22bbd0b557084a82ed222f3d6f24e55d9233bf99a4c0897c2e176aca86c",
+      "archive_bytes": 574017,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_semantic/seed44/results.json",
+      "source_sha256": "9d3cd92bc4142b2dd84f33702cd5fb283945080992c11438dae4f0139bf4e1c0",
+      "archive_sha256": "40a4b194b8ca961ca741a84426e119b224e9a3cff944bf906af60f98345ca0d8",
+      "archive_bytes": 10212,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/clothing/qwen_semantic/seed44/training.json",
+      "source_sha256": "24677428c6667f492e59e940179e306efe81a85a72ecebbda204bff12c02887c",
+      "archive_sha256": "24677428c6667f492e59e940179e306efe81a85a72ecebbda204bff12c02887c",
+      "archive_bytes": 7802,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/clothing/results.json",
+      "source_sha256": "1f0813e8901d3244cd9195cc6f78da37358908f576b6383c32896d92ca88d66b",
+      "archive_sha256": "ff5983015d3093e9154dfa280e32e94c91b43cf969ea42656a9ff418e1f6b460",
+      "archive_bytes": 91441,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/clothing/warmup/seed42/complete.json",
+      "source_sha256": "4f960b90a0d9ff0b88e87d524356875699e3f94e358bb68b8ed46cd54059b64e",
+      "archive_sha256": "4f960b90a0d9ff0b88e87d524356875699e3f94e358bb68b8ed46cd54059b64e",
+      "archive_bytes": 1866,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/clothing/warmup/seed42/review_anchors.json",
+      "source_sha256": "460302835eb52a4cd3f49ad8483d35a9333d2bbb5720fea587eaf3cf1d61f42a",
+      "archive_sha256": "460302835eb52a4cd3f49ad8483d35a9333d2bbb5720fea587eaf3cf1d61f42a",
+      "archive_bytes": 364,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/clothing/warmup/seed42/sampling.json",
+      "source_sha256": "44a81b5a40651b8568ebc2b8610319c42c430ce173b4618291fe4e89e6018d2e",
+      "archive_sha256": "44a81b5a40651b8568ebc2b8610319c42c430ce173b4618291fe4e89e6018d2e",
+      "archive_bytes": 924,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/clothing/warmup/seed43/complete.json",
+      "source_sha256": "27a53d604e9eec336df560ed6628d99b9867fe240fbc13f21447ccdbc1398249",
+      "archive_sha256": "27a53d604e9eec336df560ed6628d99b9867fe240fbc13f21447ccdbc1398249",
+      "archive_bytes": 1743,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/clothing/warmup/seed43/review_anchors.json",
+      "source_sha256": "e3bde58e8432dc2d29d0723ed058cd17a8b1746f6f061c95734ddd6efe404c70",
+      "archive_sha256": "e3bde58e8432dc2d29d0723ed058cd17a8b1746f6f061c95734ddd6efe404c70",
+      "archive_bytes": 364,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/clothing/warmup/seed43/sampling.json",
+      "source_sha256": "9bc8c80e688c226d7cd67a0207c3fb603c0586244808cfacaf4c9db72ecde99a",
+      "archive_sha256": "9bc8c80e688c226d7cd67a0207c3fb603c0586244808cfacaf4c9db72ecde99a",
+      "archive_bytes": 924,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/clothing/warmup/seed44/complete.json",
+      "source_sha256": "f76af1dd65fde79fa9566965dac19350d4c1d5ec153beab83e07f201696bd861",
+      "archive_sha256": "f76af1dd65fde79fa9566965dac19350d4c1d5ec153beab83e07f201696bd861",
+      "archive_bytes": 1744,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/clothing/warmup/seed44/review_anchors.json",
+      "source_sha256": "61ae19decdeb188f5dcad6818dfc52c3a72270a43a0c347c370bcac424591759",
+      "archive_sha256": "61ae19decdeb188f5dcad6818dfc52c3a72270a43a0c347c370bcac424591759",
+      "archive_bytes": 364,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/clothing/warmup/seed44/sampling.json",
+      "source_sha256": "08a86d067feef18d912cd4095a1b29aece0806c7168ba3952d132cee598cce1b",
+      "archive_sha256": "08a86d067feef18d912cd4095a1b29aece0806c7168ba3952d132cee598cce1b",
+      "archive_bytes": 924,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/sports/base/features.json",
+      "source_sha256": "32edc786214154acfaa297cd55b2631b99a4b338b80d7a9ade15b7af063ee399",
+      "archive_sha256": "32edc786214154acfaa297cd55b2631b99a4b338b80d7a9ade15b7af063ee399",
+      "archive_bytes": 812,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_frozen/seed42/complete.json",
+      "source_sha256": "ed0832ae1e585e523bb5adf43ba84b9ed55aadb85ea76dac30a7aad5ad138ab4",
+      "archive_sha256": "ed0832ae1e585e523bb5adf43ba84b9ed55aadb85ea76dac30a7aad5ad138ab4",
+      "archive_bytes": 528,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_frozen/seed42/models/qwen_frozen.json",
+      "source_sha256": "d07322a325d6ff91e5330110a921cf71687dacb61ba2b3545cadaaafbcc03e2d",
+      "archive_sha256": "63f428170a4a01c7c0c10b32080014e7d3c6846e406c5ee55fc7b889a219d464",
+      "archive_bytes": 468988,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_frozen/seed42/results.json",
+      "source_sha256": "8f01b66b9658419a1bda1a1b918b73ae13eb1892c1631b67e433e3257104c89a",
+      "archive_sha256": "c40880c6f575245c29c400be8d332b4ab719f77c44275faded8912bf61f70ed1",
+      "archive_bytes": 9454,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_frozen/seed42/training.json",
+      "source_sha256": "48bda07a5699ec45850e8878c2f1cfdaa395dd2e20fc64c53b6e01a26b66593f",
+      "archive_sha256": "48bda07a5699ec45850e8878c2f1cfdaa395dd2e20fc64c53b6e01a26b66593f",
+      "archive_bytes": 6995,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_frozen/seed43/complete.json",
+      "source_sha256": "5a5202bf80e48426989a9b4da252d329b23a6a934be7dbc062a8f1f7401baeba",
+      "archive_sha256": "5a5202bf80e48426989a9b4da252d329b23a6a934be7dbc062a8f1f7401baeba",
+      "archive_bytes": 528,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_frozen/seed43/models/qwen_frozen.json",
+      "source_sha256": "6392de07a248213beb690d27d5b987c08cdbc637bcb0e298a2c1a3a2d1b2e513",
+      "archive_sha256": "25d282e44a2ace9c156e7e613a009383cdcacf8f8e50e95c7cc0690fecbf44cd",
+      "archive_bytes": 469632,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_frozen/seed43/results.json",
+      "source_sha256": "8facda8277f852674e4bdcb86003af1ead8b796241a3a78e931f77f01c7dfd88",
+      "archive_sha256": "b083dcdbd0fc913e9ba452d6eae4fdcfc73d4059d1e14d0fae77254f392645ea",
+      "archive_bytes": 10249,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_frozen/seed43/training.json",
+      "source_sha256": "830ca09edac1807bad5e309f14e6b682a3c5ec1f772267139984fe004ee7b3b4",
+      "archive_sha256": "830ca09edac1807bad5e309f14e6b682a3c5ec1f772267139984fe004ee7b3b4",
+      "archive_bytes": 7637,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_frozen/seed44/complete.json",
+      "source_sha256": "22cdda355a51da681c541841028380f431928c63adacdfd228a53136a6f42341",
+      "archive_sha256": "22cdda355a51da681c541841028380f431928c63adacdfd228a53136a6f42341",
+      "archive_bytes": 528,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_frozen/seed44/models/qwen_frozen.json",
+      "source_sha256": "6dd32a8b99b028a7035f32a142d46d090b45fa37ee6f4b329a53f8fcc50ac915",
+      "archive_sha256": "6906f545380d4dbc523c9e6608323e7774066fe9c8afd9ef1d5b11d67895f46a",
+      "archive_bytes": 469117,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_frozen/seed44/results.json",
+      "source_sha256": "bafe7937dd52ebb89435719eb1c9b3bcf1a9f8b600495b5476a0ab745fafaf15",
+      "archive_sha256": "58df25db6fb639e54f6fb127da70afafb4b622a99f9d933c88e2968c68311b84",
+      "archive_bytes": 9612,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_frozen/seed44/training.json",
+      "source_sha256": "f345c835c40ead7ad7366f70987e577b1d9828c8101233df1e20057109e88a40",
+      "archive_sha256": "f345c835c40ead7ad7366f70987e577b1d9828c8101233df1e20057109e88a40",
+      "archive_bytes": 7120,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_preference/seed42/adapter/adapter_config.json",
+      "source_sha256": "b6950cc06c7ad04f81214bfe2a86345b49565d9294046db5434f7ed0d6977800",
+      "archive_sha256": "4269f9b95b70a51ff6ab3d916822ef374d65c26f6d765b0f134b08aaa191cdfd",
+      "archive_bytes": 876,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_preference/seed42/complete.json",
+      "source_sha256": "74097db9f86d433e43ba1ca59db37fa7c3815b02b2a03d371f5a011d812fbcde",
+      "archive_sha256": "74097db9f86d433e43ba1ca59db37fa7c3815b02b2a03d371f5a011d812fbcde",
+      "archive_bytes": 594,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_preference/seed42/models/qwen_preference.json",
+      "source_sha256": "69598da2c60997ff15dbde63f94e4c3596412e10a1a33c9dd4a3767c916b2525",
+      "archive_sha256": "910bd37470e5f913e3776e992e043f88162c570847b5cd14e7906bcf890b5aff",
+      "archive_bytes": 469200,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_preference/seed42/results.json",
+      "source_sha256": "a3c2f838d96f7c550f19e7c63fa2e2d5c57cb1a3f427da1fb9378c792b51fc0b",
+      "archive_sha256": "ceb049cb8d04b1ef1a1238817bc6f03662b67d625d31c9a94c6be229ee571410",
+      "archive_bytes": 9722,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_preference/seed42/training.json",
+      "source_sha256": "aa98737dbedb5dc4a7dc0f68c6cd27137023f10a48c4e4bb3205dcf92b453bb3",
+      "archive_sha256": "aa98737dbedb5dc4a7dc0f68c6cd27137023f10a48c4e4bb3205dcf92b453bb3",
+      "archive_bytes": 7234,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_preference/seed43/adapter/adapter_config.json",
+      "source_sha256": "b6950cc06c7ad04f81214bfe2a86345b49565d9294046db5434f7ed0d6977800",
+      "archive_sha256": "4269f9b95b70a51ff6ab3d916822ef374d65c26f6d765b0f134b08aaa191cdfd",
+      "archive_bytes": 876,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_preference/seed43/complete.json",
+      "source_sha256": "c8a9c34fb4610b272b111697f64294294c73640070ff79bf1f7a287d5a5af510",
+      "archive_sha256": "c8a9c34fb4610b272b111697f64294294c73640070ff79bf1f7a287d5a5af510",
+      "archive_bytes": 594,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_preference/seed43/models/qwen_preference.json",
+      "source_sha256": "ab0680bac2bb48851c9437eb7c0a98a3dc8f58e1824894436dedac62785e570a",
+      "archive_sha256": "b3cdcdb3954a9b8f1700926604583c030c23f662264f41657186e289bc0472c3",
+      "archive_bytes": 469844,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_preference/seed43/results.json",
+      "source_sha256": "f9c82453ad763895ffc2186cf601b8323d2ebad9ea972165cf94698324c95f9f",
+      "archive_sha256": "ee6d34cf49030a8d9919b471b6a9771cd0b9fd54c39f0fe1bda58d74ab16a5be",
+      "archive_bytes": 10518,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_preference/seed43/training.json",
+      "source_sha256": "78526e045a377f446a286a4e997072aec25d01b80f214193dcc0816896690b6f",
+      "archive_sha256": "78526e045a377f446a286a4e997072aec25d01b80f214193dcc0816896690b6f",
+      "archive_bytes": 7876,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_preference/seed44/adapter/adapter_config.json",
+      "source_sha256": "b6950cc06c7ad04f81214bfe2a86345b49565d9294046db5434f7ed0d6977800",
+      "archive_sha256": "4269f9b95b70a51ff6ab3d916822ef374d65c26f6d765b0f134b08aaa191cdfd",
+      "archive_bytes": 876,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_preference/seed44/complete.json",
+      "source_sha256": "61ec3cb99649fb8526412c4f126a7434e811c1ff421a0f4e1050c5dc365faa4b",
+      "archive_sha256": "61ec3cb99649fb8526412c4f126a7434e811c1ff421a0f4e1050c5dc365faa4b",
+      "archive_bytes": 594,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_preference/seed44/models/qwen_preference.json",
+      "source_sha256": "a615e37a912d33197f256384f47e1629fe24d30b3d93f8b8ffe66c155c18d567",
+      "archive_sha256": "fa9802f7594940f3b746206c98348bf7b7d1c934e6d03a72f2022e94778bb590",
+      "archive_bytes": 469329,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_preference/seed44/results.json",
+      "source_sha256": "022b4f684a5aa335882f4b2241502cbdeda56fbc72ecd9a1cc357fabf3a60550",
+      "archive_sha256": "2ad41795639bcc5c119cbd027e36ed633585c269219c759cd3d26d3003d25db0",
+      "archive_bytes": 9882,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_preference/seed44/training.json",
+      "source_sha256": "39d3bdb0ebe00ea090f14d147b4e27e19c5e0a05882d76f3fd5419e4f205e9c5",
+      "archive_sha256": "39d3bdb0ebe00ea090f14d147b4e27e19c5e0a05882d76f3fd5419e4f205e9c5",
+      "archive_bytes": 7364,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_semantic/seed42/adapter/adapter_config.json",
+      "source_sha256": "b6950cc06c7ad04f81214bfe2a86345b49565d9294046db5434f7ed0d6977800",
+      "archive_sha256": "4269f9b95b70a51ff6ab3d916822ef374d65c26f6d765b0f134b08aaa191cdfd",
+      "archive_bytes": 876,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_semantic/seed42/complete.json",
+      "source_sha256": "159abc70c3fc4b119de052b5e050aabd96dc8f362f3e3dabf41378c8621b0c24",
+      "archive_sha256": "159abc70c3fc4b119de052b5e050aabd96dc8f362f3e3dabf41378c8621b0c24",
+      "archive_bytes": 592,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_semantic/seed42/models/qwen_semantic.json",
+      "source_sha256": "d51cfb94101e66831bfd15dfe442346ccde32c8ec54b48d14b75884a75b8c5c0",
+      "archive_sha256": "9964d7243d51eacf63eba59de8df942491d8b0c64ef6baa318b995e0b378f1df",
+      "archive_bytes": 469196,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_semantic/seed42/results.json",
+      "source_sha256": "2994015f6ed1a5d15519bfb6185486be6e179945bc502dadaed24efafb1bb3f1",
+      "archive_sha256": "efe5cf752aba3734df21473257d244808ff7095b6691a9096cff9283b413bbba",
+      "archive_bytes": 9716,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_semantic/seed42/training.json",
+      "source_sha256": "581f9cb307da2832548bfe3dbdcc3f15a9f556b052a7cce0b6ed7515cdcba624",
+      "archive_sha256": "581f9cb307da2832548bfe3dbdcc3f15a9f556b052a7cce0b6ed7515cdcba624",
+      "archive_bytes": 7248,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_semantic/seed43/adapter/adapter_config.json",
+      "source_sha256": "b6950cc06c7ad04f81214bfe2a86345b49565d9294046db5434f7ed0d6977800",
+      "archive_sha256": "4269f9b95b70a51ff6ab3d916822ef374d65c26f6d765b0f134b08aaa191cdfd",
+      "archive_bytes": 876,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_semantic/seed43/complete.json",
+      "source_sha256": "194c5095ab88f0bd1e83db779529fd2e0cc9097d9214d79d825ed12b62daf1ae",
+      "archive_sha256": "194c5095ab88f0bd1e83db779529fd2e0cc9097d9214d79d825ed12b62daf1ae",
+      "archive_bytes": 592,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_semantic/seed43/models/qwen_semantic.json",
+      "source_sha256": "16e9eb654241d56a2766c232150e561dce5fa824b1a7d254302decd7241a3b22",
+      "archive_sha256": "e50b845305aced4c80a163ee8b81e3c3f63ca62b1d6a30cdc0b5377f7ac7efa1",
+      "archive_bytes": 469840,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_semantic/seed43/results.json",
+      "source_sha256": "c56381af3b5765ac7b4f19de5fda951ca14fe66ae8d0afde95f8bb0f06d26ad2",
+      "archive_sha256": "adeb69ea9c62f3a2c3689195e65f772e6811ad4e86ad0be1ff7b451b81485184",
+      "archive_bytes": 10509,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_semantic/seed43/training.json",
+      "source_sha256": "b6160087379a7fc0bbd148d0a8183584f62cb2317dd64cb9369157acdb241d34",
+      "archive_sha256": "b6160087379a7fc0bbd148d0a8183584f62cb2317dd64cb9369157acdb241d34",
+      "archive_bytes": 7893,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_semantic/seed44/adapter/adapter_config.json",
+      "source_sha256": "b6950cc06c7ad04f81214bfe2a86345b49565d9294046db5434f7ed0d6977800",
+      "archive_sha256": "4269f9b95b70a51ff6ab3d916822ef374d65c26f6d765b0f134b08aaa191cdfd",
+      "archive_bytes": 876,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_semantic/seed44/complete.json",
+      "source_sha256": "22ee49811446d0d76bdbfdc72da190c14d78b2335b004619d60723ab9e49b3b8",
+      "archive_sha256": "22ee49811446d0d76bdbfdc72da190c14d78b2335b004619d60723ab9e49b3b8",
+      "archive_bytes": 592,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_semantic/seed44/models/qwen_semantic.json",
+      "source_sha256": "4990fe66d9dcd78f920e25d61a4676ec68a25d8f97bfef326810d692369500f4",
+      "archive_sha256": "5a0614999e2aa48b9dfbe5d6c00167c2c1a3d4eb9edaac8c5c8f97fd04956996",
+      "archive_bytes": 469325,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_semantic/seed44/results.json",
+      "source_sha256": "acad8318c530dd3c0b44541495498224a0d2cb6d4ce2c8428b6b6d72642791f3",
+      "archive_sha256": "3ae34aa472ab067e5ed304d384fa5c3ccbb3cc3e2291ae8ee7494a9da7d041a2",
+      "archive_bytes": 9876,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/sports/qwen_semantic/seed44/training.json",
+      "source_sha256": "2834cf4293d16849106375df920fbb215f0a5f1f65ab42138588a9c9929fd5b3",
+      "archive_sha256": "2834cf4293d16849106375df920fbb215f0a5f1f65ab42138588a9c9929fd5b3",
+      "archive_bytes": 7377,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/sports/results.json",
+      "source_sha256": "f0b8980c28b493e08dde0dd0154de93e9e90ea106dbaca8db68be0c0a55a1715",
+      "archive_sha256": "90addaf7fa25d1bb2c81329f5a1577349cf8d8c03b267a0ec97c57c4408bdd28",
+      "archive_bytes": 89362,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/qwen/sports/warmup/seed42/complete.json",
+      "source_sha256": "3a5279ac391e77fa91504da426875a4d669ef5d5ffd377e3826240e03bbf4b06",
+      "archive_sha256": "3a5279ac391e77fa91504da426875a4d669ef5d5ffd377e3826240e03bbf4b06",
+      "archive_bytes": 1384,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/sports/warmup/seed42/review_anchors.json",
+      "source_sha256": "67281df05ad15e948cfdb560f24036b5658684ee83cdc4545d9ae495f0b3df13",
+      "archive_sha256": "67281df05ad15e948cfdb560f24036b5658684ee83cdc4545d9ae495f0b3df13",
+      "archive_bytes": 364,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/sports/warmup/seed42/sampling.json",
+      "source_sha256": "2335923b20507b84a7acc5b03f07262af6fbaebc051ef7cbcd561f49f084b116",
+      "archive_sha256": "2335923b20507b84a7acc5b03f07262af6fbaebc051ef7cbcd561f49f084b116",
+      "archive_bytes": 924,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/sports/warmup/seed43/complete.json",
+      "source_sha256": "2edb6194b495ac1a2cb6c869dbe5fe9677a792f1c2ab8289f1ef58a8dfec0ad2",
+      "archive_sha256": "2edb6194b495ac1a2cb6c869dbe5fe9677a792f1c2ab8289f1ef58a8dfec0ad2",
+      "archive_bytes": 1978,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/sports/warmup/seed43/review_anchors.json",
+      "source_sha256": "8b2fc7fbfbe48fde01f8f63cd34d8c6bbb02addd003e54ea2d9eabeb4c24aaf4",
+      "archive_sha256": "8b2fc7fbfbe48fde01f8f63cd34d8c6bbb02addd003e54ea2d9eabeb4c24aaf4",
+      "archive_bytes": 364,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/sports/warmup/seed43/sampling.json",
+      "source_sha256": "be4ec88de1589577f42bfda19043ab8dadb397d5018adb20175b4da66cf36e63",
+      "archive_sha256": "be4ec88de1589577f42bfda19043ab8dadb397d5018adb20175b4da66cf36e63",
+      "archive_bytes": 924,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/sports/warmup/seed44/complete.json",
+      "source_sha256": "1c108b1a80321160eaf955d40adc1610fd1345af5d925dec0b3c354b4fd8b334",
+      "archive_sha256": "1c108b1a80321160eaf955d40adc1610fd1345af5d925dec0b3c354b4fd8b334",
+      "archive_bytes": 1503,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/sports/warmup/seed44/review_anchors.json",
+      "source_sha256": "9b90cfedc5fb91d579d472e357b4c047f2a2ebba78fac9c7cfff8ed7cc25c944",
+      "archive_sha256": "9b90cfedc5fb91d579d472e357b4c047f2a2ebba78fac9c7cfff8ed7cc25c944",
+      "archive_bytes": 364,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/qwen/sports/warmup/seed44/sampling.json",
+      "source_sha256": "02dd12564957841668f0f1ee48e4676821a3da603a7e2a8ee5bf3e0930dc3df4",
+      "archive_sha256": "02dd12564957841668f0f1ee48e4676821a3da603a7e2a8ee5bf3e0930dc3df4",
+      "archive_bytes": 924,
+      "transformations": []
+    },
+    {
+      "path": "artifacts/sports/features.json",
+      "source_sha256": "c9af30829d2270ab8098e633ec1cdec60890881dae0df2d493c0fd204ca1375b",
+      "archive_sha256": "b10fdadddc6e23ccdf1137e96f0863f8c554c0b4e6bb3e2f7d8f6c81445f30c6",
+      "archive_bytes": 1587,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/sports/models/adapted.json",
+      "source_sha256": "4cef11857eb8611b6f39aecbeef08d74f674996c1d4c99f03ccf9ba14325ec2c",
+      "archive_sha256": "e571025cd3048a4a826c0c8130e54099f125b3c05646afb19229561375658721",
+      "archive_bytes": 468220,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/sports/models/mf.json",
+      "source_sha256": "5b62f284d7b81055927f186a910aa16dd7aa567fc0d40baa4d0606e2caa45b07",
+      "archive_sha256": "551cd85019c8c407fed52a86e279a10ec9bde9b755f7aec36c9c6311a03d5636",
+      "archive_bytes": 1066563,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/sports/models/multimodal.json",
+      "source_sha256": "aa70fe1b2876f70036f7759e4c610ca43d2f3c948420067b2cf10ce205fe2b74",
+      "archive_sha256": "0647439c68789deec4aade404957fdc0fc5d993195fcb53cd1b1bfc74e3ff8a1",
+      "archive_bytes": 468226,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/sports/models/popularity.json",
+      "source_sha256": "76c660862ab4457d81dafd9a45cc68cbea8bc1ad9250eabcc88f21eabed9b005",
+      "archive_sha256": "ec6f34c5ed44425a9cb055a8c99a536b733078d6bd27333e2b9f5437aeeb80ca",
+      "archive_bytes": 467431,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/sports/models/text.json",
+      "source_sha256": "aac6750818807c1b85cc264e00dacb7d08f31fd0c5736de58bcc425119947649",
+      "archive_sha256": "8fb4c42d99599b88841f015af2892ea31d382006d1795108b3b63049375976ed",
+      "archive_bytes": 468220,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/sports/models/tfidf.json",
+      "source_sha256": "33b5039f8408c7a2867deaaad3d7196004e64febc081b54030034accad5891cb",
+      "archive_sha256": "b00e8c4a71d67106ca855f2c76c89eab2027cd0e6aa87ba2c0364db30e03e409",
+      "archive_bytes": 467523,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/sports/results.json",
+      "source_sha256": "027f3387826d0be9dc94dac2331599eedac76e782614b82a92a77485f2a89d29",
+      "archive_sha256": "665faf4764f003299a5c42d1713cd9f8d52ab457a78205516163216a32a108c1",
+      "archive_bytes": 130310,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "artifacts/sports/text_adaptation/adaptation.json",
+      "source_sha256": "4fc80cf3f495f563ab7d7c030bacaab647f11b04fc71a362c6fa7c2a46e7d563",
+      "archive_sha256": "56d1b7c3cf86601da9bdc6fa0960443a79fdb0c6452329a9c89837f661d2442d",
+      "archive_bytes": 796,
+      "transformations": [
+        "json-format-normalized"
+      ]
+    },
+    {
+      "path": "configs/primary.json",
+      "source_sha256": "069547d0ea418c45b6475194054804f9991b005408228bab73ac0af9aa5b0cfa",
+      "archive_sha256": "5521b9424c2fe9be8a6748ac68a0839482616652fe63f0f11446c2727aaa01f2",
+      "archive_bytes": 759,
+      "transformations": [
+        "json-format-normalized"
+      ]
+    },
+    {
+      "path": "configs/submission_protocol.json",
+      "source_sha256": null,
+      "archive_sha256": "6b947eef9383a2607cb03ffa755014a76ef0a71785d42c24ee0337f0d6f998b2",
+      "archive_bytes": 625,
+      "transformations": [
+        "generated-packaging-document"
+      ]
+    },
+    {
+      "path": "configs/submission_qwen_protocol.json",
+      "source_sha256": null,
+      "archive_sha256": "028c5e840df2e1b93eab86eeb427b8becf0fe27cfb661006afbcc7dbe97b8b11",
+      "archive_bytes": 911,
+      "transformations": [
+        "generated-packaging-document"
+      ]
+    },
+    {
+      "path": "data/processed/baby/audit.json",
+      "source_sha256": "8e2745f6963c1c677ad2caec47cd8e0c54a056e97fb109da914633e3b702ce8e",
+      "archive_sha256": "ca0265dc8dfdf93a9d3c214088adcfe316f74a5d44191c194364b766c313035b",
+      "archive_bytes": 2604,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "data/processed/baby/images_audit.summary.json",
+      "source_sha256": "3c735065d3ba208aa369ccd5fca9ed254282bd173d7d98e783ee133b93045d8c",
+      "archive_sha256": "4a543773f92b303b4a04ce2c917556d186c294b927415d7408b92ca6ae08e2cc",
+      "archive_bytes": 431,
+      "transformations": [
+        "image-audit-coverage-summary"
+      ]
+    },
+    {
+      "path": "data/processed/clothing/audit.json",
+      "source_sha256": "4e2b5c40d95c0d0afe512772ac44756281693c64f87482f6deba66cd13eb18f2",
+      "archive_sha256": "fefd243864075b1abc0019604d8ee7e38bd05da1d60ef0f5c342853da6512546",
+      "archive_bytes": 2658,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "data/processed/clothing/images_audit.summary.json",
+      "source_sha256": "af4369e0cc0ec16565e5e7e8feddc03b3718dfc50ab6d5b36ba0c4669ebcad00",
+      "archive_sha256": "4ea5de3ff180a3e098b2e65ae3ad1d1fbba5f413726c3ed181d56995bd866c32",
+      "archive_bytes": 452,
+      "transformations": [
+        "image-audit-coverage-summary"
+      ]
+    },
+    {
+      "path": "data/processed/sports/audit.json",
+      "source_sha256": "1b07538809b250494c3aedb61fbf922f32c79b015aaf2cfc7f9f9ea5afb0f997",
+      "archive_sha256": "4d9d8a13b25afe62208272db16d09159c3b791bf39b568af5dc810de7b380aeb",
+      "archive_bytes": 2643,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "data/processed/sports/images_audit.summary.json",
+      "source_sha256": "0a8041309946d1e68182e6171bfd6a1aa5d4f95005cd06f975f825cbd7bd3feb",
+      "archive_sha256": "5f52cc8ca69b3920b07e8d6187c1c3b0cd7805f2e8ff18ddaa94880aa5ac33e5",
+      "archive_bytes": 451,
+      "transformations": [
+        "image-audit-coverage-summary"
+      ]
+    },
+    {
+      "path": "data/raw/meta_Baby.json.gz.source.json",
+      "source_sha256": "7903175baea439b2bec9f81c84692ef40430bfff980c86c5d311c07fd87ac402",
+      "archive_sha256": "43e3e4a551dea122d2360881fd0e01da58f48fe400bedc7c264f21a5aadde25d",
+      "archive_bytes": 255,
+      "transformations": [
+        "json-format-normalized"
+      ]
+    },
+    {
+      "path": "data/raw/meta_Clothing_Shoes_and_Jewelry.json.gz.source.json",
+      "source_sha256": "f389a9ef52f0ad08d4ff9af926730b862b85deab8f451faf3b2f05f90ddb0396",
+      "archive_sha256": "2513c5567c4917799524e394d374588e21eedf721ddddbab4802696224ca9e68",
+      "archive_bytes": 301,
+      "transformations": [
+        "json-format-normalized"
+      ]
+    },
+    {
+      "path": "data/raw/meta_Sports_and_Outdoors.json.gz.source.json",
+      "source_sha256": "f71727137d3374ebb03d0a5c369d96c3d4df87b28014e021264da0498cf2f2f5",
+      "archive_sha256": "e5e7035763817b24134b044bd9fcf61d0d3caaff38f91106d0ebc9a2af216ea2",
+      "archive_bytes": 287,
+      "transformations": [
+        "json-format-normalized"
+      ]
+    },
+    {
+      "path": "data/raw/reviews_Baby_5.json.gz.source.json",
+      "source_sha256": "b835e0e5943b7386d9f787176c26f517cd8e8940fa18522f29951093334a1b2a",
+      "archive_sha256": "1bb1bd626abcc7564cd08cd428210672afd658349efe01cdaa4dce5550b26d55",
+      "archive_bytes": 265,
+      "transformations": [
+        "json-format-normalized"
+      ]
+    },
+    {
+      "path": "data/raw/reviews_Clothing_Shoes_and_Jewelry_5.json.gz.source.json",
+      "source_sha256": "bb593697c3281c95cc760104641f65b43b7392418fb9c98f3f35bb8a291e40a6",
+      "archive_sha256": "d1566ce4cff4255cc919337a6f8879185cbf683ea91ab74b532fc59149b67f45",
+      "archive_bytes": 309,
+      "transformations": [
+        "json-format-normalized"
+      ]
+    },
+    {
+      "path": "data/raw/reviews_Sports_and_Outdoors_5.json.gz.source.json",
+      "source_sha256": "42bba8c751dcd74c30142d1a3939ff0528010dec0c70edd0b62b370d78f3d26f",
+      "archive_sha256": "0643f370693955df200d7cacc91cd757d0d627ddefb297b7423a9cede446f683",
+      "archive_bytes": 295,
+      "transformations": [
+        "json-format-normalized"
+      ]
+    },
+    {
+      "path": "deliverables/AI使用声明草稿.md",
+      "source_sha256": "9d403bd2626b5926c39b8fbb8234403560751b00af3a5117dcbab1e398f305c3",
+      "archive_sha256": "9d403bd2626b5926c39b8fbb8234403560751b00af3a5117dcbab1e398f305c3",
+      "archive_bytes": 2136,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/ShopLens_Direct_Request_example_shortlist.json",
+      "source_sha256": "ba9a01b32451556ed0defb38c1bb69f2fb86916c42fe55a5f62ed6750c68af31",
+      "archive_sha256": "3a8952fafca0d4b7c87c6286a8d56c7be804b8a4a179b025e7a93d9ea82f7a37",
+      "archive_bytes": 17365,
+      "transformations": [
+        "json-format-normalized"
+      ]
+    },
+    {
+      "path": "deliverables/ShopLens_Qwen_AI_disclosure_draft.md",
+      "source_sha256": "10fb7daf941b92a324a8547a9e0a7a23f61adeb098b039ca4f981ab6dd4b945a",
+      "archive_sha256": "10fb7daf941b92a324a8547a9e0a7a23f61adeb098b039ca4f981ab6dd4b945a",
+      "archive_bytes": 1678,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/ShopLens_Qwen_discussion_notes.md",
+      "source_sha256": "517d79522a2b93c49614250509c2aedc210f82062ceaefa3d39bcf0ca5ea74c7",
+      "archive_sha256": "517d79522a2b93c49614250509c2aedc210f82062ceaefa3d39bcf0ca5ea74c7",
+      "archive_bytes": 7679,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/ShopLens_Qwen_human_narration.md",
+      "source_sha256": "13d7252cbff68c779178b3e293a21693d95e6c67c83bfe62c815308c7fb048ac",
+      "archive_sha256": "6dae4801b5766a2d7d6c3e91c344ebe484e3f305db9e0426d4f14d63fcd29251",
+      "archive_bytes": 19635,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "deliverables/ShopLens_Qwen_presentation.pptx",
+      "source_sha256": "deaa6bb519b505f2c2bc541b725f7ada46a3608d2f7db1f9430c4cf191120c11",
+      "archive_sha256": "7a17eb2942eb44e28f0fac74e0f7169b22587d4fccb45bf34430cfcd1e6c6bcd",
+      "archive_bytes": 147383,
+      "transformations": [
+        "pptx-container-repacked",
+        "pptx-private-paths-redacted"
+      ]
+    },
+    {
+      "path": "deliverables/ShopLens_Qwen_presentation.validation.json",
+      "source_sha256": "77a8ee6df19d30b0acff9a51e24ff13ce0d0c6c3aca60e8bec4e73f595580066",
+      "archive_sha256": "527205c66f847d78e44935e38920812147405782440a6f77a6455971337458d0",
+      "archive_bytes": 8207,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "deliverables/ShopLens_Qwen_report.md",
+      "source_sha256": "3768d5eb677d139c2d84929eb183d86ec308156908a8ffa5bbc8bcba4595c775",
+      "archive_sha256": "3768d5eb677d139c2d84929eb183d86ec308156908a8ffa5bbc8bcba4595c775",
+      "archive_bytes": 12656,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/ShopLens_Qwen_report_en.md",
+      "source_sha256": "10ca73632c866aa0df225e71778165df7e41c9ccc10b9ab29bef6cc7e9a3945e",
+      "archive_sha256": "10ca73632c866aa0df225e71778165df7e41c9ccc10b9ab29bef6cc7e9a3945e",
+      "archive_bytes": 13295,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/ShopLens_Studio_example_shortlist.csv",
+      "source_sha256": "a40bd3b7ab720b41ced1bce14c9c4a2f304e3b432e6702256dae3b06bd3c7124",
+      "archive_sha256": "a40bd3b7ab720b41ced1bce14c9c4a2f304e3b432e6702256dae3b06bd3c7124",
+      "archive_bytes": 5732,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/ShopLens_Studio_example_shortlist.json",
+      "source_sha256": "7ee7b18f94cbfebcb338616da260f24dc0d8b92a5cec4cb56db35c98d703a3d7",
+      "archive_sha256": "e81e4c5d74f41e24f29e412d71467f3a2f09b7e65e5b6bbceda6376192bc68f6",
+      "archive_bytes": 12246,
+      "transformations": [
+        "json-format-normalized"
+      ]
+    },
+    {
+      "path": "deliverables/ShopLens_Studio_guide.md",
+      "source_sha256": "8319c7468dea424bf9066ace4a9fc81d1acabc0b06705c001dd0ba6baae83f3b",
+      "archive_sha256": "8319c7468dea424bf9066ace4a9fc81d1acabc0b06705c001dd0ba6baae83f3b",
+      "archive_bytes": 8789,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/ShopLens_Studio_models_example_shortlist.json",
+      "source_sha256": "77346cc9086fcf5b13077584c2bde05895c6c070032b3b7cd10c347a06ce67e3",
+      "archive_sha256": "e90c6c7b11f93a34719e0bd432b91e0226046cbb00c9844239bb73f5b4c6ad51",
+      "archive_bytes": 14122,
+      "transformations": [
+        "json-format-normalized"
+      ]
+    },
+    {
+      "path": "deliverables/ShopLens_human_narration.md",
+      "source_sha256": "4092ac48b64465be39a6fecc030b06ab1cd4cbed62876319314ddfaa721d265c",
+      "archive_sha256": "99648f7be79ae78acb3189bd6b5af39d82a0ceaa3493271a7f38803ed9395db1",
+      "archive_bytes": 13141,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "deliverables/ShopLens_presentation.pptx",
+      "source_sha256": "45082ae07203b527ec2982ce8b7b7f5281d4e6edf7a827934a19edf7b8d540f7",
+      "archive_sha256": "52f6375055766c1caa3cedc51e6d0d686e56e085c3b086e457f6150f8f084bb9",
+      "archive_bytes": 112249,
+      "transformations": [
+        "pptx-container-repacked",
+        "pptx-private-paths-redacted"
+      ]
+    },
+    {
+      "path": "deliverables/ShopLens_report_en.md",
+      "source_sha256": "7afefb7e051dd2db7265b313caf4c45556bdc36d6704b7870adc8bbe436737d0",
+      "archive_sha256": "7afefb7e051dd2db7265b313caf4c45556bdc36d6704b7870adc8bbe436737d0",
+      "archive_bytes": 15089,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/assets/catalog_screenshot.png",
+      "source_sha256": "3f689df0ba014d1552584c731ec6add3303a53d676904798fe92aa6802c7b4fa",
+      "archive_sha256": "3f689df0ba014d1552584c731ec6add3303a53d676904798fe92aa6802c7b4fa",
+      "archive_bytes": 47934,
+      "transformations": [
+        "jpeg-screenshot-source-name-preserved"
+      ]
+    },
+    {
+      "path": "deliverables/assets/qwen_clothing_ui.jpg",
+      "source_sha256": "abd8a3c876eafed766c6b14d6d18a214219652794bfe78ee6b025e32f5ec2cb8",
+      "archive_sha256": "abd8a3c876eafed766c6b14d6d18a214219652794bfe78ee6b025e32f5ec2cb8",
+      "archive_bytes": 55921,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/assets/qwen_compare_baby.jpg",
+      "source_sha256": "c71b07d9634be1059ffdaa5ac5e5e8c86a31eac725f86913a0a18d0da204fc59",
+      "archive_sha256": "c71b07d9634be1059ffdaa5ac5e5e8c86a31eac725f86913a0a18d0da204fc59",
+      "archive_bytes": 103633,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/assets/qwen_english_atlas.jpg",
+      "source_sha256": "2cf83be0fe80238f991722c2df1dd224d70a3a6e99a6cd248c9f8d062b5bd496",
+      "archive_sha256": "2cf83be0fe80238f991722c2df1dd224d70a3a6e99a6cd248c9f8d062b5bd496",
+      "archive_bytes": 111103,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/assets/qwen_english_network.jpg",
+      "source_sha256": "2bce142b274ecd03a8e89ea1a8bac4488af51796a163f366e3f4a99ba0503599",
+      "archive_sha256": "2bce142b274ecd03a8e89ea1a8bac4488af51796a163f366e3f4a99ba0503599",
+      "archive_bytes": 118704,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/assets/qwen_english_overview.jpg",
+      "source_sha256": "185175f1265578ad919e9a2b03299a682ae8f4e94f981f67641eb0e35ea122a7",
+      "archive_sha256": "185175f1265578ad919e9a2b03299a682ae8f4e94f981f67641eb0e35ea122a7",
+      "archive_bytes": 118934,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/assets/qwen_english_removal.jpg",
+      "source_sha256": "4a0ab44fd908b70632cde2dfb4e2f931800be5691b205a420177525c3850d6c0",
+      "archive_sha256": "4a0ab44fd908b70632cde2dfb4e2f931800be5691b205a420177525c3850d6c0",
+      "archive_bytes": 105766,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/assets/qwen_evidence_sports.jpg",
+      "source_sha256": "bd763f7374e46ee7baca4b451a647c6282276bad47067c8df422cd1a22fa7709",
+      "archive_sha256": "bd763f7374e46ee7baca4b451a647c6282276bad47067c8df422cd1a22fa7709",
+      "archive_bytes": 65734,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/assets/qwen_final_demo.jpg",
+      "source_sha256": "4f6130a9f17bc048307d9ec9e5abf8079bda69c9909e7003eaf99d70f9fadb26",
+      "archive_sha256": "4f6130a9f17bc048307d9ec9e5abf8079bda69c9909e7003eaf99d70f9fadb26",
+      "archive_bytes": 60392,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/assets/qwen_metrics_baby.jpg",
+      "source_sha256": "4601d1c6b80e9bc1a0873147798469ce613e5b94e9e21b766d79132ececd2800",
+      "archive_sha256": "4601d1c6b80e9bc1a0873147798469ce613e5b94e9e21b766d79132ececd2800",
+      "archive_bytes": 38101,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/assets/qwen_sports_ui.jpg",
+      "source_sha256": "2e6c34be01b363d4fe381a60bb24ad338fb5dba09989eeaa8f08a824d81b748c",
+      "archive_sha256": "2e6c34be01b363d4fe381a60bb24ad338fb5dba09989eeaa8f08a824d81b748c",
+      "archive_bytes": 61309,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/assets/qwen_ui_desktop.jpg",
+      "source_sha256": "3533efb12205224538afeabcf53caf4d02b2bf0f733eaf028e5190262e7da420",
+      "archive_sha256": "3533efb12205224538afeabcf53caf4d02b2bf0f733eaf028e5190262e7da420",
+      "archive_bytes": 106350,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/assets/qwen_visual_atlas.jpg",
+      "source_sha256": "687cd3abcdf9a6d9341eaf5206944dd03f9f636bdfe11a2c2bc5b2c02747e22d",
+      "archive_sha256": "687cd3abcdf9a6d9341eaf5206944dd03f9f636bdfe11a2c2bc5b2c02747e22d",
+      "archive_bytes": 110264,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/assets/qwen_visual_narrow.jpg",
+      "source_sha256": "92e204549b919c30e67fee345476b0d80a56120f889339e8281ad86f0b03b609",
+      "archive_sha256": "92e204549b919c30e67fee345476b0d80a56120f889339e8281ad86f0b03b609",
+      "archive_bytes": 62688,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/assets/qwen_visual_network.jpg",
+      "source_sha256": "53e7cd8de081575c367aaf1623b1fca38d868ebdf4709bdab2ee3d6f6dcdb6eb",
+      "archive_sha256": "53e7cd8de081575c367aaf1623b1fca38d868ebdf4709bdab2ee3d6f6dcdb6eb",
+      "archive_bytes": 116531,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/assets/qwen_visual_overlap.jpg",
+      "source_sha256": "0593171143a0c3d1ecc03292ce8722c3cca69f2c97b907072db66ac77bd1c9ff",
+      "archive_sha256": "0593171143a0c3d1ecc03292ce8722c3cca69f2c97b907072db66ac77bd1c9ff",
+      "archive_bytes": 111192,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/assets/qwen_visual_rank_flow.jpg",
+      "source_sha256": "2d255761a2bff97d6379ac56971dcbc4ed93d8c9d2bb403fac03cbf06c830de0",
+      "archive_sha256": "2d255761a2bff97d6379ac56971dcbc4ed93d8c9d2bb403fac03cbf06c830de0",
+      "archive_bytes": 102279,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/assets/qwen_visual_removal.jpg",
+      "source_sha256": "07fad961414dc71b7fa0c487f21355bbcaff5ebea6af38a01e7761e11f1320da",
+      "archive_sha256": "07fad961414dc71b7fa0c487f21355bbcaff5ebea6af38a01e7761e11f1320da",
+      "archive_bytes": 103557,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/assets/qwen_visual_seeds.jpg",
+      "source_sha256": "d8cdd5704100f5e517ca138505a38042ad1a4954c12423e5dfe0a5dd6afc518d",
+      "archive_sha256": "d8cdd5704100f5e517ca138505a38042ad1a4954c12423e5dfe0a5dd6afc518d",
+      "archive_bytes": 119934,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/assets/recommendation_screenshot.png",
+      "source_sha256": "98c26b998edba4617b5870fdaede885674c940100ddfd273df605e2de0761bcd",
+      "archive_sha256": "98c26b998edba4617b5870fdaede885674c940100ddfd273df605e2de0761bcd",
+      "archive_bytes": 40777,
+      "transformations": [
+        "jpeg-screenshot-source-name-preserved"
+      ]
+    },
+    {
+      "path": "deliverables/assets/shoplens_direct_request_compare.jpg",
+      "source_sha256": "a5cafdc5a0af36a938109b46c2c22858086f079537f2a9add2f848a17cacb2bb",
+      "archive_sha256": "a5cafdc5a0af36a938109b46c2c22858086f079537f2a9add2f848a17cacb2bb",
+      "archive_bytes": 133658,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/assets/shoplens_direct_request_models.jpg",
+      "source_sha256": "5484464dfde22652f796eb3d1fc5a0a5b70c4588bf639cd3195ce592a2af1f18",
+      "archive_sha256": "5484464dfde22652f796eb3d1fc5a0a5b70c4588bf639cd3195ce592a2af1f18",
+      "archive_bytes": 121564,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/assets/shoplens_direct_request_narrow.jpg",
+      "source_sha256": "7b34aaa8614013212b15b01860e7b571ba8f32f185c7261e48f45fde9bf14209",
+      "archive_sha256": "7b34aaa8614013212b15b01860e7b571ba8f32f185c7261e48f45fde9bf14209",
+      "archive_bytes": 86114,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/assets/shoplens_studio_compare.jpg",
+      "source_sha256": "2a09b1ee0be02a180ddb920702819e4dc8f2c46b0be11474e4ccb5e057d914e3",
+      "archive_sha256": "2a09b1ee0be02a180ddb920702819e4dc8f2c46b0be11474e4ccb5e057d914e3",
+      "archive_bytes": 179818,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/assets/shoplens_studio_decision.jpg",
+      "source_sha256": "57c57e763d7fed322d3c09884aaacee91bda551745c7c0f2aaa2c227998c62f0",
+      "archive_sha256": "57c57e763d7fed322d3c09884aaacee91bda551745c7c0f2aaa2c227998c62f0",
+      "archive_bytes": 186957,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/assets/shoplens_studio_discover.jpg",
+      "source_sha256": "98aea073124940d2267a43af08b54639b39db5500998a191895a025f84f24748",
+      "archive_sha256": "98aea073124940d2267a43af08b54639b39db5500998a191895a025f84f24748",
+      "archive_bytes": 102092,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/assets/shoplens_studio_models_compare.jpg",
+      "source_sha256": "ebaddce998e69a7a805ee66de28b975eb967ac3e84af28fff76b4e858c54ba4b",
+      "archive_sha256": "ebaddce998e69a7a805ee66de28b975eb967ac3e84af28fff76b4e858c54ba4b",
+      "archive_bytes": 132319,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/assets/shoplens_studio_models_narrow.jpg",
+      "source_sha256": "f0fc473c0355ba57935554ba8a3c89e64b770c105fc5e0c7601ab1e011526e33",
+      "archive_sha256": "f0fc473c0355ba57935554ba8a3c89e64b770c105fc5e0c7601ab1e011526e33",
+      "archive_bytes": 81402,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/assets/shoplens_studio_narrow.jpg",
+      "source_sha256": "ef016be9b1e42543eae89caab7cbed77fbda41402fd2fcf0a91a6c2f7596a453",
+      "archive_sha256": "ef016be9b1e42543eae89caab7cbed77fbda41402fd2fcf0a91a6c2f7596a453",
+      "archive_bytes": 53479,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/assets/shoplens_studio_narrow_cards.jpg",
+      "source_sha256": "de6f2709cc6c1e70c5e479d2207a4af9aa04022b3f9e2837ddf80c62198dc409",
+      "archive_sha256": "de6f2709cc6c1e70c5e479d2207a4af9aa04022b3f9e2837ddf80c62198dc409",
+      "archive_bytes": 59591,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/assets/ui_screenshot.png",
+      "source_sha256": "8a4ea39ece09ddea21b20cc326b0c5e4391068054029f02035183747db8463a7",
+      "archive_sha256": "8a4ea39ece09ddea21b20cc326b0c5e4391068054029f02035183747db8463a7",
+      "archive_bytes": 50967,
+      "transformations": [
+        "jpeg-screenshot-source-name-preserved"
+      ]
+    },
+    {
+      "path": "deliverables/results_qwen_summary.csv",
+      "source_sha256": "a5ee7164d4c927a423e9246c9dcc06db0c8ba81bab449910bd9ee28d9faf359a",
+      "archive_sha256": "a5ee7164d4c927a423e9246c9dcc06db0c8ba81bab449910bd9ee28d9faf359a",
+      "archive_bytes": 1863,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/results_qwen_summary.json",
+      "source_sha256": "c898f8fb3db52d413882c3f731a37ae4217a73a48caf4a03cb5144a5e719b54b",
+      "archive_sha256": "c898f8fb3db52d413882c3f731a37ae4217a73a48caf4a03cb5144a5e719b54b",
+      "archive_bytes": 180219,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/results_summary.csv",
+      "source_sha256": "ed1e8322c01efc00e730c712aec87d873ddc8af55829140cc1fcce5120d68fe0",
+      "archive_sha256": "ed1e8322c01efc00e730c712aec87d873ddc8af55829140cc1fcce5120d68fe0",
+      "archive_bytes": 3084,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/results_summary.json",
+      "source_sha256": "c9b32d4be977a4312e3c90dabe9e5ddabe751c52bb3a7a7e08000d45b43687a0",
+      "archive_sha256": "6246cbe2315b0364cec5725b1ed398429371c2740413ea978184f5f123fa1308",
+      "archive_bytes": 7234,
+      "transformations": [
+        "json-format-normalized"
+      ]
+    },
+    {
+      "path": "deliverables/ui_validation.json",
+      "source_sha256": "7b5921e7e9cd2a41ba634f2f0f5f901f45b1992cb68d47c01b2082fdb7c36d63",
+      "archive_sha256": "3e9cc0d3904e919b694b506c1bc36587a319f1ea0fcff0ac5be6b1b31f8fb5c5",
+      "archive_bytes": 2694,
+      "transformations": [
+        "json-format-normalized"
+      ]
+    },
+    {
+      "path": "deliverables/verification.json",
+      "source_sha256": "01f0158f7716f862762314119878040725c5ccb9092f5099433774308bbf4542",
+      "archive_sha256": "9bcb65ad5dede415c2c2fd9915ddf6af7b1cd8c533e348304405af85321ddfac",
+      "archive_bytes": 8830,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "deliverables/实验报告.md",
+      "source_sha256": "da521b3c91abe074b1972ce495a93385234348a18e16aa7714eb12ad3a838f1b",
+      "archive_sha256": "da521b3c91abe074b1972ce495a93385234348a18e16aa7714eb12ad3a838f1b",
+      "archive_bytes": 15799,
+      "transformations": []
+    },
+    {
+      "path": "deliverables/贡献反思模板.md",
+      "source_sha256": "bb1da9f63298ef58fc8b8a4d8cd3135a7f3424f90025cc50d12f2e43137b7457",
+      "archive_sha256": "bb1da9f63298ef58fc8b8a4d8cd3135a7f3424f90025cc50d12f2e43137b7457",
+      "archive_bytes": 1309,
+      "transformations": []
+    },
+    {
+      "path": "experiments/baseline_budget.json",
+      "source_sha256": "d5e792e4381eb5440432861502a2dc9ed22df144161e560b6cf0ff48466299f6",
+      "archive_sha256": "0a382dbb1e774299f18e4984491e54531714e5185046256647d26593ae65046d",
+      "archive_bytes": 59551,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/complete.json",
+      "source_sha256": "a5c72f981fc9384347ce1e50e8d2d39211465e60783e1255e0922ab2b49aebc4",
+      "archive_sha256": "f34ffa1243be31d3d0679cf21d71e3c9719d2b3215697847b6b5f05e959c3406",
+      "archive_bytes": 306,
+      "transformations": [
+        "json-format-normalized"
+      ]
+    },
+    {
+      "path": "experiments/qwen/baseline_before.json",
+      "source_sha256": "5d589afa30cc8e469681387bef51e063aeca734e297014ea2b6fd5ebccf314f8",
+      "archive_sha256": "5d589afa30cc8e469681387bef51e063aeca734e297014ea2b6fd5ebccf314f8",
+      "archive_bytes": 48173,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/baseline_deliverables_verification.json",
+      "source_sha256": "cb1c8ff2e951855c2002bdda272c34f109d8d96c714ee08695faf6bab8259d9c",
+      "archive_sha256": "cb1c8ff2e951855c2002bdda272c34f109d8d96c714ee08695faf6bab8259d9c",
+      "archive_bytes": 3961,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/baseline_verification.json",
+      "source_sha256": "be52acb0ee9997d80340ba2895d7924411a8757b19a84bd152034db0ffdd155f",
+      "archive_sha256": "be52acb0ee9997d80340ba2895d7924411a8757b19a84bd152034db0ffdd155f",
+      "archive_bytes": 269,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/diagnostics/93023.gaas/original_source/diagnose_qwen_numerics.py",
+      "source_sha256": "06f9d84d24ba211840deed8b293e9d374cb406aa19bf75d87e861ec930964725",
+      "archive_sha256": "06f9d84d24ba211840deed8b293e9d374cb406aa19bf75d87e861ec930964725",
+      "archive_bytes": 15806,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/diagnostics/93023.gaas/original_source/preservation.json",
+      "source_sha256": "3566655481f6576057607f30d2c98b6d6ed377fdca6c11ca3daea7ab814e2725",
+      "archive_sha256": "3566655481f6576057607f30d2c98b6d6ed377fdca6c11ca3daea7ab814e2725",
+      "archive_bytes": 458,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/diagnostics/93023.gaas/original_source/qwen_pipeline.py",
+      "source_sha256": "4213c5bdc5757b29079fba9b185abdaed814bc806e5d592c34ce635edbd6b07c",
+      "archive_sha256": "4213c5bdc5757b29079fba9b185abdaed814bc806e5d592c34ce635edbd6b07c",
+      "archive_bytes": 38983,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/diagnostics/93023.gaas/original_source/qwen_text.py",
+      "source_sha256": "efe8bb1ba0a1feca6eac7dd3a1f90163a3fbafb5afbd3b4f9ab0a96c18acb80c",
+      "archive_sha256": "efe8bb1ba0a1feca6eac7dd3a1f90163a3fbafb5afbd3b4f9ab0a96c18acb80c",
+      "archive_bytes": 4144,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/diagnostics/93023.gaas/prefix_default_summary.json",
+      "source_sha256": "70ea1a5884b048225b064c58dff2f377bc5ad6d17e8da35229ecb15a12afbb17",
+      "archive_sha256": "70ea1a5884b048225b064c58dff2f377bc5ad6d17e8da35229ecb15a12afbb17",
+      "archive_bytes": 6731,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/diagnostics/93023.gaas/prefix_flash_summary.json",
+      "source_sha256": "e19f683b9135c54962a02305e28030300bb3fcd57bfa79db00dea50717a88deb",
+      "archive_sha256": "b4909dbec47054f4c84cafcc1482c61e698125c8e1f6f2a9ef0c4dd9072b00eb",
+      "archive_bytes": 7263,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/qwen/diagnostics/93023.gaas/prefix_math_summary.json",
+      "source_sha256": "eb9a06becc085193fa260cfd9a52f447405654a753ba2db8824d6f7869171f22",
+      "archive_sha256": "eb9a06becc085193fa260cfd9a52f447405654a753ba2db8824d6f7869171f22",
+      "archive_bytes": 2628,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/diagnostics/93023.gaas/replay_default_summary.json",
+      "source_sha256": "481086cd34edff2c50e3f84c41b6414babb79dbdae50fa7b08fa167dfbe675f2",
+      "archive_sha256": "481086cd34edff2c50e3f84c41b6414babb79dbdae50fa7b08fa167dfbe675f2",
+      "archive_bytes": 6822,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/diagnostics/93023.gaas/replay_flash_summary.json",
+      "source_sha256": "51921d9be9be63e393a2babf44d876d03dac22c3f2039a2b791896a8dae33169",
+      "archive_sha256": "ba085c4cb39744c3b7319f11d1e8d837c4e7661b0a8760bc407d4ea7ea40c88a",
+      "archive_bytes": 7361,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/qwen/diagnostics/93023.gaas/replay_math_summary.json",
+      "source_sha256": "7daf31c3a1eb140e44a732b04a2862ae74303d49d3c803f1f6b688a72e91fd65",
+      "archive_sha256": "7daf31c3a1eb140e44a732b04a2862ae74303d49d3c803f1f6b688a72e91fd65",
+      "archive_bytes": 2720,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/diagnostics/93033.gaas/prefix_default_summary.json",
+      "source_sha256": "ac42b208981ea4fbca9dde907246375ee74af4efa7e6e9ebf2b131d764abcf86",
+      "archive_sha256": "ac42b208981ea4fbca9dde907246375ee74af4efa7e6e9ebf2b131d764abcf86",
+      "archive_bytes": 2630,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/diagnostics/93033.gaas/production_verification_prefix_default.json",
+      "source_sha256": "aa6fba14564f71461d5a03ad2aae49029c58431c909c853a42eab5643209e3bf",
+      "archive_sha256": "aa6fba14564f71461d5a03ad2aae49029c58431c909c853a42eab5643209e3bf",
+      "archive_bytes": 595,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/diagnostics/93033.gaas/production_verification_replay_default.json",
+      "source_sha256": "295e849f5be9e6fd51d96d97b9604418f9aef03232640ea5baed4db197edb3df",
+      "archive_sha256": "295e849f5be9e6fd51d96d97b9604418f9aef03232640ea5baed4db197edb3df",
+      "archive_bytes": 655,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/diagnostics/93033.gaas/replay_default_summary.json",
+      "source_sha256": "9132d8a1677e4a7bf2b3409ca140618f9785311ba6a1044e98f68cb87b64929e",
+      "archive_sha256": "9132d8a1677e4a7bf2b3409ca140618f9785311ba6a1044e98f68cb87b64929e",
+      "archive_bytes": 2722,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/diagnostics/submissions/93023.gaas.json",
+      "source_sha256": "9628a03078b31e67ae893f48e2c9c8d1c9fb9e8aef376d6252c098a165f74ae8",
+      "archive_sha256": "9628a03078b31e67ae893f48e2c9c8d1c9fb9e8aef376d6252c098a165f74ae8",
+      "archive_bytes": 446,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/direct_request_verification.json",
+      "source_sha256": "ad6d13f0b8f9d59754221fa39f9d558930d6d4c0cb2943bf7a91fe9e03b50838",
+      "archive_sha256": "7ba9efb30c2fa6ef3e3d1a01905822322ad97d636c3d6b18e9bc1c85a4f79012",
+      "archive_bytes": 380486,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/qwen/english_ui_delivery_verification.json",
+      "source_sha256": "a853737f062727d4e5dbc833de80c74e60712fa6fe06e28735e42fe65dc31700",
+      "archive_sha256": "a853737f062727d4e5dbc833de80c74e60712fa6fe06e28735e42fe65dc31700",
+      "archive_bytes": 629,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/english_ui_verification.json",
+      "source_sha256": "412072fb6902f69627b12c8694cacd1a6c41d1f39d48690d2a514376f224a72f",
+      "archive_sha256": "412072fb6902f69627b12c8694cacd1a6c41d1f39d48690d2a514376f224a72f",
+      "archive_bytes": 3349,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/final_delivery_verification.json",
+      "source_sha256": "9c2cb635c8e5b10331d3c4b896930260178bb048200fb05e50a8858de0ee97af",
+      "archive_sha256": "9c2cb635c8e5b10331d3c4b896930260178bb048200fb05e50a8858de0ee97af",
+      "archive_bytes": 539,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/integration_tests.json",
+      "source_sha256": "f66980f9090ad8a29a1be4623d8047a9de824fe0a8cfce49bd20d8323a7a6d34",
+      "archive_sha256": "f66980f9090ad8a29a1be4623d8047a9de824fe0a8cfce49bd20d8323a7a6d34",
+      "archive_bytes": 5170,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/jobs/92956.gaas/environment.json",
+      "source_sha256": "9416237e21312c21c3c86669da59c1ecedf9a5d7a5b562f17bcd0c2036e8bfb8",
+      "archive_sha256": "9416237e21312c21c3c86669da59c1ecedf9a5d7a5b562f17bcd0c2036e8bfb8",
+      "archive_bytes": 2018,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/jobs/92956.gaas/status.json",
+      "source_sha256": "80f0f312b9e99dfae827b0d76f63f87fe3e11b7f247e9677dfb1ef98312496de",
+      "archive_sha256": "55b1216add4736b27138d6234521d14e435598d051ae636a3a7bc2a73fc0ad26",
+      "archive_bytes": 2908,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/qwen/jobs/92961.gaas/environment.json",
+      "source_sha256": "d5efb38dcee6174936de5f38fbc9fec0d4a5828a1f99ecb1bdb564dc945c4f69",
+      "archive_sha256": "d5efb38dcee6174936de5f38fbc9fec0d4a5828a1f99ecb1bdb564dc945c4f69",
+      "archive_bytes": 2018,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/jobs/92961.gaas/status.json",
+      "source_sha256": "6b293435f79ed08beb3975314df51fd28440165964823aaf6092292b295e01fe",
+      "archive_sha256": "b66934cb933c752bcda706431768a7e8ef9e4ab83f64bf08ef8513447eb56736",
+      "archive_bytes": 2462,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/qwen/jobs/93033.gaas/environment.json",
+      "source_sha256": "5fa4a594c7b4724e05ca236fa1a290c259e78efe9a9479c878987c0837df1369",
+      "archive_sha256": "5fa4a594c7b4724e05ca236fa1a290c259e78efe9a9479c878987c0837df1369",
+      "archive_bytes": 2018,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/jobs/93033.gaas/pbs_final.json",
+      "source_sha256": "cd5dbc38f442a1d3eb2b8c62769d23049e215df07b2a6cf2dcf67ae5ffc5e82d",
+      "archive_sha256": "cd5dbc38f442a1d3eb2b8c62769d23049e215df07b2a6cf2dcf67ae5ffc5e82d",
+      "archive_bytes": 2087,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/jobs/93033.gaas/status.json",
+      "source_sha256": "98ea410aaf18d02bfdb5248e1b4be4d5bc5c91a55820d8edfcd4aead28018143",
+      "archive_sha256": "98ea410aaf18d02bfdb5248e1b4be4d5bc5c91a55820d8edfcd4aead28018143",
+      "archive_bytes": 2558,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/model_source.json",
+      "source_sha256": "1aacf7ef088bf2a5c7e7748f05a5fe04b672fd0fee14313d1b751f99fd9622a8",
+      "archive_sha256": "cc2f26e3a873a78ba9d57b07c6bf65963565c9dfd15875c0bf1ba9438313a738",
+      "archive_bytes": 1007,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/qwen/protocol.md",
+      "source_sha256": "e3f8b8ea2aa9769312f3e6316c0ff177bd709694375489b47096d2a69e34b297",
+      "archive_sha256": "83e64c74b1af889c498de52355b40c4186b5dec9b2b401a91231c57acc90b7e7",
+      "archive_bytes": 7508,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/qwen/recovery_note.json",
+      "source_sha256": "f74a62caafec983fda7952b28e0b1bd786b23c76ec9b26131eb5750b192efbc6",
+      "archive_sha256": "f74a62caafec983fda7952b28e0b1bd786b23c76ec9b26131eb5750b192efbc6",
+      "archive_bytes": 5007,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/studio_delivery_verification.json",
+      "source_sha256": "bf5346ee66f2c60c8635d4f5af2d2d5ac8e1279853c26a80af284a5d758798a3",
+      "archive_sha256": "bf5346ee66f2c60c8635d4f5af2d2d5ac8e1279853c26a80af284a5d758798a3",
+      "archive_bytes": 1085,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/studio_models_delivery_verification.json",
+      "source_sha256": "61e2b9c4a60fd0a0180c80a85557f17ca2d0ae8d8025e00649a9152b14fa4150",
+      "archive_sha256": "61e2b9c4a60fd0a0180c80a85557f17ca2d0ae8d8025e00649a9152b14fa4150",
+      "archive_bytes": 1180,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/studio_models_verification.json",
+      "source_sha256": "3fddf3e93c2af8ef188d5d0766078768acc68b0d95699829d5689a268a20c654",
+      "archive_sha256": "ac0e651cc36f5f890bcb35d98ae786296c47fc4f3bd92dbc972c925bc330bc0b",
+      "archive_bytes": 382690,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/qwen/studio_verification.json",
+      "source_sha256": "43f1fb106f8ae7382360f5cefd670fcdb4a4ac8598eca32680c6ee2a1019ad81",
+      "archive_sha256": "c8a0591aa106c4d7da2d9945b7cc41387d2a8aeeda3c5ba37ff82f3884b24131",
+      "archive_bytes": 550969,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/qwen/submissions/92956.gaas.json",
+      "source_sha256": "cd9bf83845840c959f92e092585f68522999b2eab007f5f453e94a843565596b",
+      "archive_sha256": "ffc4be85f3761a2d1e326a3e79b78eec807f3185f6a70a9948313e6fbb1c9796",
+      "archive_bytes": 395,
+      "transformations": [
+        "json-format-normalized"
+      ]
+    },
+    {
+      "path": "experiments/qwen/submissions/92961.gaas.json",
+      "source_sha256": "dcd126727e1ac392471c47a92c505704815f4cdf2c3336bd8f79bbce44905236",
+      "archive_sha256": "acd9de26ec048248b81f957b85fce8538fa4dab979f69870751c9ba9d03b5fae",
+      "archive_bytes": 395,
+      "transformations": [
+        "json-format-normalized"
+      ]
+    },
+    {
+      "path": "experiments/qwen/submissions/93033.gaas.json",
+      "source_sha256": "febccbe8a6e21f1eb6949104596ce0180d69b36226833759d03d894ceaf24eb7",
+      "archive_sha256": "860aa6dcd5fb51598a811066e5d8fca134bd844eadf170790a81802724d08487",
+      "archive_bytes": 395,
+      "transformations": [
+        "json-format-normalized"
+      ]
+    },
+    {
+      "path": "experiments/qwen/ui_validation.json",
+      "source_sha256": "9d069a188f1a7f4bd7b654aa0d48786d19a684311de589819561507f1ac4390a",
+      "archive_sha256": "9d069a188f1a7f4bd7b654aa0d48786d19a684311de589819561507f1ac4390a",
+      "archive_bytes": 6131,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/verification.json",
+      "source_sha256": "992edba13dde5657030d639103e0de3e4fe7e46866bb882320ebe039ad64dfc9",
+      "archive_sha256": "992edba13dde5657030d639103e0de3e4fe7e46866bb882320ebe039ad64dfc9",
+      "archive_bytes": 158596,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/visualization_delivery_verification.json",
+      "source_sha256": "00dc964bad0f1b87b982d1ce219b90979805a0cd3dd98857221a3eff059acb34",
+      "archive_sha256": "00dc964bad0f1b87b982d1ce219b90979805a0cd3dd98857221a3eff059acb34",
+      "archive_bytes": 601,
+      "transformations": []
+    },
+    {
+      "path": "experiments/qwen/visualization_upgrade_verification.json",
+      "source_sha256": "1f0a81852533112dc186a70afdf3448441f5d0010e55d0e4acf7340b1d1b34ed",
+      "archive_sha256": "0ffef6d809c554d553eda9c93abd449c4882c7f63ec94a8cd1e549964b25217e",
+      "archive_bytes": 11211,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/baby/seed42/complete.json",
+      "source_sha256": "6d1c7ae3b0cfa8bc5a4128cfc9cc9b63a4ba187d34d1266b51db10218d8d511c",
+      "archive_sha256": "94b205ed2b4cb61cfcf15374461beafba859aece77294c6951c7c07316a5743f",
+      "archive_bytes": 702,
+      "transformations": [
+        "json-format-normalized"
+      ]
+    },
+    {
+      "path": "experiments/runs/baby/seed42/models/adapted.json",
+      "source_sha256": "7eeb467860ce6841aee1fc6196dd2b991f9cdbacd2608d357f281757693eec9a",
+      "archive_sha256": "f212584c3b9bd8f2ba96a5915238e6b651dae1145017843cf87584ac476dccd7",
+      "archive_bytes": 184394,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/baby/seed42/models/mf.json",
+      "source_sha256": "24fc4141113f48829328e7e0d8490f345b1a6be3d46d54b805c6719ec7cd388d",
+      "archive_sha256": "d7c9c3b103a83fff6068bdadb870850c5c79037559e5acd4da117877a340bcda",
+      "archive_bytes": 476486,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/baby/seed42/models/multimodal.json",
+      "source_sha256": "549f3d036631e04fae2e9940a95d2b12362c061e50078a1dba243ff3ebabe403",
+      "archive_sha256": "8262ef00a34a98c4ca2a30c5d08eca57727db493a1ee305d721f58eb75f7a631",
+      "archive_bytes": 184402,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/baby/seed42/models/popularity.json",
+      "source_sha256": "c7b338bf1d946db2c2e25c4a0c75ca45bc29ea9b13a956bac8da1083dc15031d",
+      "archive_sha256": "206e83150c77da238e5eb36b8c8d89b4b9e0bd78ccd237563f9891cee4c5a7ee",
+      "archive_bytes": 183613,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/baby/seed42/models/text.json",
+      "source_sha256": "929ca4770470f2bec80f98e716027f83019964f84ec02baac1048a127aa62b8b",
+      "archive_sha256": "b94490c8dcf3b1bb1d7a867096fa9dbe9959f57c8687b07bd7e09b4c7b837c64",
+      "archive_bytes": 184396,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/baby/seed42/models/tfidf.json",
+      "source_sha256": "445130c6edcf965640fd86258c398ad3d96d5cbb77a8f74a17a4ba43927a4301",
+      "archive_sha256": "474fa65b817b8d3df54dded7fda990d803a25eef482e13370230c03e41b11036",
+      "archive_bytes": 183705,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/baby/seed42/results.json",
+      "source_sha256": "0670823681ba9a8941d99137a58b6c065128736f4ac368432391b22476567557",
+      "archive_sha256": "7705c3b595ae519952eb31ccea3aa70e07447443598880560c7db8d10ba98297",
+      "archive_bytes": 42919,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/baby/seed43/complete.json",
+      "source_sha256": "7945c8c11ae92e42cd7c408ab829cd5e6c886169b211314838add176f8ae6be1",
+      "archive_sha256": "2d1012bee15507271c1ffbeaf1416687700542b527d9e178eae2ee598f2c336e",
+      "archive_bytes": 701,
+      "transformations": [
+        "json-format-normalized"
+      ]
+    },
+    {
+      "path": "experiments/runs/baby/seed43/models/adapted.json",
+      "source_sha256": "7099eef181e914f688b2248fe7d1071920744a209f40be4821d53806c2f67983",
+      "archive_sha256": "a3b030615515c329fc900932cc9db28fdc9f0353a3452973671c64e984430dcc",
+      "archive_bytes": 184400,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/baby/seed43/models/mf.json",
+      "source_sha256": "f6a888e9ad53b7eda3ebbb7616bd25da0bcc643cdd3d52e4e8e7f14a311d5ca2",
+      "archive_sha256": "58b239a9cc2b0f5b14fea1682180a7084585c74eb4bd17bd38343ba1b2dd1689",
+      "archive_bytes": 476487,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/baby/seed43/models/multimodal.json",
+      "source_sha256": "f1354a5e45322b70de43dbe0b1d36f0ef5b45de39e96277abb89a05953f19277",
+      "archive_sha256": "79d1aa3451eb9df15fc8958a6885db2f101e0a91c23ea74b31eb405c1dc12b54",
+      "archive_bytes": 184401,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/baby/seed43/models/popularity.json",
+      "source_sha256": "e46864d36b77491b6908e016f9e51edc565077a3a1154ee5c06c4c24c2108c50",
+      "archive_sha256": "b256c73538bd64ddb13def08ebc624bc657867ba6701dee90ab95b8f399d5b07",
+      "archive_bytes": 183613,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/baby/seed43/models/text.json",
+      "source_sha256": "7666380eea02cd519dbfbbb349b755d7bfb16e94518b5c8139a64502807c8dda",
+      "archive_sha256": "15a0b4879fc10cbbae601ff5c7f35901a7b0d8057d9aa646c2bc69c10d9ab8c1",
+      "archive_bytes": 184398,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/baby/seed43/models/tfidf.json",
+      "source_sha256": "8f63514e68bdfe5a97b95e0a4795cb5d969864026d47ec02389b38c4a0d3bed9",
+      "archive_sha256": "40f749071cd5d31fe8097615df6fe0b251f07c934d4e9626e702768ae370c26e",
+      "archive_bytes": 183705,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/baby/seed43/results.json",
+      "source_sha256": "27d83444bc13a80529f8cd5649056eb7bef605904ddf816421f876d630d8295d",
+      "archive_sha256": "ad6afc674f77c917a3c07e102021125948e6f59a0e7ea188769dd491a1727cba",
+      "archive_bytes": 43057,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/baby/seed44/complete.json",
+      "source_sha256": "f43b09a9f71c1878e5e2e89bc3ba613dabbfd2e9ca9e4412a40bb3cfd9b4a9f8",
+      "archive_sha256": "c8056b428d0cc125ef54a5875bb0f762d39ad55be3f8103c55ebca14e853fb4e",
+      "archive_bytes": 702,
+      "transformations": [
+        "json-format-normalized"
+      ]
+    },
+    {
+      "path": "experiments/runs/baby/seed44/models/adapted.json",
+      "source_sha256": "c7218203a50d9ef1cee9cfeeb5ab0020b74c48497302c3e9a3e3a092465cfcef",
+      "archive_sha256": "19cf33d030aff9bb93d81cf06f3ff1247284d752ef9311b63b5ff380f62d28d6",
+      "archive_bytes": 184400,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/baby/seed44/models/mf.json",
+      "source_sha256": "8d763d18d0ec026f8ddf0f127566c97ca75cae19709b5e014af7c0f57c71d4a2",
+      "archive_sha256": "33f6afc3d904202ca623651ec929ebd2b185219e8e553256d73f5d133eb9a1b0",
+      "archive_bytes": 476487,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/baby/seed44/models/multimodal.json",
+      "source_sha256": "8c588e4f784733a69cd66303a413bf52c6f705267197fa2bd37ce0c26da3ed4d",
+      "archive_sha256": "958c246f14f06cfc8e4843edf3c9fa5b7be483c4565c18c152d63470df44f0a3",
+      "archive_bytes": 184402,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/baby/seed44/models/popularity.json",
+      "source_sha256": "4ad329c835c30e0dc9ca9978bc67f806319cb2048e5d538321b5236d88ff7e58",
+      "archive_sha256": "112243c0d617f9933a341fa78413eeead9e9560c8e607a00ae42ab872b20516d",
+      "archive_bytes": 183613,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/baby/seed44/models/text.json",
+      "source_sha256": "b77eb62b5c747fbef115251dfce3a345653efde59da246298477eea6ded3587b",
+      "archive_sha256": "3ea2279449efc2dcf75d1afca74a5d335b0640f6a5afdba643f31655f7039208",
+      "archive_bytes": 184397,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/baby/seed44/models/tfidf.json",
+      "source_sha256": "0a4aff8135c74d10c57d76ee72aced37ef5922a275dbff7ac38ff80156ce5546",
+      "archive_sha256": "32ff7578e2e179caa88f69d23cb96a806dd8a0954f9e1931f2fb652798fb9fd2",
+      "archive_bytes": 183705,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/baby/seed44/results.json",
+      "source_sha256": "5670f94ef093f15fca1c1bad9231137534147194d0ca505ce542a4fa74e26a43",
+      "archive_sha256": "7655d5f496fcb270967ddd072f234da3e40963b108ca4c1ce8d4f5cfd0e48a6b",
+      "archive_bytes": 42876,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/clothing/seed42/complete.json",
+      "source_sha256": "befd2dcaadf53d1c298b5b9887a6aea65191d286de5c05cee161b5364bd83848",
+      "archive_sha256": "7ab9d752c686528d50a540c6b24540e1f8b713d9a7a9d80e3efa7d36e175462f",
+      "archive_bytes": 727,
+      "transformations": [
+        "json-format-normalized"
+      ]
+    },
+    {
+      "path": "experiments/runs/clothing/seed42/models/adapted.json",
+      "source_sha256": "ee8fb232ecbc2d1181278d2e6584c06f7aa9273d4e26bc78949b746ebbbea05b",
+      "archive_sha256": "a59df93d132b9c88ba177cd3978ad25ea8ab5ef851307a0fe54d42dc5d62ef4d",
+      "archive_bytes": 572658,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/clothing/seed42/models/mf.json",
+      "source_sha256": "413ac38840ff76ee9520652dc7fb52a52d50a76b6736512acde277f6a7299a09",
+      "archive_sha256": "b8ed7d52dec86cbe9db573ee99f2b4c51ef1dfd484006e91fe4f4f6affa92aa1",
+      "archive_bytes": 1218413,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/clothing/seed42/models/multimodal.json",
+      "source_sha256": "7d8f7526ede65cf78360f35d91e62972f6886a06a657288c74c9852066414ac0",
+      "archive_sha256": "8aab19437fbd5543c2759532b1259feab50333a3e68ea445f2647be301895496",
+      "archive_bytes": 572659,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/clothing/seed42/models/popularity.json",
+      "source_sha256": "304229bfd71c780531cdc57a98f3506bb90b7770be332967a9651bdbade4002f",
+      "archive_sha256": "79e0e6a5f31335920035de25eac5062ba5fbe086bb26268990d36242219a510f",
+      "archive_bytes": 571866,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/clothing/seed42/models/text.json",
+      "source_sha256": "4a733eb05f3483a942204b1420af73a1dcb359e28aaabc7e0f64580800b5052a",
+      "archive_sha256": "14426132479842e4fff3e893909e8ee7753855e8c238555dca9b0c5b63c538f2",
+      "archive_bytes": 572655,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/clothing/seed42/models/tfidf.json",
+      "source_sha256": "d51973b09dbdeeaffda6ed123653a524a4d369ba43307a13f5163cd2164c90fd",
+      "archive_sha256": "fc4a888ff115ac6bcb54414b97c9be38bb5c8b31a39bcd2cc867cbacaa393d7b",
+      "archive_bytes": 571958,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/clothing/seed42/results.json",
+      "source_sha256": "bf3247f7debc4a431fab767e5b83a3f86830fa1470eb850bec50c043e1ba8221",
+      "archive_sha256": "1d3aa126f6aa2470b8b0cded1ff0aaf81370bf12476348fdcde3c1643b8c329c",
+      "archive_bytes": 43572,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/clothing/seed43/complete.json",
+      "source_sha256": "c5ffc7938dde78fe0d60b0087bbd4cc8018cfa0bac34961e37a2f9b2e7ffda04",
+      "archive_sha256": "54da5457e62365251516e2715add0e11577dd11b316cc096416dd627530cb7ed",
+      "archive_bytes": 727,
+      "transformations": [
+        "json-format-normalized"
+      ]
+    },
+    {
+      "path": "experiments/runs/clothing/seed43/models/adapted.json",
+      "source_sha256": "eb60647fb5126e706d78078822acfc206afa298dd41705bdddfc6db36bf0f9af",
+      "archive_sha256": "886bb23c48ee7949886e700f3fb65f9bb03dea2057e68a5d11e70ecdd44525ea",
+      "archive_bytes": 572656,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/clothing/seed43/models/mf.json",
+      "source_sha256": "a53d9717bca9f8f18cd15e2f7f57851879d4dafccf4c31544fe9c12b9d9c9c9c",
+      "archive_sha256": "6cec1f1b7a3203199207fab8f59f96e2b27aba2485300c880e33a4a88ec42b3c",
+      "archive_bytes": 1218413,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/clothing/seed43/models/multimodal.json",
+      "source_sha256": "d8b55ffcd2e7ca621d68cfcc6919c3c15096cd8433bdf2394ef85070b9b665e4",
+      "archive_sha256": "d9499f9efed0f7422d8a62c129f09477983ff1905a18a96a2cfd1745e3f2c565",
+      "archive_bytes": 572659,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/clothing/seed43/models/popularity.json",
+      "source_sha256": "fc436b6d5a784115fd5e8a66e1d74c903660a91bd8d8a6cfd277f4cd379f5972",
+      "archive_sha256": "488a7fe6656ee78ec96b413fa4860b0b60b9a51bf0e0de8685cae38be41ef41a",
+      "archive_bytes": 571866,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/clothing/seed43/models/text.json",
+      "source_sha256": "470be61a906be84183272906d12b5b2756b75a6065b7379f13404b85cbc9b027",
+      "archive_sha256": "d3bcf8d021fa25647c21dc279361d4a8433e001426985e012d154276b29bce80",
+      "archive_bytes": 572656,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/clothing/seed43/models/tfidf.json",
+      "source_sha256": "fa3b772e64c6f4fd2d8394d0586a77bd27af400ca0dbb41edfd461b85659f8e4",
+      "archive_sha256": "7a774142669500cc5cc140138497d6a990a612fc17a9f2cace5811d74e537ab2",
+      "archive_bytes": 571958,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/clothing/seed43/results.json",
+      "source_sha256": "833f2419bc3b984b99df1dd5e81d036102a88ffabbb65786599401262a0d8808",
+      "archive_sha256": "2eb6d89e4ebafc50c3665724f40e9c8dbf42b9da004fd1c72d28185656c0e399",
+      "archive_bytes": 43571,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/clothing/seed44/complete.json",
+      "source_sha256": "54ba2b8c457621b3a8ab4b1095832857dcb0b0017d9e720c9a1ac82af2873d91",
+      "archive_sha256": "80bf3d230ddc4ebdb66b2ba5e6fd358d9bf8b6b63811685cd8ea7f1f500e2abc",
+      "archive_bytes": 727,
+      "transformations": [
+        "json-format-normalized"
+      ]
+    },
+    {
+      "path": "experiments/runs/clothing/seed44/models/adapted.json",
+      "source_sha256": "ffc4034292c23ca7fb7471d5a278adec4fc4049658f4d3bb772980db3a18fb6f",
+      "archive_sha256": "fa9e3941d3236dd33c2d00c73f55ee5170c469db55c53647af713f8e3a74a3c5",
+      "archive_bytes": 572658,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/clothing/seed44/models/mf.json",
+      "source_sha256": "0914a952d96278ed707853dcdbea1c27a7b14b40003c716a6db96857aa102d5d",
+      "archive_sha256": "c4110a3c12dd5bd4abbe1b80aff87d31247c8a2d36f80bb57c770988d7ecd22f",
+      "archive_bytes": 1218415,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/clothing/seed44/models/multimodal.json",
+      "source_sha256": "317d6130dbc87065e51c500b6a16302bd8c10436bb2180a54dd0b0a0357087c2",
+      "archive_sha256": "ec3a3889fac27b4f90ee9b7a02346ba95bd71153a5b77135f1c8173641019e21",
+      "archive_bytes": 572658,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/clothing/seed44/models/popularity.json",
+      "source_sha256": "4cdf1785e066db96e8bb71d95ba0c254f86c4563849a85ceb387098b6e305535",
+      "archive_sha256": "91bc0875c89a913a1ce06cd0f59bf40300f6ab83e3e90eb828432bad7344c2d5",
+      "archive_bytes": 571866,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/clothing/seed44/models/text.json",
+      "source_sha256": "1a26bba5386eea5e82b79dc43b35d079295cbcd15011d8a030c8cbddd54c2a3c",
+      "archive_sha256": "b313b2b652725c25707711b65f1f0929a40bc46a00f138039bdbe120942d0c6d",
+      "archive_bytes": 572657,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/clothing/seed44/models/tfidf.json",
+      "source_sha256": "a944f4a562d80e78855724524dbf388b4641cbbc818220f9bf3c13a106c5c146",
+      "archive_sha256": "ef0b004428a2d4ce37fd052e404e0e269d81f7e8f44a8046ea92df7361406f4d",
+      "archive_bytes": 571958,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/clothing/seed44/results.json",
+      "source_sha256": "2a6f783cd87fc543fc8c15c4f4cb9c4333bec3af1519271e596e692d687c715d",
+      "archive_sha256": "e5bcb49b5520abb0c689503c27f619c729abccd9b543cfec1541269ad513e3a3",
+      "archive_bytes": 43578,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/sports/seed42/complete.json",
+      "source_sha256": "942c8b48805d0bc550070b7d1fb9f7699f10c78ccd54162c65fe43414bd2bb2a",
+      "archive_sha256": "f94970af19bd91bdd0ad41fc56ebfa38b5a457d0dba9bf1266d511a15759a24c",
+      "archive_bytes": 725,
+      "transformations": [
+        "json-format-normalized"
+      ]
+    },
+    {
+      "path": "experiments/runs/sports/seed42/models/adapted.json",
+      "source_sha256": "4cef11857eb8611b6f39aecbeef08d74f674996c1d4c99f03ccf9ba14325ec2c",
+      "archive_sha256": "e571025cd3048a4a826c0c8130e54099f125b3c05646afb19229561375658721",
+      "archive_bytes": 468220,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/sports/seed42/models/mf.json",
+      "source_sha256": "5b62f284d7b81055927f186a910aa16dd7aa567fc0d40baa4d0606e2caa45b07",
+      "archive_sha256": "551cd85019c8c407fed52a86e279a10ec9bde9b755f7aec36c9c6311a03d5636",
+      "archive_bytes": 1066563,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/sports/seed42/models/multimodal.json",
+      "source_sha256": "aa70fe1b2876f70036f7759e4c610ca43d2f3c948420067b2cf10ce205fe2b74",
+      "archive_sha256": "0647439c68789deec4aade404957fdc0fc5d993195fcb53cd1b1bfc74e3ff8a1",
+      "archive_bytes": 468226,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/sports/seed42/models/popularity.json",
+      "source_sha256": "76c660862ab4457d81dafd9a45cc68cbea8bc1ad9250eabcc88f21eabed9b005",
+      "archive_sha256": "ec6f34c5ed44425a9cb055a8c99a536b733078d6bd27333e2b9f5437aeeb80ca",
+      "archive_bytes": 467431,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/sports/seed42/models/text.json",
+      "source_sha256": "aac6750818807c1b85cc264e00dacb7d08f31fd0c5736de58bcc425119947649",
+      "archive_sha256": "8fb4c42d99599b88841f015af2892ea31d382006d1795108b3b63049375976ed",
+      "archive_bytes": 468220,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/sports/seed42/models/tfidf.json",
+      "source_sha256": "33b5039f8408c7a2867deaaad3d7196004e64febc081b54030034accad5891cb",
+      "archive_sha256": "b00e8c4a71d67106ca855f2c76c89eab2027cd0e6aa87ba2c0364db30e03e409",
+      "archive_bytes": 467523,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/sports/seed42/results.json",
+      "source_sha256": "ca369eca49e89af11b7495e6be5ae2771cd320463432aaada1140c2ad86ac04a",
+      "archive_sha256": "bd3f70172fab7fe0371f4ad95aacaba205e7e3422fb4dc3129fab36dff481798",
+      "archive_bytes": 43455,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/sports/seed43/complete.json",
+      "source_sha256": "e526f1004d4ded40a2d98e16e2c792a40c7374a4852e8a815a12df9965e2b04d",
+      "archive_sha256": "5978cd94506c00b6d3b7ca684e06396dac9920287d758d5d2efe2306e3b13833",
+      "archive_bytes": 725,
+      "transformations": [
+        "json-format-normalized"
+      ]
+    },
+    {
+      "path": "experiments/runs/sports/seed43/models/adapted.json",
+      "source_sha256": "d62f98ad0b7c9fdd01fcb57f2ce81df481b540970509121e64e03a6a32e4948b",
+      "archive_sha256": "7a62ce7099d480c6d118f3c000bf99e5ef52b7316ba0871213b16eb712b9a4e3",
+      "archive_bytes": 468220,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/sports/seed43/models/mf.json",
+      "source_sha256": "bb73e3ad23d234f1cbce1df2ea9edaa2c67015436a2418607dc329b49c396deb",
+      "archive_sha256": "c58032b5eed0fd76ce8332013abe04f173161e9b8704dd5de9c6880f7e82119e",
+      "archive_bytes": 1066557,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/sports/seed43/models/multimodal.json",
+      "source_sha256": "19ddcc4307a407866ac7ef040a83a3252d3ba1f445e1c4205cfbba3e2db3c399",
+      "archive_sha256": "fba6e9edaedc8b6d64810da059a2484a7a6552b1eb07f16ecccd31e02cf9e9c9",
+      "archive_bytes": 468223,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/sports/seed43/models/popularity.json",
+      "source_sha256": "26811a1adb75d1b687c4af32498aba69c475c1d52139d8ac5b4a400dc799db53",
+      "archive_sha256": "4cd62770f9f5c3b3c6d4b9f5029f565f3911ab32994bd1b63056798569da7699",
+      "archive_bytes": 467431,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/sports/seed43/models/text.json",
+      "source_sha256": "f59e44c29aeabfbe6937d4ef38636135b0aa536a6f4772af10b353cc4ab8001f",
+      "archive_sha256": "58bb02b5ae96cc85bbdaadf5c9bfe9f49d8c5f925cb58372b5feb50c4a6f673a",
+      "archive_bytes": 468220,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/sports/seed43/models/tfidf.json",
+      "source_sha256": "08e8b9ff3936e4180fcf31efe50bb0b3161a33971039c282aae5e3a84c19538a",
+      "archive_sha256": "12583fb9086578af75229943ab4e4d43912d1ffc50766410468e12b19d8d6362",
+      "archive_bytes": 467523,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/sports/seed43/results.json",
+      "source_sha256": "d23887f5a07caf4f231b07e36884ff836f583065bed3dd6921364d60f5e6984e",
+      "archive_sha256": "f73be6f92536960cc9222270d3efca31921f45cdb232d62d4651a6b662f3ab7a",
+      "archive_bytes": 43449,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/sports/seed44/complete.json",
+      "source_sha256": "1ea181b2b15346241c669e91b847ba60d9d8853b57b05a85e96b6ffc4ff9652a",
+      "archive_sha256": "272a8b35a4922b7fcf9dbf7e144cb6d378157029404c258ac65b86af3c406c2f",
+      "archive_bytes": 725,
+      "transformations": [
+        "json-format-normalized"
+      ]
+    },
+    {
+      "path": "experiments/runs/sports/seed44/models/adapted.json",
+      "source_sha256": "de1c8aacf67b6ff97fc83d6293ff8278cfcea1a67db684b5f849b4ff5c8d9cf1",
+      "archive_sha256": "2b6e7f98ca9065087c2939e3d7cecca570cfd6d65b3bf35fd51c4f4310654ee6",
+      "archive_bytes": 468218,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/sports/seed44/models/mf.json",
+      "source_sha256": "2972ee562e063045bb944fbffc766307d51079c8cf6838790505de85f5f5b157",
+      "archive_sha256": "a2aaa7d1a8f9f0171a28b64dfae409f76a10bb8632772e7e0eaada900a8a25a5",
+      "archive_bytes": 1066557,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/sports/seed44/models/multimodal.json",
+      "source_sha256": "891d0f2b272348dabec01ec6f3e6fc97e0a24d47677a40f795df6d40165a39ef",
+      "archive_sha256": "c22e2ecbd4768f6deaa1fb392fdfa1603c6278aa9423d4c509c7d60ecacf2959",
+      "archive_bytes": 468223,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/sports/seed44/models/popularity.json",
+      "source_sha256": "a757e7b539f47601b23a13140c726c752e5a8398ddaad519c7cde25417f30e2c",
+      "archive_sha256": "bed97fec51ca115529a2e98eb35af0bf46647afe18b05b7d09aa97594737ff2f",
+      "archive_bytes": 467431,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/sports/seed44/models/text.json",
+      "source_sha256": "0b28f39cb6be3902eac71fbeba634de17a6eb1b3f7231d24ca0b17b8e15661ce",
+      "archive_sha256": "2924870f3a0b7b72a3e4924a02a692e75b232c2cd02afc284f18642213e35e84",
+      "archive_bytes": 468219,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/sports/seed44/models/tfidf.json",
+      "source_sha256": "f15b47f0a6b02cd0e2d0d1a059df9f63aa3daf6f1bb42783a358f9d3d5a7227a",
+      "archive_sha256": "4d6bc1033a42cf6f2defb33967864e3cdc538c4117241a5f7ab3d1806aad4554",
+      "archive_bytes": 467523,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "experiments/runs/sports/seed44/results.json",
+      "source_sha256": "24c031615e4be71d46e0a11f5529260ffbb303a6eea679783685b8efed846a45",
+      "archive_sha256": "1b74c44b9e5c6c175a49897b110a46a6bbab80343fbf40893a36138a6e698fcc",
+      "archive_bytes": 43450,
+      "transformations": [
+        "json-format-normalized",
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "pyproject.toml",
+      "source_sha256": "5581fceb7c586e7a2d8e02b785c64563c428bed619f2c3ae254276f49e941a65",
+      "archive_sha256": "5581fceb7c586e7a2d8e02b785c64563c428bed619f2c3ae254276f49e941a65",
+      "archive_bytes": 476,
+      "transformations": []
+    },
+    {
+      "path": "requirements-lock-macos.txt",
+      "source_sha256": "dd3c50426d1847422690812029f195b2ac9c1e4718b820a8e25edf610c2d0ffe",
+      "archive_sha256": "dd3c50426d1847422690812029f195b2ac9c1e4718b820a8e25edf610c2d0ffe",
+      "archive_bytes": 1047,
+      "transformations": []
+    },
+    {
+      "path": "requirements-qwen.txt",
+      "source_sha256": "e0aac299c4e1a4b3925b72d070c025b6c2bc3e05b144301dec89189e2290b360",
+      "archive_sha256": "e0aac299c4e1a4b3925b72d070c025b6c2bc3e05b144301dec89189e2290b360",
+      "archive_bytes": 102,
+      "transformations": []
+    },
+    {
+      "path": "requirements.txt",
+      "source_sha256": "12408362c4f14ba98aa025a35972d511080d7f2c9600088d7e40fafaf47c1e98",
+      "archive_sha256": "12408362c4f14ba98aa025a35972d511080d7f2c9600088d7e40fafaf47c1e98",
+      "archive_bytes": 214,
+      "transformations": []
+    },
+    {
+      "path": "scripts/baseline_snapshot.py",
+      "source_sha256": "786bbd5e97333ac2adaf088e79671c7adb196b39ddfdd22dcfb899d139536b27",
+      "archive_sha256": "786bbd5e97333ac2adaf088e79671c7adb196b39ddfdd22dcfb899d139536b27",
+      "archive_bytes": 12703,
+      "transformations": []
+    },
+    {
+      "path": "scripts/benchmark_local.py",
+      "source_sha256": "f2b2a29d909bfac957916e61acc1527a53b6f70a1ef80056518825998f249435",
+      "archive_sha256": "f2b2a29d909bfac957916e61acc1527a53b6f70a1ef80056518825998f249435",
+      "archive_bytes": 2282,
+      "transformations": []
+    },
+    {
+      "path": "scripts/benchmark_qwen_local.py",
+      "source_sha256": "aece619e527fdd2ef92681fa14421a19b2aa8881165a77dedb43eddf56f58be0",
+      "archive_sha256": "aece619e527fdd2ef92681fa14421a19b2aa8881165a77dedb43eddf56f58be0",
+      "archive_bytes": 6066,
+      "transformations": []
+    },
+    {
+      "path": "scripts/build_presentation.mjs",
+      "source_sha256": "d37e332c28ef35af14e6812085a573c670301f158a006ed1a76018657a4ad61e",
+      "archive_sha256": "2e09f26495679e13796e1c317c0d78796c5e7e2c992b5c4ffde68136e03eb4f9",
+      "archive_bytes": 40012,
+      "transformations": [
+        "optional-presentation-generator-runtime-configurable"
+      ]
+    },
+    {
+      "path": "scripts/build_qwen_presentation.mjs",
+      "source_sha256": "754e67a530cddfa22089af238e9c505f10fce82b9a9e509416202d3dd460cd95",
+      "archive_sha256": "3a310bd9c2071e734596b2a547a0f051ebd1c16c12115d2e24c909eac5e2496a",
+      "archive_bytes": 45539,
+      "transformations": [
+        "optional-presentation-generator-runtime-configurable"
+      ]
+    },
+    {
+      "path": "scripts/build_qwen_submission.py",
+      "source_sha256": "28d5635f2195fe3adc0a03aa2ccf97911bf5d45aac6e91da9ade0fd5c1e33339",
+      "archive_sha256": "28d5635f2195fe3adc0a03aa2ccf97911bf5d45aac6e91da9ade0fd5c1e33339",
+      "archive_bytes": 33165,
+      "transformations": []
+    },
+    {
+      "path": "scripts/check_baseline_budget.py",
+      "source_sha256": "a77f39a03c13febcd3716a458a838355f878d30349b43082ad68d1571fe0a54b",
+      "archive_sha256": "a77f39a03c13febcd3716a458a838355f878d30349b43082ad68d1571fe0a54b",
+      "archive_bytes": 1920,
+      "transformations": []
+    },
+    {
+      "path": "scripts/diagnose_qwen_numerics.py",
+      "source_sha256": "06f9d84d24ba211840deed8b293e9d374cb406aa19bf75d87e861ec930964725",
+      "archive_sha256": "06f9d84d24ba211840deed8b293e9d374cb406aa19bf75d87e861ec930964725",
+      "archive_bytes": 15806,
+      "transformations": []
+    },
+    {
+      "path": "scripts/download_qwen.py",
+      "source_sha256": "e477e3a641d7ff0e70fbf0b287849caed39b94aab3dd1588be843fd6256e7f22",
+      "archive_sha256": "e477e3a641d7ff0e70fbf0b287849caed39b94aab3dd1588be843fd6256e7f22",
+      "archive_bytes": 2536,
+      "transformations": []
+    },
+    {
+      "path": "scripts/make_english_report.py",
+      "source_sha256": "55db11dd5839260e9829c7ce38f2f3e3a922563e60eba42ccbd493d602096029",
+      "archive_sha256": "55db11dd5839260e9829c7ce38f2f3e3a922563e60eba42ccbd493d602096029",
+      "archive_bytes": 31677,
+      "transformations": []
+    },
+    {
+      "path": "scripts/make_qwen_report.py",
+      "source_sha256": "33fc191df6cff55bbd2ab9968e56b145c50909a3e7b6f462a27d49e1b0379897",
+      "archive_sha256": "33fc191df6cff55bbd2ab9968e56b145c50909a3e7b6f462a27d49e1b0379897",
+      "archive_bytes": 50478,
+      "transformations": []
+    },
+    {
+      "path": "scripts/make_report.py",
+      "source_sha256": "55d322824995a3f46d997fd9629739fb2065d486ced2f6cb630cd81f33ebdd41",
+      "archive_sha256": "55d322824995a3f46d997fd9629739fb2065d486ced2f6cb630cd81f33ebdd41",
+      "archive_bytes": 10633,
+      "transformations": []
+    },
+    {
+      "path": "scripts/prepare_data.py",
+      "source_sha256": "21538a09e669a9a1dfab158a3844b762ef6283e330d4db3501b4a9d5b3327e9a",
+      "archive_sha256": "21538a09e669a9a1dfab158a3844b762ef6283e330d4db3501b4a9d5b3327e9a",
+      "archive_bytes": 1902,
+      "transformations": []
+    },
+    {
+      "path": "scripts/prepare_studio_models.py",
+      "source_sha256": "9d529f2615cf0bffc3ad7e6b961cc67846d349ad6b018a4bdc60501d4e826ef1",
+      "archive_sha256": "9d529f2615cf0bffc3ad7e6b961cc67846d349ad6b018a4bdc60501d4e826ef1",
+      "archive_bytes": 3194,
+      "transformations": []
+    },
+    {
+      "path": "scripts/qwen_diagnostic.pbs",
+      "source_sha256": "e8a0c0cc20443f2e50bded81507c5645ca6b23b4146b95a7bfbdc51a3b6f1152",
+      "archive_sha256": "d7a9842d0928d130a6c4517e0c5bd9d7a8a26abe8210815afee89f80775b9b27",
+      "archive_bytes": 1160,
+      "transformations": [
+        "scheduler-project-identifier-removed"
+      ]
+    },
+    {
+      "path": "scripts/qwen_train.pbs",
+      "source_sha256": "3613c2555299509577c86bd8829df1724fded69a655da7fb7537f8048baa0dd0",
+      "archive_sha256": "30a203b6f07621f143649cc514ba1dfd68a3838d143b397694a40f197257a4c7",
+      "archive_bytes": 1141,
+      "transformations": [
+        "scheduler-project-identifier-removed"
+      ]
+    },
+    {
+      "path": "scripts/run_experiments.py",
+      "source_sha256": "b00d6f3a49b093dc838abca8ad94af63f27c4c286fb9461e64a331f2290483aa",
+      "archive_sha256": "b00d6f3a49b093dc838abca8ad94af63f27c4c286fb9461e64a331f2290483aa",
+      "archive_bytes": 4731,
+      "transformations": []
+    },
+    {
+      "path": "scripts/run_qwen_experiments.py",
+      "source_sha256": "3daa59e63824aecb1cbc459860d39f556945e7d6ca5364cdb86daac341911867",
+      "archive_sha256": "3daa59e63824aecb1cbc459860d39f556945e7d6ca5364cdb86daac341911867",
+      "archive_bytes": 5428,
+      "transformations": []
+    },
+    {
+      "path": "scripts/start_demo.sh",
+      "source_sha256": "3c77c4d3f388b79060a5b692d3e204fa7053d0a7286acb32c865d2cfcf6ee0e9",
+      "archive_sha256": "3c77c4d3f388b79060a5b692d3e204fa7053d0a7286acb32c865d2cfcf6ee0e9",
+      "archive_bytes": 160,
+      "transformations": []
+    },
+    {
+      "path": "scripts/train.pbs",
+      "source_sha256": "916b07c05822d93455ae979a58c1517d9cb90c0b1ae4782fabd348d2064e9802",
+      "archive_sha256": "f93da5a51aa4be9083f103093d570cf1281b875348c335dde7cc9414dd290364",
+      "archive_bytes": 871,
+      "transformations": [
+        "scheduler-project-identifier-removed"
+      ]
+    },
+    {
+      "path": "scripts/train_remaining.pbs",
+      "source_sha256": "4bb33894bd235ceaf3822b1154fb663b79bef15a0a6b35d3ee48bc2d00e409f7",
+      "archive_sha256": "d05ca5062733730f7a9dac9e77e776f84b280db955bc8ce91324f8f03dff2914",
+      "archive_bytes": 866,
+      "transformations": [
+        "scheduler-project-identifier-removed"
+      ]
+    },
+    {
+      "path": "scripts/verify_qwen_numerics_fix.py",
+      "source_sha256": "74020d13671383c7503536b498635fd087b471544f6f46087fd4fb874752ab6d",
+      "archive_sha256": "74020d13671383c7503536b498635fd087b471544f6f46087fd4fb874752ab6d",
+      "archive_bytes": 3161,
+      "transformations": []
+    },
+    {
+      "path": "src/shoplens/__init__.py",
+      "source_sha256": "32ec86d499ee86840f2dc2e1c96bb6fa7843c213efc52851fbac2f0dfb2f10e5",
+      "archive_sha256": "32ec86d499ee86840f2dc2e1c96bb6fa7843c213efc52851fbac2f0dfb2f10e5",
+      "archive_bytes": 99,
+      "transformations": []
+    },
+    {
+      "path": "src/shoplens/adapt.py",
+      "source_sha256": "e32e4136b950c7dc026ce274a171a2fd89c26b8b6ccb50fda38120e6b396e81d",
+      "archive_sha256": "e32e4136b950c7dc026ce274a171a2fd89c26b8b6ccb50fda38120e6b396e81d",
+      "archive_bytes": 5944,
+      "transformations": []
+    },
+    {
+      "path": "src/shoplens/data.py",
+      "source_sha256": "dbbd1dff61fdbdf0981c7375983ca4b6bbd58fa3e9de2236c39c524a6ab98e24",
+      "archive_sha256": "dbbd1dff61fdbdf0981c7375983ca4b6bbd58fa3e9de2236c39c524a6ab98e24",
+      "archive_bytes": 27314,
+      "transformations": []
+    },
+    {
+      "path": "src/shoplens/evaluate.py",
+      "source_sha256": "df2a020c306b344f6ad4c5d532c31b1a579f3986cfb522df32fd64167a91ce17",
+      "archive_sha256": "df2a020c306b344f6ad4c5d532c31b1a579f3986cfb522df32fd64167a91ce17",
+      "archive_bytes": 7562,
+      "transformations": []
+    },
+    {
+      "path": "src/shoplens/features.py",
+      "source_sha256": "d67b9538ccd654ea75d6476a94593a14b9f769ad59203fabc1bd3b9e938f064d",
+      "archive_sha256": "d67b9538ccd654ea75d6476a94593a14b9f769ad59203fabc1bd3b9e938f064d",
+      "archive_bytes": 7577,
+      "transformations": []
+    },
+    {
+      "path": "src/shoplens/inference.py",
+      "source_sha256": "c700abe78773ec0b54241acfbf17b605c621e26d883892fa4dc1824c15a78aba",
+      "archive_sha256": "c700abe78773ec0b54241acfbf17b605c621e26d883892fa4dc1824c15a78aba",
+      "archive_bytes": 8975,
+      "transformations": []
+    },
+    {
+      "path": "src/shoplens/models.py",
+      "source_sha256": "4bdd148e78c30fd0d4eee924ca5366bf8f2b48418c42477c51d30b25cde83307",
+      "archive_sha256": "4bdd148e78c30fd0d4eee924ca5366bf8f2b48418c42477c51d30b25cde83307",
+      "archive_bytes": 10843,
+      "transformations": []
+    },
+    {
+      "path": "src/shoplens/qwen_data.py",
+      "source_sha256": "c3dfd67da653e2806d1a9f99376f7888ccb05502a528e4e9b9f59a7bfddad4af",
+      "archive_sha256": "c3dfd67da653e2806d1a9f99376f7888ccb05502a528e4e9b9f59a7bfddad4af",
+      "archive_bytes": 11098,
+      "transformations": []
+    },
+    {
+      "path": "src/shoplens/qwen_evaluate.py",
+      "source_sha256": "1e53adcc3678ead74521331e986cdcf6eec14983a5cf880ecf8a06cc2c8c5de2",
+      "archive_sha256": "1e53adcc3678ead74521331e986cdcf6eec14983a5cf880ecf8a06cc2c8c5de2",
+      "archive_bytes": 6036,
+      "transformations": []
+    },
+    {
+      "path": "src/shoplens/qwen_inference.py",
+      "source_sha256": "fce07001488a517d806b2b97c6d7bec7fca406e022cd9e1c6a0539c25e43efcb",
+      "archive_sha256": "fce07001488a517d806b2b97c6d7bec7fca406e022cd9e1c6a0539c25e43efcb",
+      "archive_bytes": 7270,
+      "transformations": []
+    },
+    {
+      "path": "src/shoplens/qwen_models.py",
+      "source_sha256": "b5dc2e56dbedef48c0961f209b8896b945fb8cfe3b0796bd20e6fed787545e2c",
+      "archive_sha256": "b5dc2e56dbedef48c0961f209b8896b945fb8cfe3b0796bd20e6fed787545e2c",
+      "archive_bytes": 6128,
+      "transformations": []
+    },
+    {
+      "path": "src/shoplens/qwen_pipeline.py",
+      "source_sha256": "2c1735c4b803fcc714f29fb6d479424dccc2d8e438eb49e8b8e0821429704abd",
+      "archive_sha256": "2c1735c4b803fcc714f29fb6d479424dccc2d8e438eb49e8b8e0821429704abd",
+      "archive_bytes": 39321,
+      "transformations": []
+    },
+    {
+      "path": "src/shoplens/qwen_text.py",
+      "source_sha256": "51771348c1c0f859a6160a01529ee965a90590a38d3755f9d21433bffe3262cb",
+      "archive_sha256": "51771348c1c0f859a6160a01529ee965a90590a38d3755f9d21433bffe3262cb",
+      "archive_bytes": 4500,
+      "transformations": []
+    },
+    {
+      "path": "src/shoplens/report_analysis.py",
+      "source_sha256": "1908549d4e242a1ccbbde80e8c8401430060225dfcfbabd534bcb60a026936bd",
+      "archive_sha256": "1908549d4e242a1ccbbde80e8c8401430060225dfcfbabd534bcb60a026936bd",
+      "archive_bytes": 15416,
+      "transformations": []
+    },
+    {
+      "path": "src/shoplens/studio.py",
+      "source_sha256": "2ae6240894f08a037890dd71b32a89177f8fce08b14887e287ced525b72cab44",
+      "archive_sha256": "2ae6240894f08a037890dd71b32a89177f8fce08b14887e287ced525b72cab44",
+      "archive_bytes": 25034,
+      "transformations": []
+    },
+    {
+      "path": "src/shoplens/studio_encoders.py",
+      "source_sha256": "94f52f73713939ac199670df32a8ae94d8e2b499d735cc2e85949de5ea296169",
+      "archive_sha256": "94f52f73713939ac199670df32a8ae94d8e2b499d735cc2e85949de5ea296169",
+      "archive_bytes": 20636,
+      "transformations": []
+    },
+    {
+      "path": "src/shoplens/studio_models.py",
+      "source_sha256": "695948320ab349f4c4b981d47f683300a4a2bddc14468781c29ae14bd7246a99",
+      "archive_sha256": "695948320ab349f4c4b981d47f683300a4a2bddc14468781c29ae14bd7246a99",
+      "archive_bytes": 16544,
+      "transformations": []
+    },
+    {
+      "path": "src/shoplens/studio_ui.py",
+      "source_sha256": "e2a390646cf067fda93ac7d1498b7e7f19ade4e5720c543d608e0a199e685679",
+      "archive_sha256": "e2a390646cf067fda93ac7d1498b7e7f19ade4e5720c543d608e0a199e685679",
+      "archive_bytes": 47504,
+      "transformations": []
+    },
+    {
+      "path": "src/shoplens/train.py",
+      "source_sha256": "85ecb3885e632d6ab15a2c8e5996c511fb870268ed675cc19cd123c873c29d52",
+      "archive_sha256": "85ecb3885e632d6ab15a2c8e5996c511fb870268ed675cc19cd123c873c29d52",
+      "archive_bytes": 12289,
+      "transformations": []
+    },
+    {
+      "path": "src/shoplens/ui.py",
+      "source_sha256": "ed853193262d48af6985b87714c299d5c05a6400dcc99340d704e9979d40ce7d",
+      "archive_sha256": "ed853193262d48af6985b87714c299d5c05a6400dcc99340d704e9979d40ce7d",
+      "archive_bytes": 57259,
+      "transformations": []
+    },
+    {
+      "path": "src/shoplens/visual_charts.py",
+      "source_sha256": "2a23e534cfd5e5b6d73c3a37a2d394c1473cf94975516190c6860ab4f35b986e",
+      "archive_sha256": "2a23e534cfd5e5b6d73c3a37a2d394c1473cf94975516190c6860ab4f35b986e",
+      "archive_bytes": 18731,
+      "transformations": []
+    },
+    {
+      "path": "src/shoplens/visual_data.py",
+      "source_sha256": "ca11b96df50390934f090fff1a64be22658cb3c4151b9f11718c80cf4fa0cac2",
+      "archive_sha256": "ca11b96df50390934f090fff1a64be22658cb3c4151b9f11718c80cf4fa0cac2",
+      "archive_bytes": 12590,
+      "transformations": []
+    },
+    {
+      "path": "src/shoplens/visual_ui.py",
+      "source_sha256": "b9eb8a9cfbc4784123fa02388ecfb24676650f7ae635e3b2ea34c87de5358580",
+      "archive_sha256": "b9eb8a9cfbc4784123fa02388ecfb24676650f7ae635e3b2ea34c87de5358580",
+      "archive_bytes": 16433,
+      "transformations": []
+    },
+    {
+      "path": "tests/conftest.py",
+      "source_sha256": "2aaf1c182a63f4ad37bcce595b7dc90ff4a11df6994f2224a326cfd11ac3da35",
+      "archive_sha256": "2aaf1c182a63f4ad37bcce595b7dc90ff4a11df6994f2224a326cfd11ac3da35",
+      "archive_bytes": 1709,
+      "transformations": []
+    },
+    {
+      "path": "tests/test_data.py",
+      "source_sha256": "d9be1b5611b3a2a24f6d3250dea4ca396b3b190b35374a3d7fef02021a897984",
+      "archive_sha256": "d9be1b5611b3a2a24f6d3250dea4ca396b3b190b35374a3d7fef02021a897984",
+      "archive_bytes": 7254,
+      "transformations": []
+    },
+    {
+      "path": "tests/test_features_adapt.py",
+      "source_sha256": "b6588fd18c7cdef92b40a1bd6c01576ceb3184efbd824700b8ae9cb03de769a6",
+      "archive_sha256": "b6588fd18c7cdef92b40a1bd6c01576ceb3184efbd824700b8ae9cb03de769a6",
+      "archive_bytes": 13127,
+      "transformations": []
+    },
+    {
+      "path": "tests/test_models.py",
+      "source_sha256": "c02cbdafc4a257d866655ea6bb975512b0e234a6d407e49d7de14599e395d50d",
+      "archive_sha256": "c02cbdafc4a257d866655ea6bb975512b0e234a6d407e49d7de14599e395d50d",
+      "archive_bytes": 9116,
+      "transformations": []
+    },
+    {
+      "path": "tests/test_qwen_data.py",
+      "source_sha256": "ef269ca8ce0f2fae11b8429a5f4ef2cd10c5e68b85c9b683def9a64a13a459c7",
+      "archive_sha256": "ef269ca8ce0f2fae11b8429a5f4ef2cd10c5e68b85c9b683def9a64a13a459c7",
+      "archive_bytes": 8677,
+      "transformations": []
+    },
+    {
+      "path": "tests/test_qwen_report.py",
+      "source_sha256": "2551a617940449eda666b67adf111c591efed6957808db205684d54523489689",
+      "archive_sha256": "2551a617940449eda666b67adf111c591efed6957808db205684d54523489689",
+      "archive_bytes": 25832,
+      "transformations": []
+    },
+    {
+      "path": "tests/test_qwen_serving.py",
+      "source_sha256": "8691b9bad6230ba533933bd5f7978cb7e60b17c5b829d72e2eb2e02f3bf3d42a",
+      "archive_sha256": "8691b9bad6230ba533933bd5f7978cb7e60b17c5b829d72e2eb2e02f3bf3d42a",
+      "archive_bytes": 6891,
+      "transformations": []
+    },
+    {
+      "path": "tests/test_qwen_submission.py",
+      "source_sha256": "987976db7fdb7e8004a8a77ff858f7f8b2647748ad8266d48c6cbe230b3d1f80",
+      "archive_sha256": "e4d350bde283c7c65afb0f6b40e68384e46aedcc491dc87325f8c70e30149c59",
+      "archive_bytes": 17832,
+      "transformations": [
+        "private-paths-made-relative-or-redacted"
+      ]
+    },
+    {
+      "path": "tests/test_qwen_training.py",
+      "source_sha256": "2ce0957954877d37595bbc4eae048fd445b913015fd4703365168434a2d0f1b2",
+      "archive_sha256": "2ce0957954877d37595bbc4eae048fd445b913015fd4703365168434a2d0f1b2",
+      "archive_bytes": 14660,
+      "transformations": []
+    },
+    {
+      "path": "tests/test_reporting.py",
+      "source_sha256": "1452b65597efd21a974378d1fd50b0aad2b763b9512d7ea0417397503be05937",
+      "archive_sha256": "1452b65597efd21a974378d1fd50b0aad2b763b9512d7ea0417397503be05937",
+      "archive_bytes": 5951,
+      "transformations": []
+    },
+    {
+      "path": "tests/test_studio.py",
+      "source_sha256": "87e5237072c883ef9cc12bebf5827ac71f718f44bd404ba518a1ed3574e0886b",
+      "archive_sha256": "87e5237072c883ef9cc12bebf5827ac71f718f44bd404ba518a1ed3574e0886b",
+      "archive_bytes": 22157,
+      "transformations": []
+    },
+    {
+      "path": "tests/test_studio_encoders.py",
+      "source_sha256": "bd92d7c7a1ec93cfd2e1f16503836acf39120d3d43dc264d75af9a02fd1684db",
+      "archive_sha256": "bd92d7c7a1ec93cfd2e1f16503836acf39120d3d43dc264d75af9a02fd1684db",
+      "archive_bytes": 23001,
+      "transformations": []
+    },
+    {
+      "path": "tests/test_studio_models.py",
+      "source_sha256": "3a4b1dc63f9b218e44424b413c0dc8d5d212841b7ef29ed07e9d6cc284ba0c5c",
+      "archive_sha256": "3a4b1dc63f9b218e44424b413c0dc8d5d212841b7ef29ed07e9d6cc284ba0c5c",
+      "archive_bytes": 19008,
+      "transformations": []
+    },
+    {
+      "path": "tests/test_studio_ui.py",
+      "source_sha256": "525d48b2c4f5c26c7cf05ff8e5259f2546c2c2cb494b20977d17c2248445aea1",
+      "archive_sha256": "525d48b2c4f5c26c7cf05ff8e5259f2546c2c2cb494b20977d17c2248445aea1",
+      "archive_bytes": 27096,
+      "transformations": []
+    },
+    {
+      "path": "tests/test_ui_qwen.py",
+      "source_sha256": "7687d1d57de1891823a6e0af02d6294932da6363f53b61bac7ce7971b4685f8c",
+      "archive_sha256": "7687d1d57de1891823a6e0af02d6294932da6363f53b61bac7ce7971b4685f8c",
+      "archive_bytes": 13968,
+      "transformations": []
+    },
+    {
+      "path": "tests/test_visual_charts.py",
+      "source_sha256": "4c5716668e3b6dc3ea429f50152cec0abfc57e1fe35d2f111434d8806a92fe03",
+      "archive_sha256": "4c5716668e3b6dc3ea429f50152cec0abfc57e1fe35d2f111434d8806a92fe03",
+      "archive_bytes": 8581,
+      "transformations": []
+    },
+    {
+      "path": "tests/test_visual_data.py",
+      "source_sha256": "3629765c9b21d36cd50ab90748c073a51910f1e218c5a2cd1335fcfda5d52552",
+      "archive_sha256": "3629765c9b21d36cd50ab90748c073a51910f1e218c5a2cd1335fcfda5d52552",
+      "archive_bytes": 10703,
+      "transformations": []
+    },
+    {
+      "path": "tests/test_visual_ui.py",
+      "source_sha256": "b9483d47125c86ad425483fc1eba349b773b795a9c1a5fd46b3eccaa31e98348",
+      "archive_sha256": "b9483d47125c86ad425483fc1eba349b773b795a9c1a5fd46b3eccaa31e98348",
+      "archive_bytes": 11289,
+      "transformations": []
+    },
+    {
+      "path": "启动演示.command",
+      "source_sha256": "44a295cba01acbd7bcb4e2519fd779d2d883e892e0a4d118faeabe192548d014",
+      "archive_sha256": "44a295cba01acbd7bcb4e2519fd779d2d883e892e0a4d118faeabe192548d014",
+      "archive_bytes": 157,
+      "transformations": []
+    }
+  ],
+  "zip_sha256": "870d137cff726f5b506ee6b07f95434bf7b6a6b274ed7ecb5445704c77bab380",
+  "zip_bytes": 18372235
+}
