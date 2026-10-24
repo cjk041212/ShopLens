@@ -1,0 +1,25 @@
+# Runtime pins observed in the exercised Python 3.12.14/macOS arm64 environment.
+# NumPy/SciPy below require Python >=3.12. See INSTALL.md for Linux CPU wheels.
+numpy==2.5.4
+scipy==1.18.1
+scikit-learn==1.9.1
+torch==2.14.1
+transformers==4.57.6
+sentence-transformers==5.7.0
+peft==0.17.1
+accelerate==1.10.1
+huggingface-hub==0.36.2
+tokenizers==0.22.2
+safetensors==0.8.0
+Pillow==12.3.0
+requests==2.34.2
+streamlit==1.66.1
+plotly==6.9.0
+pandas==2.3.3
+joblib==1.6.0
+tqdm==4.70.1
+# Compatibility-sensitive UI serialization/runtime dependencies.
+pyarrow==26.0.0
+protobuf==7.36.2
+packaging==26.3
+

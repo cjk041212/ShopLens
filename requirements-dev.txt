@@ -1,0 +1,4 @@
+-r requirements.txt
+# pytest 9 includes subtests; a separate pytest-subtests was not installed.
+pytest==9.1.1
+
