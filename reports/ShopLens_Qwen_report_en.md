@@ -291,7 +291,7 @@ The selected original heads/adapters, new trained fusion checkpoint, portable Fa
 
 The complete updated source passed **367 tests and 165 subtests**. This includes the four recorded Benchmark lab routes with an absent shopping runtime, explicit custom-form submission, reference changes invalidating prior results, corrupted/mismatched evidence rejection, real-output metric reconstruction, cross-phase duplicate checks and complete-row ranker parity. Software fixtures remain separate from the actual dataset/model runs described above; passing tests does not establish recommendation quality or a performance guarantee.
 
-The updated PPT preserves the original 26 slides and adds eight automatic-benchmark pages, including real product photos and native measured charts. Browser page access was rejected by the current permission gate, so this extension adds **no newly captured browser screenshots**. Its application routes and form interactions are checked through Streamlit AppTest; earlier genuine interface screenshots are retained as historical evidence. Presentation rendering and native-object integrity are checked separately from recommendation quality.
+The rebuilt **20-slide presentation** presents the user workflow, model methods and measured results in one sequence. Five pages show genuine recorded application interfaces, with separate pages for the formal recommendation study, ESCI, FashionIQ, diagnostics and local performance. Native charts and tables retain the reported values. Interface screenshots document recorded application states. Custom FashionIQ examples show actual model outputs without a ground-truth accuracy claim.
 
 ## Audit, reproducibility and limitations
 
