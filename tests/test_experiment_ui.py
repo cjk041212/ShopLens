@@ -12,7 +12,7 @@ from streamlit.testing.v1 import AppTest
 
 
 SOURCE_ROOT = Path(__file__).resolve().parents[1]
-SUMMARY = json.loads((SOURCE_ROOT / "submission/results_qwen_summary.json").read_text())
+SUMMARY = json.loads((SOURCE_ROOT / "results/qwen/results_qwen_summary.json").read_text())
 
 
 def control(app, group, label):
@@ -129,8 +129,8 @@ def test_invalid_summary_shows_error_and_does_not_create_scores(failure):
                 document["verification"]["complete"] = False
             else:
                 document["results"][0]["ndcg@10"] = "not a recorded number"
-            (root / "submission").mkdir()
-            (root / "submission/results_qwen_summary.json").write_text(json.dumps(document))
+            (root / "results/qwen").mkdir(parents=True)
+            (root / "results/qwen/results_qwen_summary.json").write_text(json.dumps(document))
         app = AppTest.from_string(f'''
 from shoplens.experiment_ui import render_gallery
 render_gallery({str(root)!r})

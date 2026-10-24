@@ -11,7 +11,7 @@ import pytest
 from shoplens import experiment_charts as charts
 
 
-SUMMARY = json.loads((Path(__file__).resolve().parents[1] / "submission" / "results_qwen_summary.json").read_text())
+SUMMARY = json.loads((Path(__file__).resolve().parents[1] / "results" / "qwen" / "results_qwen_summary.json").read_text())
 
 
 def training_rows(seed=42):

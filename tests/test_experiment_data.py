@@ -15,15 +15,15 @@ SOURCE_ROOT = Path(__file__).resolve().parents[1]
 class ExperimentDataTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.source_bytes = (SOURCE_ROOT / "submission/results_qwen_summary.json").read_bytes()
+        cls.source_bytes = (SOURCE_ROOT / "results/qwen/results_qwen_summary.json").read_bytes()
         cls.report = json.loads(cls.source_bytes)
 
     def setUp(self):
         self.directory = tempfile.TemporaryDirectory()
         self.addCleanup(self.directory.cleanup)
         self.root = Path(self.directory.name)
-        self.path = self.root / "submission/results_qwen_summary.json"
-        self.path.parent.mkdir()
+        self.path = self.root / "results/qwen/results_qwen_summary.json"
+        self.path.parent.mkdir(parents=True)
         self.path.write_bytes(self.source_bytes)
 
     def change(self, edit):
