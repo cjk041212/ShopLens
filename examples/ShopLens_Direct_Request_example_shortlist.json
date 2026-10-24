@@ -1,0 +1,282 @@
+{
+  "format": "shoplens_studio_shortlist_v1",
+  "brief": {
+    "query": "Find a stroller for everyday outings",
+    "avoid": "",
+    "budget": null,
+    "text_weight": 0.65,
+    "required_category": null,
+    "selected_model": "qwen_semantic",
+    "selected_model_label": "Semantic alignment LoRA",
+    "seed": 42,
+    "ranking_current": true,
+    "ranking_policy": "per-objective-query-candidate-retrieval-v2",
+    "request_retrieval": {
+      "query_encoding": {
+        "model": "qwen_semantic",
+        "label": "Semantic alignment LoRA",
+        "domain": "baby",
+        "seed": 42,
+        "selected_epoch": 2,
+        "objective": "qwen_semantic",
+        "model_id": "Qwen/Qwen3-Embedding-0.6B",
+        "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+        "artifact_signature": "2bafa20f9a0ce0cab66b62c9b9f4f5e922a84c0048a3619f5a9616e65f676337",
+        "unit": "artifacts/qwen/baby/qwen_semantic/seed42",
+        "head_sha256": "f5e7f4b1e76940a7c6cb361c1c3e3cadb43f478d38508e3d6b40609df2607f51",
+        "serving_sha256": "5cf62fa9a7aadbc1a3d80f95c81a7954f04f0db0a6cf7e4dd890b70e02c2e3c4",
+        "candidate_sha256": "9140a3c9dda9ebcc020142f00f8d343467f05f2a4dd36b26cf454a09734eeb02",
+        "adapter_sha256": "adf7522a73a9e56455ea18b70c3057f6d35eca840b5487ad19877395cb908024",
+        "scope": "Exploratory shopping-request retrieval; not the formal history-to-candidate evaluation protocol.",
+        "instruction": "Given a shopping request, retrieve product descriptions that match the user's needs.",
+        "encoding_protocol": {
+          "instruction": "Given a shopping request, retrieve product descriptions that match the user's needs.",
+          "max_length": 256,
+          "padding_side": "left",
+          "pooling": "last valid token",
+          "normalization": "L2",
+          "truncation": true,
+          "compute_dtype": "float32"
+        },
+        "query_protocol_hash": "c77bf7561b6e3bb694a9718e29f5072cada7331121fe81338645d6d7e264d643",
+        "encoder_signature": "e7c2510605f94dc447a1f4106d99b46704d80d75b9af5409bd7ee00509cbfb8d",
+        "space": "Same selected candidate LoRA encoder used for the query"
+      },
+      "candidate_catalog": {
+        "model": "qwen_semantic",
+        "label": "Semantic alignment LoRA",
+        "domain": "baby",
+        "seed": 42,
+        "selected_epoch": 2,
+        "objective": "qwen_semantic",
+        "model_id": "Qwen/Qwen3-Embedding-0.6B",
+        "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+        "artifact_signature": "2bafa20f9a0ce0cab66b62c9b9f4f5e922a84c0048a3619f5a9616e65f676337",
+        "unit": "artifacts/qwen/baby/qwen_semantic/seed42",
+        "head_sha256": "f5e7f4b1e76940a7c6cb361c1c3e3cadb43f478d38508e3d6b40609df2607f51",
+        "serving_sha256": "5cf62fa9a7aadbc1a3d80f95c81a7954f04f0db0a6cf7e4dd890b70e02c2e3c4",
+        "candidate_sha256": "9140a3c9dda9ebcc020142f00f8d343467f05f2a4dd36b26cf454a09734eeb02",
+        "adapter_sha256": "adf7522a73a9e56455ea18b70c3057f6d35eca840b5487ad19877395cb908024",
+        "scope": "Exploratory per-model request retrieval in the selected 1024-dimensional candidate text space; not a formal history-based recommendation benchmark."
+      },
+      "query_present": true,
+      "avoid_present": false,
+      "reference_image_present": false,
+      "scope": "Exploratory request retrieval; not the formal history-based evaluation."
+    },
+    "final_choice": null,
+    "reference_image": "Session-only; not exported"
+  },
+  "source": {
+    "dataset": "Amazon Reviews 2014",
+    "domain": "baby",
+    "metadata": "Prepared local catalog",
+    "price": "Historical metadata, not a live quote",
+    "current_objective_at_export": "qwen_semantic",
+    "selected_seed42_model": {
+      "model": "qwen_semantic",
+      "label": "Semantic alignment LoRA",
+      "seed": 42,
+      "selected_epoch": 2,
+      "objective": "qwen_semantic",
+      "active": false,
+      "positive_count": 0,
+      "history_count": 0,
+      "max_history": 20,
+      "history_item_ids": [],
+      "history_truncated": false,
+      "artifact_signature": "2bafa20f9a0ce0cab66b62c9b9f4f5e922a84c0048a3619f5a9616e65f676337",
+      "head_sha256": "f5e7f4b1e76940a7c6cb361c1c3e3cadb43f478d38508e3d6b40609df2607f51",
+      "serving_sha256": "5cf62fa9a7aadbc1a3d80f95c81a7954f04f0db0a6cf7e4dd890b70e02c2e3c4",
+      "candidate_sha256": "9140a3c9dda9ebcc020142f00f8d343467f05f2a4dd36b26cf454a09734eeb02",
+      "adapter_sha256": "adf7522a73a9e56455ea18b70c3057f6d35eca840b5487ad19877395cb908024",
+      "retrieval_note": "History scoring uses the selected export’s base-history tower, selected candidate tower and user head; request retrieval has separate encoding metadata.",
+      "score_note": "Inactive: select at least one More product to use the trained user head. No empty-history scores are invented.",
+      "request_retrieval": {
+        "query_encoding": {
+          "model": "qwen_semantic",
+          "label": "Semantic alignment LoRA",
+          "domain": "baby",
+          "seed": 42,
+          "selected_epoch": 2,
+          "objective": "qwen_semantic",
+          "model_id": "Qwen/Qwen3-Embedding-0.6B",
+          "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+          "artifact_signature": "2bafa20f9a0ce0cab66b62c9b9f4f5e922a84c0048a3619f5a9616e65f676337",
+          "unit": "artifacts/qwen/baby/qwen_semantic/seed42",
+          "head_sha256": "f5e7f4b1e76940a7c6cb361c1c3e3cadb43f478d38508e3d6b40609df2607f51",
+          "serving_sha256": "5cf62fa9a7aadbc1a3d80f95c81a7954f04f0db0a6cf7e4dd890b70e02c2e3c4",
+          "candidate_sha256": "9140a3c9dda9ebcc020142f00f8d343467f05f2a4dd36b26cf454a09734eeb02",
+          "adapter_sha256": "adf7522a73a9e56455ea18b70c3057f6d35eca840b5487ad19877395cb908024",
+          "scope": "Exploratory shopping-request retrieval; not the formal history-to-candidate evaluation protocol.",
+          "instruction": "Given a shopping request, retrieve product descriptions that match the user's needs.",
+          "encoding_protocol": {
+            "instruction": "Given a shopping request, retrieve product descriptions that match the user's needs.",
+            "max_length": 256,
+            "padding_side": "left",
+            "pooling": "last valid token",
+            "normalization": "L2",
+            "truncation": true,
+            "compute_dtype": "float32"
+          },
+          "query_protocol_hash": "c77bf7561b6e3bb694a9718e29f5072cada7331121fe81338645d6d7e264d643",
+          "encoder_signature": "e7c2510605f94dc447a1f4106d99b46704d80d75b9af5409bd7ee00509cbfb8d",
+          "space": "Same selected candidate LoRA encoder used for the query"
+        },
+        "candidate_catalog": {
+          "model": "qwen_semantic",
+          "label": "Semantic alignment LoRA",
+          "domain": "baby",
+          "seed": 42,
+          "selected_epoch": 2,
+          "objective": "qwen_semantic",
+          "model_id": "Qwen/Qwen3-Embedding-0.6B",
+          "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+          "artifact_signature": "2bafa20f9a0ce0cab66b62c9b9f4f5e922a84c0048a3619f5a9616e65f676337",
+          "unit": "artifacts/qwen/baby/qwen_semantic/seed42",
+          "head_sha256": "f5e7f4b1e76940a7c6cb361c1c3e3cadb43f478d38508e3d6b40609df2607f51",
+          "serving_sha256": "5cf62fa9a7aadbc1a3d80f95c81a7954f04f0db0a6cf7e4dd890b70e02c2e3c4",
+          "candidate_sha256": "9140a3c9dda9ebcc020142f00f8d343467f05f2a4dd36b26cf454a09734eeb02",
+          "adapter_sha256": "adf7522a73a9e56455ea18b70c3057f6d35eca840b5487ad19877395cb908024",
+          "scope": "Exploratory per-model request retrieval in the selected 1024-dimensional candidate text space; not a formal history-based recommendation benchmark."
+        },
+        "query_present": true,
+        "avoid_present": false,
+        "reference_image_present": false,
+        "scope": "Exploratory request retrieval; not the formal history-based evaluation."
+      }
+    },
+    "request_retrieval": {
+      "query_encoding": {
+        "model": "qwen_semantic",
+        "label": "Semantic alignment LoRA",
+        "domain": "baby",
+        "seed": 42,
+        "selected_epoch": 2,
+        "objective": "qwen_semantic",
+        "model_id": "Qwen/Qwen3-Embedding-0.6B",
+        "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+        "artifact_signature": "2bafa20f9a0ce0cab66b62c9b9f4f5e922a84c0048a3619f5a9616e65f676337",
+        "unit": "artifacts/qwen/baby/qwen_semantic/seed42",
+        "head_sha256": "f5e7f4b1e76940a7c6cb361c1c3e3cadb43f478d38508e3d6b40609df2607f51",
+        "serving_sha256": "5cf62fa9a7aadbc1a3d80f95c81a7954f04f0db0a6cf7e4dd890b70e02c2e3c4",
+        "candidate_sha256": "9140a3c9dda9ebcc020142f00f8d343467f05f2a4dd36b26cf454a09734eeb02",
+        "adapter_sha256": "adf7522a73a9e56455ea18b70c3057f6d35eca840b5487ad19877395cb908024",
+        "scope": "Exploratory shopping-request retrieval; not the formal history-to-candidate evaluation protocol.",
+        "instruction": "Given a shopping request, retrieve product descriptions that match the user's needs.",
+        "encoding_protocol": {
+          "instruction": "Given a shopping request, retrieve product descriptions that match the user's needs.",
+          "max_length": 256,
+          "padding_side": "left",
+          "pooling": "last valid token",
+          "normalization": "L2",
+          "truncation": true,
+          "compute_dtype": "float32"
+        },
+        "query_protocol_hash": "c77bf7561b6e3bb694a9718e29f5072cada7331121fe81338645d6d7e264d643",
+        "encoder_signature": "e7c2510605f94dc447a1f4106d99b46704d80d75b9af5409bd7ee00509cbfb8d",
+        "space": "Same selected candidate LoRA encoder used for the query"
+      },
+      "candidate_catalog": {
+        "model": "qwen_semantic",
+        "label": "Semantic alignment LoRA",
+        "domain": "baby",
+        "seed": 42,
+        "selected_epoch": 2,
+        "objective": "qwen_semantic",
+        "model_id": "Qwen/Qwen3-Embedding-0.6B",
+        "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+        "artifact_signature": "2bafa20f9a0ce0cab66b62c9b9f4f5e922a84c0048a3619f5a9616e65f676337",
+        "unit": "artifacts/qwen/baby/qwen_semantic/seed42",
+        "head_sha256": "f5e7f4b1e76940a7c6cb361c1c3e3cadb43f478d38508e3d6b40609df2607f51",
+        "serving_sha256": "5cf62fa9a7aadbc1a3d80f95c81a7954f04f0db0a6cf7e4dd890b70e02c2e3c4",
+        "candidate_sha256": "9140a3c9dda9ebcc020142f00f8d343467f05f2a4dd36b26cf454a09734eeb02",
+        "adapter_sha256": "adf7522a73a9e56455ea18b70c3057f6d35eca840b5487ad19877395cb908024",
+        "scope": "Exploratory per-model request retrieval in the selected 1024-dimensional candidate text space; not a formal history-based recommendation benchmark."
+      },
+      "query_present": true,
+      "avoid_present": false,
+      "reference_image_present": false,
+      "scope": "Exploratory request retrieval; not the formal history-based evaluation."
+    },
+    "ranking_policy": "per-objective-query-candidate-retrieval-v2",
+    "feedback": {
+      "positive": [],
+      "negative": [],
+      "hidden": []
+    },
+    "selection_note": "Saved products may have been shortlisted under different objectives. The selected objective describes this export's current ranking only."
+  },
+  "selected_item_ids": [
+    "B004ANB21Y"
+  ],
+  "items": [
+    {
+      "item_id": "B004ANB21Y",
+      "title": "Aprica Presto Stroller, Metro Orange",
+      "description": "Presto, ready in a Flash. You've got places to go – and Presto wants to come along. With a sleek, ultra-slim profile, ingenious folding design and amazing maneuverability, this stroller will take you anywhere you and your baby want to go. Comfort features include; high seat position for easy lifting and leg room for growing babies, canopy sun visor provides extra shade for baby and built-in seat ventilation panel helps keep baby comfortable. For extra comfort the stroller includes four-wheel suspension for a smooth ride and a cushioned 5 point harness with 3 level adjustments. Convenience features include a foam handle for easy grip, self standing for easy handling and storage, double front swivel wheels for ease and maneuverability. An easy one hand recline system and roomy basket give parents all they need to keep baby moving. A convenient carry strap is integrated into frame, great for quick travel. Care is easy too, as the seat pad is removable and washable. Rain cover included. Best of all you can use the Presto until a child is 70 pounds.",
+      "text": "Aprica Presto Stroller, Metro Orange Presto, ready in a Flash. You've got places to go – and Presto wants to come along. With a sleek, ultra-slim profile, ingenious folding design and amazing maneuverability, this stroller will take you anywhere you and your baby want to go. Comfort features include; high seat position for easy lifting and leg room for growing babies, canopy sun visor provides extra shade for baby and built-in seat ventilation panel helps keep baby comfortable. For extra comfort the stroller includes four-wheel suspension for a smooth ride and a cushioned 5 point harness with 3 level adjustments. Convenience features include a foam handle for easy grip, self standing for easy handling and storage, double front swivel wheels for ease and maneuverability. An easy one hand recline system and roomy basket give parents all they need to keep baby moving. A convenient carry strap is integrated into frame, great for quick travel. Care is easy too, as the seat pad is removable and washable. Rain cover included. Best of all you can use the Presto until a child is 70 pounds.",
+      "image_url": "http://ecx.images-amazon.com/images/I/41-8A0nnjEL._SY300_.jpg",
+      "image_path": "data/images/baby/B004ANB21Y.jpg",
+      "metadata": {
+        "categories": [
+          [
+            "Baby"
+          ]
+        ],
+        "price": 79.99
+      },
+      "historical_price": 79.99,
+      "price_note": "Historical metadata price; not a live quote. Currency follows the source catalog.",
+      "original_text": "Aprica Presto Stroller, Metro Orange Presto, ready in a Flash. You've got places to go – and Presto wants to come along. With a sleek, ultra-slim profile, ingenious folding design and amazing maneuverability, this stroller will take you anywhere you and your baby want to go. Comfort features include; high seat position for easy lifting and leg room for growing babies, canopy sun visor provides extra shade for baby and built-in seat ventilation panel helps keep baby comfortable. For extra comfort the stroller includes four-wheel suspension for a smooth ride and a cushioned 5 point harness with 3 level adjustments. Convenience features include a foam handle for easy grip, self standing for easy handling and storage, double front swivel wheels for ease and maneuverability. An easy one hand recline system and roomy basket give parents all they need to keep baby moving. A convenient carry strap is integrated into frame, great for quick travel. Care is easy too, as the seat pad is removable and washable. Rain cover included. Best of all you can use the Presto until a child is 70 pounds.",
+      "studio_recommendation": {
+        "item_id": "B004ANB21Y",
+        "title": "Aprica Presto Stroller, Metro Orange",
+        "rank": 3,
+        "score": 0.9997157475838545,
+        "components": {
+          "query_text_cosine": 0.7760547995567322,
+          "query_image_cosine": null,
+          "query_text_percentile": 0.9997157475838545,
+          "query_image_percentile": null,
+          "query_score": 0.9997157475838545,
+          "positive_text_cosine": null,
+          "positive_image_cosine": null,
+          "positive_score": null,
+          "personalization_percentile": null,
+          "feedback_score": null,
+          "negative_score": null,
+          "avoid_semantic_score": null,
+          "avoid_term_hits": [],
+          "base_score": 0.9997157475838545,
+          "negative_penalty": 0.0,
+          "avoid_semantic_penalty": 0.0,
+          "avoid_terms_penalty": 0.0,
+          "historical_price": 79.99,
+          "text_weight": 0.65,
+          "feedback_weight": 0.3,
+          "pool_size": 200,
+          "pool_count": 200,
+          "pool_channel": "text_query",
+          "required_category": null,
+          "source_category_paths": [
+            "Baby"
+          ]
+        },
+        "evidence": [
+          "Catalog title: Aprica Presto Stroller, Metro Orange",
+          "Source category: Baby",
+          "Catalog text: Presto, ready in a Flash. You've got places to go – and Presto wants to come along. With a sleek, ultra-slim profile, ingenious folding design and amazing maneuverability, this stroller will take you anywhere you and you…",
+          "Historical metadata price: 79.99; not a live quote.",
+          "Text-query cosine: 0.7761; within-catalog percentile: 100.0%."
+        ],
+        "reasons": [
+          "Retrieval admits the top 200 text-query candidates, including cutoff ties (200 products); Studio reranks only this fixed pool. This is not a relevance guarantee.",
+          "Text/image retrieval uses separate full-catalog rank percentiles."
+        ],
+        "score_kind": "studio_rank_percentile_fusion"
+      }
+    }
+  ],
+  "note": "Shortlist selections and Studio fusion scores are session exploration, not new formal evaluation results."
+}
