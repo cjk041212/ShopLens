@@ -129,5 +129,5 @@ def render_gallery(source_root, runtime_root=None):
                                file_name=filename+".json", mime="application/json", key="gallery_json", width="stretch")
     with st.expander("Read the values & source scope"):
         st.dataframe(pd.DataFrame(export_rows), hide_index=True, width="stretch")
-        st.caption(f"Source: {provenance.get('source_relative', 'submission/results_qwen_summary.json')} · SHA256 {provenance.get('source_sha256', 'unavailable')}")
+        st.caption(f"Source: {provenance.get('source_relative', 'results/qwen/results_qwen_summary.json')} · SHA256 {provenance.get('source_sha256', 'unavailable')}")
         st.write("Formal history-to-item evaluation uses the full eligible catalog and a fixed chronological protocol. Studio free-text retrieval is a separate exploratory interaction. Three seeds describe observed variability; standard deviations are not confidence intervals. The gallery reads historical measured outputs and does not run training.")

@@ -112,12 +112,12 @@ def _training_record(domain, model, seed, evidence):
 def load_experiment_summary(source_root, runtime_root=None):
     """Return safe chart records from an explicit, complete report snapshot.
 
-    ``submission/results_qwen_summary.json`` takes precedence. Only an explicitly
+    ``results/qwen/results_qwen_summary.json`` takes precedence. Only an explicitly
     supplied runtime root enables the original ``deliverables`` fallback.
     No model weights, review text or per-user records are read.
     """
-    source = Path(source_root) / "submission" / "results_qwen_summary.json"
-    relative = "submission/results_qwen_summary.json"
+    source = Path(source_root) / "results" / "qwen" / "results_qwen_summary.json"
+    relative = "results/qwen/results_qwen_summary.json"
     if not source.is_file() and runtime_root is not None:
         source = Path(runtime_root) / "deliverables" / "results_qwen_summary.json"
         relative = "deliverables/results_qwen_summary.json"
