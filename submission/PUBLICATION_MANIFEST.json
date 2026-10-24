@@ -1,5 +1,5 @@
 {
-  "scope": "Public copies only. Original final coursework files remain unchanged. Draft forms are not completed official forms. GitHub publication is not school submission.",
+  "scope": "Experiment report, presentation and their measured data and UI evidence. Original experiment files are preserved separately.",
   "files": [
     {
       "path": "ShopLens_Direct_Request_example_shortlist.json",
@@ -11,64 +11,46 @@
       ]
     },
     {
-      "path": "ShopLens_Qwen_AI_disclosure_draft.md",
-      "original_sha256": "10fb7daf941b92a324a8547a9e0a7a23f61adeb098b039ca4f981ab6dd4b945a",
-      "public_sha256": "10fb7daf941b92a324a8547a9e0a7a23f61adeb098b039ca4f981ab6dd4b945a",
-      "bytes": 1678,
-      "transforms": []
-    },
-    {
-      "path": "ShopLens_Qwen_human_narration.md",
-      "original_sha256": "13d7252cbff68c779178b3e293a21693d95e6c67c83bfe62c815308c7fb048ac",
-      "public_sha256": "526adbb3c065c647286f32f6923b68fedd1347d0edd9058107c004439fb7456a",
-      "bytes": 19529,
-      "transforms": [
-        "matching-26-slide-English-human-narration-848-spoken-words",
-        "repository-relative-source-notes"
-      ]
-    },
-    {
       "path": "ShopLens_Qwen_presentation.pptx",
       "original_sha256": "deaa6bb519b505f2c2bc541b725f7ada46a3608d2f7db1f9430c4cf191120c11",
-      "public_sha256": "f1cfa7be43d3aea72feac81dcc0c887ce7c0dd16421d50cf98f7a768a0332686",
-      "bytes": 931851,
+      "public_sha256": "890ad959cb2a77a3850aeee0616fc07e7cda1fd27b43a8b60043fe15c71aa086",
+      "bytes": 923957,
       "transforms": [
-        "expanded-English-presentation-26-slides-18-main-8-appendix",
-        "15-real-application-screenshots",
+        "preserve-existing-native-tables-and-charts",
+        "update-model-arena-and-experiment-gallery",
+        "remove-submission-administration",
         "repository-relative-source-notes"
       ]
     },
     {
       "path": "ShopLens_Qwen_report_en.md",
       "original_sha256": "10ca73632c866aa0df225e71778165df7e41c9ccc10b9ab29bef6cc7e9a3945e",
-      "public_sha256": "0b9e15d419f177c46a9fb6bd67f693fed10e652e44bc3df618f8ec2b58a12670",
-      "bytes": 13320,
+      "public_sha256": "421281ada500ca4a81dae71bef759ee43320d4297a68cd6082c894e26ea27125",
+      "bytes": 23609,
       "transforms": [
-        "public-copy-operational-identifiers-or-local-evidence-links-normalized"
+        "retain-original-formal-statistical-tables",
+        "update-measured-interactive-features",
+        "remove-course-submission-administration",
+        "repository-relative-evidence-links"
       ]
     },
     {
-      "path": "ShopLens_Qwen_report_zh.md",
-      "original_sha256": "3768d5eb677d139c2d84929eb183d86ec308156908a8ffa5bbc8bcba4595c775",
-      "public_sha256": "071ab2c224cc22d862d758d68ac7767a9624988fa1246f58797f0d91c3e12c27",
-      "bytes": 12681,
+      "path": "assets/experiment_paired_matrix.png",
+      "original_sha256": "348151ad511e160e7225f0b8a02e0333c3828ab73a20554dce451eefc65f42c0",
       "transforms": [
-        "public-copy-operational-identifiers-or-local-evidence-links-normalized"
-      ]
+        "actual-application-screenshot-for-visual-upgrade"
+      ],
+      "public_sha256": "348151ad511e160e7225f0b8a02e0333c3828ab73a20554dce451eefc65f42c0",
+      "bytes": 52843
     },
     {
-      "path": "ShopLens_Studio_guide.md",
-      "original_sha256": "8319c7468dea424bf9066ace4a9fc81d1acabc0b06705c001dd0ba6baae83f3b",
-      "public_sha256": "8319c7468dea424bf9066ace4a9fc81d1acabc0b06705c001dd0ba6baae83f3b",
-      "bytes": 8789,
-      "transforms": []
-    },
-    {
-      "path": "assets/qwen_compare_baby.jpg",
-      "original_sha256": "c71b07d9634be1059ffdaa5ac5e5e8c86a31eac725f86913a0a18d0da204fc59",
-      "public_sha256": "c71b07d9634be1059ffdaa5ac5e5e8c86a31eac725f86913a0a18d0da204fc59",
-      "bytes": 103633,
-      "transforms": []
+      "path": "assets/experiment_training_sports_seed44.png",
+      "original_sha256": "c727d432e8859a11aa773a079909d7b62f246f3bf7cb944b62f307daf77a9cb5",
+      "transforms": [
+        "actual-application-screenshot-for-visual-upgrade"
+      ],
+      "public_sha256": "c727d432e8859a11aa773a079909d7b62f246f3bf7cb944b62f307daf77a9cb5",
+      "bytes": 55359
     },
     {
       "path": "assets/research_atlas_complete.jpg",
@@ -89,15 +71,6 @@
       "bytes": 76579
     },
     {
-      "path": "assets/research_heatmap.png",
-      "original_sha256": "8390a73bfe97c4ff88f4269686f5515da8932b4903e32d8cfb8a5d6aae74bc33",
-      "transforms": [
-        "real-application-screenshot-for-expanded-presentation"
-      ],
-      "public_sha256": "8390a73bfe97c4ff88f4269686f5515da8932b4903e32d8cfb8a5d6aae74bc33",
-      "bytes": 52471
-    },
-    {
       "path": "assets/research_network.png",
       "original_sha256": "cb40f516bf3332b718964cc9580ff158c94e8e89f458e49d30eeacdda1644633",
       "transforms": [
@@ -105,15 +78,6 @@
       ],
       "public_sha256": "cb40f516bf3332b718964cc9580ff158c94e8e89f458e49d30eeacdda1644633",
       "bytes": 60212
-    },
-    {
-      "path": "assets/research_paired.png",
-      "original_sha256": "2dacba1a8a6ca15f32fb0792cf5b968ceb5c26ee314a403a8121507ce518162e",
-      "transforms": [
-        "real-application-screenshot-for-expanded-presentation"
-      ],
-      "public_sha256": "2dacba1a8a6ca15f32fb0792cf5b968ceb5c26ee314a403a8121507ce518162e",
-      "bytes": 54525
     },
     {
       "path": "assets/research_rankflow.png",
@@ -132,36 +96,6 @@
       ],
       "public_sha256": "4a0ab44fd908b70632cde2dfb4e2f931800be5691b205a420177525c3850d6c0",
       "bytes": 105766
-    },
-    {
-      "path": "assets/research_training.png",
-      "original_sha256": "0f11cc435bef566415f4baff4b51d3d6b678474dd9fbcc9ef3ab267dee10f5e4",
-      "transforms": [
-        "real-application-screenshot-for-expanded-presentation"
-      ],
-      "public_sha256": "0f11cc435bef566415f4baff4b51d3d6b678474dd9fbcc9ef3ab267dee10f5e4",
-      "bytes": 40610
-    },
-    {
-      "path": "assets/shoplens_direct_request_compare.jpg",
-      "original_sha256": "a5cafdc5a0af36a938109b46c2c22858086f079537f2a9add2f848a17cacb2bb",
-      "public_sha256": "a5cafdc5a0af36a938109b46c2c22858086f079537f2a9add2f848a17cacb2bb",
-      "bytes": 133658,
-      "transforms": []
-    },
-    {
-      "path": "assets/shoplens_direct_request_models.jpg",
-      "original_sha256": "5484464dfde22652f796eb3d1fc5a0a5b70c4588bf639cd3195ce592a2af1f18",
-      "public_sha256": "5484464dfde22652f796eb3d1fc5a0a5b70c4588bf639cd3195ce592a2af1f18",
-      "bytes": 121564,
-      "transforms": []
-    },
-    {
-      "path": "assets/shoplens_direct_request_narrow.jpg",
-      "original_sha256": "7b34aaa8614013212b15b01860e7b571ba8f32f185c7261e48f45fde9bf14209",
-      "public_sha256": "7b34aaa8614013212b15b01860e7b571ba8f32f185c7261e48f45fde9bf14209",
-      "bytes": 86114,
-      "transforms": []
     },
     {
       "path": "assets/studio_brief.png",
@@ -198,6 +132,15 @@
       ],
       "public_sha256": "60d99ca4f28bf5d1dec98de2a864284d41742f83b4234a22a8b7bcf57421058b",
       "bytes": 46732
+    },
+    {
+      "path": "assets/studio_model_arena.png",
+      "original_sha256": "fac84c9760a990f43bb9c8fb50b680b1e4427870cc85a480ae55a9d83006760d",
+      "transforms": [
+        "actual-application-screenshot-for-visual-upgrade"
+      ],
+      "public_sha256": "fac84c9760a990f43bb9c8fb50b680b1e4427870cc85a480ae55a9d83006760d",
+      "bytes": 47008
     },
     {
       "path": "assets/studio_models.jpg",
@@ -241,20 +184,12 @@
       "transforms": [
         "public-copy-operational-identifiers-or-local-evidence-links-normalized"
       ]
-    },
-    {
-      "path": "贡献反思模板.md",
-      "original_sha256": "bb1da9f63298ef58fc8b8a4d8cd3135a7f3424f90025cc50d12f2e43137b7457",
-      "public_sha256": "bb1da9f63298ef58fc8b8a4d8cd3135a7f3424f90025cc50d12f2e43137b7457",
-      "bytes": 1309,
-      "transforms": []
     }
   ],
   "presentation": {
     "slides": 26,
     "main_slides": 18,
     "optional_appendix_slides": 8,
-    "real_ui_screenshots": 15,
-    "human_narration_spoken_words": 848
+    "real_ui_screenshots": 15
   }
 }
